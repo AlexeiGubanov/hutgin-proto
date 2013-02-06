@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <context:annotation-config />
+
+    <!-- Property placeholder -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:conf/database.properties</value>
+            </list>
+        </property>
+    </bean>
+    <!-- #Property placeholder -->
+
+
+    <!-- Messages -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>classpath:conf/i18n/messages</value>
+            </list>
+        </property>
+        <!--<property name="useCodeAsDefaultMessage" value="true"/>-->
+        <!-- seconds to cache resources, TODO in production sets to more much or forever(-1) -->
+        <property name="cacheSeconds" value="5"/>
+        <property name="defaultEncoding" value="UTF-16"/>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+    </bean>
+
+    <bean id="messageHelper" class="com.hutgin.util.MessagesHelperImpl">
+        <property name="messageSource" ref="messageSource"/>
+    </bean>
+    <!-- #Messages -->
+
+</beans>
