@@ -16,6 +16,8 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:3.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:3.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:3.2.1.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:3.2.1.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:3.2.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.zkoss.zk:zkspring-core:3.1" />
           <element id="library" level="project" name="Maven: org.javassist:javassist:3.14.0-GA" />
           <element id="library" level="project" name="Maven: org.reflections:reflections:0.9.5-RC2" />

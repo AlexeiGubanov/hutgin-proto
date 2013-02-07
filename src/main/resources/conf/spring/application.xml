@@ -4,7 +4,8 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <context:annotation-config />
+    <context:annotation-config/>
+
 
     <!-- Property placeholder -->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -35,5 +36,10 @@
         <property name="messageSource" ref="messageSource"/>
     </bean>
     <!-- #Messages -->
+
+
+    <import resource="datasource.xml"/>
+
+    <context:component-scan base-package="com.hutgin"/>
 
 </beans>

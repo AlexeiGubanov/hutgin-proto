@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.hutgin</groupId>
-	<artifactId>hutgin</artifactId>
-	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<url>http://maven.apache.org</url>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.hutgin</groupId>
+    <artifactId>hutgin</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <url>http://maven.apache.org</url>
 
     <repositories>
         <repository>
@@ -46,26 +46,26 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-orm</artifactId>-->
-            <!--<version>${spring.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.springframework.security</groupId>-->
-            <!--<artifactId>spring-security-core</artifactId>-->
-            <!--<version>${spring.version}</version>-->
+        <!--<groupId>org.springframework.security</groupId>-->
+        <!--<artifactId>spring-security-core</artifactId>-->
+        <!--<version>${spring.version}</version>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.springframework.security</groupId>-->
-            <!--<artifactId>spring-security-config</artifactId>-->
-            <!--<version>${spring.version}</version>-->
+        <!--<groupId>org.springframework.security</groupId>-->
+        <!--<artifactId>spring-security-config</artifactId>-->
+        <!--<version>${spring.version}</version>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.springframework.security</groupId>-->
-            <!--<artifactId>spring-security-web</artifactId>-->
-            <!--<version>${spring.version}</version>-->
+        <!--<groupId>org.springframework.security</groupId>-->
+        <!--<artifactId>spring-security-web</artifactId>-->
+        <!--<version>${spring.version}</version>-->
         <!--</dependency>-->
 
         <!-- Spring ZK -->
@@ -112,28 +112,28 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.aspectj</groupId>-->
-            <!--<artifactId>aspectjweaver</artifactId>-->
-            <!--<version>1.7.1</version>-->
+        <!--<groupId>org.aspectj</groupId>-->
+        <!--<artifactId>aspectjweaver</artifactId>-->
+        <!--<version>1.7.1</version>-->
         <!--</dependency>-->
         <!-- eo Spring dependencies -->
 
         <!-- Utility dependencies -->
         <!--<dependency>-->
-            <!--<groupId>org.apache.velocity</groupId>-->
-            <!--<artifactId>velocity</artifactId>-->
-            <!--<version>1.7</version>-->
+        <!--<groupId>org.apache.velocity</groupId>-->
+        <!--<artifactId>velocity</artifactId>-->
+        <!--<version>1.7</version>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
-            <!--<groupId>org.apache.poi</groupId>-->
-            <!--<artifactId>poi</artifactId>-->
-            <!--<version>3.8</version>-->
+        <!--<groupId>org.apache.poi</groupId>-->
+        <!--<artifactId>poi</artifactId>-->
+        <!--<version>3.8</version>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.apache.poi</groupId>-->
-            <!--<artifactId>poi-ooxml</artifactId>-->
-            <!--<version>3.8</version>-->
+        <!--<groupId>org.apache.poi</groupId>-->
+        <!--<artifactId>poi-ooxml</artifactId>-->
+        <!--<version>3.8</version>-->
         <!--</dependency>-->
 
 
@@ -144,9 +144,9 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>commons-fileupload</groupId>-->
-            <!--<artifactId>commons-fileupload</artifactId>-->
-            <!--<version>1.2.2</version>-->
+        <!--<groupId>commons-fileupload</groupId>-->
+        <!--<artifactId>commons-fileupload</artifactId>-->
+        <!--<version>1.2.2</version>-->
         <!--</dependency>-->
 
         <dependency>
@@ -156,9 +156,9 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.apache.httpcomponents</groupId>-->
-            <!--<artifactId>httpcore</artifactId>-->
-            <!--<version>4.2.2</version>-->
+        <!--<groupId>org.apache.httpcomponents</groupId>-->
+        <!--<artifactId>httpcore</artifactId>-->
+        <!--<version>4.2.2</version>-->
         <!--</dependency>-->
         <!--eo  Utility dependencies -->
 
@@ -196,9 +196,9 @@
 
 
         <!--<dependency>-->
-            <!--<groupId>com.googlecode.genericdao</groupId>-->
-            <!--<artifactId>dao-hibernate</artifactId>-->
-            <!--<version>1.1.0</version>-->
+        <!--<groupId>com.googlecode.genericdao</groupId>-->
+        <!--<artifactId>dao-hibernate</artifactId>-->
+        <!--<version>1.1.0</version>-->
         <!--</dependency>-->
 
         <dependency>
@@ -243,53 +243,53 @@
 
         <!-- Misc dependencies -->
         <!--<dependency>-->
-            <!--<groupId>org.javassist</groupId>-->
-            <!--<artifactId>javassist</artifactId>-->
-            <!--<version>3.16.1-GA</version>-->
+        <!--<groupId>org.javassist</groupId>-->
+        <!--<artifactId>javassist</artifactId>-->
+        <!--<version>3.16.1-GA</version>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
-            <!--<groupId>cglib</groupId>-->
-            <!--<artifactId>cglib</artifactId>-->
-            <!--<version>2.2.2</version>-->
+        <!--<groupId>cglib</groupId>-->
+        <!--<artifactId>cglib</artifactId>-->
+        <!--<version>2.2.2</version>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
-            <!--<groupId>mysql</groupId>-->
-            <!--<artifactId>mysql-connector-java</artifactId>-->
-            <!--<version>5.1.18</version>-->
+        <!--<groupId>mysql</groupId>-->
+        <!--<artifactId>mysql-connector-java</artifactId>-->
+        <!--<version>5.1.18</version>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
-            <!--<groupId>com.h2database</groupId>-->
-            <!--<artifactId>h2</artifactId>-->
-            <!--<version>1.3.161</version>-->
-            <!--<scope>test</scope>-->
+        <!--<groupId>com.h2database</groupId>-->
+        <!--<artifactId>h2</artifactId>-->
+        <!--<version>1.3.161</version>-->
+        <!--<scope>test</scope>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
-            <!--<groupId>net.tanesha.recaptcha4j</groupId>-->
-            <!--<artifactId>recaptcha4j</artifactId>-->
-            <!--<version>0.0.7</version>-->
+        <!--<groupId>net.tanesha.recaptcha4j</groupId>-->
+        <!--<artifactId>recaptcha4j</artifactId>-->
+        <!--<version>0.0.7</version>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
-            <!--<groupId>com.googlecode.json-simple</groupId>-->
-            <!--<artifactId>json-simple</artifactId>-->
-            <!--<version>1.1.1</version>-->
+        <!--<groupId>com.googlecode.json-simple</groupId>-->
+        <!--<artifactId>json-simple</artifactId>-->
+        <!--<version>1.1.1</version>-->
         <!--</dependency>-->
         <!--&lt;!&ndash; eo Misc dependencies &ndash;&gt;-->
 
         <!--<dependency>-->
-            <!--<groupId>org.jdom</groupId>-->
-            <!--<artifactId>jdom</artifactId>-->
-            <!--<version>1.1</version>-->
+        <!--<groupId>org.jdom</groupId>-->
+        <!--<artifactId>jdom</artifactId>-->
+        <!--<version>1.1</version>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
-            <!--<groupId>net.sf.xss-html-filter</groupId>-->
-            <!--<artifactId>xss-html-filter</artifactId>-->
-            <!--<version>1.5</version>-->
+        <!--<groupId>net.sf.xss-html-filter</groupId>-->
+        <!--<artifactId>xss-html-filter</artifactId>-->
+        <!--<version>1.5</version>-->
         <!--</dependency>-->
 
     </dependencies>
