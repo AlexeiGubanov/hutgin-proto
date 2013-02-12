@@ -8,6 +8,13 @@ public class Field extends Entity {
     private Integer size;
     private String tableName;
 
+    public Field() {
+    }
+
+    public Field(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
