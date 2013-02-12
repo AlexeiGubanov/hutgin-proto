@@ -28,8 +28,6 @@ public class JdbcDaoTest {
 
     @Before
     public void setUp() {
-        // creates an HSQL in-memory database populated from default scripts
-        // classpath:schema.sql and classpath:data.sql
         EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
         dbBuilder.setType(EmbeddedDatabaseType.H2);
         dbBuilder.addScript("classpath:/testData/jdbcDaoTest/shema.sql");
@@ -51,7 +49,7 @@ public class JdbcDaoTest {
         t.addField(new Field("name"));
         t.addField(new Field("value"));
 
-        List<Entity> origin = new ArrayList<Entity>();
+        List<Entity> origin = new ArrayList<>();
         Entity item1 = new Entity();
         item1.put("ID", 1);
         item1.put("NAME", "name1");
