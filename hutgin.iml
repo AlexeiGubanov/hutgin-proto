@@ -9,16 +9,14 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-        </sourceRoots>
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset1" name="XML Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/conf/spring/application.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/conf/spring/datasource.xml</file>
+          <file>jar://$MAVEN_REPOSITORY$/org/springframework/spring-jdbc/3.2.1.RELEASE/spring-jdbc-3.2.1.RELEASE.jar!/org/springframework/jdbc/support/sql-error-codes.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -30,14 +28,14 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:3.2.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-tx:3.2.1.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.10" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:1.3.170" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:3.2.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:3.2.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:3.2.1.RELEASE" level="project" />

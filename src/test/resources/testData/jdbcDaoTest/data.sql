@@ -1,0 +1,2 @@
+INSERT INTO test1(ID,NAME,VALUE ) VALUES (1,'name1','val1');
+INSERT INTO test1(ID,NAME,VALUE ) VALUES (2,'name2','val2');
