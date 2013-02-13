@@ -1,0 +1,12 @@
+SchemaCrawler http://schemacrawler.sourceforge.net/ - db meta access
+jOOQ http://www.jooq.org
+http://ikaisays.com/2011/11/01/getting-started-with-jooq-a-tutorial/
+
+Querydsl http://www.querydsl.com/
+
+http://www.springfuse.com/, Celerio - code generator tool http://www.jaxio.com/en/celerio.html
+
+
+Liquibase - database changes
+
+Lucene - полнотекствый поиск
