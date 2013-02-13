@@ -65,7 +65,12 @@ public class JdbcDaoTest {
         assertThat(list.size(), equalTo(2));
         assertThat(list, hasItem(item1));
         assertThat(list, hasItem(item2));
+    }
 
+    @Test
+    public void testjOOQ() {
+//        Factory create = new Factory(db, SQLDialect.MYSQL);
+//        Result<Record> result = create.select().from().fetch();
 
     }
 }
