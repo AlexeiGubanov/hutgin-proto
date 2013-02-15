@@ -25,4 +25,8 @@ public abstract class DataType {
     public void setSize(int size) {
         this.size = size;
     }
+
+    public abstract String toSql();
+
+    public abstract String getValueAsString(Object value);
 }

@@ -28,4 +28,16 @@ public class NumericDataType extends DataType {
     public void setPrecision(int precision) {
         this.precision = precision;
     }
+
+    @Override
+    public String toSql() {
+        StringBuilder sb = new StringBuilder(getName());
+        sb.append("(").append(getSize()).append(",").append(getPrecision()).append(")");
+        return sb.toString();
+    }
+
+    @Override
+    public String getValueAsString(Object value) {
+        return value.toString();
+    }
 }

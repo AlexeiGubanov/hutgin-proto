@@ -1,4 +1,4 @@
 package com.hutgin.dbsupport.meta;
 
-public interface Constraint {
+public interface DbMeta {
 }

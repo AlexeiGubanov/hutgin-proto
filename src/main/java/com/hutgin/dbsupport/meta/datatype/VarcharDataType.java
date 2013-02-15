@@ -13,4 +13,15 @@ public class VarcharDataType extends DataType {
         super(NAME, size);
     }
 
+    @Override
+    public String toSql() {
+        StringBuilder sb = new StringBuilder(getName());
+        sb.append("(").append(getSize()).append(")");
+        return sb.toString();
+    }
+
+    @Override
+    public String getValueAsString(Object value) {
+        return "'" + value.toString() + "'";
+    }
 }
