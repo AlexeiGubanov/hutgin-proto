@@ -5,17 +5,17 @@ import com.hutgin.dbsupport.meta.constraint.Constraint;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Table implements DbMeta {
+public class TableMeta implements DbMeta {
     private String name;
     private String schema;
     private final List<Column> columns = new ArrayList<>();
     private final List<Constraint> constraints = new ArrayList<>();
 
-    public Table(String name) {
+    public TableMeta(String name) {
         this.name = name;
     }
 
-    public Table(String schema, String name) {
+    public TableMeta(String schema, String name) {
         this.name = name;
         this.schema = schema;
     }

@@ -4,7 +4,8 @@ import com.hutgin.dbsupport.meta.datatype.DataType;
 
 public class Column implements DbMeta {
     private String name;
-    private DataType type;
+    private DataType type; //TODO make as string that will be filled with creators, or leave as is, but use TypesConverter that convert core project type to specific db type
+    // TODO may be TypeConverter (or Database itself should convert project data type to string
     private Object defaultValue;
     private boolean required;
 

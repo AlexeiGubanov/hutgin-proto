@@ -1,7 +1,7 @@
 package com.hutgin.dbsupport.meta.constraint;
 
 import com.hutgin.dbsupport.meta.Column;
-import com.hutgin.dbsupport.meta.Table;
+import com.hutgin.dbsupport.meta.TableMeta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,11 +13,11 @@ public class ForeignKeyConstraint extends Constraint {
 
     public static enum FK_ACTION {NO_ACTION, CASCADE, SET_NULL}
 
-    public ForeignKeyConstraint(String name, Column column, Table toTable, Column toColumn) {
+    public ForeignKeyConstraint(String name, Column column, TableMeta toTable, Column toColumn) {
         this(name, new Column[]{column}, toTable, new Column[]{toColumn});
     }
 
-    public ForeignKeyConstraint(String name, Column[] columns, Table toTable, Column[] toColumns) {
+    public ForeignKeyConstraint(String name, Column[] columns, TableMeta toTable, Column[] toColumns) {
         super(name, columns);
         this.toTable = toTable;
         this.references.addAll(Arrays.asList(toColumns));
@@ -26,7 +26,7 @@ public class ForeignKeyConstraint extends Constraint {
     private FK_ACTION updateAction = FK_ACTION.NO_ACTION;
     private FK_ACTION deleteAction = FK_ACTION.NO_ACTION;
     private final List<Column> references = new ArrayList<>();
-    private Table toTable;
+    private TableMeta toTable;
 
 
     public FK_ACTION getUpdateAction() {
@@ -49,11 +49,11 @@ public class ForeignKeyConstraint extends Constraint {
         return references;
     }
 
-    public Table getToTable() {
+    public TableMeta getToTable() {
         return toTable;
     }
 
-    public void setToTable(Table toTable) {
+    public void setToTable(TableMeta toTable) {
         this.toTable = toTable;
     }
 

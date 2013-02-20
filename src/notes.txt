@@ -10,3 +10,18 @@ http://www.springfuse.com/, Celerio - code generator tool http://www.jaxio.com/e
 Liquibase - database changes
 
 Lucene - полнотекствый поиск
+
+
+ org.hibernate.metamodel.relational.Table -
+
+
+
+ hibernate JdbcServicesImpl
+ spring SimpleJdbcInsert and
+
+
+
+ dbsupport - только модель базы данных, диалекты и прочая специфика
+ dao - работа с конкретным соединением
+ service - утилитарный слой
+ entity - сущности приложения как таковые
