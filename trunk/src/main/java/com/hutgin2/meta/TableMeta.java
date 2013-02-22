@@ -11,7 +11,7 @@ public class TableMeta {
     @Column(length = 255)
     private String name;
 
-    @OneToMany(mappedBy = "table")
+    @OneToMany(targetEntity = FieldMeta.class, mappedBy = "table")
     private List<FieldMeta> fields;
 
     public TableMeta() {
