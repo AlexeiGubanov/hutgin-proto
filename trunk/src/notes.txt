@@ -25,3 +25,26 @@ Lucene - полнотекствый поиск
  dao - работа с конкретным соединением
  service - утилитарный слой
  entity - сущности приложения как таковые
+
+ --TODO - попробовать EntityManager или имплемент JPA
+ Criterias, etc
+
+
+
+ http://www.springbyexample.org/examples/spring-data-jpa.html
+ http://docs.jboss.org/hibernate/entitymanager/3.6/reference/en/html_single/
+http://gordondickens.com/wordpress/2011/08/01/simpler-jpa-with-spring-data-jpa/
+http://docs.oracle.com/javaee/6/tutorial/doc/gjivm.html
+
+ ZK: http://habrahabr.ru/post/129189/
+
+
+ Automated Business Logic http://www.automatedbusinesslogic.com/downloads-1
+
+
+ Hibernate
+ Session dynamicSession = pojoSession.getSession(EntityMode.MAP);
+ требует маппинга через xml
+ MetadataSources
+
+  TODO - попробовать настроить через hibernate и динамически обновлять конфиг при изменении БД (ddl auto)

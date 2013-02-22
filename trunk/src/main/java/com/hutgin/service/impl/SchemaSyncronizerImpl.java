@@ -3,9 +3,12 @@ package com.hutgin.service.impl;
 import com.hutgin.dao.Dao;
 import com.hutgin.dao.Executor;
 import com.hutgin.dao.MetaDataDao;
+import com.hutgin.entity.Table;
 import com.hutgin.service.SchemaSyncronizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SchemaSyncronizerImpl implements SchemaSyncronizer {
@@ -21,8 +24,7 @@ public class SchemaSyncronizerImpl implements SchemaSyncronizer {
 
     @Override
     public void updateDB() {
-        // TODO list all tables using table-specific dao (hibernate?) with columns, etc
-//        List<Table> metaTables = dao.findAll()
+        List<Table> metaTables = dao.findAll(Table.getDescriptor());
 
     }
 }
