@@ -48,3 +48,4 @@ http://docs.oracle.com/javaee/6/tutorial/doc/gjivm.html
  MetadataSources
 
   TODO - попробовать настроить через hibernate и динамически обновлять конфиг при изменении БД (ddl auto)
+  1. dao слой в hutgin2

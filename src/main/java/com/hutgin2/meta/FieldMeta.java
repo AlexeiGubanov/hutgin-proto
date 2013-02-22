@@ -26,10 +26,20 @@ public class FieldMeta {
     }
 
     @Id
-    @Column(length = 500)
-    public String getId() {
-        return getTable().getName() + getName();
+    private Long id;
+
+    public Long getId() {
+        return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    //    @Id
+//    @Column(length = 500)
+//    public String getId() {
+//        return getTable().getName() + getName();
+//    }
 
     public String getName() {
         return name;
