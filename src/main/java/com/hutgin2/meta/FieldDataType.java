@@ -1,4 +1,4 @@
-package com.hutgin.entity;
+package com.hutgin2.meta;
 
 public enum FieldDataType {
     Integer(0), String(1);

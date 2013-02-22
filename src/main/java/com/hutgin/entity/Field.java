@@ -1,7 +1,6 @@
 package com.hutgin.entity;
 
 public class Field extends Entity {
-
     private String name;
     private String description;
     private Integer type;
@@ -13,6 +12,15 @@ public class Field extends Entity {
 
     public Field(String name) {
         this.name = name;
+    }
+
+    public Field(String name, Integer type) {
+        this.name = name;
+        this.type = type;
+    }
+
+    public String getId() {
+        return tableName + "." + name;
     }
 
     public String getName() {
@@ -53,5 +61,16 @@ public class Field extends Entity {
 
     public void setTableName(String tableName) {
         this.tableName = tableName;
+    }
+
+    public static Table getDescriptor() {
+        Table table = new Table("DD_FIELD");
+        table.addField(new Field("NAME", FieldDataType.String.getCode()));
+        table.addField(new Field("DESCRIPTION", FieldDataType.String.getCode()));
+        table.addField(new Field("TYPE", FieldDataType.Integer.getCode()));
+        table.addField(new Field("SIZE", FieldDataType.Integer.getCode()));
+        table.addField(new Field("TABLE_NAME", FieldDataType.String.getCode()));
+        return table;
+
     }
 }

@@ -10,5 +10,39 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
+    <!-- Hibernate META properties bean -->
+    <bean id="hibernateMetaProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:conf/hibernate/hibernateMeta.properties"/>
+    </bean>
+
+    <!-- Hibernate sessionFactoryMeta bean -->
+    <bean id="sessionFactoryMeta" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties" ref="hibernateMetaProperties"/>
+        <property name="packagesToScan">
+            <list>
+                <value>com.hutgin2.meta</value>
+            </list>
+        </property>
+        <!--<property name="entityInterceptor">-->
+        <!--<bean class="org.swas.dao.hibernate.util.CommonInterceptor"/>-->
+        <!--</property>-->
+    </bean>
+
+
+    <!-- Hibernate properties bean -->
+    <bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:conf/hibernate/hibernate.properties"/>
+    </bean>
+
+    <!-- Hibernate sessionFactory bean -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties" ref="hibernateMetaProperties"/>
+        <!--<property name="entityInterceptor">-->
+        <!--<bean class="org.swas.dao.hibernate.util.CommonInterceptor"/>-->
+        <!--</property>-->
+    </bean>
+
 
 </beans>

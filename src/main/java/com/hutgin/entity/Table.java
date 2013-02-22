@@ -32,4 +32,10 @@ public class Table extends Entity {
         this.fields.add(field);
         field.setTableName(this.name);
     }
+
+    public static Table getDescriptor() {
+        Table table = new Table("DD_TABLE");
+        table.addField(new Field("NAME", FieldDataType.Integer.getCode()));
+        return table;
+    }
 }
