@@ -10,51 +10,35 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
-    <!-- Hibernate sessionFactoryMeta bean -->
-    <!--<bean id="sessionFactoryMeta" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">-->
-    <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--<property name="hibernateProperties">-->
-    <!--<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">-->
-    <!--<property name="location" value="classpath:conf/hibernate/hibernateMeta.properties"/>-->
+
+    <!-- JPA -->
+    <!--<bean id="transactionManagerMeta"-->
+    <!--class="org.springframework.orm.jpa.JpaTransactionManager">-->
+    <!--<property name="entityManagerFactory" ref="entityManagerFactoryMeta"/>-->
     <!--</bean>-->
-    <!--</property>-->
+
+    <!--<bean id="entityManagerFactoryMeta"-->
+    <!--class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">-->
+    <!--<property name="dataSource" ref="dataSource"/>-->
     <!--<property name="packagesToScan">-->
     <!--<list>-->
     <!--<value>com.hutgin2.meta</value>-->
     <!--</list>-->
     <!--</property>-->
-    <!--&lt;!&ndash;<property name="entityInterceptor">&ndash;&gt;-->
-    <!--&lt;!&ndash;<bean class="org.swas.dao.hibernate.util.CommonInterceptor"/>&ndash;&gt;-->
-    <!--&lt;!&ndash;</property>&ndash;&gt;-->
+    <!--<property name="jpaProperties">-->
+    <!--<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">-->
+    <!--<property name="location" value="classpath:conf/hibernate/hibernateMeta.properties"/>-->
     <!--</bean>-->
-
-
-    <bean id="entityManagerFactoryMeta"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan">
-            <list>
-                <value>com.hutgin2.meta</value>
-            </list>
-        </property>
-        <property name="jpaProperties">
-            <bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-                <property name="location" value="classpath:conf/hibernate/hibernateMeta.properties"/>
-            </bean>
-        </property>
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
-        </property>
-    </bean>
-
-    <bean id="transactionManagerMeta"
-          class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactoryMeta"/>
-    </bean>
+    <!--</property>-->
+    <!--<property name="jpaVendorAdapter">-->
+    <!--<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>-->
+    <!--</property>-->
+    <!--</bean>-->
+    <!-- #JPA -->
 
 
     <!-- Hibernate sessionFactory bean -->
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <bean id="sessionFactoryMeta" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="hibernateProperties">
             <bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
@@ -64,6 +48,10 @@
         <!--<property name="entityInterceptor">-->
         <!--<bean class="org.swas.dao.hibernate.util.CommonInterceptor"/>-->
         <!--</property>-->
+    </bean>
+
+    <bean id="transactionManagerMeta" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactoryMeta"/>
     </bean>
 
 
