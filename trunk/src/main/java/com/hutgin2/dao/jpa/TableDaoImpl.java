@@ -1,6 +1,5 @@
 package com.hutgin2.dao.jpa;
 
-import com.hutgin2.dao.TableDao;
 import com.hutgin2.meta.TableMeta;
 
 import javax.persistence.EntityManager;
@@ -12,7 +11,8 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 //@Repository("tableDaoJpa")
-public class TableDaoImpl implements TableDao {
+// implements TableDao
+public class TableDaoImpl {
 
     private EntityManager entityManager;
 
@@ -23,7 +23,7 @@ public class TableDaoImpl implements TableDao {
     }
 
 
-    @Override
+    //    @Override
     public List<TableMeta> getAll() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<TableMeta> c = cb.createQuery(TableMeta.class);
