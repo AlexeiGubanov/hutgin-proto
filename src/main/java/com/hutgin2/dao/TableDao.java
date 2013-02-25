@@ -7,4 +7,6 @@ import java.util.List;
 public interface TableDao {
 
     List<TableMeta> getAll();
+
+    void persist(TableMeta tableMeta);
 }

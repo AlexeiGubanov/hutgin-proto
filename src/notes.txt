@@ -47,5 +47,4 @@ http://docs.oracle.com/javaee/6/tutorial/doc/gjivm.html
  требует маппинга через xml
  MetadataSources
 
-  TODO - попробовать настроить через hibernate и динамически обновлять конфиг при изменении БД (ddl auto)
-  1. dao слой в hutgin2
+  TODO - сессия для работы с entity - как ее конфигить (если через hibernate - разобраться почему placeholder не срабатывает)

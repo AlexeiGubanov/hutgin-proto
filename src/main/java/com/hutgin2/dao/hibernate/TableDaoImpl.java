@@ -14,12 +14,17 @@ import java.util.List;
 public class TableDaoImpl implements TableDao {
 
     @Autowired
-    protected SessionFactory sessionFactory;
+    protected SessionFactory sessionFactoryMeta;
 
     @Override
     public List<TableMeta> getAll() {
         DetachedCriteria dc = DetachedCriteria.forClass(TableMeta.class);
-        Criteria c = dc.getExecutableCriteria(sessionFactory.getCurrentSession());
+        Criteria c = dc.getExecutableCriteria(sessionFactoryMeta.getCurrentSession());
         return c.list();
+    }
+
+    @Override
+    public void persist(TableMeta tableMeta) {
+        sessionFactoryMeta.getCurrentSession().persist(tableMeta);
     }
 }

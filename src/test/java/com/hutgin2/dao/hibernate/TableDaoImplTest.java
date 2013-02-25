@@ -1,6 +1,7 @@
 package com.hutgin2.dao.hibernate;
 
 import com.hutgin2.dao.TableDao;
+import com.hutgin2.meta.TableMeta;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class TableDaoImplTest {
     @Transactional
     public void testGetAll() throws Exception {
         assertThat(0, equalTo(tableDao.getAll().size()));
+        TableMeta tm = new TableMeta("TABLE1");
+        tableDao.persist(tm);
+        assertThat(1, equalTo(tableDao.getAll().size()));
+
 
     }
 
