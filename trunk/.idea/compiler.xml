@@ -25,6 +25,9 @@
         <module name="hutgin" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hutgin" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

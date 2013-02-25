@@ -2,9 +2,6 @@ package com.hutgin2.dao.jpa;
 
 import com.hutgin2.dao.TableDao;
 import com.hutgin2.meta.TableMeta;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,13 +11,13 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-@Repository("tableDaoJpa")
+//@Repository("tableDaoJpa")
 public class TableDaoImpl implements TableDao {
 
     private EntityManager entityManager;
 
-    @Autowired
-    @Qualifier(value = "entityManagerFactoryMeta")
+    //    @Autowired
+//    @Qualifier(value = "entityManagerFactoryMeta")
     public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
         entityManager = entityManagerFactory.createEntityManager();
     }
