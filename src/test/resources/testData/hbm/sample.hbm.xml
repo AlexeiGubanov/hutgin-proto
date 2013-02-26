@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-        "-//Hibernate/Hibernate Mapping DTD 4.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-4.0.dtd">
-
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class entity-name="Employee" table="EMPLOYEE">
-        <id name="employeeId" column="EMPLOYEE_ID" type="java.lang.Long">
+    <class entity-name="Employee" table="Employee">
+        <id name="id" column="id" type="java.lang.Long">
             <generator class="native"/>
         </id>
-
-        <property name="firstname" type="java.lang.String"/>
-        <!--<property name="lastname" column="lastname" />-->
-        <!--<property name="birthDate" type="date" column="birth_date" />-->
-        <!--<property name="cellphone" column="cell_phone" />-->
+        <property column="firstname" name="firstname" type="java.lang.String"/>
     </class>
 </hibernate-mapping>

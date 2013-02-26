@@ -1,5 +1,6 @@
 package com.hutgin2.export.hbm;
 
+import com.hutgin2.meta.DatabaseModel;
 import com.hutgin2.meta.FieldMeta;
 import com.hutgin2.meta.TableMeta;
 import org.hibernate.internal.jaxb.mapping.hbm.JaxbHibernateMapping;
@@ -8,16 +9,18 @@ import org.hibernate.internal.jaxb.mapping.hbm.JaxbPropertyElement;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 public class Exporter {
 
-    public void export(List<TableMeta> tables, String fileName) {
+    public void export(DatabaseModel model, OutputStream outputStream) {
         JaxbHibernateMapping mapping = new JaxbHibernateMapping();
 
         List<Object> classes = mapping.getClazzOrSubclassOrJoinedSubclass();
-        for (TableMeta table : tables) {
+        for (TableMeta table : model.getTables()) {
             JaxbHibernateMapping.JaxbClass e = new JaxbHibernateMapping.JaxbClass();
             e.setName(table.getName());
             e.setEntityName(table.getName());
@@ -37,9 +40,16 @@ public class Exporter {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(JaxbHibernateMapping.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
-            marshaller.marshal(mapping, new File(fileName));
+            marshaller.setProperty("com.sun.xml.internal.bind.xmlHeaders", "<!DOCTYPE hibernate-mapping PUBLIC \"-//Hibernate/Hibernate Mapping DTD 3.0//EN\" \"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd\">");
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            marshaller.marshal(mapping, outputStream);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+    }
+
+    public void export(DatabaseModel model, String fileName) throws FileNotFoundException {
+        export(model, new FileOutputStream(fileName));
+
     }
 }
