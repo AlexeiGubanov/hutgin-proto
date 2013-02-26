@@ -1,24 +1,12 @@
 SchemaCrawler http://schemacrawler.sourceforge.net/ - db meta access
 jOOQ http://www.jooq.org
 http://ikaisays.com/2011/11/01/getting-started-with-jooq-a-tutorial/
-
 Querydsl http://www.querydsl.com/
-
 http://www.springfuse.com/, Celerio - code generator tool http://www.jaxio.com/en/celerio.html
-
-
 Liquibase - database changes
-
 Lucene - полнотекствый поиск
 
-
- org.hibernate.metamodel.relational.Table -
-
-
-
- hibernate JdbcServicesImpl
- spring SimpleJdbcInsert and
-
+hibernate JdbcServicesImpl
 
 
  dbsupport - только модель базы данных, диалекты и прочая специфика
@@ -42,9 +30,61 @@ http://docs.oracle.com/javaee/6/tutorial/doc/gjivm.html
  Automated Business Logic http://www.automatedbusinesslogic.com/downloads-1
 
 
- Hibernate
- Session dynamicSession = pojoSession.getSession(EntityMode.MAP);
- требует маппинга через xml
- MetadataSources
+  TODO - сессия для работы с entity - как ее конфигить как подключить dataSource
+  sessionfactory как бин а не конфигурация, которая имеет датасурс и настройки хибернейта
+  по запросу выдает сессию, по запросу перестраивает саму себя
 
-  TODO - сессия для работы с entity - как ее конфигить (если через hibernate - разобраться почему placeholder не срабатывает)
+  DataBaseModel - таблицы, индексы, связи и т.д.
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping"><class entity-name="Employee" name="Employee"><property column="firstname" name="firstname" type="String"/></class></hibernate-mapping>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        Mappings mappings = configuration.createMappings();
+//        Table t = mappings.addTable(null, null, "table1", null, false);
+//        mappings.addTableBinding(null, null, "table1", "table1", null);
+//        Column col = new Column();
+//        col.setName("col1");
+//        col.setLength(255);
+//        col.setNullable(false);
+//        col.setSqlTypeCode(Types.VARCHAR);
+//        col.setSqlType("VARCHAR");
+//        t.addColumn(col);
+//        mappings.addColumnBinding(col.getName(), col, t);
+//
+//
+//        RootClass clazz = new RootClass();
+//        clazz.setEntityName("table1");
+//        clazz.setLazy(false);
+//        clazz.setTable(t);
+//
+//        Property prop = new Property();
+//        prop.setName("col1");
+//
+//        SimpleValue value = new SimpleValue(mappings, t);
+//        value.setTypeName("string");
+//        value.addColumn(col);
+//
+//        prop.setValue(value);
+//        clazz.addProperty(prop);
+//
+//        clazz.createPrimaryKey();
+//
+//
+//        mappings.addClass(clazz);
+//        mappings.addImport(clazz.getEntityName(),clazz.getEntityName());
+//
+        //TODO add mapping to existed classes, if presented
+        // see http://www.manydesigns.com/en/blog/configuring-hibernate-programmatically logical model
