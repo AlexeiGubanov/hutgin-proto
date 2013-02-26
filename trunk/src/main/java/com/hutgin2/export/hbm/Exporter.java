@@ -40,7 +40,6 @@ public class Exporter {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(JaxbHibernateMapping.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty("com.sun.xml.internal.bind.xmlHeaders", "<!DOCTYPE hibernate-mapping PUBLIC \"-//Hibernate/Hibernate Mapping DTD 3.0//EN\" \"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd\">");
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             marshaller.marshal(mapping, outputStream);
         } catch (JAXBException e) {

@@ -2,8 +2,11 @@ package com.hutgin2.dao.hibernate;
 
 import com.hutgin2.meta.DatabaseModel;
 import org.hibernate.SessionFactory;
+import org.hibernate.metamodel.Metadata;
+import org.hibernate.metamodel.MetadataSources;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -29,17 +32,27 @@ public class EntitySessionFactory {
     }
 
     public synchronized void init(DatabaseModel model) {
-        LocalSessionFactoryBuilder configuration = new LocalSessionFactoryBuilder(dataSource);
-        configuration.setProperties(hibernateProperties);
+//        LocalSessionFactoryBuilder configuration = new LocalSessionFactoryBuilder(dataSource);
+//        configuration.setProperties(hibernateProperties);
+
+
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 //        try {
 //            new Exporter().export(model, "e:/test1.hbm.xml");
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 //        }
-//        configuration.addInputStream(new ByteArrayInputStream(outputStream.toByteArray()));
-        configuration.addResource("testData/hbm/sample.hbm.xml");
-        sessionFactory = configuration.buildSessionFactory();
+        ServiceRegistryBuilder serviceRegistryBuilder = new ServiceRegistryBuilder();
+        serviceRegistryBuilder.applySettings(hibernateProperties);
+//        serviceRegistryBuilder.applySetting(Environment.DATASOURCE, dataSource);
+        ServiceRegistry serviceRegistry = serviceRegistryBuilder.buildServiceRegistry();
+
+        MetadataSources metadataSources = new MetadataSources(serviceRegistry);
+        metadataSources.addFile("e:/test1.hbm.xml");
+
+        Metadata metadata = metadataSources.buildMetadata();
+        sessionFactory = metadata.buildSessionFactory();
+
 
     }
 }
