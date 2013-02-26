@@ -1,6 +1,7 @@
 package com.hutgin2.meta;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,6 +31,8 @@ public class TableMeta {
     }
 
     public List<FieldMeta> getFields() {
+        if (this.fields == null)
+            this.fields = new ArrayList<>();
         return fields;
     }
 

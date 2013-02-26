@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="6ef91438-150c-454a-9c01-b993e0b0bc7a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/testData/hbm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/testData/hbm/sample.hbm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntitySessionFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntitySessionFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/hutgin2/dao/hibernate/EntitySessionFactoryTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/hutgin2/dao/hibernate/EntitySessionFactoryTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/conf/hibernate/hibernate.properties" afterPath="$PROJECT_DIR$/src/main/resources/conf/hibernate/hibernate.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/export" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/hutgin2/export" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/export/hbm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/hutgin2/export/hbm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/export/hbm/Exporter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/hutgin2/export/hbm/ExporterTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/meta/FieldMeta.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/meta/FieldMeta.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/meta/TableMeta.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/meta/TableMeta.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/testData/hbm/sample.hbm.xml" afterPath="$PROJECT_DIR$/src/test/resources/testData/hbm/sample.hbm.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="hutgin.iws" />
@@ -19,14 +23,14 @@
     <file path="/application.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361544444091" ignored="false" />
     <file path="/web.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360155400783" ignored="false" />
     <file path="/MessagesHelper.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360150788391" ignored="false" />
-    <file path="/Dummy.txt" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361797093370" ignored="false" />
+    <file path="/Dummy.txt" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361806940997" ignored="false" />
     <file path="/Dao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361428764489" ignored="false" />
     <file path="/JdbcDao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360654910877" ignored="false" />
     <file path="/Table.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361520368198" ignored="false" />
     <file path="/Field.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361520750224" ignored="false" />
-    <file path="/fragment.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361796593816" ignored="false" />
+    <file path="/fragment.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361863212451" ignored="false" />
     <file path="/FieldDataType.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361774579650" ignored="false" />
-    <file path="/Entity.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360653126265" ignored="false" />
+    <file path="/Entity.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361862081307" ignored="false" />
     <file path="/shema.sql" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360653999717" ignored="false" />
     <file path="/data.sql" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360655527540" ignored="false" />
     <file path="/datasource.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361782267184" ignored="false" />
@@ -55,7 +59,7 @@
     <file path="/CreateTableSqlGeneratorTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360928583052" ignored="false" />
     <file path="/IntegerDataTypeTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360927470676" ignored="false" />
     <file path="/VarcharDataTypeTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360927764588" ignored="false" />
-    <file path="/a.dummy" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361346424561" ignored="false" />
+    <file path="/a.dummy" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361862960641" ignored="false" />
     <file path="/Executor.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361342509508" ignored="false" />
     <file path="/SpringJdbcExecutor.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361342603029" ignored="false" />
     <file path="/SchemaSyncronizer.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361345521028" ignored="false" />
@@ -73,17 +77,19 @@
     <file path="/TableDao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361782090661" ignored="false" />
     <file path="/TableDaoImplTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361782152363" ignored="false" />
     <file path="/FieldMeta.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361774669242" ignored="false" />
-    <file path="/TableMeta.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361545181650" ignored="false" />
+    <file path="/TableMeta.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361863679512" ignored="false" />
     <file path="/hibernateMeta.properties" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361547021470" ignored="false" />
     <file path="/TableService.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361778387264" ignored="false" />
     <file path="/TableServiceImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361778518387" ignored="false" />
     <file path="/TableServiceImplTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361778630137" ignored="false" />
     <file path="/EntitySessionFactory.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361806537007" ignored="false" />
     <file path="/EntitySessionFactoryTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361804616318" ignored="false" />
-    <file path="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/jpa/TableDaoImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361797105657" ignored="false" />
     <file path="$PROJECT_DIR$/../portofino/pom.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361802237558" ignored="false" />
     <file path="$PROJECT_DIR$/../portofino/portofino-core/src/main/java/com/manydesigns/portofino/application/hibernate/HibernateConfig.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361805203708" ignored="false" />
-    <file path="/sample.hbm.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361806884122" ignored="false" />
+    <file path="/sample.hbm.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361862319854" ignored="false" />
+    <file path="/Mappings.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361860992774" ignored="false" />
+    <file path="/Exporter.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361863717837" ignored="false" />
+    <file path="/ExporterTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361863637131" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,10 +153,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EntitySessionFactoryTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/hutgin2/dao/hibernate/EntitySessionFactoryTest.java">
+      <file leaf-file-name="HbmBinder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/cfg/HbmBinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="40" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0">
+            <state line="149" column="28" selection-start="5676" selection-end="5676" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Exporter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/export/hbm/Exporter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="43" selection-start="1256" selection-end="1256" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -158,10 +173,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntitySessionFactory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntitySessionFactory.java">
+      <file leaf-file-name="ExporterTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/hutgin2/export/hbm/ExporterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="35" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.0">
+            <state line="32" column="26" selection-start="927" selection-end="927" vertical-scroll-proportion="0.70363635">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -169,68 +184,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Configuration.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/cfg/Configuration.java">
+      <file leaf-file-name="TableMeta.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/meta/TableMeta.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="718" column="0" selection-start="27024" selection-end="27024" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sample.hbm.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/resources/testData/hbm/sample.hbm.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="8" selection-start="674" selection-end="674" vertical-scroll-proportion="0.4678899">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PersistentClass.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/mapping/PersistentClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="308" column="30" selection-start="9652" selection-end="9652" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KeyValue.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/mapping/KeyValue.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="17" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Property.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/mapping/Property.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="238" column="0" selection-start="6776" selection-end="6776" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionFactoryImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/internal/SessionFactoryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1140" column="15" selection-start="47271" selection-end="47271" vertical-scroll-proportion="0.0">
+            <state line="34" column="44" selection-start="680" selection-end="680" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#14776#14798#0" expanded="true" />
-                <element signature="e#17812#17832#0" expanded="true" />
-                <element signature="e#17972#17999#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConnectionProvider.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/service/jdbc/connections/spi/ConnectionProvider.java">
+      <file leaf-file-name="MappingException.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/metamodel/source/MappingException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="17" selection-start="1531" selection-end="1531" vertical-scroll-proportion="0.0">
+            <state line="35" column="19" selection-start="1332" selection-end="1332" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JaxbHelper.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/metamodel/source/internal/JaxbHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="197" column="15" selection-start="6624" selection-end="6624" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObjectFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/internal/jaxb/mapping/hbm/ObjectFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="18" selection-start="1181" selection-end="1181" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntityBinder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/cfg/annotations/EntityBinder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="254" column="20" selection-start="9569" selection-end="9569" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -246,13 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/TableServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/TableServiceImplTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/EntitySessionFactory.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/conf/database.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/TableDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/jpa/TableDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/TableDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/hutgin2/dao/hibernate/TableDaoImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/conf/spring/datasource.xml" />
         <option value="$PROJECT_DIR$/src/test/resources/conf/database.properties" />
@@ -261,7 +249,14 @@
         <option value="$PROJECT_DIR$/src/main/resources/conf/hibernate/hibernate.properties" />
         <option value="$PROJECT_DIR$/src/test/java/com/hutgin2/dao/hibernate/EntitySessionFactoryTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntitySessionFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/export/hbm/Mappings.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/export/hbm/Entity.java" />
         <option value="$PROJECT_DIR$/src/test/resources/testData/hbm/sample.hbm.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/meta/FieldMeta.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/meta/TableMeta.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/export/hbm/Exporter.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/hutgin2/export/hbm/ExporterTest.java" />
       </list>
     </option>
   </component>
@@ -686,80 +681,6 @@
               <option name="myItemId" value="hibernate-core-4.1.10.Final.jar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hibernate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.hibernate:hibernate-core:4.1.10.Final" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hibernate-core-4.1.10.Final.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hibernate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="metamodel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.hibernate:hibernate-core:4.1.10.Final" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hibernate-core-4.1.10.Final.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hibernate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="metadata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.hibernate:hibernate-core:4.1.10.Final" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hibernate-core-4.1.10.Final.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -888,74 +809,6 @@
               <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hibernate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1020,66 +873,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="conf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="conf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="conf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hibernate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1184,40 +977,6 @@
               <option name="myItemId" value="hutgin2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="meta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1249,45 +1008,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hibernate" />
+              <option name="myItemId" value="hbm" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1355,7 +1076,7 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/com/hutgin2/dao/hibernate" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/com/hutgin2" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5" value="5" />
     <property name="options.lastSelected" value="Images" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
@@ -1371,11 +1092,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.hutgin2.export.hbm" />
       <recent name="com.hutgin2.dao.hibernate" />
       <recent name="com.hutgin2.service.impl" />
       <recent name="com.hutgin2.dao.jpa" />
       <recent name="com.hutgin.dbsupport.meta.datatype" />
-      <recent name="com.hutgin.dbsupport.generator" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -1399,30 +1120,7 @@
       <recent name="E:\sandbox\hutgin\src\main\resources\conf" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EntitySessionFactoryTest">
-    <configuration default="false" name="VarcharDataTypeTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="hutgin" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.hutgin.dbsupport.meta.datatype" />
-      <option name="MAIN_CLASS_NAME" value="com.hutgin.dbsupport.meta.datatype.VarcharDataTypeTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.ExporterTest">
     <configuration default="false" name="CreateTableSqlGeneratorTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="hutgin" />
@@ -1527,6 +1225,29 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="ExporterTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="hutgin" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.hutgin2.export.hbm" />
+      <option name="MAIN_CLASS_NAME" value="com.hutgin2.export.hbm.ExporterTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -1606,18 +1327,18 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.VarcharDataTypeTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.CreateTableSqlGeneratorTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TableServiceImplTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TableDaoImplTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.EntitySessionFactoryTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.CreateTableSqlGeneratorTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TableServiceImplTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TableDaoImplTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.EntitySessionFactoryTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ExporterTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.EntitySessionFactoryTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TableDaoImplTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TableServiceImplTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TableDaoImplTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ExporterTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.EntitySessionFactoryTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TableDaoImplTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TableServiceImplTest" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.TableDaoImplTest" />
       </list>
     </recent_temporary>
@@ -1727,19 +1448,23 @@
       <created>1361797105111</created>
       <updated>1361797105111</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014">
+      <created>1361806948113</created>
+      <updated>1361806948113</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3110368" sideWeight="0.49786553" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24386339" sideWeight="0.7826087" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3400223" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3400223" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33444816" sideWeight="0.49839914" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24493062" sideWeight="0.4593088" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21070234" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1747,11 +1472,11 @@
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21344717" sideWeight="0.6599777" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21344717" sideWeight="0.66555184" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24493062" sideWeight="0.6599777" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33444816" sideWeight="0.49786553" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24493062" sideWeight="0.66555184" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33444816" sideWeight="0.49786553" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="92" y="189" width="1602" height="759" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1820,125 +1545,123 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-orm/3.2.1.RELEASE/spring-orm-3.2.1.RELEASE-sources.jar!/org/springframework/orm/hibernate4/HibernateTransactionManager.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/internal/jaxb/mapping/orm/JaxbEntityMappings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="13" selection-start="5343" selection-end="5343" vertical-scroll-proportion="-13.493578">
+        <state line="91" column="13" selection-start="5248" selection-end="5248" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/conf/spring/datasource.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/metamodel/source/internal/JaxbHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="86" selection-start="2963" selection-end="2963" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#679#692#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/cfg/AvailableSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="268" column="31" selection-start="10343" selection-end="10343" vertical-scroll-proportion="0.33273056">
+        <state line="197" column="15" selection-start="6624" selection-end="6624" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/conf/hibernate/hibernate.properties">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/internal/jaxb/Origin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="2912" selection-end="2912" vertical-scroll-proportion="0.0">
+        <state line="32" column="13" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.2977233">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/service/jdbc/connections/spi/ConnectionProvider.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/metamodel/source/MappingException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="17" selection-start="1531" selection-end="1531" vertical-scroll-proportion="0.0">
+        <state line="35" column="19" selection-start="1332" selection-end="1332" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/mapping/Property.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/metamodel/source/hbm/MappingDocument.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="238" column="0" selection-start="6776" selection-end="6776" vertical-scroll-proportion="0.0">
+        <state line="46" column="13" selection-start="1942" selection-end="1942" vertical-scroll-proportion="0.2977233">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/mapping/KeyValue.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/metamodel/source/hbm/HibernateMappingProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="17" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0">
+        <state line="59" column="26" selection-start="2678" selection-end="2678" vertical-scroll-proportion="0.4265233">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/engine/jdbc/internal/JdbcServicesImpl.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/cfg/annotations/reflection/JPAOverriddenAnnotationReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="423" column="0" selection-start="15875" selection-end="15875" vertical-scroll-proportion="0.0">
+        <state line="806" column="57" selection-start="35296" selection-end="35296" vertical-scroll-proportion="0.17741935">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/mapping/Value.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="20" selection-start="1664" selection-end="1664" vertical-scroll-proportion="0.3761468">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/mapping/PersistentClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="308" column="30" selection-start="9652" selection-end="9652" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/internal/SessionFactoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1140" column="15" selection-start="47271" selection-end="47271" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#14776#14798#0" expanded="true" />
-            <element signature="e#17812#17832#0" expanded="true" />
-            <element signature="e#17972#17999#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/cfg/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="718" column="0" selection-start="27024" selection-end="27024" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntitySessionFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="35" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/hutgin2/dao/hibernate/EntitySessionFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="40" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/cfg/HbmBinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="443" column="0" selection-start="16931" selection-end="16931" vertical-scroll-proportion="0.33270678">
+        <state line="149" column="28" selection-start="5676" selection-end="5676" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/testData/hbm/sample.hbm.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/internal/jaxb/mapping/hbm/JaxbHibernateMapping.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="8" selection-start="674" selection-end="674" vertical-scroll-proportion="0.4678899">
+        <state line="1230" column="69" selection-start="65118" selection-end="65137" vertical-scroll-proportion="0.17504655">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/internal/jaxb/mapping/hbm/JaxbTypeElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="13" selection-start="1442" selection-end="1442" vertical-scroll-proportion="-0.12662943">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/internal/jaxb/mapping/hbm/JaxbPropertyElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="30" selection-start="4297" selection-end="4297" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_10/src.zip!/java/lang/Integer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="19" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.33272728">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/meta/FieldMeta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="14" selection-start="1204" selection-end="1204" vertical-scroll-proportion="0.33272728">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/meta/TableMeta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="44" selection-start="680" selection-end="680" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/export/hbm/Exporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="43" selection-start="1256" selection-end="1256" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/hutgin2/export/hbm/ExporterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="26" selection-start="927" selection-end="927" vertical-scroll-proportion="0.70363635">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
