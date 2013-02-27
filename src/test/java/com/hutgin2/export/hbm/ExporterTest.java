@@ -1,7 +1,6 @@
 package com.hutgin2.export.hbm;
 
 import com.hutgin2.meta.DatabaseModel;
-import com.hutgin2.meta.FieldDataType;
 import com.hutgin2.meta.FieldMeta;
 import com.hutgin2.meta.TableMeta;
 import org.junit.Test;
@@ -18,7 +17,7 @@ public class ExporterTest {
         TableMeta t1 = new TableMeta("Employee");
         FieldMeta f1 = new FieldMeta();
         f1.setName("firstname");
-        f1.setType(FieldDataType.String);
+        f1.setType(String.class);
         t1.getFields().add(f1);
 
         tables.add(t1);

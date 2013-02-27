@@ -1,19 +1,15 @@
 package com.hutgin2.meta;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "DD_TABLE")
+@Table(name = "META_TABLE")
 public class TableMeta {
-
-    @Id
-    @Column(length = 255)
     private String name;
-
-    @OneToMany(targetEntity = FieldMeta.class, mappedBy = "table")
-    private List<FieldMeta> fields;
+    private Set<FieldMeta> fields;
+    private Set<ConstraintMeta> constraints;
 
     public TableMeta() {
     }
@@ -22,6 +18,8 @@ public class TableMeta {
         this.name = name;
     }
 
+    @Id
+    @Column(length = 255)
     public String getName() {
         return name;
     }
@@ -30,14 +28,42 @@ public class TableMeta {
         this.name = name;
     }
 
-    public List<FieldMeta> getFields() {
+    @OneToMany(targetEntity = FieldMeta.class, mappedBy = "table")
+    public Set<FieldMeta> getFields() {
         if (this.fields == null)
-            this.fields = new ArrayList<>();
+            this.fields = new HashSet<>();
         return fields;
     }
 
-    public void setFields(List<FieldMeta> fields) {
+    public void setFields(Set<FieldMeta> fields) {
         this.fields = fields;
     }
 
+    @OneToMany(targetEntity = ConstraintMeta.class, mappedBy = "table")
+    public Set<ConstraintMeta> getConstraints() {
+        if (this.constraints == null)
+            this.constraints = new HashSet<>();
+        return constraints;
+    }
+
+    public void setConstraints(Set<ConstraintMeta> indices) {
+        this.constraints = indices;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TableMeta tableMeta = (TableMeta) o;
+
+        if (!name.equals(tableMeta.name)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 }
