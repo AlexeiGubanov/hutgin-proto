@@ -5,43 +5,38 @@ import org.hibernate.annotations.Index;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "DD_FIELD")
+@Table(name = "META_FIELD")
 public class FieldMeta {
-    @Column(length = 255, nullable = false)
+
+    @Id
+    @Column(length = 501)
+    public String getId() {
+        return tableName + "." + name;
+    }
+
+    public void setId(String id) {
+
+    }
+
     private String name;
 
-    @Column(length = 1024)
     private String description;
 
-    @Enumerated
-    @Index(name = "typeIdx")
-    private FieldDataType type;
+    private String tableName;
+
+    private Class type;
 
     private Integer size;
 
-    @ManyToOne
+    private Integer precision;
+
     private TableMeta table;
 
-    public FieldMeta() {
-    }
+    private FieldAssociationType associationType = FieldAssociationType.NONE;
 
+    private FieldMeta fieldRef;
 
-    @Id
-    private Long id;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-    //    @Id
-//    @Column(length = 500)
-//    public String getId() {
-//        return getTable().getName() + getName();
-//    }
-
+    @Column(length = 255, nullable = false)
     public String getName() {
         return name;
     }
@@ -50,6 +45,7 @@ public class FieldMeta {
         this.name = name;
     }
 
+    @Column(length = 1024)
     public String getDescription() {
         return description;
     }
@@ -58,11 +54,12 @@ public class FieldMeta {
         this.description = description;
     }
 
-    public FieldDataType getType() {
+    @Index(name = "IDX_META_FIELD_TYPE")
+    public Class getType() {
         return type;
     }
 
-    public void setType(FieldDataType type) {
+    public void setType(Class type) {
         this.type = type;
     }
 
@@ -74,6 +71,7 @@ public class FieldMeta {
         this.size = size;
     }
 
+    @ManyToOne
     public TableMeta getTable() {
         return table;
     }
@@ -81,5 +79,63 @@ public class FieldMeta {
     public void setTable(TableMeta table) {
         this.table = table;
     }
+
+    public Integer getPrecision() {
+        return precision;
+    }
+
+    public void setPrecision(Integer precision) {
+        this.precision = precision;
+    }
+
+
+    @Column(insertable = false, updatable = false, name = "table_name")
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
+
+    @Enumerated(EnumType.STRING)
+    @Index(name = "IDX_META_FIELD_ASSOCIATION_TYPE")
+    public FieldAssociationType getAssociationType() {
+        return associationType;
+    }
+
+    public void setAssociationType(FieldAssociationType associationType) {
+        this.associationType = associationType;
+    }
+
+    @ManyToOne(optional = true)
+    public FieldMeta getFieldRef() {
+        return fieldRef;
+    }
+
+    public void setFieldRef(FieldMeta fieldRef) {
+        this.fieldRef = fieldRef;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FieldMeta fieldMeta = (FieldMeta) o;
+
+        if (!name.equals(fieldMeta.name)) return false;
+        if (!tableName.equals(fieldMeta.tableName)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + tableName.hashCode();
+        return result;
+    }
+
 
 }
