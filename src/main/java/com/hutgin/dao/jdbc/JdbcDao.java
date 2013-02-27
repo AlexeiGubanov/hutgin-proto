@@ -23,8 +23,8 @@ public class JdbcDao implements Dao {
     }
 
     @Autowired
-    public void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+    public void setDataSource(DataSource dataSourceMeta) {
+        this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSourceMeta);
     }
 
     @Override
