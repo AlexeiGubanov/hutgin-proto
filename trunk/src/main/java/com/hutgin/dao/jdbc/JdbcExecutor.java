@@ -13,8 +13,8 @@ public class JdbcExecutor implements Executor {
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    public void setDataSource(DataSource dataSourceMeta) {
+        this.jdbcTemplate = new JdbcTemplate(dataSourceMeta);
     }
 
     @Override

@@ -18,7 +18,7 @@ public class JdbcMetaDataDao implements MetaDataDao {
     private static final Logger LOG = LoggerFactory.getLogger(JdbcMetaDataDao.class);
 
     @Autowired
-    private DataSource dataSource;
+    private DataSource dataSourceMain;
 
     /**
      * TODO add throws app exception
@@ -28,7 +28,7 @@ public class JdbcMetaDataDao implements MetaDataDao {
      */
     @Override
     public DatabaseMetaData getMetadata() {
-        Connection conn = DataSourceUtils.getConnection(dataSource);
+        Connection conn = DataSourceUtils.getConnection(dataSourceMain);
         try {
             return conn.getMetaData();
         } catch (SQLException e) {

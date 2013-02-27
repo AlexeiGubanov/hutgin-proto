@@ -41,6 +41,10 @@ public class Exporter {
             JAXBContext jaxbContext = JAXBContext.newInstance(JaxbHibernateMapping.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//            marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
+//            String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+//            String docType = "<!DOCTYPE hibernate-mapping PUBLIC \"-//Hibernate/Hibernate Mapping DTD 3.0//EN\" \"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd\">";
+//            marshaller.setProperty("com.sun.xml.bind.xmlHeaders", xml + "\n" + docType);
             marshaller.marshal(mapping, outputStream);
         } catch (JAXBException e) {
             e.printStackTrace();
