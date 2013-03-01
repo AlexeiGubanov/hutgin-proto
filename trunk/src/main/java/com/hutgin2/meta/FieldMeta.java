@@ -36,6 +36,10 @@ public class FieldMeta {
 
     private FieldMeta fieldRef;
 
+    private Boolean required;
+
+    private String defaultValue;
+
     @Column(length = 255, nullable = false)
     public String getName() {
         return name;
@@ -117,6 +121,22 @@ public class FieldMeta {
         this.fieldRef = fieldRef;
     }
 
+    public Boolean getRequired() {
+        return required;
+    }
+
+    public void setRequired(Boolean required) {
+        this.required = required;
+    }
+
+    public String getDefaultValue() {
+        return defaultValue;
+    }
+
+    public void setDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -138,4 +158,14 @@ public class FieldMeta {
     }
 
 
+    private boolean isProcessed;
+
+    @Transient
+    public boolean isProcessed() {
+        return isProcessed;
+    }
+
+    public void setProcessed(boolean processed) {
+        isProcessed = processed;
+    }
 }
