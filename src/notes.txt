@@ -14,7 +14,7 @@ hibernate JdbcServicesImpl
  service - утилитарный слой
  entity - сущности приложения как таковые
 
- --TODO - попробовать EntityManager или имплемент JPA
+ EntityManager или имплемент JPA
  Criterias, etc
 
 
@@ -30,61 +30,48 @@ http://docs.oracle.com/javaee/6/tutorial/doc/gjivm.html
  Automated Business Logic http://www.automatedbusinesslogic.com/downloads-1
 
 
-  TODO - сессия для работы с entity - как ее конфигить как подключить dataSource
-  sessionfactory как бин а не конфигурация, которая имеет датасурс и настройки хибернейта
-  по запросу выдает сессию, по запросу перестраивает саму себя
 
-  DataBaseModel - таблицы, индексы, связи и т.д.
+// see http://www.manydesigns.com/en/blog/configuring-hibernate-programmatically logical model
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping"><class entity-name="Employee" name="Employee"><property column="firstname" name="firstname" type="String"/></class></hibernate-mapping>
+MetadataImpl - реализовать свой построитель по примеру
+
+2013-03-01
+1. у TableMeta в специальном поле описываем тип привязки:
+  1.1 map - instance динамический map
+  1.2 class - instance будет какой-то неаннотированный класс (т.е. он будет привязан через MetaMappingBinder)
+  1.3 mapped class - instance будет аннотированный класс, который добавиться в mapping-annotations classes для конфига,
+  при этом сам TableMeta будет помечен как shadow и все данные заново проинициализованы из аннотаций
+  TableMeta может быть снят флаг shadow - тогда класс будет map
+
+  Meta таблицы также есть в списке TableMeta - но помеченные как shadow (final) - т.е. они всегда определяются из своих аннотированных классов.
+
+  Генератор кода
+
+2. можно дополнительно описывать какие-то маппинги руками в конфиге (hbm или аннотированные классы),
+ они также переопределяеют TableMeta при наличии такого-же (shadow, readonly), но без возможности снятия флага shadow
+ ? - чтобы можно было ссылаться на такой класс, нужно или отменить FK check (останется только имя таблицы/поля) или хранить их в БД как transient
+
+3. TableMeta источник данных - view,sql,hql - список полей заполнятся динамически. read-only.
+Можно описать insert,update,delete - тогда не read-only
+
+4. DataSource - (может п.2 перенести на уровень datasource) - описывает источник данных (на основании какой-то таблицы) и список полей.
+...
+
+5. Генераторы
+ для поля можно указать генератор - имя класс которое его генерит при создании нового(action -create/update обрабатывается на уровне генератора).
+ По умолчанию с списке все генераторы на уровне classpath наследники интерфейса IGenerator.
+ В т.ч. все hibernate генераторы (сделать бриджи).
+ Генератор может использоваться не только для id.
+
+6. DAO access слой для любых entity.
+
+7. Несколько datasource/sessionFactory - можно подключать несколько источником данных. -> Слабые (без FK) и сильные (с FK) ссылки для связей между источниками данных.
+Для каждого источника данных прописыается набор TableMeta за которые он ответственных.
+TableMeta шарится на все приложение.
+
+
+8. Подумать над представлением TableMeta - как хранить FK (их hibernate генерит сам), см. MetaMappingBinder foreign-key.
+Может все хранить в одном списке (колонки, связи, ключи, и т.д.) - как в hbm?
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//        Mappings mappings = configuration.createMappings();
-//        Table t = mappings.addTable(null, null, "table1", null, false);
-//        mappings.addTableBinding(null, null, "table1", "table1", null);
-//        Column col = new Column();
-//        col.setName("col1");
-//        col.setLength(255);
-//        col.setNullable(false);
-//        col.setSqlTypeCode(Types.VARCHAR);
-//        col.setSqlType("VARCHAR");
-//        t.addColumn(col);
-//        mappings.addColumnBinding(col.getName(), col, t);
-//
-//
-//        RootClass clazz = new RootClass();
-//        clazz.setEntityName("table1");
-//        clazz.setLazy(false);
-//        clazz.setTable(t);
-//
-//        Property prop = new Property();
-//        prop.setName("col1");
-//
-//        SimpleValue value = new SimpleValue(mappings, t);
-//        value.setTypeName("string");
-//        value.addColumn(col);
-//
-//        prop.setValue(value);
-//        clazz.addProperty(prop);
-//
-//        clazz.createPrimaryKey();
-//
-//
-//        mappings.addClass(clazz);
-//        mappings.addImport(clazz.getEntityName(),clazz.getEntityName());
-//
-        //TODO add mapping to existed classes, if presented
-        // see http://www.manydesigns.com/en/blog/configuring-hibernate-programmatically logical model
