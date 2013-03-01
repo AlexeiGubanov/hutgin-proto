@@ -10,6 +10,7 @@ public class TableMeta {
     private String name;
     private Set<FieldMeta> fields;
     private Set<ConstraintMeta> constraints;
+    private Boolean persistent;
 
     public TableMeta() {
     }
@@ -48,6 +49,14 @@ public class TableMeta {
 
     public void setConstraints(Set<ConstraintMeta> indices) {
         this.constraints = indices;
+    }
+
+    public Boolean isPersistent() {
+        return persistent;
+    }
+
+    public void setPersistent(Boolean persistent) {
+        this.persistent = persistent;
     }
 
     @Override

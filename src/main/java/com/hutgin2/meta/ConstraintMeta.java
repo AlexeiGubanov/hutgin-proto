@@ -82,11 +82,12 @@ public abstract class ConstraintMeta {
     @JoinTable(name = "META_CONSTRAINT_FIELDS_A")
     public List<FieldMeta> getFields() {
         if (fields == null)
-            return new ArrayList<>();
+            fields = new ArrayList<>();
         return fields;
     }
 
     public void setFields(List<FieldMeta> fields) {
         this.fields = fields;
     }
+
 }

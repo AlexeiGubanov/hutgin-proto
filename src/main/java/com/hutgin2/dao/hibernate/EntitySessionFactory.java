@@ -2,12 +2,9 @@ package com.hutgin2.dao.hibernate;
 
 import com.hutgin2.export.hbm.Exporter;
 import com.hutgin2.meta.DatabaseModel;
-import com.hutgin2.meta.TableMeta;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
-import org.hibernate.cfg.Mappings;
-import org.hibernate.mapping.*;
 import org.hibernate.metamodel.Metadata;
 import org.hibernate.metamodel.MetadataSources;
 import org.hibernate.service.ServiceRegistry;
@@ -19,8 +16,7 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.util.HashMap;
 import java.util.Properties;
 
 @Component
@@ -63,80 +59,9 @@ public class EntitySessionFactory {
      * Spring LocalSessionFactoryBean approach. Based on hibernate 3 approach, but wrapped with spring functionality.
      */
     public synchronized void init(DatabaseModel model) {
-
-        // export schema into xml using exporter
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        new Exporter().export(model, outputStream);
-
-
-        try {
-            FileOutputStream fos = new FileOutputStream("e:/temp.xml");
-            fos.write(outputStream.toByteArray());
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-
-
         LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSourceMain);
         builder.getProperties().putAll(hibernatePropertiesMain);
-
-        Mappings mappings = builder.createMappings();
-        for (TableMeta tableMeta : model.getTables()) {
-            RootClass rootclass = new RootClass();
-
-            rootclass.setEntityName(tableMeta.getName());
-            mappings.addImport(rootclass.getEntityName(), rootclass.getEntityName());
-
-
-            String logicalTableName;
-            String physicalTableName;
-//            if ( tableMeta.getName() == null ) {
-//                logicalTableName = StringHelper.unqualify(model.getEntityName());
-//                physicalTableName = mappings.getNamingStrategy().classToTableName( model.getEntityName() );
-//            }
-//            else {
-            logicalTableName = tableMeta.getName();
-            physicalTableName = mappings.getNamingStrategy().tableName(logicalTableName);
-//            }
-            mappings.addTableBinding(null, null, logicalTableName, physicalTableName, null);
-            String classTableName = physicalTableName;
-            Table table = mappings.addTable(
-                    null,
-                    null,
-                    classTableName,
-                    null,
-                    false
-            );
-            rootclass.setTable(table);
-
-
-            // ID
-            SimpleValue id = new SimpleValue(mappings, rootclass.getTable());
-            rootclass.setIdentifier(id);
-            String typeName = "java.lang.Long";
-            TypeDef typeDef = mappings.getTypeDef(typeName);
-            typeName = typeDef.getTypeClass();
-            Properties allParameters = new Properties();
-            allParameters.putAll(typeDef.getParameters());
-
-            Column column = new Column();
-            column.setValue(id);
-            final String columnName = "id";
-            String logicalColumnName = mappings.getNamingStrategy().logicalColumnName(columnName, "id");
-            column.setName(mappings.getNamingStrategy().columnName(columnName));
-            table.addColumn(column); // table=null -> an association
-            mappings.addColumnBinding(logicalColumnName, column, table);
-            id.addColumn(column);
-
-
-            mappings.addClass(rootclass);
-        }
-
-//        builder.addInputStream(new ByteArrayInputStream(outputStream.toByteArray()));
-        builder.addResource("testData/hbm/sample.hbm.xml"); //TODO for test only!!
-
-
+        MetaMappingBinder.bindDatabaseModel(model, builder.createMappings(), new HashMap<>());
         sessionFactory = builder.buildSessionFactory();
     }
 

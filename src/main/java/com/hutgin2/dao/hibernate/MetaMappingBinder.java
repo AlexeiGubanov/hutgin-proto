@@ -1,7 +1,20 @@
 package com.hutgin2.dao.hibernate;
 
+import com.hutgin2.meta.*;
+import org.hibernate.EntityMode;
+import org.hibernate.FetchMode;
+import org.hibernate.cfg.Mappings;
+import org.hibernate.cfg.SecondPass;
+import org.hibernate.engine.internal.Versioning;
+import org.hibernate.internal.util.StringHelper;
+import org.hibernate.mapping.*;
+import org.hibernate.type.BasicType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  * Bind configuration-time metamodel ({@link org.hibernate.cfg.Mappings}) from meta DataBaseModel
@@ -16,19 +29,16 @@ public final class MetaMappingBinder {
     private MetaMappingBinder() {
     }
 
-//    /**
-//     *
-//     */
-//    public static void bindDatabaseModel(
-//            DatabaseModel model,
-//            Mappings mappings,
-//            java.util.Map inheritedMetas,
-//            java.util.Set<String> entityNames) throws MappingException {
-//
-//        final Document doc = metadataXml.getDocumentTree();
-//        final Element hibernateMappingElement = doc.getRootElement();
-//
-//        java.util.List<String> names = HbmBinder.getExtendsNeeded(metadataXml, mappings);
+    /**
+     *
+     */
+    public static void bindDatabaseModel(
+            DatabaseModel model,
+            Mappings mappings,
+            Map inheritedMetas) {
+
+        //SS Extract package name
+//         java.util.List<String> names = HbmBinder.getExtendsNeeded(metadataXml, mappings);
 //        if (!names.isEmpty()) {
 //            // classes mentioned in extends not available - so put it in queue
 //            Attribute packageAttribute = hibernateMappingElement.attribute("package");
@@ -38,16 +48,14 @@ public final class MetaMappingBinder {
 //            }
 //            return;
 //        }
-//
-//        // get meta's from <hibernate-mapping>
-//        inheritedMetas = getMetas(hibernateMappingElement, inheritedMetas, true);
-//        extractRootAttributes(hibernateMappingElement, mappings);
-//
-//        Iterator rootChildren = hibernateMappingElement.elementIterator();
-//        while (rootChildren.hasNext()) {
-//            final Element element = (Element) rootChildren.next();
-//            final String elementName = element.getName();
-//
+
+        // get meta's from <hibernate-mapping>
+        inheritedMetas = getMetas(model, inheritedMetas, true);
+        extractRootAttributes(model, mappings);
+
+
+        // PROCESS TABLES
+
 //            if ("filter-def".equals(elementName)) {
 //                parseFilterDef(element, mappings);
 //            } else if ("fetch-profile".equals(elementName)) {
@@ -57,9 +65,11 @@ public final class MetaMappingBinder {
 //            } else if ("typedef".equals(elementName)) {
 //                bindTypeDef(element, mappings);
 //            } else if ("class".equals(elementName)) {
-//                RootClass rootclass = new RootClass();
-//                bindRootClass(element, rootclass, mappings, inheritedMetas);
-//                mappings.addClass(rootclass);
+        for (TableMeta tableMeta : model.getTables()) {
+            RootClass rootclass = new RootClass();
+            bindRootClass(tableMeta, rootclass, mappings, inheritedMetas);
+            mappings.addClass(rootclass);
+        }
 //            } else if ("subclass".equals(elementName)) {
 //                PersistentClass superModel = getSuperclass(mappings, element);
 //                handleSubclass(superModel, mappings, element, inheritedMetas);
@@ -80,9 +90,9 @@ public final class MetaMappingBinder {
 //            } else if ("database-object".equals(elementName)) {
 //                bindAuxiliaryDatabaseObject(element, mappings);
 //            }
-//        }
-//    }
-//
+    }
+
+    //
 //    private static void parseIdentifierGeneratorRegistration(Element element, Mappings mappings) {
 //        String strategy = element.attributeValue("name");
 //        if (StringHelper.isEmpty(strategy)) {
@@ -159,7 +169,7 @@ public final class MetaMappingBinder {
 //        mappings.addAuxiliaryDatabaseObject(auxDbObject);
 //    }
 //
-//    private static void extractRootAttributes(Element hmNode, Mappings mappings) {
+    private static void extractRootAttributes(DatabaseModel model, Mappings mappings) {
 //        Attribute schemaNode = hmNode.attribute("schema");
 //        mappings.setSchemaName((schemaNode == null) ? null : schemaNode.getValue());
 //
@@ -180,86 +190,81 @@ public final class MetaMappingBinder {
 //
 //        Attribute packNode = hmNode.attribute("package");
 //        if (packNode != null) mappings.setDefaultPackage(packNode.getValue());
-//    }
-//
-//    /**
-//     * Responsible for performing the bind operation related to an &lt;class/&gt; mapping element.
-//     *
-//     * @param node           The DOM Element for the &lt;class/&gt; element.
-//     * @param rootClass      The mapping instance to which to bind the information.
-//     * @param mappings       The current bind state.
-//     * @param inheritedMetas Any inherited meta-tag information.
-//     * @throws MappingException
-//     */
-//    public static void bindRootClass(Element node, RootClass rootClass, Mappings mappings,
-//                                     java.util.Map inheritedMetas) throws MappingException {
-//        bindClass(node, rootClass, mappings, inheritedMetas);
-//        inheritedMetas = getMetas(node, inheritedMetas, true); // get meta's from <class>
-//        bindRootPersistentClassCommonValues(node, inheritedMetas, mappings, rootClass);
-//    }
-//
-//    private static void bindRootPersistentClassCommonValues(Element node,
-//                                                            java.util.Map inheritedMetas, Mappings mappings, RootClass entity)
-//            throws MappingException {
-//
-//        // DB-OBJECTNAME
-//
-//        Attribute schemaNode = node.attribute("schema");
-//        String schema = schemaNode == null ?
-//                mappings.getSchemaName() : schemaNode.getValue();
-//
-//        Attribute catalogNode = node.attribute("catalog");
-//        String catalog = catalogNode == null ?
-//                mappings.getCatalogName() : catalogNode.getValue();
-//
-//        Table table = mappings.addTable(
-//                schema,
-//                catalog,
-//                getClassTableName(entity, node, schema, catalog, null, mappings),
-//                getSubselect(node),
-//                entity.isAbstract() != null && entity.isAbstract()
-//        );
-//        entity.setTable(table);
-//        bindComment(table, node);
-//
-//        if (LOG.isDebugEnabled()) {
+    }
+
+    public static void bindRootClass(TableMeta tableMeta, RootClass rootClass, Mappings mappings,
+                                     java.util.Map inheritedMetas) {
+        bindClass(tableMeta, rootClass, mappings, inheritedMetas);
+        inheritedMetas = getMetas(tableMeta, inheritedMetas, true); // get meta's from <class>
+        bindRootPersistentClassCommonValues(tableMeta, inheritedMetas, mappings, rootClass);
+    }
+
+
+    private static void bindRootPersistentClassCommonValues(TableMeta tableMeta, java.util.Map inheritedMetas, Mappings mappings, RootClass entity) {
+
+        // DB-OBJECTNAME
+//FUTURE        Attribute schemaNode = node.attribute("schema");
+        String schemaNode = null;
+        String schema = schemaNode == null ? mappings.getSchemaName() : schemaNode;
+
+//FUTURE        Attribute catalogNode = node.attribute("catalog");
+        String catalogNode = null;
+        String catalog = catalogNode == null ? mappings.getCatalogName() : catalogNode;
+
+        Table table = mappings.addTable(
+                schema,
+                catalog,
+                getClassTableName(entity, tableMeta, schema, catalog, null, mappings),
+                getSubselect(tableMeta),
+                entity.isAbstract() != null && entity.isAbstract()
+        );
+        entity.setTable(table);
+        bindComment(table, tableMeta);
+
+//SS        if (LOG.isDebugEnabled()) {
 //            LOG.debugf("Mapping class: %s -> %s", entity.getEntityName(), entity.getTable().getName());
 //        }
-//
-//        // MUTABLE
-//        Attribute mutableNode = node.attribute("mutable");
-//        entity.setMutable((mutableNode == null) || mutableNode.getValue().equals("true"));
-//
-//        // WHERE
-//        Attribute whereNode = node.attribute("where");
+
+        // MUTABLE
+//FUTURE        Attribute mutableNode = node.attribute("mutable");
+        Boolean mutableNode = null;
+        entity.setMutable((mutableNode == null) || mutableNode);
+
+        // WHERE
+//FUTURE        Attribute whereNode = node.attribute("where");
 //        if (whereNode != null) entity.setWhere(whereNode.getValue());
-//
-//        // CHECK
-//        Attribute chNode = node.attribute("check");
+
+        // CHECK
+//FUTURE        Attribute chNode = node.attribute("check");
 //        if (chNode != null) table.addCheckConstraint(chNode.getValue());
-//
-//        // POLYMORPHISM
-//        Attribute polyNode = node.attribute("polymorphism");
-//        entity.setExplicitPolymorphism((polyNode != null)
-//                && polyNode.getValue().equals("explicit"));
-//
-//        // ROW ID
-//        Attribute rowidNode = node.attribute("rowid");
+
+        // POLYMORPHISM
+//FUTURE        Attribute polyNode = node.attribute("polymorphism");
+        String polyNode = null;
+        entity.setExplicitPolymorphism((polyNode != null) && polyNode.equals("explicit"));
+
+        // ROW ID
+//FUTURE        Attribute rowidNode = node.attribute("rowid");
 //        if (rowidNode != null) table.setRowId(rowidNode.getValue());
-//
-//        Iterator subnodes = node.elementIterator();
-//        while (subnodes.hasNext()) {
-//
-//            Element subnode = (Element) subnodes.next();
-//            String name = subnode.getName();
-//
-//            if ("id".equals(name)) {
-//                // ID
-//                bindSimpleId(subnode, entity, mappings, inheritedMetas);
-//            } else if ("composite-id".equals(name)) {
-//                // COMPOSITE-ID
-//                bindCompositeId(subnode, entity, mappings, inheritedMetas);
-//            } else if ("version".equals(name) || "timestamp".equals(name)) {
+
+        // PROCESS INDICES AND OTHERS
+        for (ConstraintMeta constraintMeta : tableMeta.getConstraints()) {
+            switch (constraintMeta.getType()) {
+                case PK:
+                    // ID
+                    if (constraintMeta.getFields().size() == 1) {
+                        bindSimpleId(constraintMeta.getFields().get(0), entity, mappings, inheritedMetas);
+                    } else {
+                        // COMPOSITE-ID
+//SS                        bindCompositeId(constraintMeta.getFields(), entity, mappings, inheritedMetas);
+                    }
+                    break;
+            }
+
+        }
+
+//FUTURE        while (subnodes.hasNext()) {
+//             if ("version".equals(name) || "timestamp".equals(name)) {
 //                // VERSION / TIMESTAMP
 //                bindVersioningProperty(table, subnode, mappings, name, entity, inheritedMetas);
 //            } else if ("discriminator".equals(name)) {
@@ -272,45 +277,48 @@ public final class MetaMappingBinder {
 //            }
 //
 //        }
-//
-//        // Primary key constraint
-//        entity.createPrimaryKey();
-//
-//        createClassProperties(node, entity, mappings, inheritedMetas);
-//    }
-//
-//    private static void bindSimpleId(Element idNode, RootClass entity, Mappings mappings,
-//                                     java.util.Map inheritedMetas) throws MappingException {
-//        String propertyName = idNode.attributeValue("name");
-//
-//        SimpleValue id = new SimpleValue(mappings, entity.getTable());
-//        entity.setIdentifier(id);
-//
-//        // if ( propertyName == null || entity.getPojoRepresentation() == null ) {
-//        // bindSimpleValue( idNode, id, false, RootClass.DEFAULT_IDENTIFIER_COLUMN_NAME, mappings );
-//        // if ( !id.isTypeSpecified() ) {
-//        // throw new MappingException( "must specify an identifier type: " + entity.getEntityName()
-//        // );
-//        // }
-//        // }
-//        // else {
-//        // bindSimpleValue( idNode, id, false, propertyName, mappings );
-//        // PojoRepresentation pojo = entity.getPojoRepresentation();
-//        // id.setTypeUsingReflection( pojo.getClassName(), propertyName );
-//        //
-//        // Property prop = new Property();
-//        // prop.setValue( id );
-//        // bindProperty( idNode, prop, mappings, inheritedMetas );
-//        // entity.setIdentifierProperty( prop );
-//        // }
-//
-//        if (propertyName == null) {
-//            bindSimpleValue(idNode, id, false, RootClass.DEFAULT_IDENTIFIER_COLUMN_NAME, mappings);
-//        } else {
-//            bindSimpleValue(idNode, id, false, propertyName, mappings);
-//        }
-//
-//        if (propertyName == null || !entity.hasPojoRepresentation()) {
+
+        // Primary key constraint
+        entity.createPrimaryKey();
+
+        createClassProperties(tableMeta, entity, mappings, inheritedMetas);
+    }
+
+
+    private static void bindSimpleId(FieldMeta fieldMeta, RootClass entity, Mappings mappings,
+                                     java.util.Map inheritedMetas) {
+        String propertyName = fieldMeta.getName();
+
+        SimpleValue id = new SimpleValue(mappings, entity.getTable());
+        entity.setIdentifier(id);
+
+        // NM
+        // if ( propertyName == null || entity.getPojoRepresentation() == null ) {
+        // bindSimpleValue( idNode, id, false, RootClass.DEFAULT_IDENTIFIER_COLUMN_NAME, mappings );
+        // if ( !id.isTypeSpecified() ) {
+        // throw new MappingException( "must specify an identifier type: " + entity.getEntityName()
+        // );
+        // }
+        // }
+        // else {
+        // bindSimpleValue( idNode, id, false, propertyName, mappings );
+        // PojoRepresentation pojo = entity.getPojoRepresentation();
+        // id.setTypeUsingReflection( pojo.getClassName(), propertyName );
+        //
+        // Property prop = new Property();
+        // prop.setValue( id );
+        // bindProperty( idNode, prop, mappings, inheritedMetas );
+        // entity.setIdentifierProperty( prop );
+        // }
+
+        if (propertyName == null) {
+            bindSimpleValue(fieldMeta, id, false, RootClass.DEFAULT_IDENTIFIER_COLUMN_NAME, mappings);
+        } else {
+            bindSimpleValue(fieldMeta, id, false, propertyName, mappings);
+        }
+        fieldMeta.setProcessed(true);
+
+//SS        if (propertyName == null || !entity.hasPojoRepresentation()) {
 //            if (!id.isTypeSpecified()) {
 //                throw new MappingException("must specify an identifier type: "
 //                        + entity.getEntityName());
@@ -318,35 +326,30 @@ public final class MetaMappingBinder {
 //        } else {
 //            id.setTypeUsingReflection(entity.getClassName(), propertyName);
 //        }
-//
-//        if (propertyName != null) {
-//            Property prop = new Property();
-//            prop.setValue(id);
-//            bindProperty(idNode, prop, mappings, inheritedMetas);
-//            entity.setIdentifierProperty(prop);
-//            entity.setDeclaredIdentifierProperty(prop);
-//        }
-//
-//        // TODO:
-//        /*
-//		 * if ( id.getHibernateType().getReturnedClass().isArray() ) throw new MappingException(
-//		 * "illegal use of an array as an identifier (arrays don't reimplement equals)" );
-//		 */
-//        makeIdentifier(idNode, id, mappings);
-//    }
-//
-//    private static void bindCompositeId(Element idNode, RootClass entity, Mappings mappings,
-//                                        java.util.Map inheritedMetas) throws MappingException {
-//        String propertyName = idNode.attributeValue("name");
+
+        if (propertyName != null) {
+            Property prop = new Property();
+            prop.setValue(id);
+            bindProperty(fieldMeta, prop, mappings, inheritedMetas);
+            entity.setIdentifierProperty(prop);
+            entity.setDeclaredIdentifierProperty(prop);
+        }
+
+        makeIdentifier(fieldMeta, id, mappings);
+    }
+
+//SS    private static void bindCompositeId(FieldMeta fieldMeta, RootClass entity, Mappings mappings,
+//                                        java.util.Map inheritedMetas) {
+//        String propertyName = fieldMeta.getName();
 //        Component id = new Component(mappings, entity);
 //        entity.setIdentifier(id);
-//        bindCompositeId(idNode, id, entity, propertyName, mappings, inheritedMetas);
+//        bindCompositeId(fieldMeta, id, entity, propertyName, mappings, inheritedMetas);
 //        if (propertyName == null) {
 //            entity.setEmbeddedIdentifier(id.isEmbedded());
 //            if (id.isEmbedded()) {
-//                // todo : what is the implication of this?
+//                // HHTODO : what is the implication of this?
 //                id.setDynamic(!entity.hasPojoRepresentation());
-//				/*
+//                /*
 //				 * Property prop = new Property(); prop.setName("id");
 //				 * prop.setPropertyAccessorName("embedded"); prop.setValue(id);
 //				 * entity.setIdentifierProperty(prop);
@@ -355,16 +358,16 @@ public final class MetaMappingBinder {
 //        } else {
 //            Property prop = new Property();
 //            prop.setValue(id);
-//            bindProperty(idNode, prop, mappings, inheritedMetas);
+//            bindProperty(fieldMeta, prop, mappings, inheritedMetas);
 //            entity.setIdentifierProperty(prop);
 //            entity.setDeclaredIdentifierProperty(prop);
 //        }
 //
-//        makeIdentifier(idNode, id, mappings);
+//        makeIdentifier(fieldMeta, id, mappings);
 //
 //    }
-//
-//    private static void bindVersioningProperty(Table table, Element subnode, Mappings mappings,
+
+    //    private static void bindVersioningProperty(Table table, Element subnode, Mappings mappings,
 //                                               String name, RootClass entity, java.util.Map inheritedMetas) {
 //
 //        String propertyName = subnode.attributeValue("name");
@@ -423,142 +426,127 @@ public final class MetaMappingBinder {
 //        }
 //    }
 //
-//    public static void bindClass(Element node, PersistentClass persistentClass, Mappings mappings,
-//                                 java.util.Map inheritedMetas) throws MappingException {
-//        // transfer an explicitly defined entity name
-//        // handle the lazy attribute
-//        Attribute lazyNode = node.attribute("lazy");
-//        boolean lazy = lazyNode == null ?
-//                mappings.isDefaultLazy() :
-//                "true".equals(lazyNode.getValue());
-//        // go ahead and set the lazy here, since pojo.proxy can override it.
-//        persistentClass.setLazy(lazy);
-//
-//        String entityName = node.attributeValue("entity-name");
-//        if (entityName == null) entityName = getClassName(node.attribute("name"), mappings);
-//        if (entityName == null) {
+    public static void bindClass(TableMeta tableMeta, PersistentClass persistentClass, Mappings mappings,
+                                 java.util.Map inheritedMetas) {
+        // FUTURE boolean lazy = (tableMeta.getLazy() != null)? tableMeta.getLazy(): mappings.isDefaultLazy();
+        boolean lazy = mappings.isDefaultLazy();
+        persistentClass.setLazy(lazy);
+
+        String entityName = tableMeta.getName();
+//SS        if (entityName == null) entityName = getClassName(node.attribute("name"), mappings);
+//SS        if (entityName == null) {
 //            throw new MappingException("Unable to determine entity name");
 //        }
-//        persistentClass.setEntityName(entityName);
-//        persistentClass.setJpaEntityName(StringHelper.unqualify(entityName));
-//
-//        bindPojoRepresentation(node, persistentClass, mappings, inheritedMetas);
-//        bindDom4jRepresentation(node, persistentClass, mappings, inheritedMetas);
-//        bindMapRepresentation(node, persistentClass, mappings, inheritedMetas);
-//
-//        Iterator itr = node.elementIterator("fetch-profile");
+        persistentClass.setEntityName(entityName);
+        persistentClass.setJpaEntityName(StringHelper.unqualify(entityName));
+
+
+        bindPojoRepresentation(tableMeta, persistentClass, mappings, inheritedMetas);
+        bindDom4jRepresentation(tableMeta, persistentClass, mappings, inheritedMetas);
+        bindMapRepresentation(tableMeta, persistentClass, mappings, inheritedMetas);
+
+//SS        Iterator itr = node.elementIterator("fetch-profile");
 //        while (itr.hasNext()) {
 //            final Element profileElement = (Element) itr.next();
 //            parseFetchProfile(profileElement, mappings, entityName);
 //        }
-//
-//        bindPersistentClassCommonValues(node, persistentClass, mappings, inheritedMetas);
-//    }
-//
-//    private static void bindPojoRepresentation(Element node, PersistentClass entity,
-//                                               Mappings mappings, java.util.Map metaTags) {
-//
-//        String className = getClassName(node.attribute("name"), mappings);
-//        String proxyName = getClassName(node.attribute("proxy"), mappings);
-//
-//        entity.setClassName(className);
-//
-//        if (proxyName != null) {
-//            entity.setProxyInterfaceName(proxyName);
-//            entity.setLazy(true);
-//        } else if (entity.isLazy()) {
-//            entity.setProxyInterfaceName(className);
-//        }
-//
-//        Element tuplizer = locateTuplizerDefinition(node, EntityMode.POJO);
-//        if (tuplizer != null) {
-//            entity.addTuplizer(EntityMode.POJO, tuplizer.attributeValue("class"));
-//        }
-//    }
-//
-//    private static void bindDom4jRepresentation(Element node, PersistentClass entity,
-//                                                Mappings mappings, java.util.Map inheritedMetas) {
-//        String nodeName = node.attributeValue("node");
+
+        bindPersistentClassCommonValues(tableMeta, persistentClass, mappings, inheritedMetas);
+    }
+
+    private static void bindPojoRepresentation(TableMeta tableMeta, PersistentClass entity,
+                                               Mappings mappings, java.util.Map metaTags) {
+
+        //FUTURE
+        //String className = getClassName(tableMeta.getClassName(), mappings);
+        String className = null;
+//SS        String proxyName = getClassName(node.attribute("proxy"), mappings);
+        String proxyName = null;
+
+        entity.setClassName(className);
+
+        if (proxyName != null) {
+            entity.setProxyInterfaceName(proxyName);
+            entity.setLazy(true);
+        } else if (entity.isLazy()) {
+            entity.setProxyInterfaceName(className);
+        }
+
+        String tuplizerImplClassName = locateTuplizerDefinition(tableMeta, EntityMode.POJO);
+        if (tuplizerImplClassName != null) {
+            entity.addTuplizer(EntityMode.POJO, tuplizerImplClassName);
+        }
+    }
+
+    private static void bindDom4jRepresentation(TableMeta tableMeta, PersistentClass entity,
+                                                Mappings mappings, java.util.Map inheritedMetas) {
+//SS        String nodeName = node.attributeValue("node");
 //        if (nodeName == null) nodeName = StringHelper.unqualify(entity.getEntityName());
 //        entity.setNodeName(nodeName);
-//
-////		Element tuplizer = locateTuplizerDefinition( node, EntityMode.DOM4J );
-////		if ( tuplizer != null ) {
-////			entity.addTuplizer( EntityMode.DOM4J, tuplizer.attributeValue( "class" ) );
-////		}
-//    }
-//
-//    private static void bindMapRepresentation(Element node, PersistentClass entity,
-//                                              Mappings mappings, java.util.Map inheritedMetas) {
-//        Element tuplizer = locateTuplizerDefinition(node, EntityMode.MAP);
-//        if (tuplizer != null) {
-//            entity.addTuplizer(EntityMode.MAP, tuplizer.attributeValue("class"));
-//        }
-//    }
-//
-//    /**
-//     * Locate any explicit tuplizer definition in the metadata, for the given entity-mode.
-//     *
-//     * @param container  The containing element (representing the entity/component)
-//     * @param entityMode The entity-mode for which to locate the tuplizer element
-//     * @return The tuplizer element, or null.
-//     */
-//    private static Element locateTuplizerDefinition(Element container, EntityMode entityMode) {
-//        Iterator itr = container.elements("tuplizer").iterator();
+    }
+
+    private static void bindMapRepresentation(TableMeta tableMeta, PersistentClass entity,
+                                              Mappings mappings, java.util.Map inheritedMetas) {
+        String tuplizerImplClassName = locateTuplizerDefinition(tableMeta, EntityMode.MAP);
+        if (tuplizerImplClassName != null) {
+            entity.addTuplizer(EntityMode.MAP, tuplizerImplClassName);
+        }
+    }
+
+
+    private static String locateTuplizerDefinition(TableMeta tableMeta, EntityMode entityMode) {
+//SS        Iterator itr = container.elements("tuplizer").iterator();
 //        while (itr.hasNext()) {
 //            final Element tuplizerElem = (Element) itr.next();
 //            if (entityMode.toString().equals(tuplizerElem.attributeValue("entity-mode"))) {
 //                return tuplizerElem;
 //            }
 //        }
-//        return null;
-//    }
-//
-//    private static void bindPersistentClassCommonValues(Element node, PersistentClass entity,
-//                                                        Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//        // DISCRIMINATOR
-//        Attribute discriminatorNode = node.attribute("discriminator-value");
-//        entity.setDiscriminatorValue((discriminatorNode == null)
-//                ? entity.getEntityName()
-//                : discriminatorNode.getValue());
-//
-//        // DYNAMIC UPDATE
-//        Attribute dynamicNode = node.attribute("dynamic-update");
-//        entity.setDynamicUpdate(
-//                dynamicNode != null && "true".equals(dynamicNode.getValue())
-//        );
-//
-//        // DYNAMIC INSERT
-//        Attribute insertNode = node.attribute("dynamic-insert");
-//        entity.setDynamicInsert(
-//                insertNode != null && "true".equals(insertNode.getValue())
-//        );
-//
-//        // IMPORT
-//        mappings.addImport(entity.getEntityName(), entity.getEntityName());
-//        if (mappings.isAutoImport() && entity.getEntityName().indexOf('.') > 0) {
-//            mappings.addImport(
-//                    entity.getEntityName(),
-//                    StringHelper.unqualify(entity.getEntityName())
-//            );
-//        }
-//
-//        // BATCH SIZE
-//        Attribute batchNode = node.attribute("batch-size");
+        return null;
+    }
+
+    private static void bindPersistentClassCommonValues(TableMeta tableMeta, PersistentClass entity, Mappings mappings, java.util.Map inheritedMetas) {
+        // DISCRIMINATOR
+//FUTURE        Attribute discriminatorNode = node.attribute("discriminator-value");
+        String discriminatorNode = null;
+        entity.setDiscriminatorValue((discriminatorNode == null) ? entity.getEntityName() : discriminatorNode);
+
+        // DYNAMIC UPDATE
+//FUTURE         Attribute dynamicNode = node.attribute("dynamic-update");
+        Boolean dynamicNode = null;
+        entity.setDynamicUpdate(dynamicNode != null && dynamicNode);
+
+        // DYNAMIC INSERT
+//FUTURE         Attribute insertNode = node.attribute("dynamic-insert");
+        Boolean insertNode = null;
+        entity.setDynamicInsert(insertNode != null && insertNode);
+
+        // IMPORT
+        mappings.addImport(entity.getEntityName(), entity.getEntityName());
+        if (mappings.isAutoImport() && entity.getEntityName().indexOf('.') > 0) {
+            mappings.addImport(
+                    entity.getEntityName(),
+                    StringHelper.unqualify(entity.getEntityName())
+            );
+        }
+
+        // BATCH SIZE
+//FUTURE         Attribute batchNode = node.attribute("batch-size");
 //        if (batchNode != null) entity.setBatchSize(Integer.parseInt(batchNode.getValue()));
-//
-//        // SELECT BEFORE UPDATE
-//        Attribute sbuNode = node.attribute("select-before-update");
+
+        // SELECT BEFORE UPDATE
+//FUTURE         Attribute sbuNode = node.attribute("select-before-update");
 //        if (sbuNode != null) entity.setSelectBeforeUpdate("true".equals(sbuNode.getValue()));
-//
-//        // OPTIMISTIC LOCK MODE
-//        Attribute olNode = node.attribute("optimistic-lock");
-//        entity.setOptimisticLockMode(getOptimisticLockMode(olNode));
-//
-//        entity.setMetaAttributes(getMetas(node, inheritedMetas));
-//
-//        // PERSISTER
-//        Attribute persisterNode = node.attribute("persister");
+
+        // OPTIMISTIC LOCK MODE
+//FUTURE         Attribute olNode = node.attribute("optimistic-lock");
+        String olNode = null;
+        entity.setOptimisticLockMode(getOptimisticLockMode(olNode));
+
+        entity.setMetaAttributes(getMetas(tableMeta, inheritedMetas));
+
+        // PERSISTER
+//FUTURE         Attribute persisterNode = node.attribute("persister");
 //        if (persisterNode != null) {
 //            try {
 //                entity.setEntityPersisterClass(ReflectHelper.classForName(
@@ -570,29 +558,21 @@ public final class MetaMappingBinder {
 //                        + persisterNode.getValue());
 //            }
 //        }
-//
-//        // CUSTOM SQL
-//        handleCustomSQL(node, entity);
-//
-//        Iterator tables = node.elementIterator("synchronize");
+
+        // CUSTOM SQL
+        handleCustomSQL(tableMeta, entity);
+
+//FUTURE         Iterator tables = node.elementIterator("synchronize");
 //        while (tables.hasNext()) {
 //            entity.addSynchronizedTable(((Element) tables.next()).attributeValue("table"));
 //        }
-//
-//        Attribute abstractNode = node.attribute("abstract");
-//        Boolean isAbstract = abstractNode == null
-//                ? null
-//                : "true".equals(abstractNode.getValue())
-//                ? Boolean.TRUE
-//                : "false".equals(abstractNode.getValue())
-//                ? Boolean.FALSE
-//                : null;
-//        entity.setAbstract(isAbstract);
-//    }
-//
-//    private static void handleCustomSQL(Element node, PersistentClass model)
-//            throws MappingException {
-//        Element element = node.element("sql-insert");
+
+        Boolean isAbstract = tableMeta.isPersistent() != null ? !tableMeta.isPersistent() : null;
+        entity.setAbstract(isAbstract);
+    }
+
+    private static void handleCustomSQL(TableMeta tableMeta, PersistentClass model) {
+//FUTURE        Element element = node.element("sql-insert");
 //        if (element != null) {
 //            boolean callable = isCallable(element);
 //            model.setCustomSQLInsert(element.getTextTrim(), callable, getResultCheckStyle(element, callable));
@@ -614,8 +594,8 @@ public final class MetaMappingBinder {
 //        if (element != null) {
 //            model.setLoaderName(element.attributeValue("query-ref"));
 //        }
-//    }
-//
+    }
+
 //    private static void handleCustomSQL(Element node, Join model) throws MappingException {
 //        Element element = node.element("sql-insert");
 //        if (element != null) {
@@ -734,29 +714,29 @@ public final class MetaMappingBinder {
 //        // properties
 //        createClassProperties(node, subclass, mappings, inheritedMetas);
 //    }
-//
-//    private static String getClassTableName(
-//            PersistentClass model,
-//            Element node,
-//            String schema,
-//            String catalog,
-//            Table denormalizedSuperTable,
-//            Mappings mappings) {
-//        Attribute tableNameNode = node.attribute("table");
-//        String logicalTableName;
-//        String physicalTableName;
-//        if (tableNameNode == null) {
-//            logicalTableName = StringHelper.unqualify(model.getEntityName());
-//            physicalTableName = mappings.getNamingStrategy().classToTableName(model.getEntityName());
-//        } else {
-//            logicalTableName = tableNameNode.getValue();
-//            physicalTableName = mappings.getNamingStrategy().tableName(logicalTableName);
-//        }
-//        mappings.addTableBinding(schema, catalog, logicalTableName, physicalTableName, denormalizedSuperTable);
-//        return physicalTableName;
-//    }
-//
-//    public static void bindJoinedSubclass(Element node, JoinedSubclass joinedSubclass,
+
+    private static String getClassTableName(
+            PersistentClass model,
+            TableMeta tableMeta,
+            String schema,
+            String catalog,
+            Table denormalizedSuperTable,
+            Mappings mappings) {
+        String tableNameNode = tableMeta.getName();
+        String logicalTableName;
+        String physicalTableName;
+        if (tableNameNode == null) {
+            logicalTableName = StringHelper.unqualify(model.getEntityName());
+            physicalTableName = mappings.getNamingStrategy().classToTableName(model.getEntityName());
+        } else {
+            logicalTableName = tableNameNode;
+            physicalTableName = mappings.getNamingStrategy().tableName(logicalTableName);
+        }
+        mappings.addTableBinding(schema, catalog, logicalTableName, physicalTableName, denormalizedSuperTable);
+        return physicalTableName;
+    }
+
+    //    public static void bindJoinedSubclass(Element node, JoinedSubclass joinedSubclass,
 //                                          Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
 //
 //        bindClass(node, joinedSubclass, mappings, inheritedMetas);
@@ -909,13 +889,34 @@ public final class MetaMappingBinder {
 //
 //    }
 //
-//    public static void bindColumns(final Element node, final SimpleValue simpleValue,
-//                                   final boolean isNullable, final boolean autoColumn, final String propertyPath,
-//                                   final Mappings mappings) throws MappingException {
-//
-//        Table table = simpleValue.getTable();
-//
-//        // COLUMN(S)
+    public static void bindColumns(final FieldMeta fieldMeta, final SimpleValue simpleValue,
+                                   final boolean isNullable, final boolean autoColumn, final String propertyPath,
+                                   final Mappings mappings) {
+
+        Table table = simpleValue.getTable();
+
+        Column column = new Column();
+        column.setValue(simpleValue);
+        bindColumn(fieldMeta, column, isNullable);
+        if (column.isUnique() && ManyToOne.class.isInstance(simpleValue)) {
+            ((ManyToOne) simpleValue).markAsLogicalOneToOne();
+        }
+        final String columnName = fieldMeta.getName();
+        String logicalColumnName = mappings.getNamingStrategy().logicalColumnName(
+                columnName, propertyPath
+        );
+        column.setName(mappings.getNamingStrategy().columnName(columnName));
+        if (table != null) {
+            table.addColumn(column); // table=null -> an association - fill
+            // it in later
+            //HHTODO fill in the mappings for table == null
+            mappings.addColumnBinding(logicalColumnName, column, table);
+        }
+        simpleValue.addColumn(column);
+//TODO !        bindIndex(node.attribute("index"), table, column, mappings);
+//TODO !        bindUniqueKey(node.attribute("unique-key"), table, column, mappings);
+
+//SS        // COLUMN(S)
 //        Attribute columnAttribute = node.attribute("column");
 //        if (columnAttribute == null) {
 //            Iterator itr = node.elementIterator();
@@ -936,7 +937,7 @@ public final class MetaMappingBinder {
 //                    if (table != null) {
 //                        table.addColumn(column); // table=null -> an association
 //                        // - fill it in later
-//                        //TODO fill in the mappings for table == null
+//                        //HHTODO fill in the mappings for table == null
 //                        mappings.addColumnBinding(logicalColumnName, column, table);
 //                    }
 //
@@ -955,7 +956,7 @@ public final class MetaMappingBinder {
 //                }
 //            }
 //
-//            // todo : another GoodThing would be to go back after all parsing and see if all the columns
+//            // HHTODO : another GoodThing would be to go back after all parsing and see if all the columns
 //            // (and no formulas) are contained in a defined unique key that only contains these columns.
 //            // That too would mark this as a logical one-to-one
 //            final Attribute uniqueAttribute = node.attribute("unique");
@@ -988,22 +989,22 @@ public final class MetaMappingBinder {
 //            if (table != null) {
 //                table.addColumn(column); // table=null -> an association - fill
 //                // it in later
-//                //TODO fill in the mappings for table == null
+//                //HHTODO fill in the mappings for table == null
 //                mappings.addColumnBinding(logicalColumnName, column, table);
 //            }
 //            simpleValue.addColumn(column);
 //            bindIndex(node.attribute("index"), table, column, mappings);
 //            bindUniqueKey(node.attribute("unique-key"), table, column, mappings);
 //        }
-//
-//        if (autoColumn && simpleValue.getColumnSpan() == 0) {
+
+//SS        if (autoColumn && simpleValue.getColumnSpan() == 0) {
 //            Column column = new Column();
 //            column.setValue(simpleValue);
 //            bindColumn(node, column, isNullable);
 //            column.setName(mappings.getNamingStrategy().propertyToColumnName(propertyPath));
 //            String logicalName = mappings.getNamingStrategy().logicalColumnName(null, propertyPath);
 //            mappings.addColumnBinding(logicalName, column, table);
-//			/* TODO: joinKeyColumnName & foreignKeyColumnName should be called either here or at a
+//			/* HHTODO: joinKeyColumnName & foreignKeyColumnName should be called either here or at a
 //			 * slightly higer level in the stack (to get all the information we need)
 //			 * Right now HbmMetadataSourceProcessorImpl does not support the
 //			 */
@@ -1012,9 +1013,9 @@ public final class MetaMappingBinder {
 //            bindIndex(node.attribute("index"), table, column, mappings);
 //            bindUniqueKey(node.attribute("unique-key"), table, column, mappings);
 //        }
-//
-//    }
-//
+
+    }
+
 //    private static void bindIndex(Attribute indexAttribute, Table table, Column column, Mappings mappings) {
 //        if (indexAttribute != null && table != null) {
 //            StringTokenizer tokens = new StringTokenizer(indexAttribute.getValue(), ", ");
@@ -1032,35 +1033,26 @@ public final class MetaMappingBinder {
 //            }
 //        }
 //    }
-//
-//    // automatically makes a column with the default name if none is specifed by XML
-//    public static void bindSimpleValue(Element node, SimpleValue simpleValue, boolean isNullable,
-//                                       String path, Mappings mappings) throws MappingException {
-//        bindSimpleValueType(node, simpleValue, mappings);
-//
-//        bindColumnsOrFormula(node, simpleValue, path, isNullable, mappings);
-//
-//        Attribute fkNode = node.attribute("foreign-key");
-//        if (fkNode != null) simpleValue.setForeignKeyName(fkNode.getValue());
-//    }
-//
-//    private static void bindSimpleValueType(Element node, SimpleValue simpleValue, Mappings mappings)
-//            throws MappingException {
-//        String typeName = null;
-//
-//        Properties parameters = new Properties();
-//
-//        Attribute typeNode = node.attribute("type");
-//        if (typeNode == null) {
-//            typeNode = node.attribute("id-type"); // for an any
-//        } else {
-//            typeName = typeNode.getValue();
-//        }
-//
-//        Element typeChild = node.element("type");
-//        if (typeName == null && typeChild != null) {
-//            typeName = typeChild.attribute("name").getValue();
-//            Iterator typeParameters = typeChild.elementIterator("param");
+
+    // automatically makes a column with the default name if none is specifed by XML
+    public static void bindSimpleValue(FieldMeta fieldMeta, SimpleValue simpleValue, boolean isNullable,
+                                       String path, Mappings mappings) {
+        bindSimpleValueType(fieldMeta, simpleValue, mappings);
+
+        bindColumnsOrFormula(fieldMeta, simpleValue, path, isNullable, mappings);
+
+//FUTURE        Attribute fkNode = node.attribute("foreign-key");
+        String fkNode = null;
+        if (fkNode != null) simpleValue.setForeignKeyName(fkNode);
+    }
+
+    private static void bindSimpleValueType(FieldMeta fieldMeta, SimpleValue simpleValue, Mappings mappings) {
+        String typeName = null;
+
+        Properties parameters = new Properties();
+
+
+//FUTURE RESOLVE TYPE PARAMS            Iterator typeParameters = typeChild.elementIterator("param");
 //
 //            while (typeParameters.hasNext()) {
 //                Element paramElement = (Element) typeParameters.next();
@@ -1069,60 +1061,55 @@ public final class MetaMappingBinder {
 //                        paramElement.getTextTrim()
 //                );
 //            }
-//        }
-//
-//        resolveAndBindTypeDef(simpleValue, mappings, typeName, parameters);
-//    }
-//
-//    private static void resolveAndBindTypeDef(SimpleValue simpleValue,
-//                                              Mappings mappings, String typeName, Properties parameters) {
-//        TypeDef typeDef = mappings.getTypeDef(typeName);
-//        if (typeDef != null) {
-//            typeName = typeDef.getTypeClass();
-//            // parameters on the property mapping should
-//            // override parameters in the typedef
-//            Properties allParameters = new Properties();
-//            allParameters.putAll(typeDef.getParameters());
-//            allParameters.putAll(parameters);
-//            parameters = allParameters;
-//        } else if (typeName != null && !mappings.isInSecondPass()) {
-//            BasicType basicType = mappings.getTypeResolver().basic(typeName);
-//            if (basicType == null) {
-//				/*
-//				 * If the referenced typeName isn't a basic-type, it's probably a typedef defined
-//				 * in a mapping file not read yet.
-//				 * It should be solved by deferring the resolution and binding of this type until
-//				 * all mapping files are read - the second passes.
-//				 * Fixes issue HHH-7300
-//				 */
-//                SecondPass resolveUserTypeMappingSecondPass = new ResolveUserTypeMappingSecondPass(simpleValue, typeName, mappings, parameters);
-//                mappings.addSecondPass(resolveUserTypeMappingSecondPass);
-//            }
-//        }
-//
-//        if (!parameters.isEmpty()) simpleValue.setTypeParameters(parameters);
-//
-//        if (typeName != null) simpleValue.setTypeName(typeName);
-//    }
-//
-//    public static void bindProperty(
-//            Element node,
-//            Property property,
-//            Mappings mappings,
-//            java.util.Map inheritedMetas) throws MappingException {
-//
-//        String propName = node.attributeValue("name");
-//        property.setName(propName);
-//        String nodeName = node.attributeValue("node");
-//        if (nodeName == null) nodeName = propName;
-//        property.setNodeName(nodeName);
-//
-//        // TODO:
-//        //Type type = model.getValue().getType();
-//        //if (type==null) throw new MappingException(
-//        //"Could not determine a property type for: " + model.getName() );
-//
-//        Attribute accessNode = node.attribute("access");
+
+        resolveAndBindTypeDef(simpleValue, mappings, fieldMeta.getType().getName(), parameters);
+    }
+
+    private static void resolveAndBindTypeDef(SimpleValue simpleValue,
+                                              Mappings mappings, String typeName, Properties parameters) {
+
+        TypeDef typeDef = mappings.getTypeDef(typeName);
+        if (typeDef != null) {
+            typeName = typeDef.getTypeClass();
+            // parameters on the property mapping should
+            // override parameters in the typedef
+            Properties allParameters = new Properties();
+            allParameters.putAll(typeDef.getParameters());
+            allParameters.putAll(parameters);
+            parameters = allParameters;
+        } else if (typeName != null && !mappings.isInSecondPass()) {
+            BasicType basicType = mappings.getTypeResolver().basic(typeName);
+            if (basicType == null) {
+                /*
+				 * If the referenced typeName isn't a basic-type, it's probably a typedef defined
+				 * in a mapping file not read yet.
+				 * It should be solved by deferring the resolution and binding of this type until
+				 * all mapping files are read - the second passes.
+				 * Fixes issue HHH-7300
+				 */
+                SecondPass resolveUserTypeMappingSecondPass = new ResolveUserTypeMappingSecondPass(simpleValue, typeName, mappings, parameters);
+                mappings.addSecondPass(resolveUserTypeMappingSecondPass);
+            }
+        }
+
+        if (!parameters.isEmpty()) simpleValue.setTypeParameters(parameters);
+        if (typeName != null) simpleValue.setTypeName(typeName);
+    }
+
+    public static void bindProperty(
+            FieldMeta fieldMeta,
+            Property property,
+            Mappings mappings,
+            java.util.Map inheritedMetas) {
+
+        String propName = fieldMeta.getName();
+        property.setName(propName);
+//SS        String nodeName = node.attributeValue("node");
+        String nodeName = null;
+        if (nodeName == null) nodeName = propName;
+        property.setNodeName(nodeName);
+
+//SS        Attribute accessNode = node.attribute("access");
 //        if (accessNode != null) {
 //            property.setPropertyAccessorName(accessNode.getValue());
 //        } else if (node.getName().equals("properties")) {
@@ -1130,25 +1117,25 @@ public final class MetaMappingBinder {
 //        } else {
 //            property.setPropertyAccessorName(mappings.getDefaultAccess());
 //        }
-//
-//        Attribute cascadeNode = node.attribute("cascade");
+
+//SS        Attribute cascadeNode = node.attribute("cascade");
 //        property.setCascade(cascadeNode == null ? mappings.getDefaultCascade() : cascadeNode
 //                .getValue());
-//
-//        Attribute updateNode = node.attribute("update");
+
+//FUTURE        Attribute updateNode = node.attribute("update");
 //        property.setUpdateable(updateNode == null || "true".equals(updateNode.getValue()));
-//
-//        Attribute insertNode = node.attribute("insert");
+
+//FUTURE        Attribute insertNode = node.attribute("insert");
 //        property.setInsertable(insertNode == null || "true".equals(insertNode.getValue()));
-//
-//        Attribute lockNode = node.attribute("optimistic-lock");
+
+//FUTURE        Attribute lockNode = node.attribute("optimistic-lock");
 //        property.setOptimisticLocked(lockNode == null || "true".equals(lockNode.getValue()));
-//
-//        Attribute generatedNode = node.attribute("generated");
+
+//FUTURE        Attribute generatedNode = node.attribute("generated");
 //        String generationName = generatedNode == null ? null : generatedNode.getValue();
 //        PropertyGeneration generation = PropertyGeneration.parse(generationName);
 //        property.setGeneration(generation);
-//
+
 //        if (generation == PropertyGeneration.ALWAYS || generation == PropertyGeneration.INSERT) {
 //            // generated properties can *never* be insertable...
 //            if (property.isInsertable()) {
@@ -1166,7 +1153,7 @@ public final class MetaMappingBinder {
 //                    );
 //                }
 //            }
-//
+
 //            // properties generated on update can never be updateable...
 //            if (property.isUpdateable() && generation == PropertyGeneration.ALWAYS) {
 //                if (updateNode == null) {
@@ -1184,8 +1171,8 @@ public final class MetaMappingBinder {
 //                }
 //            }
 //        }
-//
-//        boolean isLazyable = "property".equals(node.getName()) ||
+
+//SS        boolean isLazyable = "property".equals(node.getName()) ||
 //                "component".equals(node.getName()) ||
 //                "many-to-one".equals(node.getName()) ||
 //                "one-to-one".equals(node.getName()) ||
@@ -1199,16 +1186,14 @@ public final class MetaMappingBinder {
 //            String msg = "Mapped property: " + property.getName();
 //            String columns = columns(property.getValue());
 //            if (columns.length() > 0) msg += " -> " + columns;
-//            // TODO: this fails if we run with debug on!
-//            // if ( model.getType()!=null ) msg += ", type: " + model.getType().getName();
 //            LOG.debug(msg);
 //        }
-//
-//        property.setMetaAttributes(getMetas(node, inheritedMetas));
-//
-//    }
-//
-//    private static String columns(Value val) {
+
+        property.setMetaAttributes(getMetas(fieldMeta, inheritedMetas));
+
+    }
+
+    //    private static String columns(Value val) {
 //        StringBuilder columns = new StringBuilder();
 //        Iterator iter = val.getColumnIterator();
 //        while (iter.hasNext()) {
@@ -1217,46 +1202,53 @@ public final class MetaMappingBinder {
 //        }
 //        return columns.toString();
 //    }
-//
-//    /**
-//     * Called for all collections
-//     */
-//    public static void bindCollection(Element node, Collection collection, String className,
-//                                      String path, Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//
-//        // ROLENAME
-//        collection.setRole(path);
-//
-//        Attribute inverseNode = node.attribute("inverse");
-//        if (inverseNode != null) {
-//            collection.setInverse("true".equals(inverseNode.getValue()));
-//        }
-//
-//        Attribute mutableNode = node.attribute("mutable");
-//        if (mutableNode != null) {
-//            collection.setMutable(!"false".equals(mutableNode.getValue()));
-//        }
-//
-//        Attribute olNode = node.attribute("optimistic-lock");
-//        collection.setOptimisticLocked(olNode == null || "true".equals(olNode.getValue()));
-//
-//        Attribute orderNode = node.attribute("order-by");
-//        if (orderNode != null) {
-//            collection.setOrderBy(orderNode.getValue());
-//        }
-//        Attribute whereNode = node.attribute("where");
-//        if (whereNode != null) {
-//            collection.setWhere(whereNode.getValue());
-//        }
-//        Attribute batchNode = node.attribute("batch-size");
-//        if (batchNode != null) {
-//            collection.setBatchSize(Integer.parseInt(batchNode.getValue()));
-//        }
-//
-//        String nodeName = node.attributeValue("node");
-//        if (nodeName == null) nodeName = node.attributeValue("name");
-//        collection.setNodeName(nodeName);
-//        String embed = node.attributeValue("embed-xml");
+
+    /**
+     * Called for all collections
+     */
+    public static void bindCollection(FieldMeta fieldMeta, Collection collection, String className,
+                                      String path, Mappings mappings, java.util.Map inheritedMetas) {
+
+        // ROLENAME
+        collection.setRole(path);
+
+//FUTURE        Attribute inverseNode = node.attribute("inverse");
+        Boolean inverseNode = null;
+        if (inverseNode != null) {
+            collection.setInverse(inverseNode);
+        }
+
+
+//FUTURE        Attribute mutableNode = node.attribute("mutable");
+        Boolean mutableNode = null;
+        if (mutableNode != null) {
+            collection.setMutable(mutableNode);
+        }
+
+//FUTURE        Attribute olNode = node.attribute("optimistic-lock");
+        Boolean olNode = null;
+        collection.setOptimisticLocked(olNode == null || olNode);
+
+//FUTURE        Attribute orderNode = node.attribute("order-by");
+        String orderNode = null;
+        if (orderNode != null) {
+            collection.setOrderBy(orderNode);
+        }
+//FUTURE        Attribute whereNode = node.attribute("where");
+        String whereNode = null;
+        if (whereNode != null) {
+            collection.setWhere(whereNode);
+        }
+//FUTURE        Attribute batchNode = node.attribute("batch-size");
+        String batchNode = null;
+        if (batchNode != null) {
+            collection.setBatchSize(Integer.parseInt(batchNode));
+        }
+
+        String nodeName = fieldMeta.getName();
+        collection.setNodeName(nodeName);
+
+//SS        String embed = node.attributeValue("embed-xml");
 //        // sometimes embed is set to the default value when not specified in the mapping,
 //        // so can't seem to determine if an attribute was explicitly set;
 //        // log a warning if embed has a value different from the default.
@@ -1264,10 +1256,10 @@ public final class MetaMappingBinder {
 //            LOG.embedXmlAttributesNoLongerSupported();
 //        }
 //        collection.setEmbedded(embed == null || "true".equals(embed));
-//
-//
-//        // PERSISTER
-//        Attribute persisterNode = node.attribute("persister");
+
+
+        // PERSISTER
+//SS        Attribute persisterNode = node.attribute("persister");
 //        if (persisterNode != null) {
 //            try {
 //                collection.setCollectionPersisterClass(ReflectHelper.classForName(persisterNode
@@ -1277,89 +1269,87 @@ public final class MetaMappingBinder {
 //                        + persisterNode.getValue());
 //            }
 //        }
-//
-//        Attribute typeNode = node.attribute("collection-type");
-//        if (typeNode != null) {
-//            String typeName = typeNode.getValue();
-//            TypeDef typeDef = mappings.getTypeDef(typeName);
-//            if (typeDef != null) {
-//                collection.setTypeName(typeDef.getTypeClass());
-//                collection.setTypeParameters(typeDef.getParameters());
-//            } else {
-//                collection.setTypeName(typeName);
-//            }
-//        }
-//
-//        // FETCH STRATEGY
-//
-//        initOuterJoinFetchSetting(node, collection);
-//
-//        if ("subselect".equals(node.attributeValue("fetch"))) {
+
+//FUTURE        Attribute typeNode = node.attribute("collection-type");
+        String typeNode = null;
+        if (typeNode != null) {
+            String typeName = typeNode;
+            TypeDef typeDef = mappings.getTypeDef(typeName);
+            if (typeDef != null) {
+                collection.setTypeName(typeDef.getTypeClass());
+                collection.setTypeParameters(typeDef.getParameters());
+            } else {
+                collection.setTypeName(typeName);
+            }
+        }
+
+        // FETCH STRATEGY
+
+        initOuterJoinFetchSetting(fieldMeta, collection);
+
+//FUTURE        if ("subselect".equals(node.attributeValue("fetch"))) {
 //            collection.setSubselectLoadable(true);
 //            collection.getOwner().setSubselectLoadableCollections(true);
 //        }
-//
-//        initLaziness(node, collection, mappings, "true", mappings.isDefaultLazy());
-//        //TODO: suck this into initLaziness!
+
+        initLaziness(fieldMeta, collection, mappings, "true", mappings.isDefaultLazy());
+
+//SS        //HHTODO: suck this into initLaziness!
 //        if ("extra".equals(node.attributeValue("lazy"))) {
 //            collection.setLazy(true);
 //            collection.setExtraLazy(true);
 //        }
-//
-//        Element oneToManyNode = node.element("one-to-many");
-//        if (oneToManyNode != null) {
-//            OneToMany oneToMany = new OneToMany(mappings, collection.getOwner());
-//            collection.setElement(oneToMany);
-//            bindOneToMany(oneToManyNode, oneToMany, mappings);
-//            // we have to set up the table later!! yuck
-//        } else {
-//            // TABLE
-//            Attribute tableNode = node.attribute("table");
-//            String tableName;
-//            if (tableNode != null) {
-//                tableName = mappings.getNamingStrategy().tableName(tableNode.getValue());
-//            } else {
-//                //tableName = mappings.getNamingStrategy().propertyToTableName( className, path );
-//                Table ownerTable = collection.getOwner().getTable();
-//                //TODO mappings.getLogicalTableName(ownerTable)
-//                String logicalOwnerTableName = ownerTable.getName();
-//                //FIXME we don't have the associated entity table name here, has to be done in a second pass
-//                tableName = mappings.getNamingStrategy().collectionTableName(
-//                        collection.getOwner().getEntityName(),
-//                        logicalOwnerTableName,
-//                        null,
-//                        null,
-//                        path
-//                );
-//                if (ownerTable.isQuoted()) {
-//                    tableName = StringHelper.quote(tableName);
-//                }
-//            }
-//            Attribute schemaNode = node.attribute("schema");
-//            String schema = schemaNode == null ?
-//                    mappings.getSchemaName() : schemaNode.getValue();
-//
-//            Attribute catalogNode = node.attribute("catalog");
-//            String catalog = catalogNode == null ?
-//                    mappings.getCatalogName() : catalogNode.getValue();
-//
-//            Table table = mappings.addTable(
-//                    schema,
-//                    catalog,
-//                    tableName,
-//                    getSubselect(node),
-//                    false
-//            );
-//            collection.setCollectionTable(table);
-//            bindComment(table, node);
-//
-//            if (LOG.isDebugEnabled()) {
-//                LOG.debugf("Mapping collection: %s -> %s", collection.getRole(), collection.getCollectionTable().getName());
-//            }
-//        }
-//
-//        // SORT
-//        Attribute sortedAtt = node.attribute("sort");
+
+        if (fieldMeta.getAssociationType() == FieldAssociationType.ONE_TO_MANY) {
+            OneToMany oneToMany = new OneToMany(mappings, collection.getOwner());
+            collection.setElement(oneToMany);
+            bindOneToMany(fieldMeta, oneToMany, mappings);
+            // we have to set up the table later!! yuck
+        } else {
+            // TABLE
+            TableMeta tableRef = fieldMeta.getFieldRef().getTable();
+            String tableName;
+            if (tableRef != null) {
+                tableName = mappings.getNamingStrategy().tableName(tableRef.getName());
+            } else {
+                Table ownerTable = collection.getOwner().getTable();
+                //HHTODO mappings.getLogicalTableName(ownerTable)
+                String logicalOwnerTableName = ownerTable.getName();
+                //HHFIXME we don't have the associated entity table name here, has to be done in a second pass
+                tableName = mappings.getNamingStrategy().collectionTableName(
+                        collection.getOwner().getEntityName(),
+                        logicalOwnerTableName,
+                        null,
+                        null,
+                        path
+                );
+                if (ownerTable.isQuoted()) {
+                    tableName = StringHelper.quote(tableName);
+                }
+            }
+//FUTURE            Attribute schemaNode = node.attribute("schema");
+            String schemaNode = null;
+            String schema = schemaNode == null ?
+                    mappings.getSchemaName() : schemaNode;
+
+//FUTURE            Attribute catalogNode = node.attribute("catalog");
+            String catalogNode = null;
+            String catalog = catalogNode == null ?
+                    mappings.getCatalogName() : catalogNode;
+
+            Table table = mappings.addTable(
+                    schema,
+                    catalog,
+                    tableName,
+                    getSubselect(fieldMeta),
+                    false
+            );
+            collection.setCollectionTable(table);
+//SS            bindComment(table, fieldMeta);
+        }
+
+        // SORT
+//FUTURE        Attribute sortedAtt = node.attribute("sort");
 //        // unsorted, natural, comparator.class.name
 //        if (sortedAtt == null || sortedAtt.getValue().equals("unsorted")) {
 //            collection.setSorted(false);
@@ -1370,112 +1360,115 @@ public final class MetaMappingBinder {
 //                collection.setComparatorClassName(comparatorClassName);
 //            }
 //        }
-//
-//        // ORPHAN DELETE (used for programmer error detection)
-//        Attribute cascadeAtt = node.attribute("cascade");
+
+        // ORPHAN DELETE (used for programmer error detection)
+//FUTURE        Attribute cascadeAtt = node.attribute("cascade");
 //        if (cascadeAtt != null && cascadeAtt.getValue().indexOf("delete-orphan") >= 0) {
 //            collection.setOrphanDelete(true);
 //        }
-//
-//        // CUSTOM SQL
-//        handleCustomSQL(node, collection);
-//        // set up second pass
-//        if (collection instanceof List) {
-//            mappings.addSecondPass(new ListSecondPass(node, mappings, (List) collection, inheritedMetas));
-//        } else if (collection instanceof Map) {
-//            mappings.addSecondPass(new MapSecondPass(node, mappings, (Map) collection, inheritedMetas));
-//        } else if (collection instanceof IdentifierCollection) {
-//            mappings.addSecondPass(new IdentifierCollectionSecondPass(
-//                    node,
-//                    mappings,
-//                    collection,
-//                    inheritedMetas
-//            ));
-//        } else {
-//            mappings.addSecondPass(new CollectionSecondPass(node, mappings, collection, inheritedMetas));
-//        }
-//
-//        Iterator iter = node.elementIterator("filter");
+
+        // CUSTOM SQL
+//FUTURE        handleCustomSQL(node, collection);
+
+        // set up second pass
+        if (collection instanceof List) {
+            mappings.addSecondPass(new ListSecondPass(fieldMeta, mappings, (org.hibernate.mapping.List) collection, inheritedMetas));
+        } else if (collection instanceof Map) {
+            mappings.addSecondPass(new MapSecondPass(fieldMeta, mappings, (org.hibernate.mapping.Map) collection, inheritedMetas));
+        } else if (collection instanceof IdentifierCollection) {
+            mappings.addSecondPass(new IdentifierCollectionSecondPass(
+                    fieldMeta,
+                    mappings,
+                    collection,
+                    inheritedMetas
+            ));
+        } else {
+            mappings.addSecondPass(new CollectionSecondPass(fieldMeta, mappings, collection, inheritedMetas));
+        }
+
+//SS        Iterator iter = node.elementIterator("filter");
 //        while (iter.hasNext()) {
 //            final Element filter = (Element) iter.next();
 //            parseFilter(filter, collection, mappings);
 //        }
-//
-//        Iterator tables = node.elementIterator("synchronize");
+
+//SS        Iterator tables = node.elementIterator("synchronize");
 //        while (tables.hasNext()) {
 //            collection.getSynchronizedTables().add(
 //                    ((Element) tables.next()).attributeValue("table"));
 //        }
-//
-//        Element element = node.element("loader");
+
+//SS        Element element = node.element("loader");
 //        if (element != null) {
 //            collection.setLoaderName(element.attributeValue("query-ref"));
 //        }
-//
-//        collection.setReferencedPropertyName(node.element("key").attributeValue("property-ref"));
-//    }
-//
-//    private static void initLaziness(
-//            Element node,
-//            Fetchable fetchable,
-//            Mappings mappings,
-//            String proxyVal,
-//            boolean defaultLazy
-//    ) {
-//        Attribute lazyNode = node.attribute("lazy");
+
+//TODO        collection.setReferencedPropertyName(node.element("key").attributeValue("property-ref"));
+        collection.setReferencedPropertyName(fieldMeta.getFieldRef().getName());
+    }
+
+    private static void initLaziness(
+            FieldMeta node,
+            Fetchable fetchable,
+            Mappings mappings,
+            String proxyVal,
+            boolean defaultLazy
+    ) {
+//FUTURE        Attribute lazyNode = node.attribute("lazy");
 //        boolean isLazyTrue = lazyNode == null ?
 //                defaultLazy && fetchable.isLazy() : //fetch="join" overrides default laziness
 //                lazyNode.getValue().equals(proxyVal); //fetch="join" overrides default laziness
 //        fetchable.setLazy(isLazyTrue);
-//    }
-//
-//    private static void initLaziness(
-//            Element node,
-//            ToOne fetchable,
-//            Mappings mappings,
-//            boolean defaultLazy
-//    ) {
-//        if ("no-proxy".equals(node.attributeValue("lazy"))) {
+    }
+
+    private static void initLaziness(
+            FieldMeta node,
+            ToOne fetchable,
+            Mappings mappings,
+            boolean defaultLazy
+    ) {
+//FUTURE        if ("no-proxy".equals(node.attributeValue("lazy"))) {
 //            fetchable.setUnwrapProxy(true);
 //            fetchable.setLazy(true);
-//            //TODO: better to degrade to lazy="false" if uninstrumented
+//            //HHTODO: better to degrade to lazy="false" if uninstrumented
 //        } else {
 //            initLaziness(node, fetchable, mappings, "proxy", defaultLazy);
 //        }
-//    }
-//
-//    private static void bindColumnsOrFormula(Element node, SimpleValue simpleValue, String path,
-//                                             boolean isNullable, Mappings mappings) {
-//        Attribute formulaNode = node.attribute("formula");
-//        if (formulaNode != null) {
-//            Formula f = new Formula();
-//            f.setFormula(formulaNode.getText());
-//            simpleValue.addFormula(f);
-//        } else {
-//            bindColumns(node, simpleValue, isNullable, true, path, mappings);
-//        }
-//    }
-//
-//    private static void bindComment(Table table, Element node) {
-//        Element comment = node.element("comment");
-//        if (comment != null) table.setComment(comment.getTextTrim());
-//    }
-//
-//    public static void bindManyToOne(Element node, ManyToOne manyToOne, String path,
-//                                     boolean isNullable, Mappings mappings) throws MappingException {
-//
-//        bindColumnsOrFormula(node, manyToOne, path, isNullable, mappings);
-//        initOuterJoinFetchSetting(node, manyToOne);
-//        initLaziness(node, manyToOne, mappings, true);
-//
-//        Attribute ukName = node.attribute("property-ref");
-//        if (ukName != null) {
-//            manyToOne.setReferencedPropertyName(ukName.getValue());
-//        }
-//
-//        manyToOne.setReferencedEntityName(getEntityName(node, mappings));
-//
-//        String embed = node.attributeValue("embed-xml");
+    }
+
+    private static void bindColumnsOrFormula(FieldMeta fieldMeta, SimpleValue simpleValue, String path,
+                                             boolean isNullable, Mappings mappings) {
+//FUTURE        Attribute formulaNode = node.attribute("formula");
+        String formulaNode = null;
+        if (formulaNode != null) {
+            Formula f = new Formula();
+            f.setFormula(formulaNode);
+            simpleValue.addFormula(f);
+        } else {
+            bindColumns(fieldMeta, simpleValue, isNullable, true, path, mappings);
+        }
+    }
+
+    private static void bindComment(Table table, TableMeta tableMeta) {
+//FUTURE        if (tableMeta.getDescription() != null) table.setComment(tableMeta.getDescription());
+    }
+
+    public static void bindManyToOne(FieldMeta fieldMeta, ManyToOne manyToOne, String path,
+                                     boolean isNullable, Mappings mappings) {
+
+        bindColumnsOrFormula(fieldMeta, manyToOne, path, isNullable, mappings);
+        initOuterJoinFetchSetting(fieldMeta, manyToOne);
+        initLaziness(fieldMeta, manyToOne, mappings, true);
+
+        FieldMeta fieldMetaRef = fieldMeta.getFieldRef();
+        if (fieldMetaRef != null) {
+            manyToOne.setReferencedPropertyName(fieldMetaRef.getName());
+        }
+
+        //TODO manyToOne.setReferencedEntityName(getEntityName(fieldMeta, mappings));
+        manyToOne.setReferencedEntityName(fieldMetaRef.getTableName());
+
+//SS        String embed = node.attributeValue("embed-xml");
 //        // sometimes embed is set to the default value when not specified in the mapping,
 //        // so can't seem to determine if an attribute was explicitly set;
 //        // log a warning if embed has a value different from the default.
@@ -1483,20 +1476,20 @@ public final class MetaMappingBinder {
 //            LOG.embedXmlAttributesNoLongerSupported();
 //        }
 //        manyToOne.setEmbedded(embed == null || "true".equals(embed));
-//
-//        String notFound = node.attributeValue("not-found");
+
+//SS        String notFound = node.attributeValue("not-found");
 //        manyToOne.setIgnoreNotFound("ignore".equals(notFound));
-//
-//        if (ukName != null && !manyToOne.isIgnoreNotFound()) {
+
+//SS        if (ukName != null && !manyToOne.isIgnoreNotFound()) {
 //            if (!node.getName().equals("many-to-many")) { //TODO: really bad, evil hack to fix!!!
 //                mappings.addSecondPass(new ManyToOneSecondPass(manyToOne));
 //            }
 //        }
-//
-//        Attribute fkNode = node.attribute("foreign-key");
+
+//FUTURE        Attribute fkNode = node.attribute("foreign-key");
 //        if (fkNode != null) manyToOne.setForeignKeyName(fkNode.getValue());
-//
-//        String cascade = node.attributeValue("cascade");
+
+//FUTURE        String cascade = node.attributeValue("cascade");
 //        if (cascade != null && cascade.indexOf("delete-orphan") >= 0) {
 //            if (!manyToOne.isLogicalOneToOne()) {
 //                throw new MappingException(
@@ -1504,9 +1497,9 @@ public final class MetaMappingBinder {
 //                );
 //            }
 //        }
-//    }
-//
-//    public static void bindAny(Element node, Any any, boolean isNullable, Mappings mappings)
+    }
+
+    //    public static void bindAny(Element node, Any any, boolean isNullable, Mappings mappings)
 //            throws MappingException {
 //        any.setIdentifierType(getTypeFromXML(node));
 //        Attribute metaAttribute = node.attribute("meta-type");
@@ -1538,24 +1531,24 @@ public final class MetaMappingBinder {
 //
 //        bindColumns(node, any, isNullable, false, null, mappings);
 //    }
-//
-//    public static void bindOneToOne(Element node, OneToOne oneToOne, String path, boolean isNullable,
-//                                    Mappings mappings) throws MappingException {
-//
-//        bindColumns(node, oneToOne, isNullable, false, null, mappings);
-//
-//        Attribute constrNode = node.attribute("constrained");
+
+    public static void bindOneToOne(FieldMeta fieldMeta, OneToOne oneToOne, String path, boolean isNullable,
+                                    Mappings mappings) {
+
+        bindColumns(fieldMeta, oneToOne, isNullable, false, null, mappings);
+
+//SS        Attribute constrNode = node.attribute("constrained");
 //        boolean constrained = constrNode != null && constrNode.getValue().equals("true");
 //        oneToOne.setConstrained(constrained);
-//
+
 //        oneToOne.setForeignKeyType(constrained ?
 //                ForeignKeyDirection.FOREIGN_KEY_FROM_PARENT :
 //                ForeignKeyDirection.FOREIGN_KEY_TO_PARENT);
-//
-//        initOuterJoinFetchSetting(node, oneToOne);
-//        initLaziness(node, oneToOne, mappings, true);
-//
-//        String embed = node.attributeValue("embed-xml");
+
+        initOuterJoinFetchSetting(fieldMeta, oneToOne);
+        initLaziness(fieldMeta, oneToOne, mappings, true);
+
+//SS        String embed = node.attributeValue("embed-xml");
 //        // sometimes embed is set to the default value when not specified in the mapping,
 //        // so can't seem to determine if an attribute was explicitly set;
 //        // log a warning if embed has a value different from the default.
@@ -1563,18 +1556,19 @@ public final class MetaMappingBinder {
 //            LOG.embedXmlAttributesNoLongerSupported();
 //        }
 //        oneToOne.setEmbedded("true".equals(embed));
-//
-//        Attribute fkNode = node.attribute("foreign-key");
+
+//FUTURE        Attribute fkNode = node.attribute("foreign-key");
 //        if (fkNode != null) oneToOne.setForeignKeyName(fkNode.getValue());
-//
-//        Attribute ukName = node.attribute("property-ref");
-//        if (ukName != null) oneToOne.setReferencedPropertyName(ukName.getValue());
-//
-//        oneToOne.setPropertyName(node.attributeValue("name"));
-//
-//        oneToOne.setReferencedEntityName(getEntityName(node, mappings));
-//
-//        String cascade = node.attributeValue("cascade");
+
+        FieldMeta fieldMetaRef = fieldMeta.getFieldRef();
+        if (fieldMetaRef != null) oneToOne.setReferencedPropertyName(fieldMetaRef.getName());
+
+        oneToOne.setPropertyName(fieldMeta.getName());
+
+        //TODO oneToOne.setReferencedEntityName(getEntityName(node, mappings));
+        oneToOne.setReferencedEntityName(fieldMetaRef.getTableName());
+
+//FUTURE        String cascade = node.attributeValue("cascade");
 //        if (cascade != null && cascade.indexOf("delete-orphan") >= 0) {
 //            if (oneToOne.isConstrained()) {
 //                throw new MappingException(
@@ -1582,14 +1576,14 @@ public final class MetaMappingBinder {
 //                );
 //            }
 //        }
-//    }
-//
-//    public static void bindOneToMany(Element node, OneToMany oneToMany, Mappings mappings)
-//            throws MappingException {
-//
-//        oneToMany.setReferencedEntityName(getEntityName(node, mappings));
-//
-//        String embed = node.attributeValue("embed-xml");
+    }
+
+    public static void bindOneToMany(FieldMeta fieldMeta, OneToMany oneToMany, Mappings mappings) {
+
+//TODO        oneToMany.setReferencedEntityName(getEntityName(node, mappings));
+        oneToMany.setReferencedEntityName(fieldMeta.getFieldRef().getTableName());
+
+//SS        String embed = node.attributeValue("embed-xml");
 //        // sometimes embed is set to the default value when not specified in the mapping,
 //        // so can't seem to determine if an attribute was explicitly set;
 //        // log a warning if embed has a value different from the default.
@@ -1597,58 +1591,62 @@ public final class MetaMappingBinder {
 //            LOG.embedXmlAttributesNoLongerSupported();
 //        }
 //        oneToMany.setEmbedded(embed == null || "true".equals(embed));
-//
-//        String notFound = node.attributeValue("not-found");
-//        oneToMany.setIgnoreNotFound("ignore".equals(notFound));
-//
-//    }
-//
-//    public static void bindColumn(Element node, Column column, boolean isNullable) throws MappingException {
-//        Attribute lengthNode = node.attribute("length");
-//        if (lengthNode != null) column.setLength(Integer.parseInt(lengthNode.getValue()));
-//        Attribute scalNode = node.attribute("scale");
-//        if (scalNode != null) column.setScale(Integer.parseInt(scalNode.getValue()));
-//        Attribute precNode = node.attribute("precision");
-//        if (precNode != null) column.setPrecision(Integer.parseInt(precNode.getValue()));
-//
-//        Attribute nullNode = node.attribute("not-null");
-//        column.setNullable(nullNode == null ? isNullable : nullNode.getValue().equals("false"));
-//
-//        Attribute unqNode = node.attribute("unique");
+
+//SS        String notFound = node.attributeValue("not-found");
+        String notFound = null;
+        oneToMany.setIgnoreNotFound("ignore".equals(notFound));
+
+    }
+
+    public static void bindColumn(FieldMeta fieldMeta, Column column, boolean isNullable) {
+        Integer size = fieldMeta.getSize();
+        if (size != null) column.setLength(size);
+
+        //TODO scale only for numeric types
+        if (size != null) column.setScale(size);
+
+        Integer precision = fieldMeta.getPrecision();
+        if (precision != null) column.setPrecision(precision);
+
+        Boolean required = fieldMeta.getRequired();
+        column.setNullable(required == null ? isNullable : required);
+
+//TODO from constraint        Attribute unqNode = node.attribute("unique");
 //        if (unqNode != null) column.setUnique(unqNode.getValue().equals("true"));
-//
-//        column.setCheckConstraint(node.attributeValue("check"));
-//        column.setDefaultValue(node.attributeValue("default"));
-//
-//        Attribute typeNode = node.attribute("sql-type");
+
+//FUTURE        column.setCheckConstraint(node.attributeValue("check"));
+
+        column.setDefaultValue(fieldMeta.getDefaultValue());
+
+//FUTURE        Attribute typeNode = node.attribute("sql-type");
 //        if (typeNode != null) column.setSqlType(typeNode.getValue());
-//
-//        String customWrite = node.attributeValue("write");
+
+//FUTURE        String customWrite = node.attributeValue("write");
 //        if (customWrite != null && !customWrite.matches("[^?]*\\?[^?]*")) {
 //            throw new MappingException("write expression must contain exactly one value placeholder ('?') character");
 //        }
 //        column.setCustomWrite(customWrite);
 //        column.setCustomRead(node.attributeValue("read"));
-//
-//        Element comment = node.element("comment");
-//        if (comment != null) column.setComment(comment.getTextTrim());
-//
-//    }
-//
-//    /**
-//     * Called for arrays and primitive arrays
-//     */
-//    public static void bindArray(Element node, Array array, String prefix, String path,
-//                                 Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//
-//        bindCollection(node, array, prefix, path, mappings, inheritedMetas);
-//
-//        Attribute att = node.attribute("element-class");
+
+        String description = fieldMeta.getDescription();
+        if (description != null) column.setComment(description);
+
+    }
+
+    /**
+     * Called for arrays and primitive arrays
+     */
+    public static void bindArray(FieldMeta fieldMeta, Array array, String prefix, String path,
+                                 Mappings mappings, java.util.Map inheritedMetas) {
+
+        bindCollection(fieldMeta, array, prefix, path, mappings, inheritedMetas);
+
+//SS        Attribute att = node.attribute("element-class");
 //        if (att != null) array.setElementClassName(getClassName(att, mappings));
-//
-//    }
-//
-//    private static Class reflectedPropertyClass(String className, String propertyName)
+
+    }
+
+    //    private static Class reflectedPropertyClass(String className, String propertyName)
 //            throws MappingException {
 //        if (className == null) return null;
 //        return ReflectHelper.reflectedPropertyClass(className, propertyName);
@@ -1671,31 +1669,32 @@ public final class MetaMappingBinder {
 //        );
 //    }
 //
-//    public static void bindCompositeId(Element node, Component component,
-//                                       PersistentClass persistentClass, String propertyName, Mappings mappings,
-//                                       java.util.Map inheritedMetas) throws MappingException {
-//
-//        component.setKey(true);
-//
-//        String path = StringHelper.qualify(
-//                persistentClass.getEntityName(),
-//                propertyName == null ? "id" : propertyName);
-//
-//        bindComponent(
-//                node,
-//                component,
-//                persistentClass.getClassName(),
-//                propertyName,
-//                path,
-//                false,
-//                node.attribute("class") == null
+    public static void bindCompositeId(FieldMeta fieldMeta, Component component,
+                                       PersistentClass persistentClass, String propertyName, Mappings mappings,
+                                       java.util.Map inheritedMetas) {
+
+        component.setKey(true);
+
+        String path = StringHelper.qualify(
+                persistentClass.getEntityName(),
+                propertyName == null ? "id" : propertyName);
+
+        bindComponent(
+                fieldMeta,
+                component,
+                persistentClass.getClassName(),
+                propertyName,
+                path,
+                false,
+                false,
+//SS                node.attribute("class") == null
 //                        && propertyName == null,
-//                mappings,
-//                inheritedMetas,
-//                false
-//        );
-//
-//        if ("true".equals(node.attributeValue("mapped"))) {
+                mappings,
+                inheritedMetas,
+                false
+        );
+
+//SS        if ("true".equals(node.attributeValue("mapped"))) {
 //            if (propertyName != null) {
 //                throw new MappingException("cannot combine mapped=\"true\" with specified name");
 //            }
@@ -1722,28 +1721,28 @@ public final class MetaMappingBinder {
 //            property.setPropertyAccessorName("embedded");
 //            persistentClass.addProperty(property);
 //        }
-//
-//    }
-//
-//    public static void bindComponent(
-//            Element node,
-//            Component component,
-//            String ownerClassName,
-//            String parentProperty,
-//            String path,
-//            boolean isNullable,
-//            boolean isEmbedded,
-//            Mappings mappings,
-//            java.util.Map inheritedMetas,
-//            boolean isIdentifierMapper) throws MappingException {
-//
-//        component.setEmbedded(isEmbedded);
-//        component.setRoleName(path);
-//
-//        inheritedMetas = getMetas(node, inheritedMetas);
-//        component.setMetaAttributes(inheritedMetas);
-//
-//        Attribute classNode = isIdentifierMapper ? null : node.attribute("class");
+
+    }
+
+    public static void bindComponent(
+            FieldMeta fieldMeta,
+            Component component,
+            String ownerClassName,
+            String parentProperty,
+            String path,
+            boolean isNullable,
+            boolean isEmbedded,
+            Mappings mappings,
+            java.util.Map inheritedMetas,
+            boolean isIdentifierMapper) {
+
+        component.setEmbedded(isEmbedded);
+        component.setRoleName(path);
+
+        inheritedMetas = getMetas(fieldMeta, inheritedMetas);
+        component.setMetaAttributes(inheritedMetas);
+
+//TODO        Attribute classNode = isIdentifierMapper ? null : node.attribute("class");
 //        if (classNode != null) {
 //            component.setComponentClassName(getClassName(classNode, mappings));
 //        } else if ("dynamic-component".equals(node.getName())) {
@@ -1757,7 +1756,7 @@ public final class MetaMappingBinder {
 //                component.setDynamic(true);
 //            }
 //        } else {
-//            // todo : again, how *should* this work for non-pojo entities?
+//            // HHtodo : again, how *should* this work for non-pojo entities?
 //            if (component.getOwner().hasPojoRepresentation()) {
 //                Class reflectedClass = reflectedPropertyClass(ownerClassName, parentProperty);
 //                if (reflectedClass != null) {
@@ -1869,61 +1868,63 @@ public final class MetaMappingBinder {
 //            EntityMode mode = EntityMode.parse(tuplizerElem.attributeValue("entity-mode"));
 //            component.addTuplizer(mode, tuplizerElem.attributeValue("class"));
 //        }
-//    }
-//
+    }
+
 //    public static String getTypeFromXML(Element node) throws MappingException {
-//        // TODO: handle TypeDefs
+//        // HHTODO: handle TypeDefs
 //        Attribute typeNode = node.attribute("type");
 //        if (typeNode == null) typeNode = node.attribute("id-type"); // for an any
 //        if (typeNode == null) return null; // we will have to use reflection
 //        return typeNode.getValue();
 //    }
-//
-//    private static void initOuterJoinFetchSetting(Element node, Fetchable model) {
-//        Attribute fetchNode = node.attribute("fetch");
-//        final FetchMode fetchStyle;
-//        boolean lazy = true;
-//        if (fetchNode == null) {
-//            Attribute jfNode = node.attribute("outer-join");
-//            if (jfNode == null) {
-//                if ("many-to-many".equals(node.getName())) {
-//                    //NOTE SPECIAL CASE:
-//                    // default to join and non-lazy for the "second join"
-//                    // of the many-to-many
-//                    lazy = false;
-//                    fetchStyle = FetchMode.JOIN;
-//                } else if ("one-to-one".equals(node.getName())) {
-//                    //NOTE SPECIAL CASE:
-//                    // one-to-one constrained=false cannot be proxied,
-//                    // so default to join and non-lazy
-//                    lazy = ((OneToOne) model).isConstrained();
-//                    fetchStyle = lazy ? FetchMode.DEFAULT : FetchMode.JOIN;
-//                } else {
-//                    fetchStyle = FetchMode.DEFAULT;
-//                }
-//            } else {
-//                // use old (HB 2.1) defaults if outer-join is specified
-//                String eoj = jfNode.getValue();
+
+    private static void initOuterJoinFetchSetting(FieldMeta fieldMeta, Fetchable model) {
+//FUTURE        Attribute fetchNode = node.attribute("fetch");
+        String fetchNode = null;
+        FetchMode fetchStyle = null;
+        boolean lazy = true;
+        if (fetchNode == null) {
+//FUTURE            Attribute jfNode = node.attribute("outer-join");
+            String jfNode = null;
+            if (jfNode == null) {
+                if (fieldMeta.getAssociationType() == FieldAssociationType.MANY_TO_MANY) {
+                    //NOTE SPECIAL CASE:
+                    // default to join and non-lazy for the "second join"
+                    // of the many-to-many
+                    lazy = false;
+                    fetchStyle = FetchMode.JOIN;
+                } else if (fieldMeta.getAssociationType() == FieldAssociationType.ONE_TO_ONE) {
+                    //NOTE SPECIAL CASE:
+                    // one-to-one constrained=false cannot be proxied,
+                    // so default to join and non-lazy
+                    lazy = ((OneToOne) model).isConstrained();
+                    fetchStyle = lazy ? FetchMode.DEFAULT : FetchMode.JOIN;
+                } else {
+                    fetchStyle = FetchMode.DEFAULT;
+                }
+            } else {
+                // use old (HB 2.1) defaults if outer-join is specified
+//FUTURE                String eoj = jfNode.getValue();
 //                if ("auto".equals(eoj)) {
 //                    fetchStyle = FetchMode.DEFAULT;
 //                } else {
 //                    boolean join = "true".equals(eoj);
 //                    fetchStyle = join ? FetchMode.JOIN : FetchMode.SELECT;
 //                }
-//            }
-//        } else {
-//            boolean join = "join".equals(fetchNode.getValue());
+            }
+        } else {
+//FUTURE            boolean join = "join".equals(fetchNode.getValue());
 //            //lazy = !join;
 //            fetchStyle = join ? FetchMode.JOIN : FetchMode.SELECT;
-//        }
-//        model.setFetchMode(fetchStyle);
-//        model.setLazy(lazy);
-//    }
-//
-//    private static void makeIdentifier(Element node, SimpleValue model, Mappings mappings) {
-//
-//        // GENERATOR
-//        Element subnode = node.element("generator");
+        }
+        model.setFetchMode(fetchStyle);
+        model.setLazy(lazy);
+    }
+
+    private static void makeIdentifier(FieldMeta fieldMeta, SimpleValue model, Mappings mappings) {
+
+        // GENERATOR
+//TODO !        Element subnode = node.element("generator");
 //        if (subnode != null) {
 //            final String generatorClass = subnode.attributeValue("class");
 //            model.setIdentifierGeneratorStrategy(generatorClass);
@@ -1953,11 +1954,11 @@ public final class MetaMappingBinder {
 //
 //            model.setIdentifierGeneratorProperties(params);
 //        }
-//
-//        model.getTable().setIdentifierValue(model);
-//
-//        // ID UNSAVED-VALUE
-//        Attribute nullValueNode = node.attribute("unsaved-value");
+
+        model.getTable().setIdentifierValue(model);
+
+        // ID UNSAVED-VALUE
+//FUTURE        Attribute nullValueNode = node.attribute("unsaved-value");
 //        if (nullValueNode != null) {
 //            model.setNullValue(nullValueNode.getValue());
 //        } else {
@@ -1967,9 +1968,9 @@ public final class MetaMappingBinder {
 //                model.setNullValue(null);
 //            }
 //        }
-//    }
-//
-//    private static final void makeVersion(Element node, SimpleValue model) {
+    }
+
+    //    private static final void makeVersion(Element node, SimpleValue model) {
 //
 //        // VERSION UNSAVED-VALUE
 //        Attribute nullValueNode = node.attribute("unsaved-value");
@@ -1981,48 +1982,53 @@ public final class MetaMappingBinder {
 //
 //    }
 //
-//    protected static void createClassProperties(Element node, PersistentClass persistentClass,
-//                                                Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//        createClassProperties(node, persistentClass, mappings, inheritedMetas, null, true, true, false);
-//    }
-//
-//    protected static void createClassProperties(Element node, PersistentClass persistentClass,
-//                                                Mappings mappings, java.util.Map inheritedMetas, UniqueKey uniqueKey,
-//                                                boolean mutable, boolean nullable, boolean naturalId) throws MappingException {
-//
-//        String entityName = persistentClass.getEntityName();
-//        Table table = persistentClass.getTable();
-//
-//        Iterator iter = node.elementIterator();
-//        while (iter.hasNext()) {
-//            Element subnode = (Element) iter.next();
-//            String name = subnode.getName();
-//            String propertyName = subnode.attributeValue("name");
-//
-//            CollectionType collectType = CollectionType.collectionTypeFromString(name);
-//            Value value = null;
-//            if (collectType != null) {
-//                Collection collection = collectType.create(
-//                        subnode,
-//                        StringHelper.qualify(entityName, propertyName),
-//                        persistentClass,
-//                        mappings, inheritedMetas
-//                );
-//                mappings.addCollection(collection);
-//                value = collection;
-//            } else if ("many-to-one".equals(name)) {
-//                value = new ManyToOne(mappings, table);
-//                bindManyToOne(subnode, (ManyToOne) value, propertyName, nullable, mappings);
-//            } else if ("any".equals(name)) {
+    protected static void createClassProperties(TableMeta tableMeta, PersistentClass persistentClass,
+                                                Mappings mappings, java.util.Map inheritedMetas) {
+        createClassProperties(tableMeta, persistentClass, mappings, inheritedMetas, null, true, true, false);
+    }
+
+    protected static void createClassProperties(TableMeta tableMeta, PersistentClass persistentClass,
+                                                Mappings mappings, java.util.Map inheritedMetas, UniqueKey uniqueKey,
+                                                boolean mutable, boolean nullable, boolean naturalId) {
+
+        String entityName = persistentClass.getEntityName();
+        Table table = persistentClass.getTable();
+
+        for (FieldMeta fieldMeta : tableMeta.getFields()) {
+            String name = null;
+            if (List.class.isAssignableFrom(fieldMeta.getType())) {
+                name = "list";
+            } else if (Set.class.isAssignableFrom(fieldMeta.getType())) {
+                name = "set";
+            } else if (Map.class.isAssignableFrom(fieldMeta.getType())) {
+                name = "map";
+            }
+            String propertyName = fieldMeta.getName();
+
+            CollectionType collectType = CollectionType.collectionTypeFromString(name);
+            Value value = null;
+            if (collectType != null) {
+                Collection collection = collectType.create(
+                        fieldMeta,
+                        StringHelper.qualify(entityName, propertyName),
+                        persistentClass,
+                        mappings, inheritedMetas
+                );
+                mappings.addCollection(collection);
+                value = collection;
+            } else if (fieldMeta.getAssociationType() == FieldAssociationType.MANY_TO_ONE) {
+                value = new ManyToOne(mappings, table);
+                bindManyToOne(fieldMeta, (ManyToOne) value, propertyName, nullable, mappings);
+//FUTURE            } else if ("any".equals(name)) {
 //                value = new Any(mappings, table);
 //                bindAny(subnode, (Any) value, nullable, mappings);
-//            } else if ("one-to-one".equals(name)) {
-//                value = new OneToOne(mappings, table, persistentClass);
-//                bindOneToOne(subnode, (OneToOne) value, propertyName, true, mappings);
-//            } else if ("property".equals(name)) {
-//                value = new SimpleValue(mappings, table);
-//                bindSimpleValue(subnode, (SimpleValue) value, nullable, propertyName, mappings);
-//            } else if ("component".equals(name)
+            } else if (fieldMeta.getAssociationType() == FieldAssociationType.ONE_TO_ONE) {
+                value = new OneToOne(mappings, table, persistentClass);
+                bindOneToOne(fieldMeta, (OneToOne) value, propertyName, true, mappings);
+            } else if (!fieldMeta.isProcessed()) {
+                value = new SimpleValue(mappings, table);
+                bindSimpleValue(fieldMeta, (SimpleValue) value, nullable, propertyName, mappings);
+//FUTURE            } else if ("component".equals(name)
 //                    || "dynamic-component".equals(name)
 //                    || "properties".equals(name)) {
 //                String subpath = StringHelper.qualify(entityName, propertyName);
@@ -2040,20 +2046,20 @@ public final class MetaMappingBinder {
 //                        inheritedMetas,
 //                        false
 //                );
-//            } else if ("join".equals(name)) {
+//FUTURE            } else if ("join".equals(name)) {
 //                Join join = new Join();
 //                join.setPersistentClass(persistentClass);
 //                bindJoin(subnode, join, mappings, inheritedMetas);
 //                persistentClass.addJoin(join);
-//            } else if ("subclass".equals(name)) {
+//FUTURE            } else if ("subclass".equals(name)) {
 //                handleSubclass(persistentClass, mappings, subnode, inheritedMetas);
-//            } else if ("joined-subclass".equals(name)) {
+//FUTURE            } else if ("joined-subclass".equals(name)) {
 //                handleJoinedSubclass(persistentClass, mappings, subnode, inheritedMetas);
-//            } else if ("union-subclass".equals(name)) {
+//FUTURE            } else if ("union-subclass".equals(name)) {
 //                handleUnionSubclass(persistentClass, mappings, subnode, inheritedMetas);
-//            } else if ("filter".equals(name)) {
+//FUTURE            } else if ("filter".equals(name)) {
 //                parseFilter(subnode, persistentClass, mappings);
-//            } else if ("natural-id".equals(name)) {
+//FUTURE            } else if ("natural-id".equals(name)) {
 //                UniqueKey uk = new UniqueKey();
 //                uk.setName("_UniqueKey");
 //                uk.setTable(table);
@@ -2070,76 +2076,72 @@ public final class MetaMappingBinder {
 //                        true
 //                );
 //                table.addUniqueKey(uk);
-//            } else if ("query".equals(name)) {
+//FUTURE            } else if ("query".equals(name)) {
 //                bindNamedQuery(subnode, persistentClass.getEntityName(), mappings);
-//            } else if ("sql-query".equals(name)) {
+//FUTURE            } else if ("sql-query".equals(name)) {
 //                bindNamedSQLQuery(subnode, persistentClass.getEntityName(), mappings);
-//            } else if ("resultset".equals(name)) {
+//FUTURE            } else if ("resultset".equals(name)) {
 //                bindResultSetMappingDefinition(subnode, persistentClass.getEntityName(), mappings);
-//            }
-//
-//            if (value != null) {
-//                final Property property = createProperty(
-//                        value,
-//                        propertyName,
-//                        persistentClass.getClassName(),
-//                        subnode,
-//                        mappings,
-//                        inheritedMetas
-//                );
-//                if (!mutable) {
-//                    property.setUpdateable(false);
-//                }
-//                if (naturalId) {
-//                    property.setNaturalIdentifier(true);
-//                }
-//                persistentClass.addProperty(property);
-//                if (uniqueKey != null) {
-//                    uniqueKey.addColumns(property.getColumnIterator());
-//                }
-//            }
-//
-//        }
-//    }
-//
-//    private static Property createProperty(
-//            final Value value,
-//            final String propertyName,
-//            final String className,
-//            final Element subnode,
-//            final Mappings mappings,
-//            java.util.Map inheritedMetas) throws MappingException {
-//
-//        if (StringHelper.isEmpty(propertyName)) {
-//            throw new MappingException(subnode.getName() + " mapping must defined a name attribute [" + className + "]");
-//        }
-//
-//        value.setTypeUsingReflection(className, propertyName);
-//
-//        // this is done here 'cos we might only know the type here (ugly!)
-//        // TODO: improve this a lot:
-//        if (value instanceof ToOne) {
-//            ToOne toOne = (ToOne) value;
-//            String propertyRef = toOne.getReferencedPropertyName();
-//            if (propertyRef != null) {
-//                mappings.addUniquePropertyReference(toOne.getReferencedEntityName(), propertyRef);
-//            }
-//        } else if (value instanceof Collection) {
-//            Collection coll = (Collection) value;
-//            String propertyRef = coll.getReferencedPropertyName();
-//            // not necessarily a *unique* property reference
-//            if (propertyRef != null) {
-//                mappings.addPropertyReference(coll.getOwnerEntityName(), propertyRef);
-//            }
-//        }
-//
-//        value.createForeignKey();
-//        Property prop = new Property();
-//        prop.setValue(value);
-//        bindProperty(subnode, prop, mappings, inheritedMetas);
-//        return prop;
-//    }
-//
+            }
+
+            if (value != null) {
+                final Property property = createProperty(
+                        value,
+                        propertyName,
+                        persistentClass.getClassName(),
+                        fieldMeta,
+                        mappings,
+                        inheritedMetas
+                );
+                if (!mutable) {
+                    property.setUpdateable(false);
+                }
+                if (naturalId) {
+                    property.setNaturalIdentifier(true);
+                }
+                persistentClass.addProperty(property);
+                if (uniqueKey != null) {
+                    uniqueKey.addColumns(property.getColumnIterator());
+                }
+            }
+
+        }
+    }
+
+    private static Property createProperty(
+            final Value value,
+            final String propertyName,
+            final String className,
+            final FieldMeta fieldMeta,
+            final Mappings mappings,
+            java.util.Map inheritedMetas) {
+
+        value.setTypeUsingReflection(className, propertyName);
+
+        // this is done here 'cos we might only know the type here (ugly!)
+        // HHTODO: improve this a lot:
+        if (value instanceof ToOne) {
+            ToOne toOne = (ToOne) value;
+            String propertyRef = toOne.getReferencedPropertyName();
+            if (propertyRef != null) {
+                mappings.addUniquePropertyReference(toOne.getReferencedEntityName(), propertyRef);
+            }
+        } else if (value instanceof Collection) {
+            Collection coll = (Collection) value;
+            String propertyRef = coll.getReferencedPropertyName();
+            // not necessarily a *unique* property reference
+            if (propertyRef != null) {
+                mappings.addPropertyReference(coll.getOwnerEntityName(), propertyRef);
+            }
+        }
+
+        value.createForeignKey();
+        Property prop = new Property();
+        prop.setValue(value);
+        bindProperty(fieldMeta, prop, mappings, inheritedMetas);
+        return prop;
+    }
+
 //    private static void handleUnionSubclass(PersistentClass model, Mappings mappings,
 //                                            Element subnode, java.util.Map inheritedMetas) throws MappingException {
 //        UnionSubclass subclass = new UnionSubclass(model);
@@ -2163,16 +2165,16 @@ public final class MetaMappingBinder {
 //        model.addSubclass(subclass);
 //        mappings.addClass(subclass);
 //    }
-//
-//    /**
-//     * Called for Lists, arrays, primitive arrays
-//     */
-//    public static void bindListSecondPass(Element node, List list, java.util.Map classes,
-//                                          Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//
-//        bindCollectionSecondPass(node, list, classes, mappings, inheritedMetas);
-//
-//        Element subnode = node.element("list-index");
+
+    /**
+     * Called for Lists, arrays, primitive arrays
+     */
+    public static void bindListSecondPass(FieldMeta fieldMeta, List list, java.util.Map classes,
+                                          Mappings mappings, java.util.Map inheritedMetas) {
+
+        bindCollectionSecondPass(fieldMeta, list, classes, mappings, inheritedMetas);
+
+//FUTURE        Element subnode = node.element("list-index");
 //        if (subnode == null) subnode = node.element("index");
 //        SimpleValue iv = new SimpleValue(mappings, list.getCollectionTable());
 //        bindSimpleValue(
@@ -2187,30 +2189,30 @@ public final class MetaMappingBinder {
 //        String baseIndex = subnode.attributeValue("base");
 //        if (baseIndex != null) list.setBaseIndex(Integer.parseInt(baseIndex));
 //        list.setIndexNodeName(subnode.attributeValue("node"));
-//
-//        if (list.isOneToMany() && !list.getKey().isNullable() && !list.isInverse()) {
-//            String entityName = ((OneToMany) list.getElement()).getReferencedEntityName();
-//            PersistentClass referenced = mappings.getClass(entityName);
-//            IndexBackref ib = new IndexBackref();
-//            ib.setName('_' + list.getOwnerEntityName() + "." + node.attributeValue("name") + "IndexBackref");
-//            ib.setUpdateable(false);
-//            ib.setSelectable(false);
-//            ib.setCollectionRole(list.getRole());
-//            ib.setEntityName(list.getOwner().getEntityName());
-//            ib.setValue(list.getIndex());
-//            // ( (Column) ( (SimpleValue) ic.getIndex() ).getColumnIterator().next()
-//            // ).setNullable(false);
-//            referenced.addProperty(ib);
-//        }
-//    }
-//
-//    public static void bindIdentifierCollectionSecondPass(Element node,
-//                                                          IdentifierCollection collection, java.util.Map persistentClasses, Mappings mappings,
-//                                                          java.util.Map inheritedMetas) throws MappingException {
-//
-//        bindCollectionSecondPass(node, collection, persistentClasses, mappings, inheritedMetas);
-//
-//        Element subnode = node.element("collection-id");
+
+        if (list.isOneToMany() && !list.getKey().isNullable() && !list.isInverse()) {
+            String entityName = ((OneToMany) list.getElement()).getReferencedEntityName();
+            PersistentClass referenced = mappings.getClass(entityName);
+            IndexBackref ib = new IndexBackref();
+            ib.setName('_' + list.getOwnerEntityName() + "." + fieldMeta.getName() + "IndexBackref");
+            ib.setUpdateable(false);
+            ib.setSelectable(false);
+            ib.setCollectionRole(list.getRole());
+            ib.setEntityName(list.getOwner().getEntityName());
+            ib.setValue(list.getIndex());
+            // ( (Column) ( (SimpleValue) ic.getIndex() ).getColumnIterator().next()
+            // ).setNullable(false);
+            referenced.addProperty(ib);
+        }
+    }
+
+    public static void bindIdentifierCollectionSecondPass(FieldMeta fieldMeta,
+                                                          IdentifierCollection collection, java.util.Map persistentClasses, Mappings mappings,
+                                                          java.util.Map inheritedMetas) {
+
+        bindCollectionSecondPass(fieldMeta, collection, persistentClasses, mappings, inheritedMetas);
+
+//SS        Element subnode = node.element("collection-id");
 //        SimpleValue id = new SimpleValue(mappings, collection.getCollectionTable());
 //        bindSimpleValue(
 //                subnode,
@@ -2221,19 +2223,19 @@ public final class MetaMappingBinder {
 //        );
 //        collection.setIdentifier(id);
 //        makeIdentifier(subnode, id, mappings);
-//
-//    }
-//
-//    /**
-//     * Called for Maps
-//     */
-//    public static void bindMapSecondPass(Element node, Map map, java.util.Map classes,
-//                                         Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//
-//        bindCollectionSecondPass(node, map, classes, mappings, inheritedMetas);
-//
+
+    }
+
+    /**
+     * Called for Maps
+     */
+    public static void bindMapSecondPass(FieldMeta fieldMeta, org.hibernate.mapping.Map map, java.util.Map classes,
+                                         Mappings mappings, java.util.Map inheritedMetas) {
+
+        bindCollectionSecondPass(fieldMeta, map, classes, mappings, inheritedMetas);
+
 //        Iterator iter = node.elementIterator();
-//        while (iter.hasNext()) {
+//TODO        while (iter.hasNext()) {
 //            Element subnode = (Element) iter.next();
 //            String name = subnode.getName();
 //
@@ -2280,60 +2282,59 @@ public final class MetaMappingBinder {
 //                map.setIndex(any);
 //            }
 //        }
-//
-//        // TODO: this is a bit of copy/paste from IndexedCollection.createPrimaryKey()
-//        boolean indexIsFormula = false;
-//        Iterator colIter = map.getIndex().getColumnIterator();
+
+        // HHTODO: this is a bit of copy/paste from IndexedCollection.createPrimaryKey()
+        boolean indexIsFormula = false;
+//SS        Iterator colIter = map.getIndex().getColumnIterator();
 //        while (colIter.hasNext()) {
 //            if (((Selectable) colIter.next()).isFormula()) indexIsFormula = true;
 //        }
-//
-//        if (map.isOneToMany() && !map.getKey().isNullable() && !map.isInverse() && !indexIsFormula) {
-//            String entityName = ((OneToMany) map.getElement()).getReferencedEntityName();
-//            PersistentClass referenced = mappings.getClass(entityName);
-//            IndexBackref ib = new IndexBackref();
-//            ib.setName('_' + map.getOwnerEntityName() + "." + node.attributeValue("name") + "IndexBackref");
-//            ib.setUpdateable(false);
-//            ib.setSelectable(false);
-//            ib.setCollectionRole(map.getRole());
-//            ib.setEntityName(map.getOwner().getEntityName());
-//            ib.setValue(map.getIndex());
-//            // ( (Column) ( (SimpleValue) ic.getIndex() ).getColumnIterator().next()
-//            // ).setNullable(false);
-//            referenced.addProperty(ib);
-//        }
-//    }
-//
-//    /**
-//     * Called for all collections
-//     */
-//    public static void bindCollectionSecondPass(Element node, Collection collection,
-//                                                java.util.Map persistentClasses, Mappings mappings, java.util.Map inheritedMetas)
-//            throws MappingException {
-//
-//        if (collection.isOneToMany()) {
-//            OneToMany oneToMany = (OneToMany) collection.getElement();
-//            String assocClass = oneToMany.getReferencedEntityName();
-//            PersistentClass persistentClass = (PersistentClass) persistentClasses.get(assocClass);
-//            if (persistentClass == null) {
+
+        if (map.isOneToMany() && !map.getKey().isNullable() && !map.isInverse() && !indexIsFormula) {
+            String entityName = ((OneToMany) map.getElement()).getReferencedEntityName();
+            PersistentClass referenced = mappings.getClass(entityName);
+            IndexBackref ib = new IndexBackref();
+            ib.setName('_' + map.getOwnerEntityName() + "." + fieldMeta.getName() + "IndexBackref");
+            ib.setUpdateable(false);
+            ib.setSelectable(false);
+            ib.setCollectionRole(map.getRole());
+            ib.setEntityName(map.getOwner().getEntityName());
+            ib.setValue(map.getIndex());
+            // ( (Column) ( (SimpleValue) ic.getIndex() ).getColumnIterator().next()
+            // ).setNullable(false);
+            referenced.addProperty(ib);
+        }
+    }
+
+    /**
+     * Called for all collections
+     */
+    public static void bindCollectionSecondPass(FieldMeta fieldMeta, Collection collection,
+                                                java.util.Map persistentClasses, Mappings mappings, java.util.Map inheritedMetas) {
+
+        if (collection.isOneToMany()) {
+            OneToMany oneToMany = (OneToMany) collection.getElement();
+            String assocClass = oneToMany.getReferencedEntityName();
+            PersistentClass persistentClass = (PersistentClass) persistentClasses.get(assocClass);
+//SS            if (persistentClass == null) {
 //                throw new MappingException("Association references unmapped class: " + assocClass);
 //            }
-//            oneToMany.setAssociatedClass(persistentClass);
-//            collection.setCollectionTable(persistentClass.getTable());
-//
-//            if (LOG.isDebugEnabled()) {
+            oneToMany.setAssociatedClass(persistentClass);
+            collection.setCollectionTable(persistentClass.getTable());
+
+//SS            if (LOG.isDebugEnabled()) {
 //                LOG.debugf("Mapping collection: %s -> %s", collection.getRole(), collection.getCollectionTable().getName());
 //            }
-//        }
-//
-//        // CHECK
-//        Attribute chNode = node.attribute("check");
+        }
+
+        // CHECK
+//FUTURE        Attribute chNode = node.attribute("check");
 //        if (chNode != null) {
 //            collection.getCollectionTable().addCheckConstraint(chNode.getValue());
 //        }
-//
-//        // contained elements:
-//        Iterator iter = node.elementIterator();
+
+        // contained elements:
+//TODO        Iterator iter = node.elementIterator();
 //        while (iter.hasNext()) {
 //            Element subnode = (Element) iter.next();
 //            String name = subnode.getName();
@@ -2397,37 +2398,37 @@ public final class MetaMappingBinder {
 //                        mappings,
 //                        inheritedMetas
 //                );
-//            } else if ("many-to-any".equals(name)) {
+//FUTURE            } else if ("many-to-any".equals(name)) {
 //                Any element = new Any(mappings, collection.getCollectionTable());
 //                collection.setElement(element);
 //                bindAny(subnode, element, true, mappings);
-//            } else if ("cache".equals(name)) {
+//FUTURE            } else if ("cache".equals(name)) {
 //                collection.setCacheConcurrencyStrategy(subnode.attributeValue("usage"));
 //                collection.setCacheRegionName(subnode.attributeValue("region"));
 //            }
-//
-//            String nodeName = subnode.attributeValue("node");
+
+//SS            String nodeName = subnode.attributeValue("node");
 //            if (nodeName != null) collection.setElementNodeName(nodeName);
-//
+
 //        }
-//
-//        if (collection.isOneToMany()
-//                && !collection.isInverse()
-//                && !collection.getKey().isNullable()) {
-//            // for non-inverse one-to-many, with a not-null fk, add a backref!
-//            String entityName = ((OneToMany) collection.getElement()).getReferencedEntityName();
-//            PersistentClass referenced = mappings.getClass(entityName);
-//            Backref prop = new Backref();
-//            prop.setName('_' + collection.getOwnerEntityName() + "." + node.attributeValue("name") + "Backref");
-//            prop.setUpdateable(false);
-//            prop.setSelectable(false);
-//            prop.setCollectionRole(collection.getRole());
-//            prop.setEntityName(collection.getOwner().getEntityName());
-//            prop.setValue(collection.getKey());
-//            referenced.addProperty(prop);
-//        }
-//    }
-//
+
+        if (collection.isOneToMany()
+                && !collection.isInverse()
+                && !collection.getKey().isNullable()) {
+            // for non-inverse one-to-many, with a not-null fk, add a backref!
+            String entityName = ((OneToMany) collection.getElement()).getReferencedEntityName();
+            PersistentClass referenced = mappings.getClass(entityName);
+            Backref prop = new Backref();
+            prop.setName('_' + collection.getOwnerEntityName() + "." + fieldMeta.getName() + "Backref");
+            prop.setUpdateable(false);
+            prop.setSelectable(false);
+            prop.setCollectionRole(collection.getRole());
+            prop.setEntityName(collection.getOwner().getEntityName());
+            prop.setValue(collection.getKey());
+            referenced.addProperty(prop);
+        }
+    }
+
 //    private static void bindManyToManySubelements(
 //            Collection collection,
 //            Element manyToManyNode,
@@ -2578,209 +2579,243 @@ public final class MetaMappingBinder {
 //        }
 //        return superModel;
 //    }
-//
-//    static class CollectionSecondPass extends org.hibernate.cfg.CollectionSecondPass {
-//        Element node;
-//
-//        CollectionSecondPass(Element node, Mappings mappings, Collection collection, java.util.Map inheritedMetas) {
-//            super(mappings, collection, inheritedMetas);
-//            this.node = node;
-//        }
-//
-//        public void secondPass(java.util.Map persistentClasses, java.util.Map inheritedMetas)
-//                throws MappingException {
-//            HbmBinder.bindCollectionSecondPass(
-//                    node,
-//                    collection,
-//                    persistentClasses,
-//                    mappings,
-//                    inheritedMetas
-//            );
-//        }
-//    }
-//
-//    static class IdentifierCollectionSecondPass extends CollectionSecondPass {
-//        IdentifierCollectionSecondPass(Element node, Mappings mappings, Collection collection, java.util.Map inheritedMetas) {
-//            super(node, mappings, collection, inheritedMetas);
-//        }
-//
-//        public void secondPass(java.util.Map persistentClasses, java.util.Map inheritedMetas)
-//                throws MappingException {
-//            HbmBinder.bindIdentifierCollectionSecondPass(
-//                    node,
-//                    (IdentifierCollection) collection,
-//                    persistentClasses,
-//                    mappings,
-//                    inheritedMetas
-//            );
-//        }
-//
-//    }
-//
-//    static class MapSecondPass extends CollectionSecondPass {
-//        MapSecondPass(Element node, Mappings mappings, Map collection, java.util.Map inheritedMetas) {
-//            super(node, mappings, collection, inheritedMetas);
-//        }
-//
-//        public void secondPass(java.util.Map persistentClasses, java.util.Map inheritedMetas)
-//                throws MappingException {
-//            HbmBinder.bindMapSecondPass(
-//                    node,
-//                    (Map) collection,
-//                    persistentClasses,
-//                    mappings,
-//                    inheritedMetas
-//            );
-//        }
-//
-//    }
-//
-//
-//    static class ManyToOneSecondPass implements SecondPass {
-//        private final ManyToOne manyToOne;
-//
-//        ManyToOneSecondPass(ManyToOne manyToOne) {
-//            this.manyToOne = manyToOne;
-//        }
-//
-//        public void doSecondPass(java.util.Map persistentClasses) throws MappingException {
-//            manyToOne.createPropertyRefConstraints(persistentClasses);
-//        }
-//
-//    }
-//
-//    static class ListSecondPass extends CollectionSecondPass {
-//        ListSecondPass(Element node, Mappings mappings, List collection, java.util.Map inheritedMetas) {
-//            super(node, mappings, collection, inheritedMetas);
-//        }
-//
-//        public void secondPass(java.util.Map persistentClasses, java.util.Map inheritedMetas)
-//                throws MappingException {
-//            HbmBinder.bindListSecondPass(
-//                    node,
-//                    (List) collection,
-//                    persistentClasses,
-//                    mappings,
-//                    inheritedMetas
-//            );
-//        }
-//
-//    }
-//
-//    // This inner class implements a case statement....perhaps im being a bit over-clever here
-//    abstract static class CollectionType {
-//        private String xmlTag;
-//
-//        public abstract Collection create(Element node, String path, PersistentClass owner,
-//                                          Mappings mappings, java.util.Map inheritedMetas) throws MappingException;
-//
-//        CollectionType(String xmlTag) {
-//            this.xmlTag = xmlTag;
-//        }
-//
-//        public String toString() {
-//            return xmlTag;
-//        }
-//
-//        private static final CollectionType MAP = new CollectionType("map") {
-//            public Collection create(Element node, String path, PersistentClass owner,
-//                                     Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//                Map map = new Map(mappings, owner);
-//                bindCollection(node, map, owner.getEntityName(), path, mappings, inheritedMetas);
-//                return map;
-//            }
-//        };
-//        private static final CollectionType SET = new CollectionType("set") {
-//            public Collection create(Element node, String path, PersistentClass owner,
-//                                     Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//                Set set = new Set(mappings, owner);
-//                bindCollection(node, set, owner.getEntityName(), path, mappings, inheritedMetas);
-//                return set;
-//            }
-//        };
-//        private static final CollectionType LIST = new CollectionType("list") {
-//            public Collection create(Element node, String path, PersistentClass owner,
-//                                     Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//                List list = new List(mappings, owner);
-//                bindCollection(node, list, owner.getEntityName(), path, mappings, inheritedMetas);
-//                return list;
-//            }
-//        };
-//        private static final CollectionType BAG = new CollectionType("bag") {
-//            public Collection create(Element node, String path, PersistentClass owner,
-//                                     Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//                Bag bag = new Bag(mappings, owner);
-//                bindCollection(node, bag, owner.getEntityName(), path, mappings, inheritedMetas);
-//                return bag;
-//            }
-//        };
-//        private static final CollectionType IDBAG = new CollectionType("idbag") {
-//            public Collection create(Element node, String path, PersistentClass owner,
-//                                     Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//                IdentifierBag bag = new IdentifierBag(mappings, owner);
-//                bindCollection(node, bag, owner.getEntityName(), path, mappings, inheritedMetas);
-//                return bag;
-//            }
-//        };
-//        private static final CollectionType ARRAY = new CollectionType("array") {
-//            public Collection create(Element node, String path, PersistentClass owner,
-//                                     Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//                Array array = new Array(mappings, owner);
-//                bindArray(node, array, owner.getEntityName(), path, mappings, inheritedMetas);
-//                return array;
-//            }
-//        };
-//        private static final CollectionType PRIMITIVE_ARRAY = new CollectionType("primitive-array") {
-//            public Collection create(Element node, String path, PersistentClass owner,
-//                                     Mappings mappings, java.util.Map inheritedMetas) throws MappingException {
-//                PrimitiveArray array = new PrimitiveArray(mappings, owner);
-//                bindArray(node, array, owner.getEntityName(), path, mappings, inheritedMetas);
-//                return array;
-//            }
-//        };
-//        private static final HashMap INSTANCES = new HashMap();
-//
-//        static {
-//            INSTANCES.put(MAP.toString(), MAP);
-//            INSTANCES.put(BAG.toString(), BAG);
-//            INSTANCES.put(IDBAG.toString(), IDBAG);
-//            INSTANCES.put(SET.toString(), SET);
-//            INSTANCES.put(LIST.toString(), LIST);
-//            INSTANCES.put(ARRAY.toString(), ARRAY);
-//            INSTANCES.put(PRIMITIVE_ARRAY.toString(), PRIMITIVE_ARRAY);
-//        }
-//
-//        public static CollectionType collectionTypeFromString(String xmlTagName) {
-//            return (CollectionType) INSTANCES.get(xmlTagName);
-//        }
-//    }
-//
-//    private static int getOptimisticLockMode(Attribute olAtt) throws MappingException {
-//
-//        if (olAtt == null) return Versioning.OPTIMISTIC_LOCK_VERSION;
-//        String olMode = olAtt.getValue();
-//        if (olMode == null || "version".equals(olMode)) {
-//            return Versioning.OPTIMISTIC_LOCK_VERSION;
-//        } else if ("dirty".equals(olMode)) {
-//            return Versioning.OPTIMISTIC_LOCK_DIRTY;
-//        } else if ("all".equals(olMode)) {
-//            return Versioning.OPTIMISTIC_LOCK_ALL;
-//        } else if ("none".equals(olMode)) {
-//            return Versioning.OPTIMISTIC_LOCK_NONE;
-//        } else {
-//            throw new MappingException("Unsupported optimistic-lock style: " + olMode);
-//        }
-//    }
-//
-//    private static final java.util.Map getMetas(Element node, java.util.Map inheritedMeta) {
-//        return getMetas(node, inheritedMeta, false);
-//    }
-//
-//    public static final java.util.Map getMetas(Element node, java.util.Map inheritedMeta,
-//                                               boolean onlyInheritable) {
-//        java.util.Map map = new HashMap();
-//        map.putAll(inheritedMeta);
-//
+
+    static class CollectionSecondPass extends org.hibernate.cfg.CollectionSecondPass {
+        FieldMeta fieldMeta;
+        Collection collection;
+        Mappings mappings;
+
+        CollectionSecondPass(FieldMeta fieldMeta, Mappings mappings, Collection collection, java.util.Map inheritedMetas) {
+            super(mappings, collection, inheritedMetas);
+            this.fieldMeta = fieldMeta;
+            this.collection = collection;
+            this.mappings = mappings;
+        }
+
+        public void secondPass(java.util.Map persistentClasses, java.util.Map inheritedMetas) {
+            bindCollectionSecondPass(
+                    fieldMeta,
+                    collection,
+                    persistentClasses,
+                    mappings,
+                    inheritedMetas
+            );
+        }
+    }
+
+    static class IdentifierCollectionSecondPass extends CollectionSecondPass {
+        Collection collection;
+        Mappings mappings;
+
+        IdentifierCollectionSecondPass(FieldMeta fieldMeta, Mappings mappings, Collection collection, java.util.Map inheritedMetas) {
+            super(fieldMeta, mappings, collection, inheritedMetas);
+            this.collection = collection;
+            this.mappings = mappings;
+        }
+
+        public void secondPass(java.util.Map persistentClasses, java.util.Map inheritedMetas) {
+            bindIdentifierCollectionSecondPass(
+                    fieldMeta,
+                    (IdentifierCollection) collection,
+                    persistentClasses,
+                    mappings,
+                    inheritedMetas
+            );
+        }
+
+    }
+
+    static class MapSecondPass extends CollectionSecondPass {
+        org.hibernate.mapping.Map collection;
+        Mappings mappings;
+
+        MapSecondPass(FieldMeta fieldMeta, Mappings mappings, org.hibernate.mapping.Map collection, java.util.Map inheritedMetas) {
+            super(fieldMeta, mappings, collection, inheritedMetas);
+            this.collection = collection;
+            this.mappings = mappings;
+        }
+
+        public void secondPass(java.util.Map persistentClasses, java.util.Map inheritedMetas) {
+            bindMapSecondPass(
+                    fieldMeta,
+                    (org.hibernate.mapping.Map) collection,
+                    persistentClasses,
+                    mappings,
+                    inheritedMetas
+            );
+        }
+
+    }
+
+
+    static class ManyToOneSecondPass implements SecondPass {
+        private final ManyToOne manyToOne;
+
+        ManyToOneSecondPass(ManyToOne manyToOne) {
+            this.manyToOne = manyToOne;
+        }
+
+        public void doSecondPass(java.util.Map persistentClasses) {
+            manyToOne.createPropertyRefConstraints(persistentClasses);
+        }
+
+    }
+
+    static class ListSecondPass extends CollectionSecondPass {
+        org.hibernate.mapping.List collection;
+        Mappings mappings;
+
+        ListSecondPass(FieldMeta fieldMeta, Mappings mappings, org.hibernate.mapping.List collection, java.util.Map inheritedMetas) {
+            super(fieldMeta, mappings, collection, inheritedMetas);
+            this.collection = collection;
+            this.mappings = mappings;
+        }
+
+        public void secondPass(java.util.Map persistentClasses, java.util.Map inheritedMetas) {
+            bindListSecondPass(
+                    fieldMeta,
+                    collection,
+                    persistentClasses,
+                    mappings,
+                    inheritedMetas
+            );
+        }
+
+    }
+
+    // This inner class implements a case statement....perhaps im being a bit over-clever here
+    abstract static class CollectionType {
+        private String xmlTag;
+
+        public abstract Collection create(FieldMeta fieldMeta, String path, PersistentClass owner,
+                                          Mappings mappings, java.util.Map inheritedMetas);
+
+        CollectionType(String xmlTag) {
+            this.xmlTag = xmlTag;
+        }
+
+        public String toString() {
+            return xmlTag;
+        }
+
+        private static final CollectionType MAP = new CollectionType("map") {
+            public Collection create(FieldMeta fieldMeta, String path, PersistentClass owner,
+                                     Mappings mappings, java.util.Map inheritedMetas) {
+                org.hibernate.mapping.Map map = new org.hibernate.mapping.Map(mappings, owner);
+                bindCollection(fieldMeta, map, owner.getEntityName(), path, mappings, inheritedMetas);
+                return map;
+            }
+        };
+        private static final CollectionType SET = new CollectionType("set") {
+            public Collection create(FieldMeta fieldMeta, String path, PersistentClass owner,
+                                     Mappings mappings, java.util.Map inheritedMetas) {
+                org.hibernate.mapping.Set set = new org.hibernate.mapping.Set(mappings, owner);
+                bindCollection(fieldMeta, set, owner.getEntityName(), path, mappings, inheritedMetas);
+                return set;
+            }
+        };
+        private static final CollectionType LIST = new CollectionType("list") {
+            public Collection create(FieldMeta fieldMeta, String path, PersistentClass owner,
+                                     Mappings mappings, java.util.Map inheritedMetas) {
+                org.hibernate.mapping.List list = new org.hibernate.mapping.List(mappings, owner);
+                bindCollection(fieldMeta, list, owner.getEntityName(), path, mappings, inheritedMetas);
+                return list;
+            }
+        };
+        private static final CollectionType BAG = new CollectionType("bag") {
+            public Collection create(FieldMeta fieldMeta, String path, PersistentClass owner,
+                                     Mappings mappings, java.util.Map inheritedMetas) {
+                Bag bag = new Bag(mappings, owner);
+                bindCollection(fieldMeta, bag, owner.getEntityName(), path, mappings, inheritedMetas);
+                return bag;
+            }
+        };
+        private static final CollectionType IDBAG = new CollectionType("idbag") {
+            public Collection create(FieldMeta fieldMeta, String path, PersistentClass owner,
+                                     Mappings mappings, java.util.Map inheritedMetas) {
+                IdentifierBag bag = new IdentifierBag(mappings, owner);
+                bindCollection(fieldMeta, bag, owner.getEntityName(), path, mappings, inheritedMetas);
+                return bag;
+            }
+        };
+        private static final CollectionType ARRAY = new CollectionType("array") {
+            public Collection create(FieldMeta fieldMeta, String path, PersistentClass owner,
+                                     Mappings mappings, java.util.Map inheritedMetas) {
+                Array array = new Array(mappings, owner);
+                bindArray(fieldMeta, array, owner.getEntityName(), path, mappings, inheritedMetas);
+                return array;
+            }
+        };
+        private static final CollectionType PRIMITIVE_ARRAY = new CollectionType("primitive-array") {
+            public Collection create(FieldMeta fieldMeta, String path, PersistentClass owner,
+                                     Mappings mappings, java.util.Map inheritedMetas) {
+                PrimitiveArray array = new PrimitiveArray(mappings, owner);
+                bindArray(fieldMeta, array, owner.getEntityName(), path, mappings, inheritedMetas);
+                return array;
+            }
+        };
+        private static final HashMap INSTANCES = new HashMap();
+
+        static {
+            INSTANCES.put(MAP.toString(), MAP);
+            INSTANCES.put(BAG.toString(), BAG);
+            INSTANCES.put(IDBAG.toString(), IDBAG);
+            INSTANCES.put(SET.toString(), SET);
+            INSTANCES.put(LIST.toString(), LIST);
+            INSTANCES.put(ARRAY.toString(), ARRAY);
+            INSTANCES.put(PRIMITIVE_ARRAY.toString(), PRIMITIVE_ARRAY);
+        }
+
+        public static CollectionType collectionTypeFromString(String xmlTagName) {
+            return (CollectionType) INSTANCES.get(xmlTagName);
+        }
+    }
+
+    private static int getOptimisticLockMode(String olMode) {
+
+        if ("version".equals(olMode)) {
+            return Versioning.OPTIMISTIC_LOCK_VERSION;
+        } else if ("dirty".equals(olMode)) {
+            return Versioning.OPTIMISTIC_LOCK_DIRTY;
+        } else if ("all".equals(olMode)) {
+            return Versioning.OPTIMISTIC_LOCK_ALL;
+        } else if ("none".equals(olMode)) {
+            return Versioning.OPTIMISTIC_LOCK_NONE;
+        }
+        return Versioning.OPTIMISTIC_LOCK_VERSION;
+    }
+
+    private static final java.util.Map getMetas(DatabaseModel model, java.util.Map inheritedMeta) {
+        return getMetas(model, inheritedMeta, false);
+    }
+
+    private static final java.util.Map getMetas(TableMeta tableMeta, java.util.Map inheritedMeta) {
+        return getMetas(tableMeta, inheritedMeta, false);
+    }
+
+    private static final java.util.Map getMetas(FieldMeta fieldMeta, java.util.Map inheritedMeta) {
+        return getMetas(fieldMeta, inheritedMeta, false);
+    }
+
+    private static Map getMetas(TableMeta tableMeta, Map inheritedMeta, boolean onlyInheritable) {
+        java.util.Map map = new HashMap();
+        map.putAll(inheritedMeta);
+        // see below
+        return map;
+    }
+
+    private static Map getMetas(FieldMeta fieldMeta, Map inheritedMeta, boolean onlyInheritable) {
+        java.util.Map map = new HashMap();
+        map.putAll(inheritedMeta);
+        // see below
+        return map;
+    }
+
+    public static final java.util.Map getMetas(DatabaseModel model, java.util.Map inheritedMeta,
+                                               boolean onlyInheritable) {
+        java.util.Map map = new HashMap();
+        map.putAll(inheritedMeta);
+
 //        Iterator iter = node.elementIterator("meta");
 //        while (iter.hasNext()) {
 //            Element metaNode = (Element) iter.next();
@@ -2803,31 +2838,31 @@ public final class MetaMappingBinder {
 //            }
 //            meta.addValue(metaNode.getText());
 //        }
-//        return map;
-//    }
+        return map;
+    }
 //
 //    public static String getEntityName(Element elem, Mappings model) {
 //        String entityName = elem.attributeValue("entity-name");
 //        return entityName == null ? getClassName(elem.attribute("class"), model) : entityName;
 //    }
-//
+
 //    private static String getClassName(Attribute att, Mappings model) {
 //        if (att == null) return null;
 //        return getClassName(att.getValue(), model);
 //    }
-//
-//    public static String getClassName(String unqualifiedName, Mappings model) {
-//        return getClassName(unqualifiedName, model.getDefaultPackage());
-//    }
-//
-//    public static String getClassName(String unqualifiedName, String defaultPackage) {
-//        if (unqualifiedName == null) return null;
-//        if (unqualifiedName.indexOf('.') < 0 && defaultPackage != null) {
-//            return defaultPackage + '.' + unqualifiedName;
-//        }
-//        return unqualifiedName;
-//    }
-//
+
+    public static String getClassName(String unqualifiedName, Mappings model) {
+        return getClassName(unqualifiedName, model.getDefaultPackage());
+    }
+
+    public static String getClassName(String unqualifiedName, String defaultPackage) {
+        if (unqualifiedName == null) return null;
+        if (unqualifiedName.indexOf('.') < 0 && defaultPackage != null) {
+            return defaultPackage + '.' + unqualifiedName;
+        }
+        return unqualifiedName;
+    }
+
 //    private static void parseFilterDef(Element element, Mappings mappings) {
 //        String name = element.attributeValue("name");
 //        LOG.debugf("Parsing filter-def [%s]", name);
@@ -2857,7 +2892,7 @@ public final class MetaMappingBinder {
 //        if (StringHelper.isEmpty(condition)) {
 //            condition = filterElement.attributeValue("condition");
 //        }
-//        //TODO: bad implementation, cos it depends upon ordering of mapping doc
+//        //HHTODO: bad implementation, cos it depends upon ordering of mapping doc
 //        //      fixing this requires that Collection/PersistentClass gain access
 //        //      to the Mappings reference from Configuration (or the filterDefinitions
 //        //      map directly) sometime during Configuration.buildSessionFactory
@@ -2899,18 +2934,30 @@ public final class MetaMappingBinder {
 //            profile.addFetch(entityName, association, style);
 //        }
 //    }
-//
-//    private static String getSubselect(Element element) {
-//        String subselect = element.attributeValue("subselect");
+
+    private static String getSubselect(TableMeta tableMeta) {
+//FUTURE        String subselect = element.attributeValue("subselect");
 //        if (subselect != null) {
 //            return subselect;
 //        } else {
 //            Element subselectElement = element.element("subselect");
 //            return subselectElement == null ? null : subselectElement.getText();
 //        }
-//    }
-//
-//    /**
+        return null;
+    }
+
+    private static String getSubselect(FieldMeta fieldMeta) {
+//FUTURE        String subselect = element.attributeValue("subselect");
+//        if (subselect != null) {
+//            return subselect;
+//        } else {
+//            Element subselectElement = element.element("subselect");
+//            return subselectElement == null ? null : subselectElement.getText();
+//        }
+        return null;
+    }
+
+    //    /**
 //     * For the given document, locate all extends attributes which refer to
 //     * entities (entity-name or class-name) not defined within said document.
 //     *
@@ -3012,26 +3059,25 @@ public final class MetaMappingBinder {
 //        public void handleEntity(String entityName, String className, Mappings mappings);
 //    }
 //
-//    private static class ResolveUserTypeMappingSecondPass implements SecondPass {
-//
-//        private SimpleValue simpleValue;
-//        private String typeName;
-//        private Mappings mappings;
-//        private Properties parameters;
-//
-//        public ResolveUserTypeMappingSecondPass(SimpleValue simpleValue,
-//                                                String typeName, Mappings mappings, Properties parameters) {
-//            this.simpleValue = simpleValue;
-//            this.typeName = typeName;
-//            this.parameters = parameters;
-//            this.mappings = mappings;
-//        }
-//
-//        @Override
-//        public void doSecondPass(java.util.Map persistentClasses)
-//                throws MappingException {
-//            resolveAndBindTypeDef(simpleValue, mappings, typeName, parameters);
-//        }
-//
-//    }
+    private static class ResolveUserTypeMappingSecondPass implements SecondPass {
+
+        private SimpleValue simpleValue;
+        private String typeName;
+        private Mappings mappings;
+        private Properties parameters;
+
+        public ResolveUserTypeMappingSecondPass(SimpleValue simpleValue,
+                                                String typeName, Mappings mappings, Properties parameters) {
+            this.simpleValue = simpleValue;
+            this.typeName = typeName;
+            this.parameters = parameters;
+            this.mappings = mappings;
+        }
+
+        @Override
+        public void doSecondPass(java.util.Map persistentClasses) {
+            resolveAndBindTypeDef(simpleValue, mappings, typeName, parameters);
+        }
+
+    }
 }
