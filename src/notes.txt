@@ -35,6 +35,30 @@ http://docs.oracle.com/javaee/6/tutorial/doc/gjivm.html
 
 MetadataImpl - реализовать свой построитель по примеру
 
+1. Build ServiceRegistry instance
+2. MetadataSources metadataSources = new MetadataSources(serviceRegistry);
+    2.1 metadataSources.metadataBuilder = new MetadataBuilderImpl( this );
+3. Configure metadataSources sources (hbm, annotations, etc)
+4. Metadata metadata = metadataSources.buildMetadata();
+    4.1 metadataSources.getMetadataBuilder().buildMetadata();
+        4.1.1 metadataSources.metadataBuilder: new MetadataImpl( sources, options );
+5. sessionFactory = metadata.buildSessionFactory();
+
+// !!!!!
+MetadataImpl.metadataSourceProcessors = new MetadataSourceProcessor[] {
+                                        					new HbmMetadataSourceProcessorImpl( this ),
+                                        					new AnnotationMetadataSourceProcessorImpl( this )
+                                        			};
+
+нужно сюда свой процессор
+
+
+
+WAYS:
+ 1. Implement MetadataSourceProcessor - DatabaseModelMetadataSourceProcessor - needs MetadataSource extending to support my DatabaseModel
+ 2. Implement own MetadataBuilderImpl that will build Metadata instance based on DatabaseModel with specified ServiceRegistry
+
+
 2013-03-01
 1. у TableMeta в специальном поле описываем тип привязки:
   1.1 map - instance динамический map
