@@ -99,3 +99,7 @@ TableMeta шарится на все приложение.
 
 
 
+2013-03-07 TODO
+ add Properties to *Meta classes: persist as string but will be parsed in runtime
+ support all custom properties in TODOs from this field
+ RootEntitySourceImpl all the rest methods

@@ -13,7 +13,7 @@ import java.util.List;
         name = "type",
         discriminatorType = DiscriminatorType.STRING
 )
-public abstract class ConstraintMeta {
+public abstract class ConstraintMeta extends MetaEntity {
     @Id
     @Column(length = 501)
     public String getId() {

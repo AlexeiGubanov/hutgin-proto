@@ -1,12 +1,15 @@
 package com.hutgin2.dao.hibernate.binder;
 
+import com.hutgin2.meta.FieldMeta;
 import com.hutgin2.meta.TableMeta;
+import org.hibernate.AssertionFailure;
 import org.hibernate.EntityMode;
 import org.hibernate.engine.OptimisticLockStyle;
 import org.hibernate.internal.jaxb.Origin;
 import org.hibernate.metamodel.binding.Caching;
 import org.hibernate.metamodel.binding.CustomSQL;
 import org.hibernate.metamodel.source.LocalBindingContext;
+import org.hibernate.metamodel.source.MetadataImplementor;
 import org.hibernate.metamodel.source.binder.*;
 
 import java.util.List;
@@ -19,14 +22,26 @@ import java.util.List;
 public class RootEntitySourceImpl implements RootEntitySource {
 
     private final TableMeta tableMeta;
+    private MetadataImplementor metadata;
 
-    public RootEntitySourceImpl(TableMeta tableMeta) {
+    public RootEntitySourceImpl(TableMeta tableMeta, MetadataImplementor metadata) {
         this.tableMeta = tableMeta;
+        this.metadata = metadata;
     }
 
     @Override
     public IdentifierSource getIdentifierSource() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        // list table field to find PK
+        for (FieldMeta fieldMeta : tableMeta.getFields()) {
+            if (fieldMeta.isPrimaryKey()) {
+                return new SimpleIdentifierSourceImpl(fieldMeta, metadata);
+            }
+        }
+        //TODO support composites
+//        throw new NotYetImplementedException( "Composed ids must still be implemented." );
+//        throw new NotYetImplementedException( "Embedded ids must still be implemented." );
+//        throw new NotYetImplementedException("Composite PK in table constraints not yet implemented");
+        throw new AssertionFailure("The root entity needs to specify an identifier");
     }
 
     @Override
