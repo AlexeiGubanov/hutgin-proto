@@ -6,11 +6,14 @@ import java.util.Set;
 
 @Entity
 @Table(name = "META_TABLE")
-public class TableMeta {
+public class TableMeta extends MetaEntity {
     private String name;
     private Set<FieldMeta> fields;
     private Set<ConstraintMeta> constraints;
-    private Boolean persistent;
+    /**
+     * Determines that corresponding column in DB is not presented.
+     */
+    private boolean virtual = false;
 
     public TableMeta() {
     }
@@ -51,12 +54,12 @@ public class TableMeta {
         this.constraints = indices;
     }
 
-    public Boolean isPersistent() {
-        return persistent;
+    public boolean isVirtual() {
+        return virtual;
     }
 
-    public void setPersistent(Boolean persistent) {
-        this.persistent = persistent;
+    public void setVirtual(boolean virtual) {
+        this.virtual = virtual;
     }
 
     @Override

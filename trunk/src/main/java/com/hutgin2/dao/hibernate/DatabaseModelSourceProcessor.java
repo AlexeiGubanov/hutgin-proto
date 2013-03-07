@@ -31,7 +31,7 @@ public class DatabaseModelSourceProcessor implements MetadataSourceProcessor {
 //        final HierarchyBuilder hierarchyBuilder = new HierarchyBuilder();
         // NOTE all classes are ROOT!
         for (TableMeta tableMeta : model.getTables()) {
-            RootEntitySourceImpl root = new RootEntitySourceImpl(tableMeta);
+            RootEntitySourceImpl root = new RootEntitySourceImpl(tableMeta, metadata);
             entityHierarchies.add(new EntityHierarchyImpl(root));
         }
 
