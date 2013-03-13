@@ -102,11 +102,11 @@ TableMeta шарится на все приложение.
 не хранится в БД - только в файле, все допустимые БД тоже из файла
 заполняется в рантайм
 
+10. Keep in mind: all binder method needs to be reviewed from time to time
 
 
 2013-03-07 TODO
  add Properties to *Meta classes: persist as string but will be parsed in runtime
  support all custom properties in TODOs from this field
- RootEntitySourceImpl all the rest methods
- BindingContext and LocalBindingContext for hutgin
- TableSource impl
+
+  build MetaData using DatabaseModelSourceProcessor

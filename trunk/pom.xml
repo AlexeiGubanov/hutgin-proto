@@ -16,6 +16,11 @@
             <id>jboss repository</id>
             <url>https://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
+        <!--<repository>-->
+        <!--<id>springsource-repo</id>-->
+        <!--<name>SpringSource Repository</name>-->
+        <!--<url>http://repo.springsource.org/release</url>-->
+        <!--</repository>-->
     </repositories>
 
     <dependencies>
@@ -423,7 +428,8 @@
         <junit.version>4.10</junit.version>
         <spring.version>3.2.1.RELEASE</spring.version>
         <!--<conf.spring-hibernate3.version>2.0.8</conf.spring-hibernate3.version>-->
-        <hibernate.version>4.3.0-SNAPSHOT</hibernate.version>
+        <!-- TODO for new features <hibernate.version>4.3.0-SNAPSHOT</hibernate.version>-->
+        <hibernate.version>4.1.9.Final</hibernate.version>
         <slf4j.version>1.7.2</slf4j.version>
         <zk.version>6.5.1</zk.version>
         <log4j.version>1.2.17</log4j.version>
@@ -435,7 +441,7 @@
         <developer>
             <id>alexei.gubanov</id>
             <name>Alexei Gubanov</name>
-            <email>alexei.gubanov@gmail.com</email>
+            <email>d.alexei.gubanov@gmail.com</email>
         </developer>
     </developers>
 

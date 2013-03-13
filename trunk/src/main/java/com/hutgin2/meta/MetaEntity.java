@@ -1,10 +1,8 @@
 package com.hutgin2.meta;
 
-import javax.persistence.Entity;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
-@Entity
 @MappedSuperclass
 public class MetaEntity {
 
