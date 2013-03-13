@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="802.25" y="166.0">org.hibernate.metamodel.source.annotations.attribute.SingularAttributeSourceImpl</node>
+    <node x="1232.25" y="166.0">org.hibernate.metamodel.source.hbm.PropertyAttributeSourceImpl</node>
+    <node x="192.0" y="322.0">org.hibernate.metamodel.source.hbm.SetAttributeSourceImpl</node>
+    <node x="624.749007936508" y="0.0">org.hibernate.metamodel.source.binder.AttributeSource</node>
+    <node x="386.25" y="166.0">org.hibernate.metamodel.source.binder.ToOneAttributeSource</node>
+    <node x="1322.25" y="244.0">org.hibernate.metamodel.source.annotations.entity.ComponentAttributeSourceImpl</node>
+    <node x="760.5" y="244.0">org.hibernate.metamodel.source.annotations.attribute.ToOneAttributeSourceImpl</node>
+    <node x="65.5" y="244.0">org.hibernate.metamodel.source.hbm.AbstractPluralAttributeSourceImpl</node>
+    <node x="0.0" y="322.0">org.hibernate.metamodel.source.hbm.BagAttributeSourceImpl</node>
+    <node x="190.58432539682553" y="78.0">org.hibernate.metamodel.source.binder.AssociationAttributeSource</node>
+    <node x="1019.25" y="166.0">org.hibernate.metamodel.source.hbm.VersionAttributeSourceImpl</node>
+    <node x="1453.25" y="166.0">org.hibernate.metamodel.source.binder.ComponentAttributeSource</node>
+    <node x="1663.25" y="166.0">org.hibernate.metamodel.source.hbm.SingularIdentifierAttributeSourceImpl</node>
+    <node x="103.0" y="166.0">org.hibernate.metamodel.source.binder.PluralAttributeSource</node>
+    <node x="1030.25" y="78.0">org.hibernate.metamodel.source.binder.SingularAttributeSource</node>
+    <node x="317.5" y="244.0">org.hibernate.metamodel.source.hbm.ManyToOneAttributeSourceImpl</node>
+    <node x="1558.25" y="244.0">org.hibernate.metamodel.source.hbm.ComponentAttributeSourceImpl</node>
+    <node x="567.25" y="166.0">org.hibernate.metamodel.source.hbm.TimestampAttributeSourceImpl</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.hibernate.metamodel.source.hbm.SetAttributeSourceImpl" target="org.hibernate.metamodel.source.hbm.AbstractPluralAttributeSourceImpl">
+      <point x="0.0" y="-14.0" />
+      <point x="277.0" y="297.0" />
+      <point x="239.5" y="297.0" />
+      <point x="58.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.PropertyAttributeSourceImpl" target="org.hibernate.metamodel.source.binder.SingularAttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="1332.75" y="146.0" />
+      <point x="1140.1785714285716" y="146.0" />
+      <point x="24.428571428571445" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.BagAttributeSourceImpl" target="org.hibernate.metamodel.source.hbm.AbstractPluralAttributeSourceImpl">
+      <point x="0.0" y="-14.0" />
+      <point x="86.0" y="297.0" />
+      <point x="123.5" y="297.0" />
+      <point x="-58.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.attribute.SingularAttributeSourceImpl" target="org.hibernate.metamodel.source.binder.SingularAttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="900.75" y="146.0" />
+      <point x="1091.3214285714284" y="146.0" />
+      <point x="-24.428571428571445" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.TimestampAttributeSourceImpl" target="org.hibernate.metamodel.source.binder.SingularAttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="674.75" y="136.0" />
+      <point x="1066.892857142857" y="136.0" />
+      <point x="-48.85714285714289" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.binder.ToOneAttributeSource" target="org.hibernate.metamodel.source.binder.SingularAttributeSource">
+      <point x="40.25" y="-14.0" />
+      <point x="507.0" y="126.0" />
+      <point x="1042.4642857142858" y="126.0" />
+      <point x="-73.28571428571422" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.attribute.ToOneAttributeSourceImpl" target="org.hibernate.metamodel.source.binder.ToOneAttributeSource">
+      <point x="-46.75" y="-14.0" />
+      <point x="807.25" y="219.0" />
+      <point x="507.0" y="219.0" />
+      <point x="40.25" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.entity.ComponentAttributeSourceImpl" target="org.hibernate.metamodel.source.binder.ComponentAttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="1430.25" y="219.0" />
+      <point x="1500.75" y="219.0" />
+      <point x="-47.5" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.attribute.ToOneAttributeSourceImpl" target="org.hibernate.metamodel.source.annotations.attribute.SingularAttributeSourceImpl">
+      <point x="46.75" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.SingularIdentifierAttributeSourceImpl" target="org.hibernate.metamodel.source.binder.SingularAttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="1788.25" y="126.0" />
+      <point x="1189.0357142857142" y="126.0" />
+      <point x="73.28571428571422" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.AbstractPluralAttributeSourceImpl" target="org.hibernate.metamodel.source.binder.PluralAttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.binder.ComponentAttributeSource" target="org.hibernate.metamodel.source.binder.SingularAttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="1548.25" y="136.0" />
+      <point x="1164.607142857143" y="136.0" />
+      <point x="48.85714285714289" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.VersionAttributeSourceImpl" target="org.hibernate.metamodel.source.binder.SingularAttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.binder.ToOneAttributeSource" target="org.hibernate.metamodel.source.binder.AssociationAttributeSource">
+      <point x="-40.25" y="-14.0" />
+      <point x="426.5" y="146.0" />
+      <point x="333.08432539682553" y="146.0" />
+      <point x="47.5" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.binder.AssociationAttributeSource" target="org.hibernate.metamodel.source.binder.AttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="285.58432539682553" y="53.0" />
+      <point x="655.999007936508" y="53.0" />
+      <point x="-31.25" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.ManyToOneAttributeSourceImpl" target="org.hibernate.metamodel.source.binder.ToOneAttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="-40.25" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.binder.PluralAttributeSource" target="org.hibernate.metamodel.source.binder.AssociationAttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="181.5" y="146.0" />
+      <point x="238.08432539682553" y="146.0" />
+      <point x="-47.5" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.binder.SingularAttributeSource" target="org.hibernate.metamodel.source.binder.AttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="1115.75" y="53.0" />
+      <point x="718.499007936508" y="53.0" />
+      <point x="31.25" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.ComponentAttributeSourceImpl" target="org.hibernate.metamodel.source.binder.ComponentAttributeSource">
+      <point x="0.0" y="-14.0" />
+      <point x="1666.25" y="219.0" />
+      <point x="1595.75" y="219.0" />
+      <point x="47.5" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="1593.5" y="181.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+

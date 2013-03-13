@@ -97,9 +97,16 @@ TableMeta шарится на все приложение.
 8. Подумать над представлением TableMeta - как хранить FK (их hibernate генерит сам), см. MetaMappingBinder foreign-key.
 Может все хранить в одном списке (колонки, связи, ключи, и т.д.) - как в hbm?
 
+9. Meta general - описывает вообще все источники данных (DD_TABLE как из БД, веб-сервисы, xml, json, файлы)
+для каждого вида источника - свои таблицы, поддержка несколько разных БД
+не хранится в БД - только в файле, все допустимые БД тоже из файла
+заполняется в рантайм
+
 
 
 2013-03-07 TODO
  add Properties to *Meta classes: persist as string but will be parsed in runtime
  support all custom properties in TODOs from this field
  RootEntitySourceImpl all the rest methods
+ BindingContext and LocalBindingContext for hutgin
+ TableSource impl

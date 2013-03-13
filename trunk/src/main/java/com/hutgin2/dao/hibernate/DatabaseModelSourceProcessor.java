@@ -5,6 +5,7 @@ import com.hutgin2.dao.hibernate.binder.RootEntitySourceImpl;
 import com.hutgin2.meta.DatabaseModel;
 import com.hutgin2.meta.TableMeta;
 import org.hibernate.metamodel.MetadataSources;
+import org.hibernate.metamodel.source.LocalBindingContext;
 import org.hibernate.metamodel.source.MetadataImplementor;
 import org.hibernate.metamodel.source.MetadataSourceProcessor;
 import org.hibernate.metamodel.source.binder.Binder;
@@ -16,6 +17,7 @@ public class DatabaseModelSourceProcessor implements MetadataSourceProcessor {
 
     private MetadataImplementor metadata;
     private DatabaseModel model;
+    private LocalBindingContext bindingContext;
 
     private List<EntityHierarchyImpl> entityHierarchies = new ArrayList<>();
 
@@ -23,6 +25,7 @@ public class DatabaseModelSourceProcessor implements MetadataSourceProcessor {
     public DatabaseModelSourceProcessor(MetadataImplementor metadata, DatabaseModel model) {
         this.metadata = metadata;
         this.model = model;
+        this.bindingContext = new DatabaseModelBindingContext(model, metadata);
     }
 
     @Override
@@ -31,7 +34,7 @@ public class DatabaseModelSourceProcessor implements MetadataSourceProcessor {
 //        final HierarchyBuilder hierarchyBuilder = new HierarchyBuilder();
         // NOTE all classes are ROOT!
         for (TableMeta tableMeta : model.getTables()) {
-            RootEntitySourceImpl root = new RootEntitySourceImpl(tableMeta, metadata);
+            RootEntitySourceImpl root = new RootEntitySourceImpl(tableMeta, metadata, bindingContext);
             entityHierarchies.add(new EntityHierarchyImpl(root));
         }
 

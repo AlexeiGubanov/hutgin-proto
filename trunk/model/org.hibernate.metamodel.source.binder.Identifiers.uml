@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="84.25" y="0.0">org.hibernate.metamodel.source.binder.IdentifierSource</node>
+    <node x="0.0" y="118.0">org.hibernate.metamodel.source.annotations.attribute.SimpleIdentifierSourceImpl</node>
+    <node x="210.0" y="138.0">org.hibernate.metamodel.source.binder.ComponentIdentifierSource</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.hibernate.metamodel.source.annotations.attribute.SimpleIdentifierSourceImpl" target="org.hibernate.metamodel.source.binder.IdentifierSource">
+      <point x="0.0" y="-44.0" />
+      <point x="95.0" y="93.0" />
+      <point x="160.0" y="93.0" />
+      <point x="-75.75" y="34.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.binder.ComponentIdentifierSource" target="org.hibernate.metamodel.source.binder.IdentifierSource">
+      <point x="0.0" y="-24.0" />
+      <point x="376.5" y="93.0" />
+      <point x="311.5" y="93.0" />
+      <point x="75.75" y="34.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="611.5" y="216.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
