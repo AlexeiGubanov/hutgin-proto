@@ -65,12 +65,10 @@ public class EntitySessionFactory {
         sessionFactory = builder.buildSessionFactory();
     }
 
+    /**
+     * Hibernate 4 approach: using metadatasorurce processor. Not using Spring
+     */
     public synchronized void initWithDatabaseModelSourceProcessor(DatabaseModel model) {
-        LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSourceMain);
-        builder.getProperties().putAll(hibernatePropertiesMain);
-        MetaMappingBinder.bindDatabaseModel(model, builder.createMappings(), new HashMap<>());
-        sessionFactory = builder.buildSessionFactory();
-
         // service registry builder
         ServiceRegistryBuilder serviceRegistryBuilder = new ServiceRegistryBuilder();
         serviceRegistryBuilder.applySettings(hibernatePropertiesMain);
@@ -79,7 +77,7 @@ public class EntitySessionFactory {
         // get service registry instance
         ServiceRegistry serviceRegistry = serviceRegistryBuilder.buildServiceRegistry();
         // construct metadata sources
-        MetadataSources metadataSources = new MetadataSources(serviceRegistry);
+        MetadataSources metadataSources = new DatabaseModelMetadataSources(serviceRegistry, model);
         // construct metadata
         Metadata metadata = metadataSources.buildMetadata();
         // finally, construct session factory

@@ -43,24 +43,17 @@ public class DatabaseModelSourceProcessor implements MetadataSourceProcessor {
 
     @Override
     public void processIndependentMetadata(MetadataSources sources) {
-//        for (TableMetaMappingProcessor processor : processors) {
-//            processor.processIndependentMetadata();
+
         //HBM 		HibernateMappingProcessor.processDatabaseObjectDefinitions();
         //HBM 		HibernateMappingProcessor.processTypeDefinitions();
-//        }
-        // ANNOTATIONS:
-        //TypeDefBinder.bind(bindingContext);
+        // ANNOTATIONS: TypeDefBinder.bind(bindingContext);
     }
 
     @Override
     public void processTypeDependentMetadata(MetadataSources sources) {
-//        for (TableMetaMappingProcessor processor : processors) {
-//            processor.processTypeDependentMetadata();
         //HBM HibernateMappingProcessor.processFilterDefinitions();
         //HBM HibernateMappingProcessor.processIdentifierGenerators();
-//        }
-        //ANNOTATIONS
-//        AnnotationMetadataSourceProcessorImpl.IdGeneratorBinder.bind(bindingContext);
+        //ANNOTATIONS AnnotationMetadataSourceProcessorImpl.IdGeneratorBinder.bind(bindingContext);
     }
 
     @Override
@@ -69,22 +62,11 @@ public class DatabaseModelSourceProcessor implements MetadataSourceProcessor {
         for (EntityHierarchyImpl entityHierarchy : entityHierarchies) {
             binder.processEntityHierarchy(entityHierarchy);
         }
-
-        //ANNOTATIONS:
-//        // need to order our annotated entities into an order we can process
-//        Set<EntityHierarchy> hierarchies = EntityHierarchyBuilder.createEntityHierarchies(bindingContext);
-//
-//        Binder binder = new Binder( bindingContext.getMetadataImplementor(), new ArrayList<String>() );
-//        for ( EntityHierarchy hierarchy : hierarchies ) {
-//            binder.processEntityHierarchy( hierarchy );
-//        }
     }
 
     @Override
     public void processMappingDependentMetadata(MetadataSources sources) {
-//        for (TableMetaMappingProcessor processor : processors) {
-//            processor.processMappingDependentMetadata();
-//		HibernateMappingProcessor.processFetchProfiles();
+//HBM         HibernateMappingProcessor.processFetchProfiles();
 //            HibernateMappingProcessor.processImports();
 //            HibernateMappingProcessor.processResultSetMappings();
 //            HibernateMappingProcessor.processNamedQueries();
