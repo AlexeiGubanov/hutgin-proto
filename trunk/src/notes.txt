@@ -33,7 +33,9 @@ http://docs.oracle.com/javaee/6/tutorial/doc/gjivm.html
 
 // see http://www.manydesigns.com/en/blog/configuring-hibernate-programmatically logical model
 
-MetadataImpl - реализовать свой построитель по примеру
+TODO:
+  class is not exists (Employee) and we get exception NPE when try to retrive class
+  line 69 AbstractAttributeContainer
 
 1. Build ServiceRegistry instance
 2. MetadataSources metadataSources = new MetadataSources(serviceRegistry);
