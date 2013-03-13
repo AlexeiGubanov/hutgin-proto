@@ -126,4 +126,8 @@ public class SingularAttributeSourceImpl implements SingularAttributeSource {
         valueSources.add(new ColumnSourceImpl(fieldMeta));
         return valueSources;
     }
+
+    public FieldMeta getFieldMeta() {
+        return fieldMeta;
+    }
 }

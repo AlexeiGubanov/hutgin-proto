@@ -1,9 +1,12 @@
 package com.hutgin2.dao.hibernate.binder;
 
+import com.hutgin2.meta.ConstraintMeta;
+import com.hutgin2.meta.ConstraintUQMeta;
 import com.hutgin2.meta.FieldMeta;
 import com.hutgin2.meta.TableMeta;
 import org.hibernate.AssertionFailure;
 import org.hibernate.EntityMode;
+import org.hibernate.cfg.NotYetImplementedException;
 import org.hibernate.engine.OptimisticLockStyle;
 import org.hibernate.internal.jaxb.Origin;
 import org.hibernate.metamodel.binding.Caching;
@@ -12,21 +15,23 @@ import org.hibernate.metamodel.source.LocalBindingContext;
 import org.hibernate.metamodel.source.MetadataImplementor;
 import org.hibernate.metamodel.source.binder.*;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Describes root entity source for binder.
  * TODO all tableMeta are root sources currently, but it must be changed
- * TODO so it is neccessary to implement EntitySource interface apart from this class
+ * so it is neccessary to implement EntitySource interface apart from this class
  */
 public class RootEntitySourceImpl implements RootEntitySource {
 
     private final TableMeta tableMeta;
     private MetadataImplementor metadata;
+    private LocalBindingContext localBindingContext;
 
-    public RootEntitySourceImpl(TableMeta tableMeta, MetadataImplementor metadata) {
+    public RootEntitySourceImpl(TableMeta tableMeta, MetadataImplementor metadata, LocalBindingContext bindingContext) {
         this.tableMeta = tableMeta;
         this.metadata = metadata;
+        this.localBindingContext = bindingContext;
     }
 
     @Override
@@ -35,6 +40,7 @@ public class RootEntitySourceImpl implements RootEntitySource {
         for (FieldMeta fieldMeta : tableMeta.getFields()) {
             if (fieldMeta.isPrimaryKey()) {
                 return new SimpleIdentifierSourceImpl(fieldMeta, metadata);
+                // TODO check if this columns must be excluded from attributeSources()
             }
         }
         //TODO support composites
@@ -46,191 +52,245 @@ public class RootEntitySourceImpl implements RootEntitySource {
 
     @Override
     public SingularAttributeSource getVersioningAttributeSource() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        // TODO must return version attribute source, see org.hibernate.metamodel.source.hbm.RootEntitySourceImpl.getVersioningAttributeSource
+        return null;
     }
 
     @Override
     public DiscriminatorSource getDiscriminatorSource() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        // TODO must return discriminator attrubute source
+        return null;
     }
 
     @Override
     public EntityMode getEntityMode() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        // TODO depends on tableMeta type - if implementing class is presented, must be POJO
+        return EntityMode.MAP;
     }
 
     @Override
     public boolean isMutable() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return !tableMeta.isVirtual();  // TODO check possibility to support this flag with others properties
     }
 
     @Override
     public boolean isExplicitPolymorphism() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return false;  //by default olymorphismType.IMPLICIT (false), TODO check to support
     }
 
     @Override
     public String getWhere() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;  // TODO check to support
     }
 
     @Override
     public String getRowId() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;  //TODO check to support
     }
 
     @Override
     public OptimisticLockStyle getOptimisticLockStyle() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return OptimisticLockStyle.NONE; // TODO against versioning or additional property
     }
 
     @Override
     public Caching getCaching() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; // TODO  check to support
     }
 
     @Override
     public Origin getOrigin() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return this.localBindingContext.getOrigin();
     }
 
     @Override
     public LocalBindingContext getLocalBindingContext() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return this.localBindingContext;
     }
 
     @Override
     public String getEntityName() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return tableMeta.getName();
     }
 
     @Override
     public String getClassName() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;  // TODO depends on tableMeta type - if implementing class is presented, must be its name
     }
 
     @Override
     public String getJpaEntityName() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return tableMeta.getName();
     }
 
     @Override
     public TableSource getPrimaryTable() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return new TableSource() {
+            @Override
+            public String getExplicitSchemaName() {
+                return null;
+//                return tableMeta.getSchema();//TODO support
+            }
+
+            @Override
+            public String getExplicitCatalogName() {
+                return null;
+//                return tableMeta.getCatalog();//TODO support
+            }
+
+            @Override
+            public String getExplicitTableName() {
+                return tableMeta.getName();
+            }
+
+            @Override
+            public String getLogicalName() {
+                // logical name for the primary table is null
+                return null;
+            }
+        };
     }
 
     @Override
     public Iterable<TableSource> getSecondaryTables() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return Collections.emptySet(); //TODO check designation
     }
 
     @Override
     public String getCustomTuplizerClassName() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;  //TODO check designation tuplizer
     }
 
     @Override
     public String getCustomPersisterClassName() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;  //TODO check designation
     }
 
     @Override
     public boolean isLazy() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return false;  //TODO check support
     }
 
     @Override
     public String getProxy() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;  // TODO check support
     }
 
     @Override
     public int getBatchSize() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return -1;  //TODO same as getProxy
     }
 
     @Override
     public boolean isAbstract() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return tableMeta.isVirtual();
     }
 
     @Override
     public boolean isDynamicInsert() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return false;  //TODO check support
     }
 
     @Override
     public boolean isDynamicUpdate() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return false;   //TODO check support
     }
 
     @Override
     public boolean isSelectBeforeUpdate() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return false;  //TODO check designation
     }
 
     @Override
     public String getCustomLoaderName() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;  //TODO check support
     }
 
     @Override
     public CustomSQL getCustomSqlInsert() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;  //TODO check support
     }
 
     @Override
     public CustomSQL getCustomSqlUpdate() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;  //TODO check support
     }
 
     @Override
     public CustomSQL getCustomSqlDelete() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;  //TODO check support
     }
 
     @Override
     public List<String> getSynchronizedTableNames() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return Collections.emptyList(); // TODO check designation
     }
 
     @Override
     public Iterable<MetaAttributeSource> metaAttributes() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return Collections.emptySet();  // TODO check designation
     }
 
     @Override
     public String getDiscriminatorMatchValue() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;  //TODO check support
     }
 
     @Override
     public Iterable<ConstraintSource> getConstraints() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        Set<ConstraintSource> result = new HashSet<>();
+        for (ConstraintMeta constraint : tableMeta.getConstraints()) {
+            if (constraint instanceof ConstraintUQMeta) {
+                result.add(new UniqueConstraintSourceImpl((ConstraintUQMeta) constraint));
+            }
+        }
+        return result;
     }
 
     @Override
     public List<JpaCallbackClass> getJpaCallbackClasses() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return Collections.emptyList(); // TODO check designation
     }
 
     @Override
     public String getPath() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return tableMeta.getName();
     }
 
     @Override
     public Iterable<AttributeSource> attributeSources() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        List<AttributeSource> attributeSources = new ArrayList<AttributeSource>();
+        for (FieldMeta field : tableMeta.getFields()) {
+            switch (field.getAssociationType()) {
+                case NONE:
+                    attributeSources.add(new SingularAttributeSourceImpl(field));
+                    // TODO support components: depends on field type class
+                    break;
+                case ONE_TO_ONE:
+                case MANY_TO_ONE:
+                    attributeSources.add(new ToOneAttributeSourceImpl(field));
+                    break;
+                case ONE_TO_MANY:
+                case MANY_TO_MANY:
+                    throw new NotYetImplementedException("*ToMany properties are not yet supported");
+//                    break;
+                    // todo what about bag,set,list,idbag,map? see hbm.AbstractEntitySourceImpl
+                    // it must depends on *ToMany field class type!
+            }
+        }
+        return attributeSources;
     }
+
+    private final Set<SubclassEntitySource> subclassEntitySources = new HashSet<SubclassEntitySource>();
+    ;
 
     @Override
     public void add(SubclassEntitySource subclassEntitySource) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        subclassEntitySource.add(subclassEntitySource);
     }
 
     @Override
     public Iterable<SubclassEntitySource> subclassEntitySources() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return subclassEntitySources;
     }
 }

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="208.125" y="156.0">org.hibernate.metamodel.source.binder.SubclassEntitySource</node>
+    <node x="11.238636363636317" y="156.0">org.hibernate.metamodel.source.annotations.entity.EntitySourceImpl</node>
+    <node x="317.0" y="78.0">org.hibernate.metamodel.source.binder.EntitySource</node>
+    <node x="380.0" y="234.0">org.hibernate.metamodel.source.hbm.SubclassEntitySourceImpl</node>
+    <node x="201.0" y="234.0">org.hibernate.metamodel.source.annotations.entity.RootEntitySourceImpl</node>
+    <node x="377.75" y="0.0">org.hibernate.metamodel.source.binder.AttributeSourceContainer</node>
+    <node x="186.75" y="0.0">org.hibernate.metamodel.source.binder.SubclassEntityContainer</node>
+    <node x="0.0" y="234.0">org.hibernate.metamodel.source.annotations.entity.SubclassEntitySourceImpl</node>
+    <node x="585.1136363636364" y="234.0">org.hibernate.metamodel.source.hbm.RootEntitySourceImpl</node>
+    <node x="383.125" y="156.0">org.hibernate.metamodel.source.binder.RootEntitySource</node>
+    <node x="596.6363636363637" y="156.0">org.hibernate.metamodel.source.hbm.AbstractEntitySourceImpl</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.hibernate.metamodel.source.hbm.SubclassEntitySourceImpl" target="org.hibernate.metamodel.source.binder.SubclassEntitySource">
+      <point x="-45.25" y="-14.0" />
+      <point x="425.25" y="204.0" />
+      <point x="324.375" y="204.0" />
+      <point x="38.75" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.entity.RootEntitySourceImpl" target="org.hibernate.metamodel.source.annotations.entity.EntitySourceImpl">
+      <point x="-39.75" y="-14.0" />
+      <point x="240.75" y="204.0" />
+      <point x="110.23863636363632" y="204.0" />
+      <point x="33.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.SubclassEntitySourceImpl" target="org.hibernate.metamodel.source.hbm.AbstractEntitySourceImpl">
+      <point x="45.25" y="-14.0" />
+      <point x="515.75" y="214.0" />
+      <point x="641.8863636363637" y="214.0" />
+      <point x="-45.25" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.binder.RootEntitySource" target="org.hibernate.metamodel.source.binder.EntitySource">
+      <point x="0.0" y="-14.0" />
+      <point x="449.625" y="136.0" />
+      <point x="383.25" y="136.0" />
+      <point x="13.25" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.RootEntitySourceImpl" target="org.hibernate.metamodel.source.hbm.AbstractEntitySourceImpl">
+      <point x="39.75" y="-14.0" />
+      <point x="704.3636363636364" y="214.0" />
+      <point x="732.3863636363637" y="214.0" />
+      <point x="45.25" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.binder.EntitySource" target="org.hibernate.metamodel.source.binder.AttributeSourceContainer">
+      <point x="26.5" y="-14.0" />
+      <point x="396.5" y="53.0" />
+      <point x="467.75" y="53.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.binder.SubclassEntitySource" target="org.hibernate.metamodel.source.binder.EntitySource">
+      <point x="0.0" y="-14.0" />
+      <point x="285.625" y="136.0" />
+      <point x="356.75" y="136.0" />
+      <point x="-13.25" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.entity.SubclassEntitySourceImpl" target="org.hibernate.metamodel.source.binder.SubclassEntitySource">
+      <point x="45.25" y="-14.0" />
+      <point x="135.75" y="214.0" />
+      <point x="246.875" y="214.0" />
+      <point x="-38.75" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.AbstractEntitySourceImpl" target="org.hibernate.metamodel.source.binder.EntitySource">
+      <point x="0.0" y="-14.0" />
+      <point x="687.1363636363637" y="126.0" />
+      <point x="409.75" y="126.0" />
+      <point x="39.75" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.entity.RootEntitySourceImpl" target="org.hibernate.metamodel.source.binder.RootEntitySource">
+      <point x="39.75" y="-14.0" />
+      <point x="320.25" y="214.0" />
+      <point x="416.375" y="214.0" />
+      <point x="-33.25" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.entity.SubclassEntitySourceImpl" target="org.hibernate.metamodel.source.annotations.entity.EntitySourceImpl">
+      <point x="-45.25" y="-14.0" />
+      <point x="45.25" y="214.0" />
+      <point x="44.23863636363632" y="214.0" />
+      <point x="-33.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.entity.EntitySourceImpl" target="org.hibernate.metamodel.source.binder.EntitySource">
+      <point x="0.0" y="-14.0" />
+      <point x="77.23863636363632" y="126.0" />
+      <point x="330.25" y="126.0" />
+      <point x="-39.75" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.RootEntitySourceImpl" target="org.hibernate.metamodel.source.binder.RootEntitySource">
+      <point x="-39.75" y="-14.0" />
+      <point x="624.8636363636364" y="204.0" />
+      <point x="482.875" y="204.0" />
+      <point x="33.25" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.binder.EntitySource" target="org.hibernate.metamodel.source.binder.SubclassEntityContainer">
+      <point x="-26.5" y="-14.0" />
+      <point x="343.5" y="53.0" />
+      <point x="272.25" y="53.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="389.0" y="131.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+

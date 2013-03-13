@@ -567,7 +567,7 @@ public final class MetaMappingBinder {
 //            entity.addSynchronizedTable(((Element) tables.next()).attributeValue("table"));
 //        }
 
-        Boolean isAbstract = tableMeta.isPersistent() != null ? !tableMeta.isPersistent() : null;
+        Boolean isAbstract = !tableMeta.isPersistable();
         entity.setAbstract(isAbstract);
     }
 
@@ -1081,7 +1081,7 @@ public final class MetaMappingBinder {
             BasicType basicType = mappings.getTypeResolver().basic(typeName);
             if (basicType == null) {
                 /*
-				 * If the referenced typeName isn't a basic-type, it's probably a typedef defined
+                 * If the referenced typeName isn't a basic-type, it's probably a typedef defined
 				 * in a mapping file not read yet.
 				 * It should be solved by deferring the resolution and binding of this type until
 				 * all mapping files are read - the second passes.
@@ -1608,7 +1608,7 @@ public final class MetaMappingBinder {
         Integer precision = fieldMeta.getPrecision();
         if (precision != null) column.setPrecision(precision);
 
-        Boolean required = fieldMeta.getRequired();
+        Boolean required = fieldMeta.isRequired();
         column.setNullable(required == null ? isNullable : required);
 
 //TODO from constraint        Attribute unqNode = node.attribute("unique");
@@ -1616,7 +1616,7 @@ public final class MetaMappingBinder {
 
 //FUTURE        column.setCheckConstraint(node.attributeValue("check"));
 
-        column.setDefaultValue(fieldMeta.getDefaultValue());
+        column.setDefaultValue(fieldMeta.getInsertDefaultValue());
 
 //FUTURE        Attribute typeNode = node.attribute("sql-type");
 //        if (typeNode != null) column.setSqlType(typeNode.getValue());

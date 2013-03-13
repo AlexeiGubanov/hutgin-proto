@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="502.5227272727273" y="78.0">org.hibernate.metamodel.source.MetadataImplementor</node>
+    <node x="0.0" y="156.0">org.hibernate.metamodel.source.hbm.HbmBindingContext</node>
+    <node x="168.75000000000006" y="156.0">org.hibernate.metamodel.source.annotations.entity.EntityBindingContext</node>
+    <node x="236.25000000000006" y="0.0">org.hibernate.metamodel.source.BindingContext</node>
+    <node x="204.75000000000006" y="78.0">org.hibernate.metamodel.source.annotations.AnnotationBindingContext</node>
+    <node x="341.75000000000006" y="156.0">org.hibernate.metamodel.source.annotations.AnnotationBindingContextImpl</node>
+    <node x="602.6742424242425" y="156.0">org.hibernate.metamodel.source.internal.MetadataImpl</node>
+    <node x="217.0303030303031" y="234.0">org.hibernate.metamodel.source.hbm.MappingDocument.LocalBindingContextImpl</node>
+    <node x="35.75000000000006" y="78.0">org.hibernate.metamodel.source.LocalBindingContext</node>
+    <node x="582.6742424242425" y="234.0">org.hibernate.metamodel.source.internal.MetadataImpl.MappingDefaultsImpl</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.hibernate.metamodel.source.hbm.MappingDocument.LocalBindingContextImpl" target="org.hibernate.metamodel.source.MetadataImplementor">
+      <point x="43.75" y="-14.0" />
+      <point x="348.2803030303031" y="209.0" />
+      <point x="561.25" y="209.0" />
+      <point x="561.25" y="131.0" />
+      <point x="584.5227272727273" y="131.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.internal.MetadataImpl" target="org.hibernate.metamodel.source.MetadataImplementor">
+      <point x="0.0" y="-14.0" />
+      <point x="660.1742424242425" y="131.0" />
+      <point x="639.189393939394" y="131.0" />
+      <point x="54.66666666666666" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.entity.EntityBindingContext" target="org.hibernate.metamodel.source.annotations.AnnotationBindingContext">
+      <point x="51.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.AnnotationBindingContextImpl" target="org.hibernate.metamodel.source.MetadataImplementor">
+      <point x="52.25" y="-14.0" />
+      <point x="498.50000000000006" y="131.0" />
+      <point x="529.8560606060606" y="131.0" />
+      <point x="-54.66666666666666" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.entity.EntityBindingContext" target="org.hibernate.metamodel.source.LocalBindingContext">
+      <point x="-51.0" y="-14.0" />
+      <point x="194.25000000000006" y="131.0" />
+      <point x="147.50000000000006" y="131.0" />
+      <point x="37.25" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.LocalBindingContext" target="org.hibernate.metamodel.source.BindingContext">
+      <point x="0.0" y="-14.0" />
+      <point x="110.25000000000006" y="53.0" />
+      <point x="256.25000000000006" y="53.0" />
+      <point x="-40.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.internal.MetadataImpl.MappingDefaultsImpl" target="org.hibernate.metamodel.source.internal.MetadataImpl">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.MappingDocument.LocalBindingContextImpl" target="org.hibernate.metamodel.source.hbm.HbmBindingContext">
+      <point x="-43.75" y="-14.0" />
+      <point x="260.7803030303031" y="209.0" />
+      <point x="73.0" y="209.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.MetadataImplementor" target="org.hibernate.metamodel.source.BindingContext">
+      <point x="0.0" y="-14.0" />
+      <point x="584.5227272727273" y="53.0" />
+      <point x="336.25000000000006" y="53.0" />
+      <point x="40.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.AnnotationBindingContextImpl" target="org.hibernate.metamodel.source.annotations.AnnotationBindingContext">
+      <point x="-52.25" y="-14.0" />
+      <point x="394.00000000000006" y="131.0" />
+      <point x="357.25000000000006" y="131.0" />
+      <point x="61.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.annotations.AnnotationBindingContext" target="org.hibernate.metamodel.source.BindingContext">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="org.hibernate.metamodel.source.hbm.HbmBindingContext" target="org.hibernate.metamodel.source.LocalBindingContext">
+      <point x="0.0" y="-14.0" />
+      <point x="-37.25" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="369.0" y="131.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
