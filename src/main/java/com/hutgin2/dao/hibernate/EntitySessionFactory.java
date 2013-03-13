@@ -65,6 +65,27 @@ public class EntitySessionFactory {
         sessionFactory = builder.buildSessionFactory();
     }
 
+    public synchronized void initWithDatabaseModelSourceProcessor(DatabaseModel model) {
+        LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSourceMain);
+        builder.getProperties().putAll(hibernatePropertiesMain);
+        MetaMappingBinder.bindDatabaseModel(model, builder.createMappings(), new HashMap<>());
+        sessionFactory = builder.buildSessionFactory();
+
+        // service registry builder
+        ServiceRegistryBuilder serviceRegistryBuilder = new ServiceRegistryBuilder();
+        serviceRegistryBuilder.applySettings(hibernatePropertiesMain);
+        serviceRegistryBuilder.applySetting(Environment.DATASOURCE, dataSourceMain);
+
+        // get service registry instance
+        ServiceRegistry serviceRegistry = serviceRegistryBuilder.buildServiceRegistry();
+        // construct metadata sources
+        MetadataSources metadataSources = new MetadataSources(serviceRegistry);
+        // construct metadata
+        Metadata metadata = metadataSources.buildMetadata();
+        // finally, construct session factory
+        sessionFactory = metadata.buildSessionFactory();
+    }
+
 
     /**
      * Hibernate 4 approach: using metadata source and JAXB parser.

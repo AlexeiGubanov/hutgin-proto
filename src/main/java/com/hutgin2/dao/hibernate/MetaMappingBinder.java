@@ -19,6 +19,7 @@ import java.util.Properties;
 /**
  * Bind configuration-time metamodel ({@link org.hibernate.cfg.Mappings}) from meta DataBaseModel
  */
+@Deprecated
 public final class MetaMappingBinder {
 
     private static final Logger LOG = LoggerFactory.getLogger(MetaMappingBinder.class);
