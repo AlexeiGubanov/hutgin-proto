@@ -26,7 +26,7 @@ public class EntitySessionFactoryTest {
     @Autowired
     private EntitySessionFactory sessionFactory;
 
-    //    @Test
+    @Test
     public void testGetSessionFactory1() throws Exception {
         assertFalse(sessionFactory == null);
 
@@ -72,7 +72,7 @@ public class EntitySessionFactoryTest {
         tx.commit();
     }
 
-    @Test
+    //    @Test
     public void testGetSessionFactory() throws Exception {
         assertFalse(sessionFactory == null);
 
@@ -89,14 +89,6 @@ public class EntitySessionFactoryTest {
         id.setTableName(t1.getName());
         t1.getFields().add(id);
 
-//        ConstraintPKMeta pk = new ConstraintPKMeta();
-//        pk.setType(ConstraintType.PK);
-//        pk.getFields().add(id);
-//        pk.setName("PK");
-//        pk.setTable(t1);
-//        pk.setTableName(t1.getName());
-//        t1.getConstraints().add(pk);
-
         FieldMeta f1 = new FieldMeta();
         f1.setName("firstname");
         f1.setType(String.class);
@@ -108,6 +100,22 @@ public class EntitySessionFactoryTest {
 
         sessionFactory.initWithDatabaseModelSourceProcessor(model);
 
+        Session s = sessionFactory.getSessionFactory().getCurrentSession();
+        Transaction tx = s.beginTransaction();
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", "1");
+        map.put("firstname", "123");
+        s.save("Employee", map);
+        DetachedCriteria dc = DetachedCriteria.forEntityName("Employee");
+        Criteria c = dc.getExecutableCriteria(s);
+        assertEquals(1, c.list().size());
+        tx.commit();
+    }
+
+    //    @Test
+    public void testGetSessionFactory2() throws Exception {
+        assertFalse(sessionFactory == null);
+        sessionFactory.initAsMetamodel("testData/hbm/jaxb-sample.hbm.xml");
         Session s = sessionFactory.getSessionFactory().getCurrentSession();
         Transaction tx = s.beginTransaction();
         Map<String, Object> map = new HashMap<>();

@@ -63,7 +63,7 @@ public class DatabaseModelMetadataBuilderImpl implements MetadataBuilder {
         return new DatabaseModelMetadataImpl(sources, options, model);
     }
 
-    private static class OptionsImpl implements Metadata.Options {
+    protected static class OptionsImpl implements Metadata.Options {
         private MetadataSourceProcessingOrder metadataSourceProcessingOrder = MetadataSourceProcessingOrder.HBM_FIRST;
         private NamingStrategy namingStrategy = EJB3NamingStrategy.INSTANCE;
         private SharedCacheMode sharedCacheMode = SharedCacheMode.ENABLE_SELECTIVE;
