@@ -46,19 +46,7 @@ TODO:
         4.1.1 metadataSources.metadataBuilder: new MetadataImpl( sources, options );
 5. sessionFactory = metadata.buildSessionFactory();
 
-// !!!!!
-MetadataImpl.metadataSourceProcessors = new MetadataSourceProcessor[] {
-                                        					new HbmMetadataSourceProcessorImpl( this ),
-                                        					new AnnotationMetadataSourceProcessorImpl( this )
-                                        			};
 
-нужно сюда свой процессор
-
-
-
-WAYS:
- 1. Implement MetadataSourceProcessor - DatabaseModelMetadataSourceProcessor - needs MetadataSource extending to support my DatabaseModel
- 2. Implement own MetadataBuilderImpl that will build Metadata instance based on DatabaseModel with specified ServiceRegistry
 
 
 2013-03-01
@@ -111,4 +99,11 @@ TableMeta шарится на все приложение.
  add Properties to *Meta classes: persist as string but will be parsed in runtime
  support all custom properties in TODOs from this field
 
-  build MetaData using DatabaseModelSourceProcessor
+
+2013-03-14 TODO
+   !!!! Metamodel ignores dynamic-map-entity mode,
+   при создании createEntityPersister
+   DatabaseModelMetadataImpl.makeClassReference(final String className)
+    className = null always
+ожидается в версии 5.0
+   переписать через маппинги

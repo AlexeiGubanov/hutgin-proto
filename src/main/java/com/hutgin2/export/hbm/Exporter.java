@@ -22,15 +22,16 @@ public class Exporter {
         List<Object> classes = mapping.getClazzOrSubclassOrJoinedSubclass();
         for (TableMeta table : model.getTables()) {
             JaxbHibernateMapping.JaxbClass e = new JaxbHibernateMapping.JaxbClass();
-            e.setName(table.getName());
+//            e.setName(table.getName());
             e.setEntityName(table.getName());
+            e.setTable(table.getName());
             classes.add(e);
             List<Object> ep = e.getPropertyOrManyToOneOrOneToOne();
             for (FieldMeta field : table.getFields()) {
                 JaxbPropertyElement p = new JaxbPropertyElement();
                 p.setColumn(field.getName());
                 p.setName(field.getName());
-                p.setTypeAttribute(field.getType().toString());
+                p.setTypeAttribute(field.getType().getName());
                 if (field.getSize() != null)
                     p.setLength(field.getSize().toString());
                 ep.add(p);
