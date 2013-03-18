@@ -1,5 +1,7 @@
 package com.hutgin2.dao.hibernate;
 
+import com.hutgin2.dao.hibernate.hack.DMMetadataSources;
+import com.hutgin2.dao.hibernate.hack.DMSourceProcessorMappingBridge;
 import com.hutgin2.export.hbm.Exporter;
 import com.hutgin2.meta.DatabaseModel;
 import org.hibernate.SessionFactory;
@@ -72,6 +74,7 @@ public class EntitySessionFactory {
     /**
      * Hibernate 4 mixed approach: using metadatasorurce processor and mapping. using Spring
      */
+    @Deprecated
     public synchronized void initWithDatabaseModelSourceProcessorMapping(DatabaseModel model) {
         LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSourceMain);
         builder.getProperties().putAll(hibernatePropertiesMain);
@@ -83,8 +86,9 @@ public class EntitySessionFactory {
 
         Mappings mappings = builder.createMappings();
 
-        //TODO implement  DatabaseModelSourceProcessorMappingBridge
-        DatabaseModelSourceProcessorMappingBridge d = new DatabaseModelSourceProcessorMappingBridge(serviceRegistry, mappings, model);
+        //implement  DMSourceProcessorMappingBridge
+        // not good because it uses inner binder, that throws exception
+        DMSourceProcessorMappingBridge d = new DMSourceProcessorMappingBridge(serviceRegistry, mappings, model);
         // finally, construct session factory
         sessionFactory = builder.buildSessionFactory();
     }
@@ -92,6 +96,8 @@ public class EntitySessionFactory {
 
     /**
      * Hibernate 4 approach: using metadatasorurce processor. Not using Spring
+     * Throws NPE when trying to build session factory during retrieving corresponding class for entity (using dynamic-map mode)
+     * line 69 AbstractAttributeContainer
      */
     public synchronized void initWithDatabaseModelSourceProcessor(DatabaseModel model) {
         // service registry builder
@@ -102,7 +108,7 @@ public class EntitySessionFactory {
         // get service registry instance
         ServiceRegistry serviceRegistry = serviceRegistryBuilder.buildServiceRegistry();
         // construct metadata sources
-        MetadataSources metadataSources = new DatabaseModelMetadataSources(serviceRegistry, model);
+        MetadataSources metadataSources = new DMMetadataSources(serviceRegistry, model);
         // construct metadata
         Metadata metadata = metadataSources.buildMetadata();
         // finally, construct session factory
@@ -110,7 +116,7 @@ public class EntitySessionFactory {
     }
 
     /**
-     * Hibernate 4 approach: using metadatasorurce processor. Not using Spring
+     * Hibernate 4 approach: using metadatasorurce processor and cross bridge to Mappings. Using Spring
      */
     public synchronized void initWithDatabaseModelMetadataToMappingBinder(DatabaseModel model) {
         // service registry builder
@@ -121,7 +127,7 @@ public class EntitySessionFactory {
         // get service registry instance
         ServiceRegistry serviceRegistry = serviceRegistryBuilder.buildServiceRegistry();
         // construct metadata sources
-        MetadataSources metadataSources = new DatabaseModelMetadataSources(serviceRegistry, model);
+        MetadataSources metadataSources = new DMMetadataSources(serviceRegistry, model);
         // construct metadata
         Metadata metadata = metadataSources.buildMetadata();
 

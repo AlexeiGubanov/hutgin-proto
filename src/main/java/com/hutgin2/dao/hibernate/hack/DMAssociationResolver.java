@@ -1,4 +1,4 @@
-package com.hutgin2.dao.hibernate;
+package com.hutgin2.dao.hibernate.hack;
 
 import org.hibernate.metamodel.binding.AttributeBinding;
 import org.hibernate.metamodel.binding.EntityBinding;
@@ -10,10 +10,10 @@ import org.hibernate.metamodel.source.MetadataImplementor;
  * {@link org.hibernate.metamodel.source.internal.AssociationResolver}
  * TODO review
  */
-public class DatabaseModelAssociationResolver {
+public class DMAssociationResolver {
     private final MetadataImplementor metadata;
 
-    DatabaseModelAssociationResolver(MetadataImplementor metadata) {
+    DMAssociationResolver(MetadataImplementor metadata) {
         this.metadata = metadata;
     }
 

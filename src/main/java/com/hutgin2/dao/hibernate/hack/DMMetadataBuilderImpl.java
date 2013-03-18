@@ -1,4 +1,4 @@
-package com.hutgin2.dao.hibernate;
+package com.hutgin2.dao.hibernate.hack;
 
 import com.hutgin2.meta.DatabaseModel;
 import org.hibernate.cache.spi.access.AccessType;
@@ -17,12 +17,12 @@ import javax.persistence.SharedCacheMode;
 /**
  * Kind of hack to support DatabaseModel
  */
-public class DatabaseModelMetadataBuilderImpl implements MetadataBuilder {
+public class DMMetadataBuilderImpl implements MetadataBuilder {
     private final MetadataSources sources;
     private final OptionsImpl options;
     private final DatabaseModel model;
 
-    public DatabaseModelMetadataBuilderImpl(MetadataSources sources, DatabaseModel model) {
+    public DMMetadataBuilderImpl(MetadataSources sources, DatabaseModel model) {
         this.model = model;
         this.sources = sources;
         this.options = new OptionsImpl(sources.getServiceRegistry());
@@ -60,7 +60,7 @@ public class DatabaseModelMetadataBuilderImpl implements MetadataBuilder {
 
     @Override
     public Metadata buildMetadata() {
-        return new DatabaseModelMetadataImpl(sources, options, model);
+        return new DMMetadataImpl(sources, options, model);
     }
 
     protected static class OptionsImpl implements Metadata.Options {

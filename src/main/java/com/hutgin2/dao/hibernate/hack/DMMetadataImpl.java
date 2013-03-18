@@ -1,5 +1,6 @@
-package com.hutgin2.dao.hibernate;
+package com.hutgin2.dao.hibernate.hack;
 
+import com.hutgin2.dao.hibernate.DatabaseModelSourceProcessor;
 import com.hutgin2.meta.DatabaseModel;
 import org.hibernate.*;
 import org.hibernate.cache.spi.RegionFactory;
@@ -41,9 +42,9 @@ import java.util.Map;
 /**
  * Kind of hack to inject  DatabaseModelSourceProcessor into processors
  */
-public class DatabaseModelMetadataImpl implements MetadataImplementor, Serializable {
+public class DMMetadataImpl implements MetadataImplementor, Serializable {
 
-    private static final Logger LOG = LoggerFactory.getLogger(DatabaseModelMetadataImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DMMetadataImpl.class);
 
     private final ServiceRegistry serviceRegistry;
     private final Metadata.Options options;
@@ -78,7 +79,7 @@ public class DatabaseModelMetadataImpl implements MetadataImplementor, Serializa
 
     private boolean globallyQuotedIdentifiers = false;
 
-    public DatabaseModelMetadataImpl(MetadataSources metadataSources, Metadata.Options options, DatabaseModel model) {
+    public DMMetadataImpl(MetadataSources metadataSources, Metadata.Options options, DatabaseModel model) {
         this.serviceRegistry = metadataSources.getServiceRegistry();
         this.options = options;
         this.identifierGeneratorFactory = serviceRegistry.getService(MutableIdentifierGeneratorFactory.class);
@@ -115,9 +116,9 @@ public class DatabaseModelMetadataImpl implements MetadataImplementor, Serializa
         bindMappingMetadata(metadataSourceProcessors, metadataSources, processedEntityNames);
         bindMappingDependentMetadata(metadataSourceProcessors, metadataSources);
 
-        new DatabaseModelAssociationResolver(this).resolve();
-        new DatabaseModelTypeResolver(this).resolve();
-        new DatabaseModelIdentifierGeneratorResolver(this).resolve();
+        new DMAssociationResolver(this).resolve();
+        new DMTypeResolver(this).resolve();
+        new DMIdentifierGeneratorResolver(this).resolve();
     }
 
     private void prepare(MetadataSourceProcessor[] metadataSourceProcessors, MetadataSources metadataSources) {
@@ -306,14 +307,19 @@ public class DatabaseModelMetadataImpl implements MetadataImplementor, Serializa
 
     @Override
     public ValueHolder<Class<?>> makeClassReference(final String className) {
-        return new ValueHolder<Class<?>>(
-                new ValueHolder.DeferredInitializer<Class<?>>() {
-                    @Override
-                    public Class<?> initialize() {
-                        return classLoaderService.getValue().classForName(className);
-                    }
-                }
-        );
+        return null;
+//        return new ValueHolder<Class<?>>(
+//                new ValueHolder.DeferredInitializer<Class<?>>() {
+//                    @Override
+//                    public Class<?> initialize() {
+//                        // NOTE MY FIX
+//                        if (className == null)
+//                            return null;
+//                        // #NOTE
+//                        return classLoaderService.getValue().classForName(className);
+//                    }
+//                }
+//        );
     }
 
     @Override
@@ -564,7 +570,7 @@ public class DatabaseModelMetadataImpl implements MetadataImplementor, Serializa
 
         @Override
         public SessionFactory buildSessionFactory() {
-            return new SessionFactoryImpl(DatabaseModelMetadataImpl.this, options, null);
+            return new SessionFactoryImpl(DMMetadataImpl.this, options, null);
         }
 
         class SessionFactoryOptionsImpl implements SessionFactory.SessionFactoryOptions {

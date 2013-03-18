@@ -2,13 +2,13 @@ package com.hutgin2.dao.hibernate;
 
 import com.hutgin2.dao.hibernate.binder.EntityHierarchyImpl;
 import com.hutgin2.dao.hibernate.binder.RootEntitySourceImpl;
+import com.hutgin2.dao.hibernate.hack.DMBinder;
 import com.hutgin2.meta.DatabaseModel;
 import com.hutgin2.meta.TableMeta;
 import org.hibernate.metamodel.MetadataSources;
 import org.hibernate.metamodel.source.LocalBindingContext;
 import org.hibernate.metamodel.source.MetadataImplementor;
 import org.hibernate.metamodel.source.MetadataSourceProcessor;
-import org.hibernate.metamodel.source.binder.Binder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +58,7 @@ public class DatabaseModelSourceProcessor implements MetadataSourceProcessor {
 
     @Override
     public void processMappingMetadata(MetadataSources sources, List<String> processedEntityNames) {
-        Binder binder = new Binder(metadata, processedEntityNames);
+        DMBinder binder = new DMBinder(metadata, processedEntityNames);
         for (EntityHierarchyImpl entityHierarchy : entityHierarchies) {
             binder.processEntityHierarchy(entityHierarchy);
         }

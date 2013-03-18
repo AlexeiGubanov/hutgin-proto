@@ -1,4 +1,4 @@
-package com.hutgin2.dao.hibernate;
+package com.hutgin2.dao.hibernate.hack;
 
 import org.hibernate.AssertionFailure;
 import org.hibernate.metamodel.binding.*;
@@ -17,10 +17,10 @@ import java.util.Properties;
  * <p/>
  * TODO review
  */
-public class DatabaseModelTypeResolver {
+public class DMTypeResolver {
     private final MetadataImplementor metadata;
 
-    DatabaseModelTypeResolver(MetadataImplementor metadata) {
+    DMTypeResolver(MetadataImplementor metadata) {
         this.metadata = metadata;
     }
 
