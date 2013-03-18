@@ -33,12 +33,6 @@ http://docs.oracle.com/javaee/6/tutorial/doc/gjivm.html
 
 // see http://www.manydesigns.com/en/blog/configuring-hibernate-programmatically logical model
 
-TODO:
-  class is not exists (Employee) and we get exception NPE when try to retrive class
-  line 69 AbstractAttributeContainer
-
-
-
 1. Build ServiceRegistry instance
 2. MetadataSources metadataSources = new MetadataSources(serviceRegistry);
     2.1 metadataSources.metadataBuilder = new MetadataBuilderImpl( this );
@@ -103,10 +97,22 @@ sync Binder and DMBinder
  support all custom properties in TODOs from this field
 
 
-2013-03-14 TODO
+2013-03-14
    !!!! Metamodel ignores dynamic-map-entity mode,
    при создании createEntityPersister
    DatabaseModelMetadataImpl.makeClassReference(final String className)
     className = null always
 ожидается в версии 5.0
    переписать через маппинги
+
+
+2013-03-18 TODO after new hacks integrated!
+EntityMetamodel:388
+instrumentationMetadata = Environment.getBytecodeProvider().getEntityInstrumentationMetadata( mappedClass );
+mappedClass = null;!
+
+used by SingleTableEntityPersister, constructor with EntityBinding
+used by PersisterFactoryImpl 151 line
+used by SessionFactoryImpl:773 - point to provide my own PersisterFactoryImpl?
+
+or build using mappings? (from Metamodel?)
