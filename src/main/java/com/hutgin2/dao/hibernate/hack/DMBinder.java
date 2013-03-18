@@ -150,12 +150,14 @@ public class DMBinder {
         final String entityName = entitySource.getEntityName();
         final String className = currentHierarchyEntityMode == EntityMode.POJO ? entitySource.getClassName() : null;
 
-        final Entity entity = new Entity(
+        // HACK
+        final Entity entity = new DMEntity(
                 entityName,
                 className,
                 currentBindingContext.makeClassReference(className),
                 superEntityBinding == null ? null : superEntityBinding.getEntity()
         );
+        // #HACK
         entityBinding.setEntity(entity);
 
         entityBinding.setJpaEntityName(entitySource.getJpaEntityName());
