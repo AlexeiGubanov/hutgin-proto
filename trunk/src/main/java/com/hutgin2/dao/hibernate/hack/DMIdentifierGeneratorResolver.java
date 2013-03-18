@@ -1,4 +1,4 @@
-package com.hutgin2.dao.hibernate;
+package com.hutgin2.dao.hibernate.hack;
 
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.NamingStrategy;
@@ -16,10 +16,10 @@ import java.util.Properties;
  * {@link org.hibernate.metamodel.source.internal.IdentifierGeneratorResolver}
  * TODO review
  */
-public class DatabaseModelIdentifierGeneratorResolver {
+public class DMIdentifierGeneratorResolver {
     private final MetadataImplementor metadata;
 
-    DatabaseModelIdentifierGeneratorResolver(MetadataImplementor metadata) {
+    DMIdentifierGeneratorResolver(MetadataImplementor metadata) {
         this.metadata = metadata;
     }
 

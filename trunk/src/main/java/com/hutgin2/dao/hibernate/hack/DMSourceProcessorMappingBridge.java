@@ -1,5 +1,6 @@
-package com.hutgin2.dao.hibernate;
+package com.hutgin2.dao.hibernate.hack;
 
+import com.hutgin2.dao.hibernate.DatabaseModelSourceProcessor;
 import com.hutgin2.meta.DatabaseModel;
 import org.hibernate.MappingException;
 import org.hibernate.SessionFactory;
@@ -27,17 +28,17 @@ import java.util.Map;
 /**
  * TODO see MetaMappingBinder
  */
-public class DatabaseModelSourceProcessorMappingBridge implements MetadataImplementor {
+public class DMSourceProcessorMappingBridge implements MetadataImplementor {
     private Mappings mappings;
     final ArrayList<String> processedEntityNames = new ArrayList<String>();
     private ServiceRegistry registry;
     private final Database database;
     private TypeResolver typeResolver = new TypeResolver();
 
-    public DatabaseModelSourceProcessorMappingBridge(ServiceRegistry registry, Mappings mappings, DatabaseModel model) {
+    public DMSourceProcessorMappingBridge(ServiceRegistry registry, Mappings mappings, DatabaseModel model) {
         this.mappings = mappings;
         this.registry = registry;
-        this.database = new Database(new DatabaseModelMetadataBuilderImpl.OptionsImpl(registry));
+        this.database = new Database(new DMMetadataBuilderImpl.OptionsImpl(registry));
         DatabaseModelSourceProcessor processor = new DatabaseModelSourceProcessor(this, model);
         processor.prepare(null);
         processor.processIndependentMetadata(null);

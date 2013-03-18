@@ -37,6 +37,8 @@ TODO:
   class is not exists (Employee) and we get exception NPE when try to retrive class
   line 69 AbstractAttributeContainer
 
+
+
 1. Build ServiceRegistry instance
 2. MetadataSources metadataSources = new MetadataSources(serviceRegistry);
     2.1 metadataSources.metadataBuilder = new MetadataBuilderImpl( this );
@@ -93,6 +95,7 @@ TableMeta шарится на все приложение.
 заполняется в рантайм
 
 10. Keep in mind: all binder method needs to be reviewed from time to time
+sync Binder and DMBinder
 
 
 2013-03-07 TODO
