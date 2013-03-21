@@ -254,6 +254,7 @@ public class FieldMeta extends MetaEntity {
     private boolean isProcessed;
 
     @Transient
+    @Deprecated
     public boolean isProcessed() {
         return isProcessed;
     }

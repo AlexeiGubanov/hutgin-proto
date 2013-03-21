@@ -84,6 +84,17 @@ public class EntitySessionFactory {
     }
 
     /**
+     * Spring LocalSessionFactoryBean approach. Based on hibernate 3 approach, but wrapped with spring functionality.
+     * Actual
+     */
+    public synchronized void initWithMetaMappingBinder2(DatabaseModel model) {
+        LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSourceMain);
+        builder.getProperties().putAll(hibernatePropertiesMain);
+        MetaMappingBinder2.bindModel(model, builder.createMappings());
+        sessionFactory = builder.buildSessionFactory();
+    }
+
+    /**
      * Hibernate 4 approach: using metadatasorurce processor. Not using Spring
      * Throws NPE when trying to build session factory during retrieving corresponding class for entity (using dynamic-map mode)
      * Waiting for Hibernate 5

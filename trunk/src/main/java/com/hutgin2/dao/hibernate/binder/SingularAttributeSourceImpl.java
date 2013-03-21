@@ -43,12 +43,14 @@ public class SingularAttributeSourceImpl implements SingularAttributeSource {
 
     @Override
     public boolean isInsertable() {
-        return !fieldMeta.isVirtual(); //TODO check against isVirtual, may be must be always true
+        // TODO add support
+        return !fieldMeta.isVirtual() && fieldMeta.getInsertGenerationStrategy() != ValueGenerationStrategy.DATABASE;
     }
 
     @Override
     public boolean isUpdatable() {
-        return !fieldMeta.isVirtual(); //TODO check against isVirtual, may be must be always true
+        // TODO add support
+        return !fieldMeta.isVirtual() && fieldMeta.getInsertGenerationStrategy() != ValueGenerationStrategy.DATABASE;
     }
 
     @Override
@@ -95,7 +97,7 @@ public class SingularAttributeSourceImpl implements SingularAttributeSource {
 
     @Override
     public boolean isIncludedInOptimisticLocking() {
-        return false;  //TODO check possibilty to support this flag, by default false
+        return true;  //TODO check possibilty to support this flag, by default true
     }
 
     @Override

@@ -19,6 +19,8 @@ import java.util.Properties;
 /**
  * Bind configuration-time metamodel ({@link org.hibernate.cfg.Mappings}) from meta DataBaseModel
  * Based on {@link org.hibernate.cfg.HbmBinder}
+ *
+ * @deprecated
  */
 public final class MetaMappingBinder {
 
@@ -31,30 +33,15 @@ public final class MetaMappingBinder {
     }
 
     /**
-     *
+     * inheritedMetas - параметры для всей системы
      */
     public static void bindDatabaseModel(
             DatabaseModel model,
             Mappings mappings,
             Map inheritedMetas) {
-
-        //SS Extract package name
-//         java.util.List<String> names = HbmBinder.getExtendsNeeded(metadataXml, mappings);
-//        if (!names.isEmpty()) {
-//            // classes mentioned in extends not available - so put it in queue
-//            Attribute packageAttribute = hibernateMappingElement.attribute("package");
-//            String packageName = packageAttribute == null ? null : packageAttribute.getValue();
-//            for (String name : names) {
-//                mappings.addToExtendsQueue(new ExtendsQueueEntry(name, packageName, metadataXml, entityNames));
-//            }
-//            return;
-//        }
-
         // get meta's from <hibernate-mapping>
         inheritedMetas = getMetas(model, inheritedMetas, true);
         extractRootAttributes(model, mappings);
-
-
         // PROCESS TABLES
 
 //            if ("filter-def".equals(elementName)) {
@@ -171,6 +158,7 @@ public final class MetaMappingBinder {
 //    }
 //
     private static void extractRootAttributes(DatabaseModel model, Mappings mappings) {
+        // TODO apply from database model
 //        Attribute schemaNode = hmNode.attribute("schema");
 //        mappings.setSchemaName((schemaNode == null) ? null : schemaNode.getValue());
 //

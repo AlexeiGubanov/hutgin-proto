@@ -7,7 +7,8 @@ import javax.persistence.Transient;
 public class MetaEntity {
 
     /**
-     * Flag if entity itself is persistent.
+     * Flag if entity itself (as a database record) is persistent.
+     * User to add any fantom objects into memory model
      */
     private boolean persistable = true;
 
