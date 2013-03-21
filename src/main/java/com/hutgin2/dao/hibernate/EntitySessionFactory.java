@@ -1,5 +1,6 @@
 package com.hutgin2.dao.hibernate;
 
+import com.hutgin2.dao.hibernate.binderMapping.DatabaseModelBinder;
 import com.hutgin2.dao.hibernate.hack.DMMetadataSources;
 import com.hutgin2.export.hbm.Exporter;
 import com.hutgin2.meta.DatabaseModel;
@@ -90,7 +91,8 @@ public class EntitySessionFactory {
     public synchronized void initWithMetaMappingBinder2(DatabaseModel model) {
         LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSourceMain);
         builder.getProperties().putAll(hibernatePropertiesMain);
-        MetaMappingBinder2.bindModel(model, builder.createMappings());
+//        MetaMappingBinder2.bindModel(model, builder.createMappings());
+        new DatabaseModelBinder(model).bind(builder.createMappings());
         sessionFactory = builder.buildSessionFactory();
     }
 

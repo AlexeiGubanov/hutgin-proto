@@ -961,7 +961,7 @@ public class MetaMappingBinder2 {
             // TODO review regarding secondPass
             BasicType basicType = mappings.getTypeResolver().basic(typeName);
             if (basicType == null) {
-				/*
+                /*
 				 * If the referenced typeName isn't a basic-type, it's probably a typedef defined
 				 * in a mapping file not read yet.
 				 * It should be solved by deferring the resolution and binding of this type until
@@ -2762,7 +2762,7 @@ public class MetaMappingBinder2 {
         public void handleEntity(String entityName, String className, Mappings mappings);
     }
 
-    private static class ResolveUserTypeMappingSecondPass implements SecondPass {
+    public static class ResolveUserTypeMappingSecondPass implements SecondPass {
 
         private SimpleValue simpleValue;
         private String typeName;

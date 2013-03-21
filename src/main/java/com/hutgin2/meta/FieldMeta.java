@@ -20,7 +20,8 @@ public class FieldMeta extends MetaEntity {
 
     private String name;
 
-    private String description;
+    private String fieldName;
+
 
     private String tableName;
 
@@ -92,13 +93,13 @@ public class FieldMeta extends MetaEntity {
         this.name = name;
     }
 
-    @Column(length = 1024)
-    public String getDescription() {
-        return description;
+    @Column(length = 255)
+    public String getFieldName() {
+        return fieldName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
     }
 
     @Index(name = "IDX_META_FIELD_TYPE")
