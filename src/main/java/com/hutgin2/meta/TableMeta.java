@@ -50,6 +50,28 @@ public class TableMeta extends MetaEntity {
         return constraints;
     }
 
+    @Transient
+    public Set<ConstraintIDXMeta> getConstraintIDXs() {
+        Set<ConstraintIDXMeta> result = new HashSet<>();
+        for (ConstraintMeta constraintMeta : getConstraints()) {
+            if (constraintMeta instanceof ConstraintIDXMeta) {
+                result.add((ConstraintIDXMeta) constraintMeta);
+            }
+        }
+        return result;
+    }
+
+    @Transient
+    public Set<ConstraintUQMeta> getConstraintUQs() {
+        Set<ConstraintUQMeta> result = new HashSet<>();
+        for (ConstraintMeta constraintMeta : getConstraints()) {
+            if (constraintMeta instanceof ConstraintUQMeta) {
+                result.add((ConstraintUQMeta) constraintMeta);
+            }
+        }
+        return result;
+    }
+
     public void setConstraints(Set<ConstraintMeta> indices) {
         this.constraints = indices;
     }
