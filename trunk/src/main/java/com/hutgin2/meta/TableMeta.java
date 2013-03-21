@@ -7,9 +7,18 @@ import java.util.Set;
 @Entity
 @Table(name = "META_TABLE")
 public class TableMeta extends MetaEntity {
+
+    public static final String PROPERTY_LAZY = "lazy";
+
+
     private String name;
+
+    private String tableName;
+
     private Set<FieldMeta> fields;
+
     private Set<ConstraintMeta> constraints;
+
     /**
      * Determines that corresponding column in DB is not presented.
      */
@@ -30,6 +39,15 @@ public class TableMeta extends MetaEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Column(length = 255)
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
     }
 
     @OneToMany(targetEntity = FieldMeta.class, mappedBy = "table")
@@ -99,5 +117,13 @@ public class TableMeta extends MetaEntity {
     @Override
     public int hashCode() {
         return name.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "TableMeta{" +
+                "name='" + name + '\'' +
+                ", tableName='" + tableName + '\'' +
+                '}';
     }
 }
