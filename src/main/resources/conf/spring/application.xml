@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <context:annotation-config/>
-    <context:component-scan base-package="com.hutgin,com.hutgin2"/>
+    <context:component-scan base-package="com.hutgin2"/>
 
 
     <!-- Property placeholder -->
@@ -33,7 +33,7 @@
         <property name="useCodeAsDefaultMessage" value="true"/>
     </bean>
 
-    <bean id="messageHelper" class="com.hutgin.util.MessagesHelperImpl">
+    <bean id="messageHelper" class="com.hutgin2.util.MessagesHelperImpl">
         <property name="messageSource" ref="messageSource"/>
     </bean>
     <!-- #Messages -->
