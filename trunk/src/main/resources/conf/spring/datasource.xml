@@ -41,7 +41,7 @@
     <!--<property name="dataSource" ref="dataSource"/>-->
     <!--<property name="packagesToScan">-->
     <!--<list>-->
-    <!--<value>com.hutgin2.meta</value>-->
+    <!--<value>com.hutgin2.core.meta</value>-->
     <!--</list>-->
     <!--</property>-->
     <!--<property name="jpaProperties">-->
@@ -66,7 +66,7 @@
         </property>
         <property name="packagesToScan">
             <list>
-                <value>com.hutgin2.meta</value>
+                <value>com.hutgin2.core.meta</value>
             </list>
         </property>
         <!--<property name="entityInterceptor">-->

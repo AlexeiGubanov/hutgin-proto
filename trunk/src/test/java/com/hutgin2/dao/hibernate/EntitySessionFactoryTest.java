@@ -1,9 +1,10 @@
 package com.hutgin2.dao.hibernate;
 
-import com.hutgin2.meta.DatabaseModel;
-import com.hutgin2.meta.FieldMeta;
-import com.hutgin2.meta.TableMeta;
-import com.hutgin2.meta.ValueGenerationStrategy;
+import com.hutgin2.core.meta.DatabaseModel;
+import com.hutgin2.core.meta.FieldMeta;
+import com.hutgin2.core.meta.TableMeta;
+import com.hutgin2.core.meta.ValueGenerationStrategy;
+import com.hutgin2.inject.hibernate.EntitySessionFactory;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

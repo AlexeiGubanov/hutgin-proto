@@ -1,6 +1,9 @@
 package com.hutgin2.dao.hibernate;
 
-import com.hutgin2.meta.*;
+import com.hutgin2.core.meta.DatabaseModel;
+import com.hutgin2.core.meta.FieldMeta;
+import com.hutgin2.core.meta.TableMeta;
+import com.hutgin2.inject.hibernate.EntitySessionFactory;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -26,51 +29,51 @@ public class EntitySessionFactoryTestOld {
     @Autowired
     private EntitySessionFactory sessionFactory;
 
-    //    @Test
-    public void testGetSessionFactory1() throws Exception {
-        assertFalse(sessionFactory == null);
-
-
-        DatabaseModel model = new DatabaseModel();
-        List<TableMeta> tables = new ArrayList<>();
-
-        TableMeta t1 = new TableMeta("Employee");
-
-        FieldMeta id = new FieldMeta();
-        id.setName("id");
-        id.setType(String.class);
-        id.setTableName(t1.getName());
-        t1.getFields().add(id);
-
-        ConstraintPKMeta pk = new ConstraintPKMeta();
-        pk.setType(ConstraintType.PK);
-        pk.getFields().add(id);
-        pk.setName("PK");
-        pk.setTable(t1);
-        pk.setTableName(t1.getName());
-        t1.getConstraints().add(pk);
-
-        FieldMeta f1 = new FieldMeta();
-        f1.setName("firstname");
-        f1.setType(String.class);
-        f1.setTableName(t1.getName());
-        t1.getFields().add(f1);
-
-        tables.add(t1);
-        model.setTables(tables);
-        sessionFactory.init(model);
-
-        Session s = sessionFactory.getSessionFactory().getCurrentSession();
-        Transaction tx = s.beginTransaction();
-        Map<String, Object> map = new HashMap<>();
-        map.put("id", "1");
-        map.put("firstname", "123");
-        s.save("Employee", map);
-        DetachedCriteria dc = DetachedCriteria.forEntityName("Employee");
-        Criteria c = dc.getExecutableCriteria(s);
-        assertEquals(1, c.list().size());
-        tx.commit();
-    }
+//    //    @Test
+//    public void testGetSessionFactory1() throws Exception {
+//        assertFalse(sessionFactory == null);
+//
+//
+//        DatabaseModel model = new DatabaseModel();
+//        List<TableMeta> tables = new ArrayList<>();
+//
+//        TableMeta t1 = new TableMeta("Employee");
+//
+//        FieldMeta id = new FieldMeta();
+//        id.setName("id");
+//        id.setType(String.class);
+//        id.setTableName(t1.getName());
+//        t1.getFields().add(id);
+//
+//        ConstraintPKMeta pk = new ConstraintPKMeta();
+//        pk.setType(ConstraintType.PK);
+//        pk.getFields().add(id);
+//        pk.setName("PK");
+//        pk.setTable(t1);
+//        pk.setTableName(t1.getName());
+//        t1.getConstraints().add(pk);
+//
+//        FieldMeta f1 = new FieldMeta();
+//        f1.setName("firstname");
+//        f1.setType(String.class);
+//        f1.setTableName(t1.getName());
+//        t1.getFields().add(f1);
+//
+//        tables.add(t1);
+//        model.setTables(tables);
+//        sessionFactory.init(model);
+//
+//        Session s = sessionFactory.getSessionFactory().getCurrentSession();
+//        Transaction tx = s.beginTransaction();
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("id", "1");
+//        map.put("firstname", "123");
+//        s.save("Employee", map);
+//        DetachedCriteria dc = DetachedCriteria.forEntityName("Employee");
+//        Criteria c = dc.getExecutableCriteria(s);
+//        assertEquals(1, c.list().size());
+//        tx.commit();
+//    }
 
 
 //    //    @Test
