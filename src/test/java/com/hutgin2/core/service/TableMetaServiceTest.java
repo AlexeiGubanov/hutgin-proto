@@ -1,43 +1,25 @@
-package com.hutgin2.dao.hibernate;
+package com.hutgin2.core.service;
 
-import com.hutgin2.core.meta.DatabaseModel;
 import com.hutgin2.core.meta.FieldMeta;
 import com.hutgin2.core.meta.TableMeta;
 import com.hutgin2.core.meta.ValueGenerationStrategy;
-import com.hutgin2.inject.hibernate.EntitySessionFactoryImpl;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.DetachedCriteria;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:conf/spring/application.xml")
-public class EntitySessionFactoryTest {
+public class TableMetaServiceTest {
 
     @Autowired
-    private EntitySessionFactoryImpl sessionFactory;
+    private TableMetaService tableMetaService;
 
     @Test
-    public void testGetSessionFactoryWithDMSourceProcessor() throws Exception {
-        assertFalse(sessionFactory == null);
-
-
-        DatabaseModel model = new DatabaseModel();
-        List<TableMeta> tables = new ArrayList<>();
-
+    public void testGetAll() throws Exception {
         TableMeta t1 = new TableMeta("Employee");
 
         FieldMeta id = new FieldMeta();
@@ -64,22 +46,9 @@ public class EntitySessionFactoryTest {
         f2.setTableName(t1.getName());
         t1.getFields().add(f2);
 
-        tables.add(t1);
-        model.setTables(tables);
+        tableMetaService.save(t1);
 
-        sessionFactory.init(model);
+        assertTrue(tableMetaService.getAll().size() > 0);
 
-        Session s = sessionFactory.getSessionFactory().getCurrentSession();
-        Transaction tx = s.beginTransaction();
-        Map<String, Object> map = new HashMap<>();
-        map.put("firstname", "123");
-        map.put("age", 10l);
-        s.save("Employee", map);
-        DetachedCriteria dc = DetachedCriteria.forEntityName("Employee");
-        Criteria c = dc.getExecutableCriteria(s);
-        assertTrue(c.list().size() > 0);
-        tx.commit();
     }
-
-
 }

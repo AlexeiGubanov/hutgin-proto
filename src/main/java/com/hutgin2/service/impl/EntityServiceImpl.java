@@ -1,24 +1,23 @@
-package com.hutgin2.core.service.impl;
+package com.hutgin2.service.impl;
 
-import com.hutgin2.core.dao.TableDao;
 import com.hutgin2.core.meta.TableMeta;
-import com.hutgin2.core.service.TableService;
+import com.hutgin2.dao.EntityDao;
+import com.hutgin2.service.EntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
 @Service
-public class TableServiceImpl implements TableService {
+public class EntityServiceImpl implements EntityService {
 
     @Autowired
-    private TableDao tableDao;
+    private EntityDao entityDao;
 
     @Override
     @Transactional(readOnly = true)
-    public List<TableMeta> getAll() {
-        return tableDao.getAll();
+    public List getAll(TableMeta tableMeta) {
+        return entityDao.getAll(tableMeta);
     }
 }

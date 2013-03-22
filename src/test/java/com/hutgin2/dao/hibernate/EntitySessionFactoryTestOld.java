@@ -3,7 +3,7 @@ package com.hutgin2.dao.hibernate;
 import com.hutgin2.core.meta.DatabaseModel;
 import com.hutgin2.core.meta.FieldMeta;
 import com.hutgin2.core.meta.TableMeta;
-import com.hutgin2.inject.hibernate.EntitySessionFactory;
+import com.hutgin2.inject.hibernate.EntitySessionFactoryImpl;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -27,7 +27,7 @@ import static org.junit.Assert.assertFalse;
 public class EntitySessionFactoryTestOld {
 
     @Autowired
-    private EntitySessionFactory sessionFactory;
+    private EntitySessionFactoryImpl sessionFactory;
 
 //    //    @Test
 //    public void testGetSessionFactory1() throws Exception {
