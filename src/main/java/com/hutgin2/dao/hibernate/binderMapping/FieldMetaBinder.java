@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.hibernate.cfg.Mappings;
 import org.hibernate.cfg.NotYetImplementedException;
 import org.hibernate.cfg.SecondPass;
+import org.hibernate.id.PersistentIdentifierGenerator;
 import org.hibernate.mapping.*;
 import org.hibernate.type.BasicType;
 
@@ -46,7 +47,7 @@ public class FieldMetaBinder implements Binder {
             persistentClass.setIdentifier(value);
             persistentClass.setIdentifierProperty(property);
             persistentClass.setDeclaredIdentifierProperty(property);
-            bindIdGeneration(value);
+            bindIdGeneration(value, mappings);
             table.setIdentifierValue(value);
         }
         String propertyAccessorName = attributeSource.getPropertyAccessorName();
@@ -202,7 +203,7 @@ public class FieldMetaBinder implements Binder {
         if (typeName != null) simpleValue.setTypeName(typeName);
     }
 
-    private void bindIdGeneration(SimpleValue value) {
+    private void bindIdGeneration(SimpleValue value, Mappings mappings) {
 
         switch (fieldMeta.getInsertGenerationStrategy()) {
             case DEFAULT_VALUE:
@@ -211,31 +212,31 @@ public class FieldMetaBinder implements Binder {
                 String generatorName = fieldMeta.getInsertGenerator();
                 // FIXME currently generatorName is hibernate generator strategy name!
                 value.setIdentifierGeneratorStrategy(generatorName);
-                // generator params!
-//                Properties params = new Properties();
-//                // YUCK!  but cannot think of a clean way to do this given the string-config based scheme
-//                params.put(PersistentIdentifierGenerator.IDENTIFIER_NORMALIZER, mappings.getObjectNameNormalizer());
-//
-//                if (mappings.getSchemaName() != null) {
-//                    params.setProperty(
-//                            PersistentIdentifierGenerator.SCHEMA,
-//                            mappings.getObjectNameNormalizer().normalizeIdentifierQuoting(mappings.getSchemaName())
-//                    );
-//                }
-//                if (mappings.getCatalogName() != null) {
-//                    params.setProperty(
-//                            PersistentIdentifierGenerator.CATALOG,
-//                            mappings.getObjectNameNormalizer().normalizeIdentifierQuoting(mappings.getCatalogName())
-//                    );
-//                }
-//
+                Properties params = new Properties();
+                // YUCK!  but cannot think of a clean way to do this given the string-config based scheme
+                params.put(PersistentIdentifierGenerator.IDENTIFIER_NORMALIZER, mappings.getObjectNameNormalizer());
+
+                if (mappings.getSchemaName() != null) {
+                    params.setProperty(
+                            PersistentIdentifierGenerator.SCHEMA,
+                            mappings.getObjectNameNormalizer().normalizeIdentifierQuoting(mappings.getSchemaName())
+                    );
+                }
+                if (mappings.getCatalogName() != null) {
+                    params.setProperty(
+                            PersistentIdentifierGenerator.CATALOG,
+                            mappings.getObjectNameNormalizer().normalizeIdentifierQuoting(mappings.getCatalogName())
+                    );
+                }
+// TODO check support additional params
 //                Iterator iter = subnode.elementIterator("param");
 //                while (iter.hasNext()) {
 //                    Element childNode = (Element) iter.next();
 //                    params.setProperty(childNode.attributeValue("name"), childNode.getTextTrim());
 //                }
 //
-//                model.setIdentifierGeneratorProperties(params);
+                value.setIdentifierGeneratorProperties(params);
+                break;
             case STORED_PROCEDURE:
                 throw new NotYetImplementedException("ID generation by stored procedure value is not yet implemented");
         }
