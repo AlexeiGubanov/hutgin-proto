@@ -3,6 +3,7 @@ package com.hutgin2.dao.hibernate;
 import com.hutgin2.meta.DatabaseModel;
 import com.hutgin2.meta.FieldMeta;
 import com.hutgin2.meta.TableMeta;
+import com.hutgin2.meta.ValueGenerationStrategy;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -18,8 +19,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:conf/spring/application.xml")
@@ -40,8 +41,10 @@ public class EntitySessionFactoryTest {
 
         FieldMeta id = new FieldMeta();
         id.setName("id");
+        id.setInsertGenerationStrategy(ValueGenerationStrategy.CLASS);
+        id.setInsertGenerator("org.hibernate.id.IncrementGenerator");
         id.setPrimaryKey(true);
-        id.setType(String.class);
+        id.setType(Long.class);
         id.setTable(t1);
         id.setTableName(t1.getName());
         t1.getFields().add(id);
@@ -53,6 +56,13 @@ public class EntitySessionFactoryTest {
         f1.setTableName(t1.getName());
         t1.getFields().add(f1);
 
+        FieldMeta f2 = new FieldMeta();
+        f2.setName("age");
+        f2.setTable(t1);
+        f2.setType(Long.class);
+        f2.setTableName(t1.getName());
+        t1.getFields().add(f2);
+
         tables.add(t1);
         model.setTables(tables);
 
@@ -61,12 +71,12 @@ public class EntitySessionFactoryTest {
         Session s = sessionFactory.getSessionFactory().getCurrentSession();
         Transaction tx = s.beginTransaction();
         Map<String, Object> map = new HashMap<>();
-        map.put("id", "1");
         map.put("firstname", "123");
+        map.put("age", 10l);
         s.save("Employee", map);
         DetachedCriteria dc = DetachedCriteria.forEntityName("Employee");
         Criteria c = dc.getExecutableCriteria(s);
-        assertEquals(1, c.list().size());
+        assertTrue(c.list().size() > 0);
         tx.commit();
     }
 

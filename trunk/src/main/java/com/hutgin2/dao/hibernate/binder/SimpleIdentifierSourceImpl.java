@@ -34,7 +34,7 @@ public class SimpleIdentifierSourceImpl implements SimpleIdentifierSource {
                 throw new NotYetImplementedException("ID generation by default value is not yet implemented");
             case CLASS:
                 String generatorName = fieldMeta.getInsertGenerator();
-                // FIXME currently generatorName is hibernate generator strategy name!
+                // FIXME currently generatorName is hibernate generator strategy name!     org.hibernate.id.IdentifierGenerato
                 // TODO hibernate generator may be provided only by its name, to resolve it use .getMetadataImplementor().getIdGenerator( generatorName );
                 // TODO wrap user provided generators with IdGenerator
                 // TODO check way of IdGenerator usage
