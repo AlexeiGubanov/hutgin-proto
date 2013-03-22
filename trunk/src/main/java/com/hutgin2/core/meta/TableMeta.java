@@ -50,7 +50,7 @@ public class TableMeta extends MetaEntity {
         this.tableName = tableName;
     }
 
-    @OneToMany(targetEntity = FieldMeta.class, mappedBy = "table")
+    @OneToMany(targetEntity = FieldMeta.class, mappedBy = "table", cascade = CascadeType.PERSIST)
     public Set<FieldMeta> getFields() {
         if (this.fields == null)
             this.fields = new HashSet<>();

@@ -11,20 +11,27 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class TableDaoImpl implements TableDao {
+public class TableDaoImpl implements TableDao { //extends GenericDAOImpl<TableMeta,String>
+
+//    @Override
+//    @Autowired
+//    public void setSessionFactory(SessionFactory sessionFactoryMeta) {
+//        super.setSessionFactory(sessionFactoryMeta);
+//    }
+
 
     @Autowired
     protected SessionFactory sessionFactoryMeta;
 
     @Override
-    public List<TableMeta> getAll() {
+    public List<TableMeta> findAll() {
         DetachedCriteria dc = DetachedCriteria.forClass(TableMeta.class);
         Criteria c = dc.getExecutableCriteria(sessionFactoryMeta.getCurrentSession());
         return c.list();
     }
 
     @Override
-    public void persist(TableMeta tableMeta) {
+    public void save(TableMeta tableMeta) {
         sessionFactoryMeta.getCurrentSession().persist(tableMeta);
     }
 }

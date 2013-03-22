@@ -4,7 +4,11 @@ import com.hutgin2.core.meta.TableMeta;
 
 import java.util.List;
 
-public interface TableService {
+public interface TableMetaService {
 
     List<TableMeta> getAll();
+
+    void save(TableMeta tableMeta);
+
+
 }

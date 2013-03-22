@@ -4,9 +4,9 @@ import com.hutgin2.core.meta.TableMeta;
 
 import java.util.List;
 
-public interface TableDao {
+public interface TableDao { //extends GenericDAO<TableMeta,String> {
 
-    List<TableMeta> getAll();
+    List<TableMeta> findAll();
 
-    void persist(TableMeta tableMeta);
+    void save(TableMeta tableMeta);
 }
