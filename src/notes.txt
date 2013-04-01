@@ -167,3 +167,6 @@ Or it can be reconfigured? Check this!
 http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/transaction.html#transaction-programmatic-ptm
 http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/transaction.html#tx-multiple-tx-mgrs-with-attransactional
 http://stackoverflow.com/questions/4423125/spring-is-it-possible-to-use-multiple-transaction-managers-in-the-same-applica
+
+
+-- metamodel - retrieve all metamodel despite lazy, etc

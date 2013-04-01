@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
+import java.util.Map;
 
 public class EntityWrappedDao {
 
@@ -24,4 +25,7 @@ public class EntityWrappedDao {
     }
 
 
+    public void save(Map<String, Object> value) {
+        sessionFactory.getCurrentSession().save(tableMeta.getName(), value);
+    }
 }
