@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 //@Transactional(value = "main")
@@ -40,6 +42,17 @@ public class EntityServiceImpl implements EntityService {
             @Override
             public Object doInTransaction(TransactionStatus status) {
                 return entityDao.getAll(tableMeta);
+            }
+        });
+    }
+
+    @Override
+    public void save(final TableMeta tableMeta, final Map<String, Object> value) {
+        TransactionTemplate tr = localCopy();
+        tr.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus status) {
+                entityDao.save(tableMeta, value);
             }
         });
     }
