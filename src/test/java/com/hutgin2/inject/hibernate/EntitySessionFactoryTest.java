@@ -1,10 +1,10 @@
-package com.hutgin2.dao.hibernate;
+package com.hutgin2.inject.hibernate;
 
 import com.hutgin2.core.meta.DatabaseModel;
 import com.hutgin2.core.meta.FieldMeta;
 import com.hutgin2.core.meta.TableMeta;
 import com.hutgin2.core.meta.ValueGenerationStrategy;
-import com.hutgin2.inject.hibernate.EntitySessionFactoryImpl;
+import junit.framework.Assert;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -20,9 +20,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:conf/spring/application.xml")
 public class EntitySessionFactoryTest {
@@ -32,7 +29,8 @@ public class EntitySessionFactoryTest {
 
     @Test
     public void testGetSessionFactoryWithDMSourceProcessor() throws Exception {
-        assertFalse(sessionFactory == null);
+
+        Assert.assertFalse(sessionFactory == null);
 
 
         DatabaseModel model = new DatabaseModel();
@@ -67,7 +65,7 @@ public class EntitySessionFactoryTest {
         tables.add(t1);
         model.setTables(tables);
 
-        sessionFactory.init(model);
+        sessionFactory.refresh(model);
 
         Session s = sessionFactory.getSessionFactory().getCurrentSession();
         Transaction tx = s.beginTransaction();
@@ -77,7 +75,7 @@ public class EntitySessionFactoryTest {
         s.save("Employee", map);
         DetachedCriteria dc = DetachedCriteria.forEntityName("Employee");
         Criteria c = dc.getExecutableCriteria(s);
-        assertTrue(c.list().size() > 0);
+        Assert.assertTrue(c.list().size() > 0);
         tx.commit();
     }
 

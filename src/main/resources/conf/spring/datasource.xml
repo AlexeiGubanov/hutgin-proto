@@ -15,6 +15,37 @@
         <property name="password" value="${meta.jdbc.password}"/>
     </bean>
 
+    <!-- Hibernate sessionFactoryMeta -->
+    <bean id="sessionFactoryMeta" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceMeta"/>
+        <property name="hibernateProperties">
+            <bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+                <property name="location" value="classpath:conf/hibernate/hibernateMeta.properties"/>
+            </bean>
+        </property>
+        <property name="packagesToScan">
+            <list>
+                <value>com.hutgin2.core.meta</value>
+            </list>
+        </property>
+        <!--<property name="entityInterceptor">-->
+        <!--<bean class="org.swas.dao.hibernate.util.CommonInterceptor"/>-->
+        <!--</property>-->
+    </bean>
+
+    <bean id="transactionManagerMeta" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactoryMeta"/>
+        <qualifier value="meta"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManagerMeta"/>
+
+
+    <!-- properties for main session -->
+    <bean name="hibernatePropertiesMain" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:conf/hibernate/hibernateMain.properties"/>
+    </bean>
+
     <!-- dataSource for main -->
     <bean id="dataSourceMain" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${main.jdbc.driverClassName}"/>
@@ -24,9 +55,16 @@
     </bean>
 
 
-    <!-- properties for main session -->
-    <bean name="hibernatePropertiesMain" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="location" value="classpath:conf/hibernate/hibernateMain.properties"/>
+    <!--<bean id="transactionManagerMain" class="org.springframework.orm.hibernate4.HibernateTransactionManager">-->
+    <!--<property name="dataSource" ref="dataSourceMain" />-->
+    <!--<qualifier value="main"/>-->
+    <!--</bean>-->
+
+
+    <bean id="mainSharedTransactionDefinition"
+          class="org.springframework.transaction.support.DefaultTransactionDefinition">
+        <property name="isolationLevelName" value="ISOLATION_READ_UNCOMMITTED"/>
+        <property name="timeout" value="30"/>
     </bean>
 
 
@@ -54,31 +92,6 @@
     <!--</property>-->
     <!--</bean>-->
     <!-- #JPA -->
-
-
-    <!-- Hibernate sessionFactoryMeta -->
-    <bean id="sessionFactoryMeta" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSourceMeta"/>
-        <property name="hibernateProperties">
-            <bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-                <property name="location" value="classpath:conf/hibernate/hibernateMeta.properties"/>
-            </bean>
-        </property>
-        <property name="packagesToScan">
-            <list>
-                <value>com.hutgin2.core.meta</value>
-            </list>
-        </property>
-        <!--<property name="entityInterceptor">-->
-        <!--<bean class="org.swas.dao.hibernate.util.CommonInterceptor"/>-->
-        <!--</property>-->
-    </bean>
-
-    <bean id="transactionManagerMeta" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactoryMeta"/>
-    </bean>
-
-    <tx:annotation-driven transaction-manager="transactionManagerMeta"/>
 
 
 </beans>

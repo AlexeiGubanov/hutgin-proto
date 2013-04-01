@@ -27,7 +27,9 @@ public class TableDaoImpl implements TableDao { //extends GenericDAOImpl<TableMe
     public List<TableMeta> findAll() {
         DetachedCriteria dc = DetachedCriteria.forClass(TableMeta.class);
         Criteria c = dc.getExecutableCriteria(sessionFactoryMeta.getCurrentSession());
-        return c.list();
+        List<TableMeta> result = c.list();
+        return result;
+
     }
 
     @Override

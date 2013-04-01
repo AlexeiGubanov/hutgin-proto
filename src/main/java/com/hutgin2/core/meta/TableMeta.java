@@ -1,5 +1,8 @@
 package com.hutgin2.core.meta;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -50,7 +53,8 @@ public class TableMeta extends MetaEntity {
         this.tableName = tableName;
     }
 
-    @OneToMany(targetEntity = FieldMeta.class, mappedBy = "table", cascade = CascadeType.PERSIST)
+    @OneToMany(targetEntity = FieldMeta.class, mappedBy = "table", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     public Set<FieldMeta> getFields() {
         if (this.fields == null)
             this.fields = new HashSet<>();
@@ -61,7 +65,8 @@ public class TableMeta extends MetaEntity {
         this.fields = fields;
     }
 
-    @OneToMany(targetEntity = ConstraintMeta.class, mappedBy = "table")
+    @OneToMany(targetEntity = ConstraintMeta.class, mappedBy = "table", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     public Set<ConstraintMeta> getConstraints() {
         if (this.constraints == null)
             this.constraints = new HashSet<>();
