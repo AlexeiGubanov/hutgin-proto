@@ -1,7 +1,7 @@
 package com.hutgin2.inject.hibernate;
 
 import com.hutgin2.core.meta.DatabaseModel;
-import com.hutgin2.core.service.TableMetaService;
+import com.hutgin2.core.service.MetaModel;
 import com.hutgin2.inject.hibernate.binderMapping.DatabaseModelBinder;
 import com.hutgin2.inject.hibernate.hack.DMMetadataSources;
 import org.hibernate.SessionFactory;
@@ -29,13 +29,11 @@ public class EntitySessionFactoryImpl implements EntitySessionFactory {
     private SessionFactory sessionFactory;
 
     @Autowired
-    private TableMetaService tableMetaService;
+    private MetaModel metaModel;
 
     public synchronized SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
-            DatabaseModel model = new DatabaseModel();
-            model.setTables(tableMetaService.getAll());
-            init(model);
+            refresh(metaModel.getModel());
         }
         return sessionFactory;
     }
@@ -76,7 +74,7 @@ public class EntitySessionFactoryImpl implements EntitySessionFactory {
      * Spring LocalSessionFactoryBean approach. Based on hibernate 3 approach, but wrapped with spring functionality.
      * Actual
      */
-    public synchronized void init(DatabaseModel model) {
+    public synchronized void refresh(DatabaseModel model) {
         LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSourceMain);
         builder.getProperties().putAll(hibernatePropertiesMain);
         new DatabaseModelBinder(model).bind(builder.createMappings());

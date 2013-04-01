@@ -6,5 +6,5 @@ import org.hibernate.SessionFactory;
 public interface EntitySessionFactory {
     SessionFactory getSessionFactory();
 
-    void init(DatabaseModel model);
+    void refresh(DatabaseModel model);
 }

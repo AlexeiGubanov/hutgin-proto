@@ -152,3 +152,18 @@ Caused by: java.lang.NullPointerException
 
 
 or build using mappings? (from Metamodel?)
+
+
+
+http://docs.jboss.org/hibernate/orm/4.2/manual/en-US/html/ch05.html#mapping-declaration-id
+
+
+2013-04-01
+Transaction manager
+main session requires transaction manager - using xml-configuraton it can be configured only once - at loading and it requires sessionFactory
+due that sessionFactory is reinitializable, we can't using xml-based config,
+only if make main sessionfactory as @Configured @Bean - means that to apply new setting it's neccessary to restart application.
+Or it can be reconfigured? Check this!
+http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/transaction.html#transaction-programmatic-ptm
+http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/transaction.html#tx-multiple-tx-mgrs-with-attransactional
+http://stackoverflow.com/questions/4423125/spring-is-it-possible-to-use-multiple-transaction-managers-in-the-same-applica
