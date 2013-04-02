@@ -23,4 +23,12 @@ public class DatabaseModel {
         }
         return null;
     }
+
+    public TableMeta getTable(String name) {
+        for (TableMeta meta : tables) {
+            if (StringUtils.equals(meta.getName(), name))
+                return meta;
+        }
+        return null;
+    }
 }

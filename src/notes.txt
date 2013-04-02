@@ -170,3 +170,4 @@ http://stackoverflow.com/questions/4423125/spring-is-it-possible-to-use-multiple
 
 
 -- metamodel - retrieve all metamodel despite lazy, etc
+-- generic dao implementation
