@@ -8,6 +8,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import java.util.List;
 import java.util.Map;
 
+@Deprecated
 public class EntityWrappedDao {
 
     private SessionFactory sessionFactory;

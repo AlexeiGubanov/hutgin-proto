@@ -1,4 +1,4 @@
-package com.hutgin2.core.dao;
+package com.hutgin2.util;
 
 import java.lang.reflect.*;
 import java.util.*;
@@ -8,7 +8,7 @@ import java.util.*;
  *
  * @author dwolverton
  */
-public class DAOUtil {
+public class ReflectionUtil {
     /**
      * Get the actual type arguments a child class has used to extend a generic
      * base class. (Taken from http://www.artima.com/weblogs/viewpost.jsp?thread=208860. Thanks

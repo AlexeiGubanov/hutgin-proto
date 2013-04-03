@@ -10,10 +10,16 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
+@Deprecated
 public class EntityDaoImpl implements EntityDao {
 
     @Autowired
     private EntitySessionFactory entitySessionFactory;
+//
+//    @Autowired()
+//    @Qualifier("sessionFactoryMain")
+//    private SessionFactory sessionFactory;
+
 
     @Override
     public List getAll(TableMeta tableMeta) {
