@@ -164,10 +164,14 @@ main session requires transaction manager - using xml-configuraton it can be con
 due that sessionFactory is reinitializable, we can't using xml-based config,
 only if make main sessionfactory as @Configured @Bean - means that to apply new setting it's neccessary to restart application.
 Or it can be reconfigured? Check this!
+http://static.springsource.org/spring/docs/3.2.x/spring-framework-reference/html/beans.html#beans-factory-class-instance-factory-method
+
 http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/transaction.html#transaction-programmatic-ptm
 http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/transaction.html#tx-multiple-tx-mgrs-with-attransactional
 http://stackoverflow.com/questions/4423125/spring-is-it-possible-to-use-multiple-transaction-managers-in-the-same-applica
 
 
 -- metamodel - retrieve all metamodel despite lazy, etc
--- generic dao implementation
+-+ generic dao implementation
+
+-- $type$=Employee in hash map!

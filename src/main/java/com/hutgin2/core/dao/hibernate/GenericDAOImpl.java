@@ -1,9 +1,9 @@
 package com.hutgin2.core.dao.hibernate;
 
 
-import com.hutgin2.core.dao.DAOUtil;
 import com.hutgin2.core.dao.GenericDAO;
 import com.hutgin2.core.dao.search.*;
+import com.hutgin2.util.ReflectionUtil;
 
 import java.io.Serializable;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 public class GenericDAOImpl<T, ID extends Serializable> extends
         HibernateBaseDAO implements GenericDAO<T, ID> {
 
-    protected Class<T> persistentClass = (Class<T>) DAOUtil.getTypeArguments(GenericDAOImpl.class, this.getClass()).get(0);
+    protected Class<T> persistentClass = (Class<T>) ReflectionUtil.getTypeArguments(GenericDAOImpl.class, this.getClass()).get(0);
 
     public int count(ISearch search) {
         if (search == null)

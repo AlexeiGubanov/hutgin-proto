@@ -1,7 +1,6 @@
-package com.hutgin2.dao.hibernate;
+package com.hutgin2.dao.search.hibernate;
 
-import com.hutgin2.core.dao.search.*;
-import com.hutgin2.core.dao.search.hibernate.HibernateMetadataUtil;
+import com.hutgin2.dao.search.*;
 import org.hibernate.NonUniqueResultException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -14,25 +13,28 @@ import org.slf4j.LoggerFactory;
 import java.util.*;
 
 /**
- * Never use as common class, only as new instance wrapper
+ * Implementation of BaseSearchProcessor that generates Works with standard Hibernate.
+ * <p/>
+ * A singleton instance of this class is maintained for each SessionFactory. This should
+ * be accessed using {@link EntityNameSearchProcessor#getInstanceForSessionFactory(SessionFactory)}.
+ *
+ * @author dwolverton
  */
-@Deprecated
-public class EntitySearchProcessor extends BaseSearchProcessor {
+public class EntityNameSearchProcessor extends BaseSearchProcessor {
+    private static Logger logger = LoggerFactory.getLogger(EntityNameSearchProcessor.class);
 
-    private static Logger logger = LoggerFactory.getLogger(EntitySearchProcessor.class);
+    private static Map<SessionFactory, EntityNameSearchProcessor> map = new HashMap<SessionFactory, EntityNameSearchProcessor>();
 
-    private static Map<SessionFactory, EntitySearchProcessor> map = new HashMap<SessionFactory, EntitySearchProcessor>();
-
-    public static EntitySearchProcessor getInstanceForSessionFactory(SessionFactory sessionFactory) {
-        EntitySearchProcessor instance = map.get(sessionFactory);
+    public static EntityNameSearchProcessor getInstanceForSessionFactory(SessionFactory sessionFactory) {
+        EntityNameSearchProcessor instance = map.get(sessionFactory);
         if (instance == null) {
-            instance = new EntitySearchProcessor(HibernateMetadataUtil.getInstanceForSessionFactory(sessionFactory));
+            instance = new EntityNameSearchProcessor(EntityNameMetadataUtil.getInstanceForSessionFactory(sessionFactory));
             map.put(sessionFactory, instance);
         }
         return instance;
     }
 
-    private EntitySearchProcessor(HibernateMetadataUtil mdu) {
+    private EntityNameSearchProcessor(EntityNameMetadataUtil mdu) {
         super(QLTYPE_HQL, mdu);
     }
 
@@ -42,14 +44,14 @@ public class EntitySearchProcessor extends BaseSearchProcessor {
      * Search for objects based on the search parameters in the specified
      * <code>ISearch</code> object.
      *
-     * @see com.hutgin2.core.dao.search.ISearch
+     * @see ISearch
      */
     @SuppressWarnings("unchecked")
     public List search(Session session, ISearch search) {
         if (search == null)
             return null;
 
-        return search(session, search.getSearchClass(), search);
+        return search(session, search.getEntityName(), search);
     }
 
     /**
@@ -60,12 +62,12 @@ public class EntitySearchProcessor extends BaseSearchProcessor {
      * @see ISearch
      */
     @SuppressWarnings("unchecked")
-    public List search(Session session, Class<?> searchClass, ISearch search) {
-        if (searchClass == null || search == null)
+    public List search(Session session, String entityName, ISearch search) {
+        if (entityName == null || search == null)
             return null;
 
         List<Object> paramList = new ArrayList<Object>();
-        String hql = generateQL(searchClass, search, paramList);
+        String hql = generateQL(entityName, search, paramList);
         Query query = session.createQuery(hql);
         addParams(query, paramList);
         addPaging(query, search);
@@ -83,7 +85,7 @@ public class EntitySearchProcessor extends BaseSearchProcessor {
     public int count(Session session, ISearch search) {
         if (search == null)
             return 0;
-        return count(session, search.getSearchClass(), search);
+        return count(session, search.getEntityName(), search);
     }
 
     /**
@@ -94,12 +96,12 @@ public class EntitySearchProcessor extends BaseSearchProcessor {
      *
      * @see ISearch
      */
-    public int count(Session session, Class<?> searchClass, ISearch search) {
-        if (searchClass == null || search == null)
+    public int count(Session session, String entityName, ISearch search) {
+        if (entityName == null || search == null)
             return 0;
 
         List<Object> paramList = new ArrayList<Object>();
-        String hql = generateRowCountQL(searchClass, search, paramList);
+        String hql = generateRowCountQL(entityName, search, paramList);
         if (hql == null) { // special case where the query uses column operators
             return 1;
         }
@@ -120,7 +122,7 @@ public class EntitySearchProcessor extends BaseSearchProcessor {
     public SearchResult searchAndCount(Session session, ISearch search) {
         if (search == null)
             return null;
-        return searchAndCount(session, search.getSearchClass(), search);
+        return searchAndCount(session, search.getEntityName(), search);
     }
 
     /**
@@ -132,15 +134,15 @@ public class EntitySearchProcessor extends BaseSearchProcessor {
      * @see ISearch
      */
     @SuppressWarnings("unchecked")
-    public SearchResult searchAndCount(Session session, Class<?> searchClass, ISearch search) {
-        if (searchClass == null || search == null)
+    public SearchResult searchAndCount(Session session, String entityName, ISearch search) {
+        if (entityName == null || search == null)
             return null;
 
         SearchResult result = new SearchResult();
-        result.setResult(search(session, searchClass, search));
+        result.setResult(search(session, entityName, search));
 
         if (search.getMaxResults() > 0) {
-            result.setTotalCount(count(session, searchClass, search));
+            result.setTotalCount(count(session, entityName, search));
         } else {
             result.setTotalCount(result.getResult().size() + SearchUtil.calcFirstResult(search));
         }
@@ -154,19 +156,19 @@ public class EntitySearchProcessor extends BaseSearchProcessor {
     public Object searchUnique(Session session, ISearch search) throws NonUniqueResultException {
         if (search == null)
             return null;
-        return searchUnique(session, search.getSearchClass(), search);
+        return searchUnique(session, search.getEntityName(), search);
     }
 
     /**
      * Search for a single result using the given parameters. Uses the specified
      * searchClass, ignoring the searchClass specified on the search itself.
      */
-    public Object searchUnique(Session session, Class<?> entityClass, ISearch search) throws NonUniqueResultException {
+    public Object searchUnique(Session session, String entityName, ISearch search) throws NonUniqueResultException {
         if (search == null)
             return null;
 
         List<Object> paramList = new ArrayList<Object>();
-        String hql = generateQL(entityClass, search, paramList);
+        String hql = generateQL(entityName, search, paramList);
         Query query = session.createQuery(hql);
         addParams(query, paramList);
         addPaging(query, search);

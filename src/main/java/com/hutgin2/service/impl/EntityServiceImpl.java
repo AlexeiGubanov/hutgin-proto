@@ -17,6 +17,7 @@ import java.util.Map;
 
 @Service
 //@Transactional(value = "main")
+@Deprecated
 public class EntityServiceImpl implements EntityService {
 
     @Autowired

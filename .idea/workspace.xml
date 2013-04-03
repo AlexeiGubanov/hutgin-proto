@@ -8,50 +8,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="6ef91438-150c-454a-9c01-b993e0b0bc7a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/hibernate" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/BaseSearchProcessor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/DAOUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/entity/Entity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/entity/EntityCollection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntityMetadataUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntitySearchProcessor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/ExampleOptions.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/Field.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/Filter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/GeneralDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/hibernate/GeneralDAOImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GeneralEntityDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralEntityDAOImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/service/GeneralEntityService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/GeneralEntityServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/GeneralEntityServiceImplTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GeneralMapDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralMapDAOImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/GenericDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/hibernate/GenericDAOImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/hibernate/HibernateBaseDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/hibernate/HibernateEntityMetadata.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/hibernate/HibernateMetadataUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/hibernate/HibernateNonEntityMetadata.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/hibernate/HibernateSearchFacade.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/hibernate/HibernateSearchProcessor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/IMutableSearch.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/ISearch.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/InternalUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/Metadata.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/MetadataUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/Search.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/SearchFacade.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/SearchResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/SearchUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/search/Sort.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/meta/DatabaseModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/meta/DatabaseModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/EntityServiceImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/EntityServiceImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/TableDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/TableDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/hibernate/TableDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/hibernate/TableDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/hibernate" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/BaseSearchProcessor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntityNameBaseDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/hibernate/EntityNameMetadataUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/hibernate/EntityNameSearchProcessor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/ExampleOptions.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/Field.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/Filter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/GeneralEntityTransactionalServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GenericEntityNameDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GenericEntityNameDAOImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/hibernate/HibernateEntityMetadata.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/hibernate/HibernateNonEntityMetadata.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/hibernate/HibernateSearchFacade.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/IMutableSearch.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/ISearch.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/InternalUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/MapEntityNameDAOImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/Metadata.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/MetadataUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/Search.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/SearchFacade.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/SearchResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/SearchUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/Sort.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/inject/hibernate/SpringMetaContextBuilder.java" />
+      <change type="DELETED" beforePath="E:\sandbox\hutgin\src\main\java\com\hutgin2\dao\GeneralMapDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="E:\sandbox\hutgin\src\main\java\com\hutgin2\dao\hibernate\EntityMetadataUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="E:\sandbox\hutgin\src\main\java\com\hutgin2\dao\hibernate\EntitySearchProcessor.java" afterPath="" />
+      <change type="DELETED" beforePath="E:\sandbox\hutgin\src\main\java\com\hutgin2\dao\hibernate\GeneralMapDAOImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="E:\sandbox\hutgin\src\test\java\com\hutgin2\service\impl\EntityServiceImplTest.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/entity/EntityCollection.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/entity/EntityCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/EntityDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/EntityDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntityDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntityDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/service/EntityService.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/service/EntityService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/EntityServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/EntityServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntityWrappedDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntityWrappedDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GeneralEntityDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GeneralEntityDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralEntityDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralEntityDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/service/GeneralEntityService.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/service/GeneralEntityService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/GeneralEntityServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/GeneralEntityServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/GeneralEntityServiceImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/GeneralEntityServiceImplTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/hibernate/GenericDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/hibernate/GenericDAOImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/notes.txt" afterPath="$PROJECT_DIR$/src/notes.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="E:\sandbox\hutgin\src\main\java\com\hutgin2\core\dao\DAOUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/util/ReflectionUtil.java" />
     </list>
     <ignored path="hutgin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,12 +63,12 @@
     <file path="/application.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361544444091" ignored="false" />
     <file path="/web.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360155400783" ignored="false" />
     <file path="/MessagesHelper.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360150788391" ignored="false" />
-    <file path="/Dummy.txt" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364889546004" ignored="false" />
+    <file path="/Dummy.txt" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364975207572" ignored="false" />
     <file path="/Dao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361428764489" ignored="false" />
     <file path="/JdbcDao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361950234024" ignored="false" />
     <file path="/Table.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361520368198" ignored="false" />
     <file path="/Field.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361520750224" ignored="false" />
-    <file path="/fragment.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364889321000" ignored="false" />
+    <file path="/fragment.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364974242811" ignored="false" />
     <file path="/FieldDataType.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361964115367" ignored="false" />
     <file path="/Entity.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364889370135" ignored="false" />
     <file path="/shema.sql" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360653999717" ignored="false" />
@@ -74,7 +77,7 @@
     <file path="/JdbcDaoTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360659579270" ignored="false" />
     <file path="/SqlScriptBuilder.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360654647183" ignored="false" />
     <file path="/SqlScriptBuilderTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360654847466" ignored="false" />
-    <file path="/notes.txt" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364826463954" ignored="false" />
+    <file path="/notes.txt" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364974843168" ignored="false" />
     <file path="/SqlStatement.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360739011003" ignored="false" />
     <file path="/File Header.txt.ft" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360739037795" ignored="false" />
     <file path="/CreateTableStatement.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360739093884" ignored="false" />
@@ -182,12 +185,12 @@
     <file path="/StringToTypeConvertor.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1363854913280" ignored="false" />
     <file path="/TypeHelper.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1363854826448" ignored="false" />
     <file path="/FieldMetaBinder.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1363934649056" ignored="false" />
-    <file path="/EntityDao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364885112206" ignored="false" />
-    <file path="/EntityDaoImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364825826059" ignored="false" />
+    <file path="/EntityDao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364911121632" ignored="false" />
+    <file path="/EntityDaoImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364912779450" ignored="false" />
     <file path="/EntitySessionFactoryImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364820892210" ignored="false" />
-    <file path="/EntityWrappedDao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364825845067" ignored="false" />
-    <file path="/EntityService.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364824972153" ignored="false" />
-    <file path="/EntityServiceImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364825869346" ignored="false" />
+    <file path="/EntityWrappedDao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364912784546" ignored="false" />
+    <file path="/EntityService.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364973187247" ignored="false" />
+    <file path="/EntityServiceImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364973191972" ignored="false" />
     <file path="/MetaModel.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1363937154126" ignored="false" />
     <file path="/MetaModelImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1363937371814" ignored="false" />
     <file path="/TableMetaServiceImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1363938486472" ignored="false" />
@@ -197,9 +200,9 @@
     <file path="/TransactionManagerFactoryImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364822977759" ignored="false" />
     <file path="/GeneralDao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364883139125" ignored="false" />
     <file path="/HibernateEntityMetadata.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364884399680" ignored="false" />
-    <file path="/EntityCollection.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364884942652" ignored="false" />
-    <file path="/GeneralEntityDAO.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364887914807" ignored="false" />
-    <file path="/GeneralEntityDAOImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364889129244" ignored="false" />
+    <file path="/EntityCollection.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364973738153" ignored="false" />
+    <file path="/GeneralEntityDAO.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364973638935" ignored="false" />
+    <file path="/GeneralEntityDAOImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364973656317" ignored="false" />
     <file path="/GeneralEntityWrappedDAOImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364887259538" ignored="false" />
     <file path="/GeneralEntityWrappedDAO.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364887260035" ignored="false" />
     <file path="/EntitySearchProcessor.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364887511692" ignored="false" />
@@ -209,8 +212,29 @@
     <file path="/GeneralMapDAO.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364888326917" ignored="false" />
     <file path="/GeneralMapDAOImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364888654376" ignored="false" />
     <file path="/GeneralEntityService.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364889197148" ignored="false" />
-    <file path="/GeneralEntityServiceImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364889314293" ignored="false" />
-    <file path="/GeneralEntityServiceImplTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364889496391" ignored="false" />
+    <file path="/GeneralEntityServiceImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364974201284" ignored="false" />
+    <file path="/GeneralEntityServiceImplTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364975168310" ignored="false" />
+    <file path="/SpringMetaContextBuilder.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364909644417" ignored="false" />
+    <file path="/GeneralEntityWrappedServiceImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364974039965" ignored="false" />
+    <file path="/DAOUtil.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364910062184" ignored="false" />
+    <file path="/EntityNameDAO.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364911521244" ignored="false" />
+    <file path="/ISearch.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364970209191" ignored="false" />
+    <file path="/IMutableSearch.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364971611863" ignored="false" />
+    <file path="/Search.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364971657256" ignored="false" />
+    <file path="/MetadataUtil.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364913429717" ignored="false" />
+    <file path="/HibernateMetadataUtil.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364910873613" ignored="false" />
+    <file path="/EntityNameDAOImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364912120802" ignored="false" />
+    <file path="/HibernateBaseDAO.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364912256746" ignored="false" />
+    <file path="/MapEntityNameDAOImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364911970842" ignored="false" />
+    <file path="/GenericDAOImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364912812983" ignored="false" />
+    <file path="/EntityNameBaseDAO.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364972578355" ignored="false" />
+    <file path="/EntityNameMetadataUtil.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364913298144" ignored="false" />
+    <file path="/GenericEntityNameDAOImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364970308589" ignored="false" />
+    <file path="/SearchUtil.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364971726132" ignored="false" />
+    <file path="/SearchFacade.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364971773093" ignored="false" />
+    <file path="/BaseSearchProcessor.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364972172878" ignored="false" />
+    <file path="/EntityNameSearchProcessor.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364972272614" ignored="false" />
+    <file path="/HibernateSearchFacade.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364972618017" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -388,71 +412,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GeneralMapDAOImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralMapDAOImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="30" selection-start="247" selection-end="264" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GeneralEntityDAO.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GeneralEntityDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GeneralEntityDAOImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralEntityDAOImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="743" selection-end="743" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GeneralEntityService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/GeneralEntityService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="4" selection-start="152" selection-end="172" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GeneralEntityServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/GeneralEntityServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="20" selection-start="703" selection-end="703" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#1351#1551#0" expanded="true" />
-                <element signature="e#1540#1541#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GeneralEntityServiceImplTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/GeneralEntityServiceImplTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="46" selection-start="746" selection-end="746" vertical-scroll-proportion="0.6714542">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EntityServiceImplTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/EntityServiceImplTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="5" selection-start="648" selection-end="1160" vertical-scroll-proportion="0.0">
+            <state line="10" column="2" selection-start="214" selection-end="378" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
@@ -460,23 +423,96 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntityServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/EntityServiceImpl.java">
+      <file leaf-file-name="GeneralEntityService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/GeneralEntityService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="64" selection-start="1655" selection-end="1655" vertical-scroll-proportion="0.0">
+            <state line="14" column="12" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneralEntityServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/GeneralEntityServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="31" selection-start="855" selection-end="855" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneralEntityTransactionalServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/GeneralEntityTransactionalServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="64" column="47" selection-start="2400" selection-end="2400" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#1429#1632#0" expanded="true" />
-                <element signature="e#1621#1622#0" expanded="true" />
+                <element signature="e#1902#2113#0" expanded="true" />
+                <element signature="e#2102#2103#0" expanded="true" />
+                <element signature="e#2223#2436#0" expanded="true" />
+                <element signature="e#2425#2426#0" expanded="true" />
+                <element signature="e#2554#2784#0" expanded="true" />
+                <element signature="e#2773#2774#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneralMapDAO.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GeneralMapDAO.java">
+      <file leaf-file-name="TableMetaServiceTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/hutgin2/core/service/TableMetaServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="93" selection-start="172" selection-end="1245" vertical-scroll-proportion="0.0">
+            <state line="13" column="0" selection-start="467" selection-end="569" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapEntityNameDAOImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/MapEntityNameDAOImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GenericEntityNameDAOImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GenericEntityNameDAOImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="52" column="0" selection-start="1378" selection-end="1378" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntityNameBaseDAO.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntityNameBaseDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="220" column="0" selection-start="8063" selection-end="8063" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneralEntityDAOImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralEntityDAOImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="0" selection-start="1183" selection-end="1183" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneralEntityServiceImplTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/GeneralEntityServiceImplTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="59" selection-start="1275" selection-end="1275" vertical-scroll-proportion="0.21839081">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -491,21 +527,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntitySearchProcessor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/EntityDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/GenericDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralEntityWrappedDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GenericMaoDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GenericMapDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GeneralMapDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralMapDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntityNameBaseDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/hibernate/HibernateSearchFacade.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/SearchFacade.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GenericEntityNameDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/service/EntityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/EntityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/hutgin2/dao/GeneralEntityDAOTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GeneralEntityDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralEntityDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/entity/EntityCollection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/service/GeneralEntityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/GeneralEntityWrappedServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/GeneralEntityTransactionalServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/notes.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/GeneralEntityServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/EntityServiceImplTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/entity/Entity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/core/meta/DatabaseModel.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/GeneralEntityServiceImplTest.java" />
       </list>
     </option>
@@ -938,6 +974,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1119,6 +1157,10 @@
               <option name="myItemId" value="hutgin2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hibernate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1191,6 +1233,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="hutgin2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1283,10 +1329,6 @@
               <option name="myItemId" value="hutgin2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1341,108 +1383,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="hutgin2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hibernate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -1470,67 +1410,65 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="242" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="245" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="246" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="243" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="75" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="243" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="75" />
     <property name="OverrideImplement.combined" value="false" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="246" />
     <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="194" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="196" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder5" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="193" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="195" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4" value="4" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="194" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="196" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/model" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth5" value="863" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="193" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="194" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth5" value="865" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="196" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="196" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="115" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5" value="913" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="116" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5" value="916" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5" value="5" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="options.lastSelected" value="preferences.keymap" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5" value="5" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.hutgin2.service.impl" />
+      <recent name="com.hutgin2.dao" />
       <recent name="com.hutgin2.core.service" />
       <recent name="com.hutgin2.export.hbm" />
       <recent name="com.hutgin2.dao.hibernate" />
-      <recent name="com.hutgin2.dao.jpa" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.hutgin2.dao.hibernate" />
@@ -1548,16 +1486,16 @@
       <recent name="com.hutgin2.dao.hibernate" />
       <recent name="com.hutgin.entity" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\sandbox\hutgin\src\test\resources\testData\jdbcDaoTest" />
+      <recent name="E:\sandbox\hutgin\src\main\resources\conf" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.hutgin2.util" />
       <recent name="com.hutgin2.inject.hibernate" />
       <recent name="com.hutgin2.core.service" />
       <recent name="com.hutgin2.dao.hibernate" />
       <recent name="com.hutgin.dao.jdbc" />
-      <recent name="com.hutgin.dao" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\sandbox\hutgin\src\test\resources\testData\jdbcDaoTest" />
-      <recent name="E:\sandbox\hutgin\src\main\resources\conf" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.GeneralEntityServiceImplTest">
@@ -1696,7 +1634,13 @@
       </option>
       <envs />
       <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -2013,7 +1957,11 @@
       <created>1364826139113</created>
       <updated>1364826139113</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="generic dao, start of generalentitydao&#10;">
+      <created>1364889715110</created>
+      <updated>1364889715110</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2042,21 +1990,21 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40356743" sideWeight="0.49573106" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40266964" sideWeight="0.49573106" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24386339" sideWeight="0.7826087" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3478261" sideWeight="0.49573106" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36566332" sideWeight="0.49573106" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5507246" sideWeight="0.50053364" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24493062" sideWeight="0.4593088" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20512821" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32664436" sideWeight="0.49786553" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20467186" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3259177" sideWeight="0.49786553" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31163287" sideWeight="0.2006689" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18996799" sideWeight="0.68338907" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27801493" sideWeight="0.67335564" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2796158" sideWeight="0.63433665" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39130434" sideWeight="0.49786553" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="189" width="1602" height="759" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2104,7 +2052,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="generic dao, start of generalentitydao&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="general entity dao find findAll save remove ok" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -2126,6 +2074,7 @@
     <MESSAGE value="transaction manager, entity service test ok&#10;" />
     <MESSAGE value="save ok" />
     <MESSAGE value="generic dao, start of generalentitydao&#10;" />
+    <MESSAGE value="general entity dao find findAll save remove ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2135,131 +2084,129 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/EntityDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/EntityServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="27" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
+        <state line="19" column="11" selection-start="776" selection-end="776" vertical-scroll-proportion="0.11971831">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/hibernate/GeneralDAOImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/search/hibernate/HibernateSearchFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="17" selection-start="858" selection-end="858" vertical-scroll-proportion="0.0">
+        <state line="21" column="48" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/core/dao/hibernate/HibernateBaseDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/core/meta/TableMeta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="326" column="22" selection-start="11863" selection-end="11863" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6484#6509#0" expanded="true" />
-          </folding>
+        <state line="11" column="13" selection-start="243" selection-end="243" vertical-scroll-proportion="0.116838485">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GeneralMapDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/entity/EntityCollection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="93" selection-start="172" selection-end="1245" vertical-scroll-proportion="0.0">
+        <state line="17" column="19" selection-start="467" selection-end="467" vertical-scroll-proportion="0.23367697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GenericEntityNameDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="46" selection-start="4425" selection-end="4467" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/GeneralEntityDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
+        <state line="10" column="2" selection-start="214" selection-end="378" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/hutgin2/core/service/TableMetaServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="467" selection-end="569" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralMapDAOImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/notes.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="30" selection-start="247" selection-end="264" vertical-scroll-proportion="0.0">
+        <state line="176" column="31" selection-start="9251" selection-end="9251" vertical-scroll-proportion="0.8697318">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_10/src.zip!/java/util/HashMap.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/GeneralEntityTransactionalServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="510" column="17" selection-start="18512" selection-end="18512" vertical-scroll-proportion="0.33202356">
-          <folding />
+        <state line="64" column="47" selection-start="2400" selection-end="2400" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1902#2113#0" expanded="true" />
+            <element signature="e#2102#2103#0" expanded="true" />
+            <element signature="e#2223#2436#0" expanded="true" />
+            <element signature="e#2425#2426#0" expanded="true" />
+            <element signature="e#2554#2784#0" expanded="true" />
+            <element signature="e#2773#2774#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralEntityDAOImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/EntityNameBaseDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="743" selection-end="743" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/EntityService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="134" selection-end="134" vertical-scroll-proportion="0.13934426">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/GeneralEntityService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="4" selection-start="152" selection-end="172" vertical-scroll-proportion="0.0">
+        <state line="220" column="0" selection-start="8063" selection-end="8063" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GenericEntityNameDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="0" selection-start="1378" selection-end="1378" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/MapEntityNameDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralEntityDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="0" selection-start="1183" selection-end="1183" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/GeneralEntityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="12" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/GeneralEntityServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="20" selection-start="703" selection-end="703" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1351#1551#0" expanded="true" />
-            <element signature="e#1540#1541#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/entity/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="42" selection-start="371" selection-end="371" vertical-scroll-proportion="0.5922131">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/service/impl/EntityServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="64" selection-start="1655" selection-end="1655" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1429#1632#0" expanded="true" />
-            <element signature="e#1621#1622#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/EntityServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="5" selection-start="648" selection-end="1160" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/core/meta/DatabaseModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="20" selection-start="809" selection-end="809" vertical-scroll-proportion="0.8954918">
+        <state line="30" column="31" selection-start="855" selection-end="855" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl/GeneralEntityServiceImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="46" selection-start="746" selection-end="746" vertical-scroll-proportion="0.6714542">
+        <state line="35" column="59" selection-start="1275" selection-end="1275" vertical-scroll-proportion="0.21839081">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
