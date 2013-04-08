@@ -10,6 +10,8 @@ import java.util.Map;
 public class EntityCollection extends ArrayList<Map<String, Object>> {
     private TableMeta meta;
 
+    private int count;
+
     public EntityCollection(TableMeta meta) {
         this(meta, Collections.EMPTY_LIST);
     }
@@ -17,6 +19,13 @@ public class EntityCollection extends ArrayList<Map<String, Object>> {
     public EntityCollection(TableMeta meta, List<Map<String, Object>> res) {
         super(res);
         this.meta = meta;
+        this.count = res.size();
+    }
+
+    public EntityCollection(TableMeta meta, List<Map<String, Object>> res, int count) {
+        super(res);
+        this.meta = meta;
+        this.count = count;
     }
 
     public TableMeta getMeta() {
@@ -25,5 +34,13 @@ public class EntityCollection extends ArrayList<Map<String, Object>> {
 
     public void setMeta(TableMeta meta) {
         this.meta = meta;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }

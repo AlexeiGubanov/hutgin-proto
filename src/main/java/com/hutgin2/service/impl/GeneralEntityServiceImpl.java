@@ -2,6 +2,7 @@ package com.hutgin2.service.impl;
 
 import com.hutgin2.core.meta.TableMeta;
 import com.hutgin2.dao.GeneralEntityDAO;
+import com.hutgin2.dao.search.ISearch;
 import com.hutgin2.entity.Entity;
 import com.hutgin2.entity.EntityCollection;
 import com.hutgin2.service.GeneralEntityService;
@@ -34,5 +35,25 @@ public class GeneralEntityServiceImpl implements GeneralEntityService {
     @Override
     public EntityCollection findAll(TableMeta type) {
         return entityDao.findAll(type);
+    }
+
+    @Override
+    public EntityCollection search(TableMeta type, ISearch search) {
+        return entityDao.search(type, search);
+    }
+
+    @Override
+    public int count(ISearch search) {
+        return entityDao.count(search);
+    }
+
+    @Override
+    public EntityCollection searchAndCount(TableMeta type, ISearch search) {
+        return entityDao.searchAndCount(type, search);
+    }
+
+    @Override
+    public void refresh(Entity... entities) {
+        entityDao.refresh(entities);
     }
 }
