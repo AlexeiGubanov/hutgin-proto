@@ -21,7 +21,7 @@ public class EntityNameBaseDAO {
 
     public EntityNameBaseDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
-//        searchProcessor = EntityNameSearchProcessor.getInstanceForSessionFactory(sessionFactory);
+        searchProcessor = EntityNameSearchProcessor.getInstanceForSessionFactory(sessionFactory);
         metadataUtil = EntityNameMetadataUtil.getInstanceForSessionFactory(sessionFactory);
     }
 

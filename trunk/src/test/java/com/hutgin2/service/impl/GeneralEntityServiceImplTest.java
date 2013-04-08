@@ -2,6 +2,8 @@ package com.hutgin2.service.impl;
 
 import com.hutgin2.core.meta.TableMeta;
 import com.hutgin2.core.service.MetaModel;
+import com.hutgin2.dao.search.Filter;
+import com.hutgin2.dao.search.Search;
 import com.hutgin2.entity.Entity;
 import com.hutgin2.entity.EntityCollection;
 import com.hutgin2.service.GeneralEntityService;
@@ -60,6 +62,22 @@ public class GeneralEntityServiceImplTest {
             }
         }
         Assert.isTrue(!found);
+    }
+
+    @Test
+    public void testSearch() {
+        TableMeta t1 = metaModel.getModel().getTable("Employee");
+        Search search = new Search(t1.getName());
+        search.addFilter(new Filter("age", 10l));
+        EntityCollection ec = generalEntityTransactionalService.search(t1, search);
+        Assert.isTrue(ec.size() > 0);
+
+        int count = generalEntityTransactionalService.count(search);
+        Assert.isTrue(count == ec.size());
+
+        EntityCollection ec1 = generalEntityTransactionalService.searchAndCount(t1, search);
+        Assert.isTrue(count == ec1.getCount());
+
     }
 
 }

@@ -1,6 +1,7 @@
 package com.hutgin2.service.impl;
 
 import com.hutgin2.core.meta.TableMeta;
+import com.hutgin2.dao.search.ISearch;
 import com.hutgin2.entity.Entity;
 import com.hutgin2.entity.EntityCollection;
 import com.hutgin2.inject.hibernate.TransactionManagerFactory;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import java.io.Serializable;
@@ -73,6 +75,47 @@ public class GeneralEntityTransactionalServiceImpl implements GeneralEntityServi
             @Override
             public EntityCollection doInTransaction(TransactionStatus status) {
                 return generalEntityService.findAll(type);
+            }
+        });
+    }
+
+    @Override
+    public EntityCollection search(final TableMeta type, final ISearch search) {
+        return readonly().execute(new TransactionCallback<EntityCollection>() {
+            @Override
+            public EntityCollection doInTransaction(TransactionStatus status) {
+                return generalEntityService.search(type, search);
+            }
+        });
+    }
+
+    @Override
+    public int count(final ISearch search) {
+        return readonly().execute(new TransactionCallback<Integer>() {
+            @Override
+            public Integer doInTransaction(TransactionStatus status) {
+                return generalEntityService.count(search);
+            }
+        });
+    }
+
+    @Override
+    public EntityCollection searchAndCount(final TableMeta type, final ISearch search) {
+        return readonly().execute(new TransactionCallback<EntityCollection>() {
+            @Override
+            public EntityCollection doInTransaction(TransactionStatus status) {
+                return generalEntityService.searchAndCount(type, search);
+            }
+        });
+    }
+
+    @Override
+    public void refresh(final Entity... entities) {
+        transaction().execute(new TransactionCallbackWithoutResult() {
+
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus status) {
+                generalEntityService.refresh(entities);
             }
         });
     }
