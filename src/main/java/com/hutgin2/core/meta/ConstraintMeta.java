@@ -66,6 +66,9 @@ public abstract class ConstraintMeta extends MetaEntity {
 
     public void setTable(TableMeta table) {
         this.table = table;
+        if (table != null)
+            this.tableName = table.getName();
+
     }
 
     @ManyToMany(cascade = CascadeType.REMOVE)
