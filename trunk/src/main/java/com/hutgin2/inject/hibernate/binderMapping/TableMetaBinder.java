@@ -201,7 +201,7 @@ public class TableMetaBinder implements Binder {
     public static int getOptimisticLockMode(String olMode) {
 
         if (olMode == null) return Versioning.OPTIMISTIC_LOCK_VERSION;
-        if (olMode == null || "version".equals(olMode)) {
+        if ("version".equals(olMode)) {
             return Versioning.OPTIMISTIC_LOCK_VERSION;
         } else if ("dirty".equals(olMode)) {
             return Versioning.OPTIMISTIC_LOCK_DIRTY;

@@ -126,6 +126,8 @@ public class FieldMeta extends MetaEntity {
 
     public void setTable(TableMeta table) {
         this.table = table;
+        if (table != null)
+            this.tableName = table.getName();
     }
 
     public Integer getPrecision() {

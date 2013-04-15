@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+    <richlet>
+        <richlet-name>Root</richlet-name>
+        <richlet-class>com.hutgin2.ui.zk.RootRichlet</richlet-class>
+    </richlet>
+    <richlet-mapping>
+        <richlet-name>Root</richlet-name>
+        <url-pattern>/root</url-pattern>
+    </richlet-mapping>
+</zk>

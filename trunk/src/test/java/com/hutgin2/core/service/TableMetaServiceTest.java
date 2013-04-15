@@ -29,21 +29,18 @@ public class TableMetaServiceTest {
         id.setPrimaryKey(true);
         id.setType(Long.class);
         id.setTable(t1);
-        id.setTableName(t1.getName());
         t1.getFields().add(id);
 
         FieldMeta f1 = new FieldMeta();
         f1.setName("firstname");
         f1.setTable(t1);
         f1.setType(String.class);
-        f1.setTableName(t1.getName());
         t1.getFields().add(f1);
 
         FieldMeta f2 = new FieldMeta();
         f2.setName("age");
         f2.setTable(t1);
         f2.setType(Long.class);
-        f2.setTableName(t1.getName());
         t1.getFields().add(f2);
 
         tableMetaService.save(t1);

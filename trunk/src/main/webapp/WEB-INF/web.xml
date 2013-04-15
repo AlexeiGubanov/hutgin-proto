@@ -3,7 +3,7 @@
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-<!-- Root Spring applicationContext, common for all servlets and filters. -->
+    <!-- Root Spring applicationContext, common for all servlets and filters. -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -50,7 +50,8 @@
             <param-value>OFF</param-value>
         </init-param>
         -->
-        <load-on-startup>1</load-on-startup><!-- Must -->
+        <load-on-startup>1</load-on-startup>
+        <!-- Must -->
     </servlet>
     <servlet-mapping>
         <servlet-name>zkLoader</servlet-name>
@@ -60,12 +61,11 @@
         <servlet-name>zkLoader</servlet-name>
         <url-pattern>*.zhtml</url-pattern>
     </servlet-mapping>
-    <!-- [Optional] Uncomment it if you want to use richlets.
+    <!-- [Optional] Uncomment it if you want to use richlets. -->
     <servlet-mapping>
         <servlet-name>zkLoader</servlet-name>
         <url-pattern>/zk/*</url-pattern>
     </servlet-mapping>
-    -->
     <servlet>
         <description>The asynchronous update engine for ZK</description>
         <servlet-name>auEngine</servlet-name>

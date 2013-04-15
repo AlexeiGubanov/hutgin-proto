@@ -73,7 +73,7 @@ http://docs.oracle.com/javaee/6/tutorial/doc/gjivm.html
  В т.ч. все hibernate генераторы (сделать бриджи).
  Генератор может использоваться не только для id.
 
-6. DAO access слой для любых entity.
+6+. DAO access слой для любых entity.
 
 7. Несколько datasource/sessionFactory - можно подключать несколько источником данных. -> Слабые (без FK) и сильные (с FK) ссылки для связей между источниками данных.
 Для каждого источника данных прописыается набор TableMeta за которые он ответственных.
@@ -90,6 +90,10 @@ TableMeta шарится на все приложение.
 
 10. Keep in mind: all binder method needs to be reviewed from time to time
 sync Binder and DMBinder
+
+11. валидация - вешается на tableMeta/fieldMeta и последующие источники данных
+alias/implemented class, params (as properties), msg, severity
+некоторые автоматически созданные (readonly, persisted=0) - исходя из настроек метамодели (обязательные, длина строки, целого) - могут быть more restrictive - задаются руками
 
 
 2013-03-07 TODO
@@ -175,3 +179,7 @@ http://stackoverflow.com/questions/4423125/spring-is-it-possible-to-use-multiple
 -+ generic dao implementation
 
 -- $type$=Employee in hash map!
+
+
+2013-04-09
+oneToMany/manyToOne are not processed!
