@@ -27,7 +27,7 @@ public class MetaModelImpl implements MetaModel {
 
     @Override
     public synchronized void refresh() {
-        List<TableMeta> tables = tableMetaService.getAll();
+        List<TableMeta> tables = tableMetaService.findAll();
         cache = new DatabaseModel();
         cache.setTables(tables);
     }

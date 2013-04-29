@@ -14,22 +14,4 @@ public class TableDaoImpl extends GenericDAOImpl<TableMeta, String> implements T
     public void setSessionFactory(SessionFactory sessionFactoryMeta) {
         super.setSessionFactory(sessionFactoryMeta);
     }
-
-
-//    @Autowired
-//    protected SessionFactory sessionFactoryMeta;
-//
-//    @Override
-//    public List<TableMeta> findAll() {
-//        DetachedCriteria dc = DetachedCriteria.forClass(TableMeta.class);
-//        Criteria c = dc.getExecutableCriteria(sessionFactoryMeta.getCurrentSession());
-//        List<TableMeta> result = c.list();
-//        return result;
-//
-//    }
-//
-//    @Override
-//    public void save(TableMeta tableMeta) {
-//        sessionFactoryMeta.getCurrentSession().persist(tableMeta);
-//    }
 }
