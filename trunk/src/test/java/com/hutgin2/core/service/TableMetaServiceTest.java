@@ -45,7 +45,7 @@ public class TableMetaServiceTest {
 
         tableMetaService.save(t1);
 
-        assertTrue(tableMetaService.getAll().size() > 0);
+        assertTrue(tableMetaService.findAll().size() > 0);
 
     }
 }

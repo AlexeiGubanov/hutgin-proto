@@ -1,35 +1,78 @@
 package com.hutgin2.ui.zk;
 
+import com.hutgin2.ui.model.IMenuBuilder;
+import org.zkoss.spring.SpringUtil;
 import org.zkoss.zk.ui.GenericRichlet;
 import org.zkoss.zk.ui.Page;
-import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.EventListener;
-import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zul.Button;
-import org.zkoss.zul.Label;
-import org.zkoss.zul.Window;
+import org.zkoss.zul.*;
+import org.zkoss.zul.impl.XulElement;
+
+import java.util.LinkedList;
+import java.util.List;
+
 
 public class RootRichlet extends GenericRichlet {
 
+    private IMenuBuilder menuBuilder = (IMenuBuilder) SpringUtil.getBean("menuBuilder");
+
+    private void populateMenu(XulElement parent, List<com.hutgin2.ui.model.Menu> menus) {
+        for (com.hutgin2.ui.model.Menu mi : menus) {
+            Menu menu = new Menu();
+            menu.setLabel(mi.getName());
+            menu.setParent(parent);
+            if (mi.getChilds() != null) {
+                populateMenu(menu, mi.getChilds());
+            }
+        }
+    }
+
     @Override
     public void service(Page page) throws Exception {
-        page.setTitle("New app");
-        final Window w = new Window("Richlet Test", "normal", false);
-        new Label("Hello World!").setParent(w);
-        final Label l = new Label();
-        l.setParent(w);
 
-        final Button b = new Button("Change");
-        b.addEventListener(Events.ON_CLICK,
-                new EventListener() {
-                    int count;
+        page.setTitle("Hutgin"); // TODO render context specific
+//        final Window w = new Window(null, "normal", false);
+        final Borderlayout br = new Borderlayout();
+        br.setHflex("1");
+        br.setVflex("1");
+//        br.setParent(w);
 
-                    public void onEvent(Event evt) {
-                        l.setValue("" + ++count);
-                    }
-                });
-        b.setParent(w);
+        final North north = new North();
+        north.setHeight("100px;");
+        north.setBorder("none");
+        north.setParent(br);
+        new Label("North").setParent(north);
 
-        w.setPage(page);
+        //MENU
+        LinkedList<com.hutgin2.ui.model.Menu> menus = menuBuilder.getMenu();
+        Menubar menubar = new Menubar(); //def hor
+        populateMenu(menubar, menus);
+        menubar.setParent(north);
+
+
+        final West west = new West();
+        west.setWidth("260px;");
+        west.setBorder("none");
+        west.setCollapsible(true);
+        west.setSplittable(true);
+        west.setMinsize(300);
+        west.setParent(br);
+        new Label("West").setParent(west);
+
+        final Center center = new Center();
+        center.setId("mainContent");
+        center.setAutoscroll(true);
+        center.setParent(br);
+        new Label("Center").setParent(center);
+
+        final South south = new South();
+        south.setHeight("50px");
+        south.setBorder("none");
+        south.setParent(br);
+        new Label("South").setParent(south);
+//        <label style="font-size:50px">North for header</label>
+//        <label style="font-size:50px">West for sidebar</label>
+//        <label style="font-size:50px">Center for content</label>
+//        <label style="font-size:50px">South for footer</label>
+        br.setPage(page);
     }
 }
