@@ -1,19 +1,20 @@
 package com.hutgin2.ui.zk;
 
 import com.hutgin2.ui.model.IMenuBuilder;
-import org.zkoss.spring.SpringUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.zkoss.zk.ui.GenericRichlet;
 import org.zkoss.zk.ui.Page;
 import org.zkoss.zul.*;
 import org.zkoss.zul.impl.XulElement;
 
-import java.util.LinkedList;
 import java.util.List;
 
-
+@Component
 public class RootRichlet extends GenericRichlet {
 
-    private IMenuBuilder menuBuilder = (IMenuBuilder) SpringUtil.getBean("menuBuilder");
+    @Autowired
+    private IMenuBuilder menuBuilder;// = (IMenuBuilder) SpringUtil.getBean("menuBuilder");
 
     private void populateMenu(XulElement parent, List<com.hutgin2.ui.model.Menu> menus) {
         for (com.hutgin2.ui.model.Menu mi : menus) {
@@ -43,10 +44,10 @@ public class RootRichlet extends GenericRichlet {
         new Label("North").setParent(north);
 
         //MENU
-        LinkedList<com.hutgin2.ui.model.Menu> menus = menuBuilder.getMenu();
-        Menubar menubar = new Menubar(); //def hor
-        populateMenu(menubar, menus);
-        menubar.setParent(north);
+//        LinkedList<com.hutgin2.ui.model.Menu> menus = menuBuilder.getMenu();
+//        Menubar menubar = new Menubar(); //def hor
+//        populateMenu(menubar, menus);
+//        menubar.setParent(north);
 
 
         final West west = new West();
