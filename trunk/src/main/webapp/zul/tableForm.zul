@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window id="tableForm" border="normal" hflex="1" vflex="1" contentStyle="overflow:auto" position="center,center"
+        closable="true"
+        action="show: slideDown;hide: slideUp" width="500px" apply="${tableController}">
+    <caption label="TableMeta"/>
+    <vlayout>
+        <grid>
+            <columns>
+                <column align="right" width="150px"/>
+                <column/>
+            </columns>
+            <rows>
+                <row>
+                    <cell>Name :</cell>
+                    <cell>
+                        <textbox id="name"
+                                 constraint="no empty: Please enter entity name" width="300px"/>
+                    </cell>
+                </row>
+                <row>
+                    <cell>Table name :</cell>
+                    <cell>
+                        <textbox id="tableName" width="300px"/>
+                    </cell>
+                </row>
+            </rows>
+        </grid>
+
+
+        <tabbox width="700px">
+            <tabs>
+                <tab label="Fields"/>
+            </tabs>
+            <tabpanels>
+                <tabpanel style="color:#336699;">
+                    <!--<grid width="700px" model="@load(vm.allFields)">-->
+                    <!--<columns height="22px">-->
+                    <!--<column width="330px" label="Name" />-->
+                    <!--<column width="120px" label="Type" />-->
+                    <!--<column width="150px" label="Desc"/>-->
+                    <!--</columns>-->
+                    <!--<template name="model">-->
+                    <!--<row>-->
+                    <!--<textbox inplace="true"-->
+                    <!--value="@bind(each.name)" width="99%"/>-->
+                    <!--<combobox inplace="true"-->
+                    <!--model="@load(vm.allTypes)" selectedItem="@bind(each.type)" hflex="1">-->
+                    <!--<template name="model">-->
+                    <!--<comboitem label="@load(each)"/>-->
+                    <!--</template>-->
+                    <!--</combobox>-->
+                    <!--<textbox inplace="true"-->
+                    <!--value="@bind(each.description)" width="99%"/>-->
+                    <!--</row>-->
+                    <!--</template>-->
+                    <!--</grid>-->
+                </tabpanel>
+
+            </tabpanels>
+        </tabbox>
+
+
+        <hlayout>
+            <button id="saveProfile" label="Save"/>
+            <button id="reloadProfile" label="Reload"/>
+        </hlayout>
+    </vlayout>
+</window>

@@ -1,12 +1,13 @@
 package com.hutgin2.ui.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
 
     private Long id;
     private Menu parent;
-    private List<Menu> childs;
+    private List<Menu> childs = new ArrayList<>();
     private String name;
     private Long type = 0l;
     private String url;
