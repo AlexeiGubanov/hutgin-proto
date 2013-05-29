@@ -2,25 +2,4 @@
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <borderlayout hflex="1" vflex="1" apply="${rootComposer}">
 </borderlayout>
-        <!--<borderlayout hflex="1" vflex="1" apply="com.hutgin2.ui.zk.RootComposer">-->
-        <!--<north height="100px" border="none">-->
-        <!--<label style="font-size:50px">North for header</label>-->
-        <!--</north>-->
-        <!--<west width="260px" border="none" collapsible="true" splittable="true" minsize="300">-->
-        <!--<label style="font-size:50px">West for sidebar</label>-->
-        <!--</west>-->
-        <!--<center id="mainContent" autoscroll="true">-->
-        <!--<div>-->
-        <!--Input: <textbox id="input" />-->
-        <!--</div>-->
-        <!--<div>-->
-        <!--Output: <label id="output" />-->
-        <!--</div>-->
-        <!--<button id="ok" label="Submit" />-->
-        <!--<button id="cancel" label="Clear" />-->
-        <!--</center>-->
-        <!--<south height="50px" border="none">-->
-        <!--<label style="font-size:50px">South for footer</label>-->
-        <!--</south>-->
 
-        <!--</borderlayout>-->

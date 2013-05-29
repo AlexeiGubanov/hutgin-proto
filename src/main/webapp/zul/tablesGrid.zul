@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+    <window>
+        <panel>
+            <toolbar id="tb" height="20px">
+                <toolbarbutton id="btnNew" label="New"/>
+                <toolbarbutton id="btnOpen" label="Open"/>
+                <toolbarbutton id="btnDelete" label="Delete"/>
+            </toolbar>
+            <panelchildren>
+                <grid hflex="1" vflex="1" id="tablesList" apply="${tablesController}">
+                    <auxhead>
+                        <auxheader colspan="2" label="MetaTables"/>
+                    </auxhead>
+                    <columns menupopup="auto">
+                        <column width="40px" sort="none"/>
+                        <column width="100px" label="Name" sort="auto"/>
+                        <column label="TableName" sort="auto"/>
+                    </columns>
+                    <rows/>
+                </grid>
+            </panelchildren>
+        </panel>
+    </window>
+</zk>

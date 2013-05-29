@@ -11,6 +11,10 @@ import org.zkoss.zul.impl.XulElement;
 import java.util.List;
 
 @Component
+@Deprecated
+/**
+ * Cannot be used because autowire isn't working (or just I don't know how to inject it here)
+ */
 public class RootRichlet extends GenericRichlet {
 
     @Autowired

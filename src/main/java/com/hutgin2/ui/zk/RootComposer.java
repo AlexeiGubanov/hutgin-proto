@@ -81,41 +81,4 @@ public class RootComposer extends SelectorComposer<Borderlayout> {
 
     }
 
-//    @Override
-//    public void doBeforeComposeChildren(Borderlayout comp) throws Exception {
-//        super.doBeforeComposeChildren(comp);
-//        final North north = new North();
-//        north.setHeight("100px;");
-//        north.setBorder("none");
-//        north.setParent(br);
-//        new Label("North").setParent(north);
-//
-//        //MENU
-////        LinkedList<com.hutgin2.ui.model.Menu> menus = menuBuilder.getMenu();
-////        Menubar menubar = new Menubar(); //def hor
-////        populateMenu(menubar, menus);
-////        menubar.setParent(north);
-//
-//
-//        final West west = new West();
-//        west.setWidth("260px;");
-//        west.setBorder("none");
-//        west.setCollapsible(true);
-//        west.setSplittable(true);
-//        west.setMinsize(300);
-//        west.setParent(br);
-//        new Label("West").setParent(west);
-//
-//        final Center center = new Center();
-//        center.setId("mainContent");
-//        center.setAutoscroll(true);
-//        center.setParent(br);
-//        new Label("Center").setParent(center);
-//
-//        final South south = new South();
-//        south.setHeight("50px");
-//        south.setBorder("none");
-//        south.setParent(br);
-//        new Label("South").setParent(south);
-//    }
 }
