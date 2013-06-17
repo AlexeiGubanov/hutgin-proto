@@ -46,7 +46,7 @@ public class TablesController extends SelectorComposer<Component> {
             row.appendChild(new Label(table.getTableName()));
             rows.appendChild(row);
         }
-
+// sample of dynamic event listner
 //        Toolbarbutton btnNew = (Toolbarbutton)comp.getFellow("btnNew");
 //        btnNew.addEventListener("onClick", new EventListener<Event>() {
 //            @Override

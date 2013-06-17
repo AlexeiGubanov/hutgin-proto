@@ -1,0 +1,70 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<!--<zk xmlns="http://www.zkoss.org/2005/zul"-->
+<!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">-->
+
+<!--<window id="mainMenuWindow" border="none" apply="${mainMenuCtrl}">-->
+<!--<div> test</div>-->
+<!--<borderlayout height="100%" style="border: 1px;">-->
+<!--<north height="100%" style="border: 1px;">-->
+
+
+<!---->
+<!--</north>-->
+<!--</borderlayout>-->
+<!--</window>-->
+
+
+<!--</zk>-->
+<panel border="normal" style="background-color: white; overflow:auto" height="100%">
+    <!--<caption style="color: #000000; font-weight: bold;" label="${c:l('menuTitle')}"/>-->
+    <panelchildren id="panelChildren_menu">
+        <tree id="tree" width="99%" rows="8">
+            <treechildren>
+                <treeitem>
+                    <treerow>
+                        <treecell label="Item 1"/>
+                    </treerow>
+                </treeitem>
+                <treeitem>
+                    <treerow>
+                        <treecell label="Item 2"/>
+                    </treerow>
+                    <treechildren>
+                        <treeitem>
+                            <treerow>
+                                <treecell label="Item 2.1"/>
+                            </treerow>
+                            <treechildren>
+                                <treeitem>
+                                    <treerow>
+                                        <treecell label="Item 2.1.1"/>
+                                    </treerow>
+                                </treeitem>
+                                <treeitem>
+                                    <treerow>
+                                        <treecell label="Item 2.1.2"/>
+                                    </treerow>
+                                </treeitem>
+                            </treechildren>
+                        </treeitem>
+                        <treeitem>
+                            <treerow>
+                                <treecell label="Item 2.2"/>
+                            </treerow>
+                            <treechildren>
+                                <treeitem>
+                                    <treerow>
+                                        <treecell label="Item 2.2.1"/>
+                                    </treerow>
+                                </treeitem>
+                            </treechildren>
+                        </treeitem>
+                    </treechildren>
+                </treeitem>
+                <treeitem label="Item 3"/>
+            </treechildren>
+        </tree>
+
+    </panelchildren>
+</panel>
