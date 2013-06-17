@@ -28,14 +28,13 @@ public class TableFormController extends SelectorComposer<Component> {
 
     @Override
     public void doAfterCompose(Component comp) throws Exception {
-        super.doAfterCompose(comp);    //To change body of overridden methods use File | Settings | File Templates.
         action = (String) Executions.getCurrent().getArg().get("action");
 //        Clients.alert(action);
     }
 
     @Listen("onClick = #saveProfile")
     public void save(Event e) {
-        if (action == "create") {
+        if ("create".equals(action)) {
             TableMeta tm = new TableMeta();
             tm.setName(name.getValue());
             tm.setTableName(tableName.getValue());

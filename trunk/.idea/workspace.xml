@@ -8,17 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="6ef91438-150c-454a-9c01-b993e0b0bc7a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TableFormController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TablesController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/zul/tableForm.zul" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/zul/tablesGrid.zul" />
-      <change type="DELETED" beforePath="E:\sandbox\hutgin\src\main\java\com\hutgin2\ui\zk\MenuController.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\sandbox\hutgin\src\main\webapp\index.jsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/model/Menu.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/model/Menu.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/menu" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/zul/menu" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/IndexController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/menu/MenuController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/zul/menu/mainMenu.zul" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/RootComposer.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/RootComposer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/RootRichlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/RootRichlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hutgin.iml" afterPath="$PROJECT_DIR$/hutgin.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TableFormController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TableFormController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TablesController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TablesController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/zul/index.zul" afterPath="$PROJECT_DIR$/src/main/webapp/zul/index.zul" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="hutgin.iws" />
@@ -28,12 +27,12 @@
     <file path="/application.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367303974051" ignored="false" />
     <file path="/web.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360155400783" ignored="false" />
     <file path="/MessagesHelper.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360150788391" ignored="false" />
-    <file path="/Dummy.txt" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367568700038" ignored="false" />
+    <file path="/Dummy.txt" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371458713791" ignored="false" />
     <file path="/Dao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361428764489" ignored="false" />
     <file path="/JdbcDao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361950234024" ignored="false" />
     <file path="/Table.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361520368198" ignored="false" />
     <file path="/Field.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361520750224" ignored="false" />
-    <file path="/fragment.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367308011027" ignored="false" />
+    <file path="/fragment.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1370848395066" ignored="false" />
     <file path="/FieldDataType.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361964115367" ignored="false" />
     <file path="/Entity.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1364889370135" ignored="false" />
     <file path="/shema.sql" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360653999717" ignored="false" />
@@ -64,7 +63,7 @@
     <file path="/CreateTableSqlGeneratorTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360928583052" ignored="false" />
     <file path="/IntegerDataTypeTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360927470676" ignored="false" />
     <file path="/VarcharDataTypeTest.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360927764588" ignored="false" />
-    <file path="/a.dummy" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1363779573329" ignored="false" />
+    <file path="/a.dummy" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371455964875" ignored="false" />
     <file path="/Executor.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361342509508" ignored="false" />
     <file path="/SpringJdbcExecutor.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361342603029" ignored="false" />
     <file path="/SchemaSyncronizer.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361345521028" ignored="false" />
@@ -204,8 +203,7 @@
     <file path="/sdf.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1365077413365" ignored="false" />
     <file path="/x.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1365434669635" ignored="false" />
     <file path="/GeneralEntityTransactionalServiceImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1365405317364" ignored="false" />
-    <file path="$PROJECT_DIR$/src/main/java/com/hutgin2/dao/hibernate/GeneralEntityDAOImpl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1365405496465" ignored="false" />
-    <file path="/index.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367565392597" ignored="false" />
+    <file path="/index.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371458241567" ignored="false" />
     <file path="/Menu.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1369723017158" ignored="false" />
     <file path="/RootRichlet.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1369811934334" ignored="false" />
     <file path="/zk.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1366010433968" ignored="false" />
@@ -217,10 +215,10 @@
     <file path="/TableMetaService.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367220201625" ignored="false" />
     <file path="/ScopesController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367307049242" ignored="false" />
     <file path="/RootController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367309838994" ignored="false" />
-    <file path="/RootComposer.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367568319043" ignored="false" />
+    <file path="/RootComposer.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371455038824" ignored="false" />
     <file path="/test.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367565425363" ignored="false" />
     <file path="/tablesGrid.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367996420742" ignored="false" />
-    <file path="/TablesController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367999201137" ignored="false" />
+    <file path="/TablesController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1370846442912" ignored="false" />
     <file path="/tableForm.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367997144909" ignored="false" />
     <file path="/TableController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367848732079" ignored="false" />
     <file path="/TableMetaViewModel.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367849538190" ignored="false" />
@@ -254,6 +252,9 @@
     <file path="$PROJECT_DIR$/../zksample2-code-1078/trunk/zkoss/src/main/java/de/forsthaus/webui/order/OrderPositionDialogCtrl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1368176930323" ignored="false" />
     <file path="$PROJECT_DIR$/../zksample2-code-1078/trunk/zkoss/src/main/java/de/forsthaus/webui/article/ArticleMainCtrl.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1368176941840" ignored="false" />
     <file path="$PROJECT_DIR$/../zksample2-code-1078/trunk/zkoss/src/main/java/de/forsthaus/webui/util/searching/SearchOperators.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1368176971058" ignored="false" />
+    <file path="/IndexController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371456329878" ignored="false" />
+    <file path="/MenuController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371457312642" ignored="false" />
+    <file path="/mainMenu.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371458534236" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,6 +274,41 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/4.1.10.Final/hibernate-core-4.1.10.Final-sources.jar!/org/hibernate/metamodel/source/internal/JaxbHelper.java" line="194" class="org.hibernate.metamodel.source.internal.JaxbHelper" package="org.hibernate.metamodel.source.internal">
         <option name="ENABLED" value="true" />
@@ -429,41 +465,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </line_breakpoints>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </breakpoint_any>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -473,13 +474,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Menu.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/model/Menu.java">
+      <file leaf-file-name="index.zul" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/index.zul">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="46" selection-start="196" selection-end="196" vertical-scroll-proportion="-0.06583072">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="34" column="39" selection-start="1620" selection-end="1620" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndexController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/IndexController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="17" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/menu/MenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="60" selection-start="1468" selection-end="1540" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mainMenu.zul" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/menu/mainMenu.zul">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="62" selection-start="1559" selection-end="1559" vertical-scroll-proportion="0.033203125">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -494,22 +520,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/zul/customScopesWindow.zul" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/ScopesController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/RootController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/zul/test.zul" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TableController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TableMetaViewModel.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/zul/tablesGrid.zul" />
         <option value="$PROJECT_DIR$/src/main/webapp/zul/tableForm.zul" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/model/Menu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/RootRichlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TablesController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TableFormController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/model/Menu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TablesController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/RootRichlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/RootComposer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/menu/treeMenu.zul" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/menu/MenuController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/zul/index.zul" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/IndexController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/zul/menu/mainMenu.zul" />
       </list>
     </option>
   </component>
@@ -524,50 +550,6 @@
           <option name="myItemId" value="hutgin" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="hutgin" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="com.googlecode.genericdao:dao-hibernate:1.1.0" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependencyNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="hutgin" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="com.googlecode.genericdao:dao-hibernate:1.1.0" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependencyNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="com.googlecode.genericdao:dao:1.1.0" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependencyNode" />
-        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -581,24 +563,6 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="Plugins" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="hutgin" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="jetty" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -944,7 +908,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1039,19 +1003,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="hutgin2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
+              <option name="myItemId" value="zul" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1078,6 +1038,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="zul" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1211,13 +1175,51 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="zk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hutgin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hutgin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hutgin2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1241,7 +1243,7 @@
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="195" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4" value="4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="196" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zksample2-code-1078/trunk/zkoss" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth5" value="865" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="196" />
     <property name="GoToClass.includeJavaFiles" value="false" />
@@ -1254,7 +1256,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/com/hutgin2/service/impl" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.lastSelected" value="com.zeroturnaround.javarebel.idea.plugin.settings.PluginsConfigurable" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5" value="5" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
@@ -1306,40 +1308,13 @@
       <recent name="com.hutgin.dao.jdbc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\sandbox\hutgin\src\main\webapp\zul\menu" />
+      <recent name="E:\sandbox\hutgin\src\main\webapp\zul" />
       <recent name="E:\sandbox\hutgin\src\test\resources\testData\jdbcDaoTest" />
       <recent name="E:\sandbox\hutgin\src\main\resources\conf" />
     </key>
   </component>
-  <component name="RunManager" selected="Remote.jetty:debug">
-    <configuration default="false" name="EntitySessionFactoryTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="hutgin" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.hutgin2.inject.hibernate" />
-      <option name="MAIN_CLASS_NAME" value="com.hutgin2.inject.hibernate.EntitySessionFactoryTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Maven.hutgin [org.mortbay.jetty:maven-jetty-plugin:6.1.26:run]">
     <configuration default="false" name="TableMetaServiceTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="hutgin" />
@@ -1352,35 +1327,6 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="EntityServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="hutgin" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.hutgin2.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.hutgin2.service.impl.EntityServiceImplTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -1448,6 +1394,64 @@
       <patterns />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Pad.test" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="hutgin" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.hutgin2" />
+      <option name="MAIN_CLASS_NAME" value="com.hutgin2.Pad" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="hutgin [org.mortbay.jetty:maven-jetty-plugin:6.1.26:run]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="org.mortbay.jetty:maven-jetty-plugin:6.1.26:run" />
+              </list>
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <RunnerSettings RunnerId="JRebel Debug">
+        <option name="bootstrapPath" />
+        <option name="debugPort" value="" />
+        <option name="jrebelArgs" />
+        <option name="loggingEnabled" value="false" />
+        <option name="transport" value="0" />
+        <option name="useBootstrapDefaults" value="true" />
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <ConfigurationWrapper RunnerId="JRebel Debug" />
       <method />
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
@@ -1613,19 +1617,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Remote.jetty:debug" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.EntitySessionFactoryTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TableMetaServiceTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.EntityServiceImplTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.GeneralEntityServiceImplTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.Pad" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TableMetaServiceTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.GeneralEntityServiceImplTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.Pad" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.Pad.test" />
+      <item index="5" class="java.lang.String" itemvalue="Maven.hutgin [org.mortbay.jetty:maven-jetty-plugin:6.1.26:run]" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TableMetaServiceTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.GeneralEntityServiceImplTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.Pad" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.EntityServiceImplTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.EntitySessionFactoryTest" />
+        <item index="0" class="java.lang.String" itemvalue="Maven.hutgin [org.mortbay.jetty:maven-jetty-plugin:6.1.26:run]" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.Pad.test" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TableMetaServiceTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.GeneralEntityServiceImplTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.Pad" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -1854,7 +1858,11 @@
       <created>1367568712114</created>
       <updated>1367568712114</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044">
+      <created>1369811993119</created>
+      <updated>1369811993119</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1878,33 +1886,35 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40022296" sideWeight="0.4615795" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24386339" sideWeight="0.7826087" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2541806" sideWeight="0.48292422" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25975475" sideWeight="0.42742795" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40022296" sideWeight="0.48292422" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40022296" sideWeight="0.5346852" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24493062" sideWeight="0.4593088" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="JRebel" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20467186" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32441473" sideWeight="0.48932764" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31163287" sideWeight="0.2006689" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18996799" sideWeight="0.7402453" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18996799" sideWeight="0.59977704" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2796158" sideWeight="0.7402453" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25975475" sideWeight="0.5688367" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20811099" sideWeight="0.59977704" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25975475" sideWeight="0.56456774" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="189" width="1602" height="759" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.68561876" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40044492" sideWeight="0.46584845" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32441473" sideWeight="0.4914621" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30992195" sideWeight="0.6008538" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1947,7 +1957,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="zk richlet sample" />
+    <option name="LAST_COMMIT_MESSAGE" value="index ctrl" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1971,6 +1981,7 @@
     <MESSAGE value="generic dao, start of generalentitydao&#10;" />
     <MESSAGE value="general entity dao find findAll save remove ok" />
     <MESSAGE value="zk richlet sample" />
+    <MESSAGE value="index ctrl" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1980,80 +1991,44 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/select/SelectorComposer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/model/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="13" selection-start="2551" selection-end="2551" vertical-scroll-proportion="-0.028268551" />
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/Executions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="86" selection-start="5466" selection-end="5466" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="5" column="13" selection-start="96" selection-end="96" vertical-scroll-proportion="0.16601562">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/Execution.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/model/MenuBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="17" selection-start="1553" selection-end="1553" vertical-scroll-proportion="0.026645768">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/tablesGrid.zul">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="84" selection-start="676" selection-end="702" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/select/annotation/Listen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="18" selection-start="466" selection-end="466" vertical-scroll-proportion="0.36042404" />
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zul/6.5.1/zul-6.5.1-sources.jar!/org/zkoss/zul/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="752" column="19" selection-start="23663" selection-end="23663" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zul/6.5.1/zul-6.5.1-sources.jar!/org/zkoss/zul/impl/MessageboxDlg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="65" selection-start="3631" selection-end="3646" vertical-scroll-proportion="0.0">
+        <state line="11" column="13" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1315" selection-end="1315" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TableFormController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.71943575">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/tableForm.zul">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="32" selection-start="659" selection-end="666" vertical-scroll-proportion="0.39968652">
+        <state line="408" column="20" selection-start="13997" selection-end="13997" vertical-scroll-proportion="0.50097847">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TablesController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="48" selection-start="2955" selection-end="2955" vertical-scroll-proportion="0.0">
+        <state line="68" column="44" selection-start="2274" selection-end="2274" vertical-scroll-proportion="0.9375">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/work/AXN_DVL_BRE_REFACTOR_PRE_GA/BusinessLayer/MemberProvisioning/test/com/audatex/axn/business/membervalidation/impl/AllTests.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/tableForm.zul">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/test.zul">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -2062,31 +2037,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/RootRichlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="93" selection-start="457" selection-end="457" vertical-scroll-proportion="0.18652038">
+        <state line="17" column="13" selection-start="475" selection-end="475" vertical-scroll-proportion="0.29882812">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/TableFormController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="33" selection-start="1004" selection-end="1004" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/select/SelectorComposer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="13" selection-start="2551" selection-end="2551" vertical-scroll-proportion="0.73046875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/Path.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="13" selection-start="698" selection-end="698" vertical-scroll-proportion="0.5644531">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/RootComposer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="29" selection-start="1684" selection-end="1684" vertical-scroll-proportion="1.252351">
+        <state line="39" column="82" selection-start="1067" selection-end="1135" vertical-scroll-proportion="0.265625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/Executions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="178" column="0" selection-start="6293" selection-end="6293" vertical-scroll-proportion="0.33203125">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/index.zul">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="196" selection-end="196" vertical-scroll-proportion="0.106583074">
+        <state line="34" column="39" selection-start="1620" selection-end="1620" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/model/Menu.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/IndexController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="46" selection-start="196" selection-end="196" vertical-scroll-proportion="-0.06583072">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="23" column="17" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/menu/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="60" selection-start="1468" selection-end="1540" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/menu/mainMenu.zul">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="62" selection-start="1559" selection-end="1559" vertical-scroll-proportion="0.033203125">
+          <folding />
         </state>
       </provider>
     </entry>

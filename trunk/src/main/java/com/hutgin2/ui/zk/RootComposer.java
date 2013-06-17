@@ -15,17 +15,48 @@ import java.util.List;
 @Component("rootComposer")
 @Scope("desktop")
 public class RootComposer extends SelectorComposer<Borderlayout> {
-//    @Wire
-//    private North north;
 
     @Autowired
     private IMenuBuilder menuBuilder;
-
+    private Borderlayout borderlayout;
 
     private North north;
     private West west;
     private Center center;
     private South south;
+
+    private void createLayouts() {
+        north = new North();
+        north.setParent(borderlayout);
+        north.setHeight("100px");
+
+        west = new West();
+        west.setParent(borderlayout);
+        west.setWidth("200px");
+        west.setCollapsible(true);
+        west.setSplittable(true);
+
+        LinkedList<com.hutgin2.ui.model.Menu> menus = menuBuilder.getMenu();
+        Menubar menubar = new Menubar(); //def hor
+        populateMenu(menubar, menus);
+        menubar.setParent(north);
+
+
+        center = new Center();
+        center.setParent(borderlayout);
+        center.setAutoscroll(true);
+
+        Window w = new Window();
+        w.setParent(center);
+
+        south = new South();
+        south.setParent(borderlayout);
+        south.setHeight("70px");
+    }
+
+    private void createTabpanel() {
+
+    }
 
     private void populateMenu(XulElement parent, List<com.hutgin2.ui.model.Menu> menus) {
         for (com.hutgin2.ui.model.Menu mi : menus) {
@@ -47,38 +78,9 @@ public class RootComposer extends SelectorComposer<Borderlayout> {
 
 
     @Override
-    public void doAfterCompose(Borderlayout comp) throws Exception {
-        super.doAfterCompose(comp);    //To change body of overridden methods use File | Settings | File Templates.
-
-
-        north = new North();
-        north.setParent(comp);
-        north.setHeight("100px");
-
-        west = new West();
-        west.setParent(comp);
-        west.setWidth("200px");
-        west.setCollapsible(true);
-        west.setSplittable(true);
-
-        LinkedList<com.hutgin2.ui.model.Menu> menus = menuBuilder.getMenu();
-        Menubar menubar = new Menubar(); //def hor
-        populateMenu(menubar, menus);
-        menubar.setParent(north);
-
-
-        center = new Center();
-        center.setParent(comp);
-        center.setAutoscroll(true);
-
-        Window w = new Window();
-        w.setParent(center);
-
-        south = new South();
-        south.setParent(comp);
-        south.setHeight("70px");
-
-
+    public void doAfterCompose(Borderlayout borderlayout) throws Exception {
+        this.borderlayout = borderlayout;
+//        createLayouts();
     }
 
 }
