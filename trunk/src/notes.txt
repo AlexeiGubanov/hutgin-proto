@@ -183,3 +183,13 @@ http://stackoverflow.com/questions/4423125/spring-is-it-possible-to-use-multiple
 
 2013-04-09
 oneToMany/manyToOne are not processed!
+
+
+2013-06-18
+UI
+Introduce common interfaces for UI elements:
+ layouts (border, absolute, relative, hbox, vbcx, etc)
+ common page executor (accept url, and return component)
+ ZK is a one of the implementations
+ dynamic|static components: static is defined in zul with appropriate controller, dynamic has base template(implementation), controller and waiting something as config parameter
+ put into config file root layout manager (currently it will point to IndexController)

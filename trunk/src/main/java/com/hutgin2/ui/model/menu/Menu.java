@@ -1,4 +1,4 @@
-package com.hutgin2.ui.model;
+package com.hutgin2.ui.model.menu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,8 @@ public class Menu {
     private Menu parent;
     private List<Menu> childs = new ArrayList<>();
     private String name;
-    private Long type = 0l;
-    private String url;
+    private MenuType type = MenuType.NOT_DEFINED;
+    private String path;
 
     public Long getId() {
         return id;
@@ -49,19 +49,19 @@ public class Menu {
         this.name = name;
     }
 
-    public Long getType() {
+    public MenuType getType() {
         return type;
     }
 
-    public void setType(Long type) {
+    public void setType(MenuType type) {
         this.type = type;
     }
 
-    public String getUrl() {
-        return url;
+    public String getPath() {
+        return path;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setPath(String path) {
+        this.path = path;
     }
 }

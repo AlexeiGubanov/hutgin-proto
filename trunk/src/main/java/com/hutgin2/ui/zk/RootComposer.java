@@ -1,6 +1,6 @@
 package com.hutgin2.ui.zk;
 
-import com.hutgin2.ui.model.IMenuBuilder;
+import com.hutgin2.ui.model.menu.IMenuBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -36,7 +36,7 @@ public class RootComposer extends SelectorComposer<Borderlayout> {
         west.setCollapsible(true);
         west.setSplittable(true);
 
-        LinkedList<com.hutgin2.ui.model.Menu> menus = menuBuilder.getMenu();
+        LinkedList<com.hutgin2.ui.model.menu.Menu> menus = menuBuilder.getMenu();
         Menubar menubar = new Menubar(); //def hor
         populateMenu(menubar, menus);
         menubar.setParent(north);
@@ -58,8 +58,8 @@ public class RootComposer extends SelectorComposer<Borderlayout> {
 
     }
 
-    private void populateMenu(XulElement parent, List<com.hutgin2.ui.model.Menu> menus) {
-        for (com.hutgin2.ui.model.Menu mi : menus) {
+    private void populateMenu(XulElement parent, List<com.hutgin2.ui.model.menu.Menu> menus) {
+        for (com.hutgin2.ui.model.menu.Menu mi : menus) {
             if (mi.getChilds() != null && mi.getChilds().size() > 0) {
                 Menu menu = new Menu();
                 menu.setLabel(mi.getName());
