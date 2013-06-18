@@ -33,9 +33,9 @@
                 <div id="divCenter">
                     <panel border="normal">
                         <panelchildren>
-                            <tabbox id="tabBoxIndexCenter" width="100%" style="padding: 0px">
-                                <tabs id="tabsIndexCenter"></tabs>
-                                <tabpanels id="tabpanelsBoxIndexCenter"></tabpanels>
+                            <tabbox id="tabboxMain" width="100%" style="padding: 0px">
+                                <tabs id="tabsMain"></tabs>
+                                <tabpanels id="tabpanelsMain"></tabpanels>
                             </tabbox>
                         </panelchildren>
                     </panel>

@@ -1,4 +1,4 @@
-package com.hutgin2.ui.model;
+package com.hutgin2.ui.model.menu;
 
 import java.util.LinkedList;
 
