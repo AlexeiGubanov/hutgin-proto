@@ -9,10 +9,6 @@
     xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 
     <window id="outerIndexWindow" apply="${indexCtrl}" border="none" width="100%" height="100%">
-
-        <!--<borderlayout id="borderlayout" hflex="1" vflex="1" apply="${rootComposer}">-->
-        <!--</borderlayout>-->
-
         <borderlayout id="borderlayoutMain" height="100%">
             <north id="borderlayoutMainNorth" border="none" height="40px" splittable="false">
                 <div id="div1">
