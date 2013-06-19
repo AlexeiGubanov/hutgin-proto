@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
-<zk xmlns="http://www.zkoss.org/2005/zul"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
-    <window apply="${tablesController}">
-        <panel>
-            <toolbar id="tb" height="20px">
-                <toolbarbutton id="btnNew" label="New"/>
-                <toolbarbutton id="btnDelete" label="Delete"/>
-            </toolbar>
+<!--<zk xmlns="http://www.zkoss.org/2005/zul"-->
+<!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">-->
+<window id="tablesGrid" apply="${tablesController}">
+    <panel>
+        <toolbar id="tb" height="20px">
+            <toolbarbutton id="btnNew" label="New"/>
+            <toolbarbutton id="btnDelete" label="Delete"/>
+        </toolbar>
 
-            <panelchildren>
-                <grid hflex="1" vflex="1" id="tablesList" apply="${tablesController}">
-                    <auxhead>
-                        <auxheader colspan="2" label="MetaTables"/>
-                    </auxhead>
-                    <columns menupopup="auto">
-                        <column width="40px" sort="none"/>
-                        <column width="100px" label="Name" sort="auto"/>
-                        <column label="TableName" sort="auto"/>
-                    </columns>
-                    <rows/>
-                </grid>
+        <panelchildren>
+            <grid hflex="1" vflex="1" id="tablesList" apply="${tablesController}">
+                <auxhead>
+                    <auxheader colspan="2" label="MetaTables"/>
+                </auxhead>
+                <columns menupopup="auto">
+                    <column width="40px" sort="none"/>
+                    <column width="100px" label="Name" sort="auto"/>
+                    <column label="TableName" sort="auto"/>
+                </columns>
+                <rows/>
+            </grid>
 
-                <!--<listbox id="listbox" width="100%" multiple="false">-->
-                <!--<listhead sizable="true">-->
-                <!--&lt;!&ndash;<listheader id="listbox_ch"  sort="none" width="40px" />&ndash;&gt;-->
-                <!--<listheader id="listbox_name"  sort="auto" width="100px" />-->
-                <!--<listheader id="listbox_tablename"  sort="auto" />-->
-                <!--</listhead>-->
-                <!--</listbox>-->
+            <!--<listbox id="listbox" width="100%" multiple="false">-->
+            <!--<listhead sizable="true">-->
+            <!--&lt;!&ndash;<listheader id="listbox_ch"  sort="none" width="40px" />&ndash;&gt;-->
+            <!--<listheader id="listbox_name"  sort="auto" width="100px" />-->
+            <!--<listheader id="listbox_tablename"  sort="auto" />-->
+            <!--</listhead>-->
+            <!--</listbox>-->
 
-            </panelchildren>
-        </panel>
-        <panel>
-            <panelchildren>
-                <paging id="paging"/>
-            </panelchildren>
-        </panel>
-    </window>
-</zk>
+        </panelchildren>
+    </panel>
+    <panel>
+        <panelchildren>
+            <paging id="paging"/>
+        </panelchildren>
+    </panel>
+</window>
+        <!--</zk>-->

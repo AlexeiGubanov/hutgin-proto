@@ -10,6 +10,7 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zkplus.databind.BindingListModelList;
 import org.zkoss.zul.*;
 
 import java.util.HashMap;
@@ -29,16 +30,10 @@ public class TablesController extends SelectorComposer<Component> {
     @Wire
     Paging paging; // autowired
 
-    private ListModelList<TableMeta> model;
+    private BindingListModelList<TableMeta> model;
 
     @Autowired
     private TableMetaService tableMetaService;
-
-    private <K, V> Map<K, V> singleEntryMap(K key, V value) {
-        Map<K, V> result = new HashMap<>();
-        result.put(key, value);
-        return result;
-    }
 
     @Listen("onCreate = #tablesList")
     public void onCreate$tablesList(Event event) {
@@ -47,12 +42,9 @@ public class TablesController extends SelectorComposer<Component> {
         paging.setPageIncrement(10);
         paging.setDetailed(true);
 
-        model = new ListModelList<>(); // todo provide mine  with paging and sorting
         tablesList.setRowRenderer(new TableMetaRowRenderer(tablesList));
-
-
         List<TableMeta> tables = tableMetaService.findAll();
-        model.addAll(tables);
+        model = new BindingListModelList<>(tables, true); // todo provide mine  with paging and sorting
         tablesList.setModel(model);
     }
 
@@ -126,7 +118,7 @@ public class TablesController extends SelectorComposer<Component> {
         params.put("grid", tablesList);
         Window window = (Window) Executions.createComponents(
                 "/zul/components/admin/tableForm.zul", null, params);
-        window.doModal();
+//        window.doModal();
     }
 
 
