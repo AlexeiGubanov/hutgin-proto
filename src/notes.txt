@@ -193,3 +193,4 @@ Introduce common interfaces for UI elements:
  ZK is a one of the implementations
  dynamic|static components: static is defined in zul with appropriate controller, dynamic has base template(implementation), controller and waiting something as config parameter
  put into config file root layout manager (currently it will point to IndexController)
+ zk renderer, model, etc

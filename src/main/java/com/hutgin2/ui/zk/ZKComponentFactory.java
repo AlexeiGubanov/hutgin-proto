@@ -15,7 +15,7 @@ public class ZKComponentFactory implements IComponentFactory {
         } else {
             // check type
             if (path.startsWith("/admin/tables")) {
-                return Executions.createComponents("/zul/tablesGrid.zul", (Component) parent, params);
+                return Executions.createComponents("/zul/components/admin/tablesGrid.zul", (Component) parent, params);
             }
         }
         return null;
