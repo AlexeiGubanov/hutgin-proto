@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<!--<zk xmlns="http://www.zkoss.org/2005/zul"-->
+<!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">-->
 <window id="tableForm" border="normal" hflex="1" vflex="1" contentStyle="overflow:auto" position="center,center"
         closable="true"
-        action="show: slideDown;hide: slideUp" width="500px" apply="${tableController}">
+        width="500px" apply="${tableController}">
     <caption label="TableMeta"/>
     <vlayout>
         <grid>
@@ -62,8 +65,9 @@
 
 
         <hlayout>
-            <button id="saveProfile" label="Save"/>
+            <button id="save" label="Save"/>
             <button id="reloadProfile" label="Reload"/>
         </hlayout>
     </vlayout>
 </window>
+        <!--</zk>-->
