@@ -7,8 +7,9 @@ import org.springframework.context.annotation.Scope;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.CreateEvent;
 import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.ForwardEvent;
-import org.zkoss.zk.ui.util.GenericForwardComposer;
+import org.zkoss.zk.ui.select.SelectorComposer;
+import org.zkoss.zk.ui.select.annotation.Listen;
+import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Grid;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Textbox;
@@ -19,7 +20,7 @@ import java.util.Map;
 
 @org.springframework.stereotype.Component("tableController")
 @Scope("desktop")
-public class TableFormController extends GenericForwardComposer<Component> {
+public class TableFormController extends SelectorComposer<Component> {
     @Autowired
     private TableMetaService tableMetaService;
 
@@ -28,18 +29,22 @@ public class TableFormController extends GenericForwardComposer<Component> {
     private TableMeta entity;
     private Grid grid;
 
-    Textbox name;
-    Textbox tableName;
+    @Wire
+    Textbox name;      // autowired
+    @Wire
+    Textbox tableName; // autowired
 
-    Window tableForm;
+    @Wire
+    Window tableFormWindow;
 
-    public void onClose$tableForm(Event event) throws Exception {
-        tableForm.onClose();
+    @Listen("onClose = #tableFormWindow")
+    public void onClose$tableFormWindow(Event event) throws Exception {
+        tableFormWindow.detach();
     }
 
-
-    public void onCreate$tableForm(Event event) {
-        final CreateEvent ce = (CreateEvent) ((ForwardEvent) event).getOrigin();
+    @Listen("onCreate = #tableFormWindow")
+    public void onCreate$tableFormWindow(Event event) {
+        final CreateEvent ce = (CreateEvent) event;
         Map<String, Object> args = (Map<String, Object>) ce.getArg();
         action = (String) args.get("action");
         entity = (TableMeta) args.get("entity");
@@ -50,6 +55,7 @@ public class TableFormController extends GenericForwardComposer<Component> {
         }
     }
 
+    @Listen("onClick = #save")
     public void onClick$save(Event e) {
         ListModelList model = (ListModelList) grid.getListModel();
         if ("create".equals(action)) {
@@ -59,6 +65,7 @@ public class TableFormController extends GenericForwardComposer<Component> {
             tableMetaService.save(entity);
             model.add(entity);
             grid.invalidate();//refresh
+            action = "edit";
         }
         if ("edit".equals(action)) {
             entity.setName(name.getValue());
