@@ -8,20 +8,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="6ef91438-150c-454a-9c01-b993e0b0bc7a" name="Default" comment="">
+      <change type="DELETED" beforePath="E:\sandbox\hutgin\src\main\java\com\hutgin2\ui\zk\components\admin\TableMetaItemRenderer.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TableFormController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TableFormController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TableMetaRowRenderer.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TableMetaRowRenderer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TablesController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TablesController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/zul/components/admin/tableForm.zul" afterPath="$PROJECT_DIR$/src/main/webapp/zul/components/admin/tableForm.zul" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/zul/components/admin/tablesGrid.zul" afterPath="$PROJECT_DIR$/src/main/webapp/zul/components/admin/tablesGrid.zul" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/zk.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/zk.xml" />
     </list>
     <ignored path="hutgin.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/pom.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371640952659" ignored="false" />
+    <file path="/pom.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371716583585" ignored="false" />
     <file path="/database.properties" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361950074102" ignored="false" />
     <file path="/application.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367303974051" ignored="false" />
     <file path="/web.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360155400783" ignored="false" />
     <file path="/MessagesHelper.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1360150788391" ignored="false" />
-    <file path="/Dummy.txt" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371644279396" ignored="false" />
+    <file path="/Dummy.txt" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371717639921" ignored="false" />
     <file path="/Dao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361428764489" ignored="false" />
     <file path="/JdbcDao.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361950234024" ignored="false" />
     <file path="/Table.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1361520368198" ignored="false" />
@@ -211,12 +214,12 @@
     <file path="/RootController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367309838994" ignored="false" />
     <file path="/RootComposer.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371455038824" ignored="false" />
     <file path="/test.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367565425363" ignored="false" />
-    <file path="/tablesGrid.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371644101813" ignored="false" />
-    <file path="/TablesController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371641162008" ignored="false" />
-    <file path="/tableForm.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371643949421" ignored="false" />
+    <file path="/tablesGrid.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371713879782" ignored="false" />
+    <file path="/TablesController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371717495555" ignored="false" />
+    <file path="/tableForm.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371714232806" ignored="false" />
     <file path="/TableController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367848732079" ignored="false" />
     <file path="/TableMetaViewModel.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1367849538190" ignored="false" />
-    <file path="/TableFormController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371642211265" ignored="false" />
+    <file path="/TableFormController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371717413987" ignored="false" />
     <file path="/index.jsp" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1368020718779" ignored="false" />
     <file path="$PROJECT_DIR$/../zksample2-code-1078/trunk/zkoss/pom.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371641368583" ignored="false" />
     <file path="$PROJECT_DIR$/../zksample2-code-1078/trunk/spring-hibernate-backend/pom.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1368176415233" ignored="false" />
@@ -262,9 +265,16 @@
     <file path="E:/work/AXN_DVL_BRE_REFACTOR_PRE_GA/Modules/BRECore/src/com/audatex/axn/ui/clickcommon/util/LinkHelper.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371624535265" ignored="false" />
     <file path="/TableMetaItemRenderer.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371627315428" ignored="false" />
     <file path="$PROJECT_DIR$/../zksample2-code-1078/trunk/zkoss/src/main/webapp/WEB-INF/pages/order/orderList.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371628687912" ignored="false" />
-    <file path="/TableMetaRowRenderer.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371631129379" ignored="false" />
+    <file path="/TableMetaRowRenderer.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371714878459" ignored="false" />
     <file path="/search.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371638997283" ignored="false" />
     <file path="/SearchViewModel.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371639165118" ignored="false" />
+    <file path="$PROJECT_DIR$/../Maven-Project/pom.xml" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371716583585" ignored="false" />
+    <file path="$PROJECT_DIR$/../Maven-Project/src/main/java/demo/window/modal_dialog/ModalDialogController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371717321846" ignored="false" />
+    <file path="/ModalDialogController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371717321158" ignored="false" />
+    <file path="$PROJECT_DIR$/../Maven-Project/src/main/webapp/employee_dialog.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371716950650" ignored="false" />
+    <file path="/employee_dialog.zul" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371716935578" ignored="false" />
+    <file path="$PROJECT_DIR$/../Maven-Project/src/main/java/demo/window/modal_dialog/EmployeeDialogController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371717244283" ignored="false" />
+    <file path="/EmployeeDialogController.java" changelist="6ef91438-150c-454a-9c01-b993e0b0bc7a" time="1371717244283" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -484,10 +494,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tableForm.zul" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/components/admin/tableForm.zul">
+      <file leaf-file-name="TablesController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TablesController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="46" selection-start="496" selection-end="511" vertical-scroll-proportion="0.0">
+            <state line="46" column="64" selection-start="1636" selection-end="1636" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1360#2202#0" expanded="true" />
+                <element signature="e#2158#2159#0" expanded="true" />
+                <element signature="e#2191#2192#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EventProcessor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/impl/EventProcessor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="139" column="0" selection-start="4068" selection-end="4068" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractComponent.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/AbstractComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1355" column="0" selection-start="44676" selection-end="44676" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -496,43 +529,52 @@
       <file leaf-file-name="TableFormController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TableFormController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="1124" selection-end="1205" vertical-scroll-proportion="0.36743215">
+            <state line="67" column="28" selection-start="2196" selection-end="2196" vertical-scroll-proportion="0.98504674">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TablesController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TablesController.java">
+      <file leaf-file-name="Window.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zul/6.5.1/zul-6.5.1-sources.jar!/org/zkoss/zul/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="1023" selection-end="1023" vertical-scroll-proportion="0.0">
+            <state line="526" column="0" selection-start="16560" selection-end="16560" vertical-scroll-proportion="-6.6">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IndexController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/IndexController.java">
+      <file leaf-file-name="zk.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zk.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="18" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0">
+            <state line="10" column="4" selection-start="320" selection-end="425" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tablesGrid.zul" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/components/admin/tablesGrid.zul">
+      <file leaf-file-name="Configuration.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/util/Configuration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="69" selection-start="1452" selection-end="1452" vertical-scroll-proportion="0.0">
+            <state line="1999" column="0" selection-start="67349" selection-end="67349" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.zul" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/index.zul">
+      <file leaf-file-name="AbstractWebApp.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/impl/AbstractWebApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
+            <state line="94" column="0" selection-start="2551" selection-end="2551" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tableForm.zul" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/components/admin/tableForm.zul">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="100" selection-start="932" selection-end="1052" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -548,7 +590,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/IndexController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/model/menu/MenuType.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/model/menu/MenuBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/mainMenu/TreeMenuCell.java" />
@@ -557,11 +598,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/mainMenu/MainMenuTreeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TableMetaItemRenderer.java" />
         <option value="$PROJECT_DIR$/src/notes.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TableMetaRowRenderer.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/zul/demo/search.zul" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/demo/SearchViewModel.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/zul/components/admin/tableForm.zul" />
         <option value="$PROJECT_DIR$/src/main/webapp/zul/components/admin/tablesGrid.zul" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TableMetaRowRenderer.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/zk.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/zul/components/admin/tableForm.zul" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TablesController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TableFormController.java" />
       </list>
@@ -1109,6 +1151,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hutgin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hutgin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2084,7 +2152,11 @@
       <created>1371632786120</created>
       <updated>1371632786120</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="grid add/edit">
+      <created>1371644288118</created>
+      <updated>1371644288118</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2109,14 +2181,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24386339" sideWeight="0.7826087" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43701226" sideWeight="0.48292422" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35117057" sideWeight="0.48292422" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40022296" sideWeight="0.5346852" order="16" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24493062" sideWeight="0.4593088" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -2124,11 +2196,11 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32441473" sideWeight="0.48932764" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31163287" sideWeight="0.2006689" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18996799" sideWeight="0.56298774" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20864461" sideWeight="0.2251951" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18996799" sideWeight="0.64882946" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20864461" sideWeight="0.56298774" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20864461" sideWeight="0.64882946" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25975475" sideWeight="0.56456774" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="189" width="1602" height="759" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -2179,7 +2251,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="grid add/edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="modal ok" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -2207,6 +2279,7 @@
     <MESSAGE value="menu" />
     <MESSAGE value="grid 1st step" />
     <MESSAGE value="grid add/edit" />
+    <MESSAGE value="modal ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2216,114 +2289,119 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/http/ExecutionImpl.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/Execution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="371" column="0" selection-start="11421" selection-end="11421" vertical-scroll-proportion="0.0">
+        <state line="1007" column="16" selection-start="44482" selection-end="44482" vertical-scroll-proportion="0.33226836">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/Executions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="0" selection-start="6293" selection-end="6293" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/event/GenericEventListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="0" selection-start="3044" selection-end="3044" vertical-scroll-proportion="0.31732777">
+        <state line="178" column="35" selection-start="6322" selection-end="6322" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/impl/UiEngineImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1003" column="0" selection-start="33137" selection-end="33137" vertical-scroll-proportion="0.31732777">
+        <state line="1007" column="16" selection-start="33334" selection-end="33334" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/impl/AbstractExecution.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TableMetaRowRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="245" column="25" selection-start="7513" selection-end="7513" vertical-scroll-proportion="0.24634655">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/AbstractComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1671" column="0" selection-start="58224" selection-end="58224" vertical-scroll-proportion="0.33258426">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zul/6.5.1/zul-6.5.1-sources.jar!/org/zkoss/zul/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="754" column="0" selection-start="23684" selection-end="23684" vertical-scroll-proportion="0.33258426">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_10/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="28" selection-start="467" selection-end="467" vertical-scroll-proportion="0.45842695">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/components/IComponentFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="11" selection-start="108" selection-end="108" vertical-scroll-proportion="0.21294363">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/ZKComponentFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="18" selection-start="312" selection-end="312" vertical-scroll-proportion="0.24843423">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/index.zul">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
+        <state line="24" column="70" selection-start="870" selection-end="870" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/components/admin/tablesGrid.zul">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="69" selection-start="1452" selection-end="1452" vertical-scroll-proportion="0.0">
+        <state line="5" column="32" selection-start="331" selection-end="347" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/impl/DesktopImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="656" column="0" selection-start="21913" selection-end="21913" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/impl/AbstractWebApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="0" selection-start="2551" selection-end="2551" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/util/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1999" column="0" selection-start="67349" selection-end="67349" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/AbstractComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1355" column="0" selection-start="44676" selection-end="44676" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zul/6.5.1/zul-6.5.1-sources.jar!/org/zkoss/zul/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="526" column="0" selection-start="16560" selection-end="16560" vertical-scroll-proportion="-6.6">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/zkoss/zk/zk/6.5.1/zk-6.5.1-sources.jar!/org/zkoss/zk/ui/impl/EventProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="0" selection-start="4068" selection-end="4068" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zk.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="4" selection-start="320" selection-end="425" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="435" column="12" selection-start="13633" selection-end="14924" vertical-scroll-proportion="0.8224299">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/zul/components/admin/tableForm.zul">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="46" selection-start="496" selection-end="511" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/IndexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="18" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0">
+        <state line="22" column="100" selection-start="932" selection-end="1052" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TablesController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1023" selection-end="1023" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="46" column="64" selection-start="1636" selection-end="1636" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1360#2202#0" expanded="true" />
+            <element signature="e#2158#2159#0" expanded="true" />
+            <element signature="e#2191#2192#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hutgin2/ui/zk/components/admin/TableFormController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1124" selection-end="1205" vertical-scroll-proportion="0.36743215">
+        <state line="67" column="28" selection-start="2196" selection-end="2196" vertical-scroll-proportion="0.98504674">
           <folding />
         </state>
       </provider>

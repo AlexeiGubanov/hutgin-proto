@@ -8,4 +8,7 @@
         <richlet-name>Root</richlet-name>
         <url-pattern>/root</url-pattern>
     </richlet-mapping>
+    <!--<system-config>-->
+    <!--<disable-event-thread>false</disable-event-thread>-->
+    <!--</system-config>-->
 </zk>
