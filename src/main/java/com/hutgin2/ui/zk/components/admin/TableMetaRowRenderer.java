@@ -16,9 +16,13 @@ public class TableMetaRowRenderer implements RowRenderer<TableMeta> {
 
     @Override
     public void render(Row row, final TableMeta table, int index) throws Exception {
-        row.appendChild(new Checkbox());
+        row.setId(table.getName());
+        Checkbox cb = new Checkbox();
+        cb.setId("cb" + row.getId());
+        row.appendChild(cb);
         row.appendChild(new Label(table.getName()));
         row.appendChild(new Label(table.getTableName()));
+        row.setAttribute("data", table);
         row.addEventListener("onDoubleClick", onDoubleClick.getEventListener(table));
 
     }

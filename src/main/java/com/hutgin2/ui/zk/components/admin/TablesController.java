@@ -12,13 +12,9 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zkplus.databind.BindingListModelList;
-import org.zkoss.zul.Grid;
-import org.zkoss.zul.Paging;
-import org.zkoss.zul.Window;
+import org.zkoss.zul.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @org.springframework.stereotype.Component("tablesController")
 @Scope("desktop")
@@ -74,7 +70,30 @@ public class TablesController extends SelectorComposer<Component> {
 
     @Listen("onClick = #btnDelete")
     public void onClick$btnDelete(Event e) {
-        // list all checked
+        final Set<String> ids = new HashSet<>();
+        Rows rows = this.tablesList.getRows();
+        for (Component component : rows.getChildren()) {
+            if (component instanceof Row) {
+                Row row = (Row) component;
+                TableMeta tm = (TableMeta) row.getAttribute("data");
+                Checkbox cb = (Checkbox) row.getFellow("cb" + row.getId());
+                if (cb.isChecked()) {
+                    ids.add(tm.getName());
+                }
+            }
+        }
+        if (ids.size() > 0) {
+            Messagebox.show("Are you sure to detele items " + ids.toString() + "?", "Delete confirmation", Messagebox.YES | Messagebox.NO, Messagebox.QUESTION, new EventListener<Event>() {
+                @Override
+                public void onEvent(Event event) throws Exception {
+                    tableMetaService.removeByIds(ids.toArray(new String[ids.size()]));
+                    List<TableMeta> tables = tableMetaService.findAll();
+                    model = new BindingListModelList<>(tables, true); // todo provide mine  with paging and sorting
+                    tablesList.setModel(model);
+                }
+            });
+        }
+
     }
 
     public static interface EventListenerBuilder {
