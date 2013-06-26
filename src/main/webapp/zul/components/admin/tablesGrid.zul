@@ -8,26 +8,27 @@
             <toolbar id="tb" height="20px">
                 <toolbarbutton id="btnNew" label="New"/>
                 <toolbarbutton id="btnDelete" label="Delete"/>
+                <toolbarbutton id="refresh" label="Refresh"/>
             </toolbar>
 
             <panelchildren>
-                <grid hflex="1" vflex="1" id="tablesList">
+                <grid id="tablesList" autopaging="true" mold="paging" pagingPosition="both">
                     <auxhead>
                         <auxheader colspan="2" label="MetaTables"/>
                     </auxhead>
                     <columns menupopup="auto">
                         <column width="40px" sort="none"/>
-                        <column width="100px" label="Name" sort="auto"/>
-                        <column label="TableName" sort="auto"/>
+                        <column width="100px" label="Name" sort="auto(name)"/>
+                        <column label="TableName" sort="auto(tableName)"/>
                     </columns>
                     <rows/>
                 </grid>
             </panelchildren>
         </panel>
-        <panel>
-            <panelchildren>
-                <paging id="paging"/>
-            </panelchildren>
-        </panel>
+        <!--<panel>-->
+        <!--<panelchildren>-->
+        <!--<paging id="paging"/>-->
+        <!--</panelchildren>-->
+        <!--</panel>-->
     </window>
 </zk>

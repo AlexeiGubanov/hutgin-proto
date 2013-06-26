@@ -68,7 +68,9 @@
 
             <hlayout>
                 <button id="save" label="Save"/>
-                <button id="reloadProfile" label="Reload"/>
+                <button id="new" label="New"/>
+                <button id="delete" label="Delete"/>
+                <button id="reload" label="Reload"/>
             </hlayout>
         </vlayout>
     </window>

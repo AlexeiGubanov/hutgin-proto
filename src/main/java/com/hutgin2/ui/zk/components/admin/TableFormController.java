@@ -7,13 +7,12 @@ import org.springframework.context.annotation.Scope;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.CreateEvent;
 import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.Grid;
-import org.zkoss.zul.ListModelList;
-import org.zkoss.zul.Textbox;
-import org.zkoss.zul.Window;
+import org.zkoss.zul.*;
 
 import java.util.Map;
 
@@ -53,6 +52,9 @@ public class TableFormController extends SelectorComposer<Component> {
             name.setValue(entity.getName());
             tableName.setValue(entity.getTableName());
         }
+        if ("edit".equals(action)) {
+            name.setReadonly(true);
+        }
     }
 
     @Listen("onClick = #save")
@@ -66,14 +68,56 @@ public class TableFormController extends SelectorComposer<Component> {
             model.add(entity);
             grid.invalidate();//refresh
             action = "edit";
+            name.setReadonly(true);
         }
         if ("edit".equals(action)) {
             entity.setName(name.getValue());
             entity.setTableName(tableName.getValue());
             tableMetaService.save(entity);
             grid.setModel(model);//refresh
+            name.setReadonly(true);
         }
 
+    }
+
+    @Listen("onClick = #new")
+    public void onClick$new(Event e) {
+        action = "create";
+        entity = null;
+        name.setReadonly(false);
+        Constraint c = name.getConstraint();
+        name.setConstraint((Constraint) null);
+        name.setValue("");
+        name.setConstraint(c);
+        tableName.setValue("");
+        name.setFocus(true);
+    }
+
+    @Listen("onClick = #delete")
+    public void onClick$delete(Event e) {
+        if ("edit".equals(action)) {
+            Messagebox.show("Are you sure to detele item " + entity.getName() + "?", "Delete confirmation", Messagebox.YES | Messagebox.NO, Messagebox.QUESTION, new EventListener<Event>() {
+                @Override
+                public void onEvent(Event event) throws Exception {
+                    tableMetaService.removeById(entity.getName());
+                    Events.postEvent("onCreate", grid, event);
+                    tableFormWindow.detach();
+                }
+            });
+        }
+    }
+
+    @Listen("onClick = #reload")
+    public void onClick$reload(Event e) {
+        if ("edit".equals(action)) {
+            if (entity != null) {
+                name.setValue(entity.getName());
+                tableName.setValue(entity.getTableName());
+            }
+        } else {
+            name.setValue(null);
+            tableName.setValue(null);
+        }
     }
 
 
