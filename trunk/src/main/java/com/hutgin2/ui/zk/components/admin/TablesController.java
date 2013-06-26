@@ -8,6 +8,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -21,8 +22,8 @@ import java.util.*;
 public class TablesController extends SelectorComposer<Component> {
     @Wire
     Grid tablesList;  // autowired
-    @Wire
-    Paging paging; // autowired
+//    @Wire
+//    Paging paging; // autowired
 
     private BindingListModelList<TableMeta> model;
 
@@ -31,9 +32,9 @@ public class TablesController extends SelectorComposer<Component> {
 
     @Listen("onCreate = #tablesList")
     public void onCreate$tablesList(Event event) {
-        paging.setPageSize(10);
-        paging.setPageIncrement(10);
-        paging.setDetailed(true);
+//        paging.setPageSize(10);
+//        paging.setPageIncrement(10);
+//        paging.setDetailed(true);
 
         tablesList.setRowRenderer(new TableMetaRowRenderer(new EventListenerBuilder() {
             @Override
@@ -56,6 +57,9 @@ public class TablesController extends SelectorComposer<Component> {
         List<TableMeta> tables = tableMetaService.findAll();
         model = new BindingListModelList<>(tables, true); // todo provide mine  with paging and sorting
         tablesList.setModel(model);
+
+        // add sorting
+//        tablesList.
     }
 
     @Listen("onClick = #btnNew")
@@ -65,7 +69,17 @@ public class TablesController extends SelectorComposer<Component> {
         params.put("grid", tablesList);
         Window win = (Window) Executions.createComponents("/zul/components/admin/tableForm.zul", null, params);
         win.doModal();
+    }
 
+
+    @Listen("onClick = #refresh")
+    public void onClick$refresh(Event e) {
+        refresh(e);
+    }
+
+    private void refresh(Event e) {
+        Events.postEvent("onCreate", this.tablesList, e);
+        tablesList.invalidate();
     }
 
     @Listen("onClick = #btnDelete")
