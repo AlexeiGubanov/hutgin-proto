@@ -4,6 +4,7 @@ import com.hutgin2.core.meta.TableMeta;
 import com.hutgin2.core.service.TableMetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.zkoss.lang.Strings;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
@@ -12,6 +13,7 @@ import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zkplus.databind.BindingListModelList;
 import org.zkoss.zul.*;
 
@@ -57,6 +59,53 @@ public class TablesController extends SelectorComposer<Component> {
         List<TableMeta> tables = tableMetaService.findAll();
         model = new BindingListModelList<>(tables, true); // todo provide mine  with paging and sorting
         tablesList.setModel(model);
+
+        Columns cols = tablesList.getColumns();
+        for (Component c : cols.getChildren()) {
+            if (c instanceof Column) {
+                Column col = (Column) c;
+                col.setSortDirection("natural");
+                col.addEventListener("onSort", new EventListener<Event>() {
+                    @Override
+                    public void onEvent(Event event) throws Exception {
+//                        event.stopPropagation();
+                        final Column col = (Column) event.getTarget();
+                        final String sortDirection = col.getSortDirection();
+
+                        if ("ascending".equals(sortDirection)) {
+                            Clients.showNotification(col.getId() + sortDirection);
+//                            final Comparator<?> cmpr = lh.getSortDescending();
+//                            if (cmpr instanceof FieldComparator) {
+//                                String orderBy = ((FieldComparator) cmpr).getOrderBy();
+//                                orderBy = StringUtils.substringBefore(orderBy, "DESC").trim();
+//
+//                                // update SearchObject with orderBy
+//                                getSearchObject().clearSorts();
+//                                getSearchObject().addSort(orderBy, true);
+//                            }
+                        } else if ("descending".equals(sortDirection) || "natural".equals(sortDirection) || Strings.isBlank(sortDirection)) {
+                            Clients.showNotification(col.getId() + sortDirection);
+//                            final Comparator<?> cmpr = lh.getSortAscending();
+//                            if (cmpr instanceof FieldComparator) {
+//                                String orderBy = ((FieldComparator) cmpr).getOrderBy();
+//                                orderBy = StringUtils.substringBefore(orderBy, "ASC").trim();
+//
+//                                // update SearchObject with orderBy
+//                                getSearchObject().clearSorts();
+//                                getSearchObject().addSort(orderBy, false);
+//                            }
+                        }
+
+//                        /**
+//                         * A changing of the sort order implies that the list starts new. So
+//                         * we set the startpage to '0' and refresh the list.
+//                         */
+//                        getPaging().setActivePage(0);
+//                        refreshModel(0);
+                    }
+                });
+            }
+        }
 
         // add sorting
 //        tablesList.
