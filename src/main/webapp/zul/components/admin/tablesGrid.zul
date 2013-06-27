@@ -17,9 +17,9 @@
                         <auxheader colspan="2" label="MetaTables"/>
                     </auxhead>
                     <columns menupopup="auto">
-                        <column width="40px" sort="none"/>
-                        <column width="100px" label="Name" sort="auto(name)"/>
-                        <column label="TableName" sort="auto(tableName)"/>
+                        <column id="column_check" width="40px" sort="none"/>
+                        <column id="column_name" width="100px" label="Name" sort="auto"/>
+                        <column id="column_tableName" label="TableName" sort="auto"/>
                     </columns>
                     <rows/>
                 </grid>
