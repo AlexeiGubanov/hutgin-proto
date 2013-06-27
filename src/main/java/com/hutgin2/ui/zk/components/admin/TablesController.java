@@ -1,6 +1,7 @@
 package com.hutgin2.ui.zk.components.admin;
 
 import com.hutgin2.core.dao.search.Search;
+import com.hutgin2.core.dao.search.SearchResult;
 import com.hutgin2.core.dao.search.Sort;
 import com.hutgin2.core.meta.TableMeta;
 import com.hutgin2.core.service.TableMetaService;
@@ -17,6 +18,7 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zkplus.databind.BindingListModelList;
 import org.zkoss.zul.*;
+import org.zkoss.zul.event.PagingEvent;
 
 import java.util.*;
 
@@ -31,8 +33,8 @@ public class TablesController extends SelectorComposer<Component> {
     Column column_name;
     @Wire
     Column column_tableName;
-//    @Wire
-//    Paging paging; // autowired
+    @Wire
+    Paging paging; // autowired
 
     private BindingListModelList<TableMeta> model;
 
@@ -41,9 +43,7 @@ public class TablesController extends SelectorComposer<Component> {
 
     @Listen("onCreate = #tablesList")
     public void onCreate$tablesList(Event event) {
-//        paging.setPageSize(10);
-//        paging.setPageIncrement(10);
-//        paging.setDetailed(true);
+
 
         tablesList.setRowRenderer(new TableMetaRowRenderer(new EventListenerBuilder() {
             @Override
@@ -63,9 +63,41 @@ public class TablesController extends SelectorComposer<Component> {
                 };
             }
         }));
-        List<TableMeta> tables = tableMetaService.findAll();
-        model = new BindingListModelList<>(tables, true); // todo provide mine  with paging and sorting
+        Search search = new Search(TableMeta.class);
+        search.setFirstResult(0);
+        search.setMaxResults(10);
+        SearchResult<TableMeta> tables = tableMetaService.searchAndCount(search);
+        model = new BindingListModelList<>(tables.getResult(), true);
         tablesList.setModel(model);
+
+        paging.setPageSize(10);
+        paging.setPageIncrement(10);
+        paging.setDetailed(true);
+        paging.setTotalSize(tables.getTotalCount());
+
+        paging.addEventListener("onPaging", new EventListener<Event>() {
+            @Override
+            public void onEvent(Event event) throws Exception {
+                final PagingEvent pe = (PagingEvent) event;
+                final int pageNo = pe.getActivePage();
+                final int start = pageNo * paging.getPageSize();
+
+                Search search = new Search(TableMeta.class);
+                search.setFirstResult(start);
+                search.setMaxResults(paging.getPageSize());
+                SearchResult<TableMeta> tables = tableMetaService.searchAndCount(search);
+                model = new BindingListModelList<>(tables.getResult(), true);
+
+                tablesList.setModel(model);
+
+                // todo save sorting
+//                tablesList.invalidate();
+//                tablesList.getPagingChild().setPageSize(10);
+//                tablesList.getPagingChild().setPageIncrement(10);
+//                tablesList.getPagingChild().setDetailed(true);
+                paging.setTotalSize(tables.getTotalCount());
+            }
+        });
 
         column_name.setSortDirection("natural");
         column_tableName.setSortDirection("natural");
@@ -92,10 +124,11 @@ public class TablesController extends SelectorComposer<Component> {
                     String orderBy = ((FieldComparator) cmpr).getRawOrderBy();
                     Search search = new Search(TableMeta.class);
                     search.addSort(new Sort(orderBy, false));
-                    List<TableMeta> tables = tableMetaService.search(search);
-                    model = new BindingListModelList<>(tables, true); // todo provide mine  with paging and sorting
+                    SearchResult<TableMeta> tables = tableMetaService.searchAndCount(search);
+                    model = new BindingListModelList<>(tables.getResult(), true);
                     tablesList.setModel(model);
                     tablesList.invalidate();
+                    // todo save paging
                 }
             } else if ("descending".equals(sortDirection) || "natural".equals(sortDirection) || Strings.isBlank(sortDirection)) {
                 final Comparator<?> cmpr = col.getSortAscending();
@@ -103,10 +136,11 @@ public class TablesController extends SelectorComposer<Component> {
                     String orderBy = ((FieldComparator) cmpr).getRawOrderBy();
                     Search search = new Search(TableMeta.class);
                     search.addSort(new Sort(orderBy, true));
-                    List<TableMeta> tables = tableMetaService.search(search);
-                    model = new BindingListModelList<>(tables, true); // todo provide mine  with paging and sorting
+                    SearchResult<TableMeta> tables = tableMetaService.searchAndCount(search);
+                    model = new BindingListModelList<>(tables.getResult(), true);
                     tablesList.setModel(model);
                     tablesList.invalidate();
+                    // todo save paging
 
                 }
             }
