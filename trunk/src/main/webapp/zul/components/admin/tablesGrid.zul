@@ -12,11 +12,11 @@
             </toolbar>
 
             <panelchildren>
-                <grid id="tablesList" autopaging="true" mold="paging" pagingPosition="both">
+                <grid id="tablesList"> <!--  mold="paging" pagingPosition="both" -->
                     <auxhead>
                         <auxheader colspan="2" label="MetaTables"/>
                     </auxhead>
-                    <columns menupopup="auto">
+                    <columns menupopup="auto" sizable="true">
                         <column id="column_check" width="40px" sort="none"/>
                         <column id="column_name" width="100px" label="Name" sort="auto"/>
                         <column id="column_tableName" label="TableName" sort="auto"/>
@@ -25,10 +25,10 @@
                 </grid>
             </panelchildren>
         </panel>
-        <!--<panel>-->
-        <!--<panelchildren>-->
-        <!--<paging id="paging"/>-->
-        <!--</panelchildren>-->
-        <!--</panel>-->
+        <panel>
+            <panelchildren>
+                <paging id="paging"/>
+            </panelchildren>
+        </panel>
     </window>
 </zk>
