@@ -1,5 +1,7 @@
 package com.hutgin2.ui.zk.components.admin;
 
+import com.hutgin2.core.dao.search.Search;
+import com.hutgin2.core.dao.search.Sort;
 import com.hutgin2.core.meta.TableMeta;
 import com.hutgin2.core.service.TableMetaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,6 @@ import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zkplus.databind.BindingListModelList;
 import org.zkoss.zul.*;
 
@@ -24,6 +25,12 @@ import java.util.*;
 public class TablesController extends SelectorComposer<Component> {
     @Wire
     Grid tablesList;  // autowired
+    @Wire
+    Column column_check;
+    @Wire
+    Column column_name;
+    @Wire
+    Column column_tableName;
 //    @Wire
 //    Paging paging; // autowired
 
@@ -60,31 +67,52 @@ public class TablesController extends SelectorComposer<Component> {
         model = new BindingListModelList<>(tables, true); // todo provide mine  with paging and sorting
         tablesList.setModel(model);
 
-        Columns cols = tablesList.getColumns();
-        for (Component c : cols.getChildren()) {
-            if (c instanceof Column) {
-                Column col = (Column) c;
-                col.setSortDirection("natural");
-                col.addEventListener("onSort", new EventListener<Event>() {
-                    @Override
-                    public void onEvent(Event event) throws Exception {
-//                        event.stopPropagation();
-                        final Column col = (Column) event.getTarget();
-                        final String sortDirection = col.getSortDirection();
+        column_name.setSortDirection("natural");
+        column_tableName.setSortDirection("natural");
+        column_name.addEventListener("onSort", new ColumnSortListener());
+        column_tableName.addEventListener("onSort", new ColumnSortListener());
 
-                        if ("ascending".equals(sortDirection)) {
-                            Clients.showNotification(col.getId() + sortDirection);
-//                            final Comparator<?> cmpr = lh.getSortDescending();
-//                            if (cmpr instanceof FieldComparator) {
-//                                String orderBy = ((FieldComparator) cmpr).getOrderBy();
-//                                orderBy = StringUtils.substringBefore(orderBy, "DESC").trim();
-//
-//                                // update SearchObject with orderBy
-//                                getSearchObject().clearSorts();
-//                                getSearchObject().addSort(orderBy, true);
-//                            }
-                        } else if ("descending".equals(sortDirection) || "natural".equals(sortDirection) || Strings.isBlank(sortDirection)) {
-                            Clients.showNotification(col.getId() + sortDirection);
+        column_name.setSortAscending(new FieldComparator("name", true));
+        column_name.setSortDescending(new FieldComparator("name", false));
+        column_tableName.setSortAscending(new FieldComparator("tableName", true));
+        column_tableName.setSortDescending(new FieldComparator("tableName", false));
+
+    }
+
+    private class ColumnSortListener implements EventListener<Event> {
+        @Override
+        public void onEvent(Event event) throws Exception {
+            final Column col = (Column) event.getTarget();
+            final String sortDirection = col.getSortDirection();
+            col.setSortDirection(sortDirection);
+
+            if ("ascending".equals(sortDirection)) {
+                final Comparator<?> cmpr = col.getSortDescending();
+                if (cmpr instanceof FieldComparator) {
+                    String orderBy = ((FieldComparator) cmpr).getRawOrderBy();
+                    Search search = new Search(TableMeta.class);
+                    search.addSort(new Sort(orderBy, false));
+                    List<TableMeta> tables = tableMetaService.search(search);
+                    model = new BindingListModelList<>(tables, true); // todo provide mine  with paging and sorting
+                    tablesList.setModel(model);
+                    tablesList.invalidate();
+                }
+            } else if ("descending".equals(sortDirection) || "natural".equals(sortDirection) || Strings.isBlank(sortDirection)) {
+                final Comparator<?> cmpr = col.getSortAscending();
+                if (cmpr instanceof FieldComparator) {
+                    String orderBy = ((FieldComparator) cmpr).getRawOrderBy();
+                    Search search = new Search(TableMeta.class);
+                    search.addSort(new Sort(orderBy, true));
+                    List<TableMeta> tables = tableMetaService.search(search);
+                    model = new BindingListModelList<>(tables, true); // todo provide mine  with paging and sorting
+                    tablesList.setModel(model);
+                    tablesList.invalidate();
+
+                }
+            }
+//            event.stopPropagation();
+//            ((WebAppCtrl)col.getPage().getDesktop().getWebApp()).getUiEngine().addSmartUpdate(col,"sortDirection", sortDirection, false);
+//                        Clients.showNotification(col.getId() + sortDirection);
 //                            final Comparator<?> cmpr = lh.getSortAscending();
 //                            if (cmpr instanceof FieldComparator) {
 //                                String orderBy = ((FieldComparator) cmpr).getOrderBy();
@@ -94,22 +122,11 @@ public class TablesController extends SelectorComposer<Component> {
 //                                getSearchObject().clearSorts();
 //                                getSearchObject().addSort(orderBy, false);
 //                            }
-                        }
-
-//                        /**
-//                         * A changing of the sort order implies that the list starts new. So
-//                         * we set the startpage to '0' and refresh the list.
-//                         */
-//                        getPaging().setActivePage(0);
-//                        refreshModel(0);
-                    }
-                });
-            }
         }
-
-        // add sorting
-//        tablesList.
     }
+
+    // add sorting
+//        tablesList.
 
     @Listen("onClick = #btnNew")
     public void onClick$btnNew(Event e) {
