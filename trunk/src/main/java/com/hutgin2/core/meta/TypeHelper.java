@@ -14,7 +14,7 @@ public class TypeHelper {
     public static Boolean asBoolean(String value) {
         if (StringUtils.equalsIgnoreCase(value, BOOLEAN_TRUE)) {
             return Boolean.TRUE;
-        } else if (StringUtils.equalsIgnoreCase(value, BOOLEAN_TRUE)) {
+        } else if (StringUtils.equalsIgnoreCase(value, BOOLEAN_FALSE)) {
             return Boolean.FALSE;
         }
         return null;

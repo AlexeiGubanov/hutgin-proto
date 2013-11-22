@@ -118,7 +118,7 @@ public class MainMenuTreeController extends GenericForwardComposer {
     }
 
     private void doCollapseExpandAll(org.zkoss.zk.ui.Component root, boolean doExpand) {
-        final List<org.zkoss.zk.ui.Component> childs = root.getChildren();
+        final List<? extends org.zkoss.zk.ui.Component> childs = root.getChildren();
         for (org.zkoss.zk.ui.Component child : childs) {
             if (child instanceof Treeitem) {
                 Treeitem treeitem = (Treeitem) child;

@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" compressed="false" hash="481375604" />
+  <component name="DataSourceManagerImpl" format="xml" hash="481375604">
+    <data-source source="LOCAL" name="database" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="3cbb323d-ee20-40c2-9ccb-7793ed6ffc8b">
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:file:dev</jdbc-url>
+      <user-name>sa</user-name>
+      <libraries>
+        <library>
+          <url>jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.3.170/h2-1.3.170.jar!/</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
 </project>
 
