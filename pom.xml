@@ -437,12 +437,12 @@
 
     <properties>
         <junit.version>4.10</junit.version>
-        <spring.version>3.2.1.RELEASE</spring.version>
+        <spring.version>3.2.5.RELEASE</spring.version>
         <!--<conf.spring-hibernate3.version>2.0.8</conf.spring-hibernate3.version>-->
         <!-- TODO for new features <hibernate.version>4.3.0-SNAPSHOT</hibernate.version>-->
-        <hibernate.version>4.2.2.Final</hibernate.version>
+        <hibernate.version>4.2.7.Final</hibernate.version>
         <slf4j.version>1.7.2</slf4j.version>
-        <zk.version>6.5.1</zk.version>
+        <zk.version>7.0.0-RC</zk.version>
         <log4j.version>1.2.17</log4j.version>
         <!--<apache-tiles.version>2.2.2</apache-tiles.version>-->
         <jackson.version>1.9.12</jackson.version>
